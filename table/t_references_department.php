@@ -2,10 +2,10 @@
     <thead>
         <tr style="text-align: center;">
             <th>#</th>
-            <th>Details</th>
             <th>Department<font style="color:transparent">.</font>Name</th>
             <th>Department<font style="color:transparent">.</font>Descrition</th>
             <th>General<font style="color:transparent">.</font>Manager</th>
+            <th>PT</th>
             <th class="no-sort">Action</th>
         </tr>
     </thead>
@@ -19,14 +19,10 @@
         ?>
                 <tr>
                     <td><?= $no ?>.</td>
-                    <td style="text-align: center;">
-                        <a href="#DetailsDepartment<?= $row['id']; ?>" class="btn btn-sm btn-behind-green" data-toggle="modal" title="Details Department" style="margin-left: 5px;">
-                            <i class="fas fa-info-circle"></i>
-                        </a>
-                    </td>
                     <td><?= $row['department_name']; ?></td>
                     <td><?= $row['desc_department']; ?></td>
                     <td><?= $row['gm_department']; ?></td>
+                    <td><?= $row['pt']; ?></td>
                     <td>
                         <div style="display: flex;justify-content: center;align-items: center;">
                             <a href="#EditDepartment<?= $row['id']; ?>" class="btn btn-sm btn-behind-green" data-toggle="modal" title="Edit Department" style="margin-left: 5px;">
@@ -38,84 +34,6 @@
                         </div>
                     </td>
                 </tr>
-
-                <!-- Details -->
-                <div class="modal fade" id="DetailsDepartment<?= $row['id']; ?>">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title">[Details Data] Department</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                            </div>
-                            <form action="" method="POST">
-                                <div class="modal-body">
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <h3><u>Department Information:</u></h3>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div style="display: flex;justify-content:flex-start;align-items: center;margin-bottom: 10px">
-                                                <div class="table-icon">
-                                                    <i class="fas fa-building"></i>
-                                                </div>
-                                                <div style="margin-left: 5px;">
-                                                    <div style="font-size: 15px;font-weight: 500;">
-                                                        <?= $row['Department_name']; ?>
-                                                    </div>
-                                                    <div style="font-size: 12px;font-weight: 300;">
-                                                        <?= $row['desc_Department']; ?>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div style="display: flex;justify-content:flex-start;align-items: center;margin-bottom: 10px">
-                                                <div class="table-icon">
-                                                    <i class="fas fa-tasks"></i>
-                                                </div>
-                                                <div style="margin-left: 5px;">
-                                                    <div style="font-size: 15px;font-weight: 500;">
-                                                        Telp.: <?= $row['telp']; ?> - Fax.: <?= $row['fax']; ?>
-                                                    </div>
-                                                    <div style="font-size: 12px;font-weight: 300;">
-                                                        <?= $row['email']; ?>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div style="display: flex;justify-content:flex-start;align-items: center;margin-bottom: 10px">
-                                                <div class="table-icon">
-                                                    <i class="fas fa-user"></i>
-                                                </div>
-                                                <div style="margin-left: 5px;">
-                                                    <div style="font-size: 15px;font-weight: 500;">
-                                                        <?= $row['Department_manager']; ?>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div style="display: flex;justify-content:flex-start;align-items: center;margin-bottom: 10px">
-                                                <div class="table-icon">
-                                                    <i class="fas fa-map"></i>
-                                                </div>
-                                                <div style="margin-left: 5px;">
-                                                    <div style="font-size: 15px;font-weight: 500;">
-                                                        Province: <?= $row['province']; ?> - Poscode: <?= $row['poscode']; ?>
-                                                    </div>
-                                                    <div style="font-size: 12px;font-weight: 300;">
-                                                        <?= $row['address_Department']; ?>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Close</a>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Details -->
 
                 <!-- Edit -->
                 <div class="modal fade" id="EditDepartment<?= $row['id']; ?>">
@@ -129,104 +47,34 @@
                                 <div class="modal-body">
                                     <fieldset>
                                         <div class="row">
-                                            <div class="col-md-4">
+                                            <div class="col-md-3">
                                                 <div class="form-group">
-                                                    <label for="IdDepartment">Department </label>
-                                                    <input type="text" class="form-control" name="NameDepartment" id="EditIdDepartment" onkeyup="EditmyFunction()" value="<?= $row['Department_name'] ?>" placeholder="Department ..." readonly />
+                                                    <label for="IdDepartment">Department</label>
+                                                    <input type="text" class="form-control" name="NameDepartment" id="IdDepartment" value="<?= $row['department_name']; ?>" placeholder="Department ..." />
                                                     <input type="hidden" name="ID" value="<?= $row['id']; ?>" />
                                                 </div>
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-md-3">
                                                 <div class="form-group">
-                                                    <label for="IdDescriptionDepartment">Description Department </label>
-                                                    <input type="text" class="form-control" name="NameDescriptionDepartment" id="EditIdDescriptionDepartment" value="<?= $row['desc_Department'] ?>" placeholder="Description Department ..." />
+                                                    <label for="IdDepartmentDescritption">Department Descritption</label>
+                                                    <input type="text" class="form-control" name="NameDepartmentDescritption" id="IdDepartmentDescritption" value="<?= $row['desc_department']; ?>" placeholder="Department Descritption ..." />
                                                 </div>
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-md-3">
                                                 <div class="form-group">
-                                                    <label for="IdDepartmentManager">Department Manager</label>
-                                                    <input type="text" class="form-control" name="NameDepartmentManager" id="EditIdDepartmentManager" value="<?= $row['Department_manager'] ?>" placeholder="Department Manager ..." />
+                                                    <label for="IdGeneralManager">General Manager</label>
+                                                    <input type="text" class="form-control" name="NameGeneralManager" id="IdGeneralManager" value="<?= $row['gm_department']; ?>" placeholder="General Manager ..." />
                                                 </div>
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-md-3">
                                                 <div class="form-group">
-                                                    <label for="IdTelepone">Telepone </label>
-                                                    <input type="text" class="form-control" name="NameTelepone" id="EditIdTelepone" value="<?= $row['telp'] ?>" placeholder="Telepone ..." />
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label for="IdFax">Fax </label>
-                                                    <input type="text" class="form-control" name="NameFax" id="EditIdFax" value="<?= $row['fax'] ?>" placeholder="Fax ..." />
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label for="IdEmail">Email </label>
-                                                    <input type="email" class="form-control" name="NameEmail" id="EditIdEmail" value="<?= $row['email'] ?>" placeholder="Email ..." />
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label for="IdAddress">Address </label>
-                                                    <textarea type="text" class="form-control" name="NameAddress" id="EditIdAddress" placeholder="Address ..."><?= $row['address_Department'] ?></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label for="IdProvince">Province </label>
-                                                    <select class="form-control" name="NameProvince" id="EditIdProvince" placeholder="Province ...">
-                                                        <?php if ($row['province'] == NULL) { ?>
-                                                            <option value="">Choose Province</option>
-                                                        <?php } else { ?>
-                                                            <option value="<?= $row['province'] ?>"><?= $row['province'] ?></option>
-                                                            <option value="">Choose Province</option>
-                                                        <?php } ?>
-                                                        <option value="Nanggroe Aceh Darussalam"> Nanggroe Aceh Darussalam</option>
-                                                        <option value="Sumatera Utara"> Sumatera Utara</option>
-                                                        <option value="Sumatera Selatan"> Sumatera Selatan</option>
-                                                        <option value="Sumatera Barat"> Sumatera Barat</option>
-                                                        <option value="Bengkulu"> Bengkulu</option>
-                                                        <option value="Riau"> Riau</option>
-                                                        <option value="Kepulauan"> Kepulauan</option>
-                                                        <option value="Jambi"> Jambi</option>
-                                                        <option value="Lampung"> Lampung</option>
-                                                        <option value="Bangka Belitung"> Bangka Belitung</option>
-                                                        <option value="Kalimantan Barat"> Kalimantan Barat</option>
-                                                        <option value="Kalimantan Timur"> Kalimantan Timur</option>
-                                                        <option value="Kalimantan Selatan"> Kalimantan Selatan</option>
-                                                        <option value="Kalimantan Tengah"> Kalimantan Tengah</option>
-                                                        <option value="Kalimantan Utara"> Kalimantan Utara</option>
-                                                        <option value="Banten"> Banten</option>
-                                                        <option value="DKI Jakarta"> DKI Jakarta</option>
-                                                        <option value="Jawa Barat"> Jawa Barat</option>
-                                                        <option value="Jawa Tengah"> Jawa Tengah</option>
-                                                        <option value="Daerah Istimewa Yogyakarta"> Daerah Istimewa Yogyakarta</option>
-                                                        <option value="Jawa Timur"> Jawa Timur</option>
-                                                        <option value="Bali"> Bali</option>
-                                                        <option value="Nusa Tenggara Timur"> Nusa Tenggara Timur</option>
-                                                        <option value="Nusa Tenggara Barat"> Nusa Tenggara Barat</option>
-                                                        <option value="Gorontalo"> Gorontalo</option>
-                                                        <option value="Sulawesi Barat"> Sulawesi Barat</option>
-                                                        <option value="Sulawesi Tengah"> Sulawesi Tengah</option>
-                                                        <option value="Sulawesi Utara"> Sulawesi Utara</option>
-                                                        <option value="Sulawesi Tenggara"> Sulawesi Tenggara</option>
-                                                        <option value="Sulawesi Selatan"> Sulawesi Selatan</option>
-                                                        <option value="Maluku Utara"> Maluku Utara</option>
-                                                        <option value="Maluku"> Maluku</option>
-                                                        <option value="Papua Barat"> Papua Barat</option>
-                                                        <option value="Papua"> Papua</option>
-                                                        <option value="Papua Tengah"> Papua Tengah</option>
-                                                        <option value="Papua Pegunungan"> Papua Pegunungan</option>
-                                                        <option value="Papua Selatan"> Papua Selatan</option>
-                                                        <option value="Papua Barat Daya"> Papua Barat Day</option>
+                                                    <label for="IdPT">PT</label>
+                                                    <select type="text" class="form-control" name="NamePT" id="IdPT">
+                                                        <option value="<?= $row['pt']; ?>"><?= $row['pt']; ?></option>
+                                                        <option value="">Choose PT</option>
+                                                        <option value="PT. Kuehne Nagel Indonesia">PT. Kuehne Nagel Indonesia</option>
+                                                        <option value="Naku Logistics Indonesia">Naku Logistics Indonesia</option>
                                                     </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label for="IdPoscode">Poscode </label>
-                                                    <input type="text" class="form-control" name="NamePoscode" id="EditIdPoscode" value="<?= $row['poscode'] ?>" placeholder="Poscode ..." />
                                                 </div>
                                             </div>
                                         </div>
@@ -234,7 +82,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Close</a>
-                                    <button type="submit" name="edit_Department" class="btn btn-behind-green"><i class="fas fa-save"></i> Edit</button>
+                                    <button type="submit" name="edit_department" class="btn btn-behind-green"><i class="fas fa-save"></i> Edit</button>
                                 </div>
                             </form>
                         </div>
@@ -267,10 +115,10 @@
                                                 </div>
                                                 <p class="mb-1" style="display: grid;">
                                                     <font><b>ID</b>: <?= $row['id']; ?></font>
-                                                    <font><b>Department Name</b>: <?= $row['Department_name']; ?></font>
-                                                    <font><b>Department Description</b>: <?= $row['desc_Department']; ?></font>
-                                                    <font><b>Department Manager</b>: <?= $row['Department_manager']; ?></font>
-                                                    <font><b>Province</b>: <?= $row['province']; ?></font>
+                                                    <font><b>Department Name</b>: <?= $row['department_name']; ?></font>
+                                                    <font><b>Department Description</b>: <?= $row['desc_department']; ?></font>
+                                                    <font><b>General Manager</b>: <?= $row['gm_department']; ?></font>
+                                                    <font><b>Company</b>: <?= $row['pt']; ?></font>
                                                     <input type="hidden" name="ID" value="<?= $row['id']; ?>" />
                                                 </p>
                                             </a>
@@ -279,7 +127,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> No</a>
-                                    <button type="submit" name="delete_Department" class="btn btn-danger"><i class="fas fa-check-circle"></i> Yes</button>
+                                    <button type="submit" name="delete_department" class="btn btn-danger"><i class="fas fa-check-circle"></i> Yes</button>
                                 </div>
                             </form>
                         </div>

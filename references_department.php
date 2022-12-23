@@ -8,29 +8,24 @@ include 'include/dataTablesCSS.php';
 <title>Department - <?= $Rapps['app_name'] ?> | General Management</title>
 <?php
 // Insert
-if (isset($_POST["add_branch"])) {
+if (isset($_POST["add_department"])) {
     // Info Page
     $page      = 'references_department.php';
     // End Info Page
 
-    $NameBranch             = $_POST['NameBranch'];
-    $NameDescriptionBranch  = $_POST['NameDescriptionBranch'];
-    $NameBranchManager      = $_POST['NameBranchManager'];
-    $NameTelepone           = $_POST['NameTelepone'];
-    $NameFax                = $_POST['NameFax'];
-    $NameEmail              = $_POST['NameEmail'];
-    $NameAddress            = $_POST['NameAddress'];
-    $NameProvince           = $_POST['NameProvince'];
-    $NamePoscode            = $_POST['NamePoscode'];
+    $NameDepartment              = $_POST['NameDepartment'];
+    $NameDepartmentDescritption  = $_POST['NameDepartmentDescritption'];
+    $NameGeneralManager          = $_POST['NameGeneralManager'];
+    $NamePT                      = $_POST['NamePT'];
 
-    $available = $db->query("SELECT branch_name FROM references_department WHERE branch_name='$NameBranch'");
+    $available = $db->query("SELECT department_name FROM references_department WHERE department_name='$NameDepartment'");
     if (mysqli_num_rows($available) == 1) {
         echo "<script>window.location.href='references_department.php?Available=true&page=$page';</script>";
     } else {
         $insert    = $db->query("INSERT INTO references_department
-                          (id,branch_name,desc_branch,branch_manager,telp,fax,email,address_branch,province,poscode)
+                          (id,department_name,desc_department,gm_department,pt)
                            VALUES
-                          ('','$NameBranch','$NameDescriptionBranch','$NameBranchManager','$NameTelepone','$NameFax','$NameEmail','$NameAddress','$NameProvince','$NamePoscode')
+                          ('','$NameDepartment','$NameDepartmentDescritption','$NameGeneralManager')
                           ");
 
         if ($insert) {
@@ -41,31 +36,21 @@ if (isset($_POST["add_branch"])) {
     }
 }
 // Edit
-if (isset($_POST["edit_branch"])) {
+if (isset($_POST["edit_department"])) {
     // Info Page
     $page      = 'references_department.php';
     // End Info Page
 
-    $ID                     = $_POST['ID'];
-    $NameBranch             = $_POST['NameBranch'];
-    $NameDescriptionBranch  = $_POST['NameDescriptionBranch'];
-    $NameBranchManager      = $_POST['NameBranchManager'];
-    $NameTelepone           = $_POST['NameTelepone'];
-    $NameFax                = $_POST['NameFax'];
-    $NameEmail              = $_POST['NameEmail'];
-    $NameAddress            = $_POST['NameAddress'];
-    $NameProvince           = $_POST['NameProvince'];
-    $NamePoscode            = $_POST['NamePoscode'];
+    $ID                          = $_POST['ID'];
+    $NameDepartment              = $_POST['NameDepartment'];
+    $NameDepartmentDescritption  = $_POST['NameDepartmentDescritption'];
+    $NameGeneralManager          = $_POST['NameGeneralManager'];
+    $NamePT                      = $_POST['NamePT'];
 
-    $edit    = $db->query("UPDATE references_department SET branch_name='$NameBranch',
-                                                        desc_branch='$NameDescriptionBranch',
-                                                        branch_manager='$NameBranchManager',
-                                                        telp='$NameTelepone',
-                                                        fax='$NameFax',
-                                                        email='$NameEmail',
-                                                        address_branch='$NameAddress',
-                                                        province='$NameProvince',
-                                                        poscode='$NamePoscode'
+    $edit    = $db->query("UPDATE references_department SET department_name='$NameDepartment',
+                                                            desc_department='$NameDepartmentDescritption',
+                                                            gm_department='$NameGeneralManager',
+                                                            pt='$NamePT'
                            WHERE id='$ID'");
 
     if ($edit) {
@@ -75,7 +60,7 @@ if (isset($_POST["edit_branch"])) {
     }
 }
 // Delete
-if (isset($_POST["delete_branch"])) {
+if (isset($_POST["delete_department"])) {
     // Info Page
     $page      = 'references_department.php';
     // End Info Page

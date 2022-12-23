@@ -15,10 +15,32 @@
                         <div class="modal-body">
                             <fieldset>
                                 <div class="row">
-                                    <div class="col-md-12">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="IdDepartment">Department <font style="color: red;">*</font></label>
                                             <input type="text" class="form-control" name="NameDepartment" id="IdDepartment" placeholder="Department ..." required />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="IdDepartmentDescritption">Department Descritption <font style="color: red;">*</font></label>
+                                            <input type="text" class="form-control" name="NameDepartmentDescritption" id="IdDepartmentDescritption" placeholder="Department Descritption ..." required />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="IdGeneralManager">General Manager <font style="color: red;">*</font></label>
+                                            <input type="text" class="form-control" name="NameGeneralManager" id="IdGeneralManager" placeholder="General Manager ..." required />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="IdPT">PT <font style="color: red;">*</font></label>
+                                            <select type="text" class="form-control" name="NamePT" id="IdPT" required>
+                                                <option value="">Choose PT</option>
+                                                <option value="PT. Kuehne Nagel Indonesia">PT. Kuehne Nagel Indonesia</option>
+                                                <option value="Naku Logistics Indonesia">Naku Logistics Indonesia</option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
