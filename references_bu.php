@@ -5,41 +5,42 @@ include 'include/head.php';
 include 'include/alert.php';
 include 'include/dataTablesCSS.php';
 ?>
-<title>Functional - <?= $Rapps['app_name'] ?> | General Management</title>
+<title>Business Unit - <?= $Rapps['app_name'] ?> | General Management</title>
 <?php
 // Insert
-if (isset($_POST["add_functional"])) {
+if (isset($_POST["add_bu"])) {
     // Info Page
-    $page      = 'references_functional.php';
+    $page      = 'references_bu.php';
     // End Info Page
 
-    $NameFunctionalCode = $_POST['NameFunctionalCode'];
-    $NameFunctionalName = $_POST['NameFunctionalName'];
-    $Name               = $_POST['Name'];
-    $Email              = $_POST['Email'];
-    $NameUnder          = $_POST['NameUnder'];
+    $NameBusinessUnitName = $_POST['NameBusinessUnitName'];
+    $NameBusinessUnitDesc = $_POST['NameBusinessUnitDesc'];
+    $NameUnder            = $_POST['NameUnder'];
+    $Name                 = $_POST['Name'];
+    $NameKNCode           = $_POST['NameKNCode'];
+    $Email                = $_POST['Email'];
 
-    $available = $db->query("SELECT functional_code FROM references_functional WHERE functional_code='$NameFunctionalCode'");
+    $available = $db->query("SELECT bu_name FROM references_bu WHERE bu_name='$NameBusinessUnitName'");
     if (mysqli_num_rows($available) == 1) {
-        echo "<script>window.location.href='references_functional.php?Available=true&page=$page';</script>";
+        echo "<script>window.location.href='references_bu.php?Available=true&page=$page';</script>";
     } else {
-        $insert    = $db->query("INSERT INTO references_functional
-                          (id,functional_code,functional_name,functional_person,functional_person_email,functional_under,level,status)
+        $insert    = $db->query("INSERT INTO references_bu
+                          (id,bu_name,bu_desc,under,bu_general_manager,bu_code,bu_general_manager_email,level,status)
                            VALUES
-                          ('','$NameFunctionalCode','$NameFunctionalName','$Name','$Email','$NameUnder','Level 1','FTE')
+                          ('','$NameBusinessUnitName','$NameBusinessUnitDesc','$NameUnder','$Name','$NameKNCode','$Email','Level 1','FTE')
                           ");
 
         if ($insert) {
-            echo "<script>window.location.href='references_functional.php?InsertSuccess=true&page=$page';</script>";
+            echo "<script>window.location.href='references_bu.php?InsertSuccess=true&page=$page';</script>";
         } else {
-            echo "<script>window.location.href='references_functional.php?InsertFailed=true&page=$page';</script>";
+            echo "<script>window.location.href='references_bu.php?InsertFailed=true&page=$page';</script>";
         }
     }
 }
 // Edit
-if (isset($_POST["edit_functional"])) {
+if (isset($_POST["edit_bu"])) {
     // Info Page
-    $page      = 'references_functional.php';
+    $page      = 'references_bu.php';
     // End Info Page
 
     $ID                 = $_POST['ID'];
@@ -49,7 +50,7 @@ if (isset($_POST["edit_functional"])) {
     $Email              = $_POST['Email'];
     $NameUnder          = $_POST['NameUnder'];
 
-    $edit    = $db->query("UPDATE references_functional SET functional_code='$NameFunctionalCode',
+    $edit    = $db->query("UPDATE references_bu SET functional_code='$NameFunctionalCode',
                                                             functional_name='$NameFunctionalName',
                                                             functional_person='$Name',
                                                             functional_person_email='$Email',
@@ -57,25 +58,25 @@ if (isset($_POST["edit_functional"])) {
                            WHERE id='$ID'");
 
     if ($edit) {
-        echo "<script>window.location.href='references_functional.php?UpdateSuccess=true&page=$page';</script>";
+        echo "<script>window.location.href='references_bu.php?UpdateSuccess=true&page=$page';</script>";
     } else {
-        echo "<script>window.location.href='references_functional.php?UpdateFailed=true&page=$page';</script>";
+        echo "<script>window.location.href='references_bu.php?UpdateFailed=true&page=$page';</script>";
     }
 }
 // Delete
-if (isset($_POST["delete_functional"])) {
+if (isset($_POST["delete_bu"])) {
     // Info Page
-    $page      = 'references_functional.php';
+    $page      = 'references_bu.php';
     // End Info Page
 
     $ID        = $_POST['ID'];
 
-    $delete    = $db->query("DELETE FROM references_functional WHERE id='$ID'");
+    $delete    = $db->query("DELETE FROM references_bu WHERE id='$ID'");
 
     if ($delete) {
-        echo "<script>window.location.href='references_functional.php?DeleteSuccess=true&page=$page';</script>";
+        echo "<script>window.location.href='references_bu.php?DeleteSuccess=true&page=$page';</script>";
     } else {
-        echo "<script>window.location.href='references_functional.php?DeleteFailed=true&page=$page';</script>";
+        echo "<script>window.location.href='references_bu.php?DeleteFailed=true&page=$page';</script>";
     }
 }
 ?>
@@ -97,7 +98,7 @@ if (isset($_POST["delete_functional"])) {
                                 </div>
                                 <div style="margin-left: 10px;">
                                     <div>
-                                        <h2 class="pageheader-title" style="color: #003369;">Functional </h2>
+                                        <h2 class="pageheader-title" style="color: #003369;">Business Unit </h2>
                                     </div>
                                     <div style="margin-top: -10px;">
                                         <font>REFERENCES</font>
@@ -109,7 +110,7 @@ if (isset($_POST["delete_functional"])) {
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
-                                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Functional</a></li>
+                                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Business Unit</a></li>
                                     </ol>
                                 </nav>
                             </div>
@@ -122,12 +123,12 @@ if (isset($_POST["delete_functional"])) {
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
-                            <h5 class="card-header"><i class="fas fa-list"></i> Data Functional</h5>
-                            <?php include "modal/m_references_functional.php"; ?>
+                            <h5 class="card-header"><i class="fas fa-list"></i> Data Business Unit</h5>
+                            <?php include "modal/m_references_bu.php"; ?>
                             <hr />
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <?php include "table/t_references_functional.php"; ?>
+                                    <?php include "table/t_references_bu.php"; ?>
                                 </div>
                             </div>
                         </div>

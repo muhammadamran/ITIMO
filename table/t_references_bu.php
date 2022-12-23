@@ -2,17 +2,15 @@
     <thead>
         <tr style="text-align: center;">
             <th>#</th>
-            <th>Functional<font style="color:transparent">.</font>Code</th>
-            <th>Functional<font style="color:transparent">.</font>Name</th>
-            <th>Name</th>
-            <th>Email</th>
+            <th>Business<font style="color:transparent">.</font>Unit (KN Code)<font style="color:transparent">.</font>&<font style="color:transparent">.</font>Desc.</th>
+            <th>Name<font style="color:transparent">.</font>&<font style="color:transparent">.</font>KN<font style="color:transparent">.</font>Code</th>
             <th>Under</th>
             <th class="no-sort">Action</th>
         </tr>
     </thead>
     <tbody>
         <?php
-        $dataTable = $db->query("SELECT * FROM references_functional ORDER BY id ASC LIMIT 100", 0);
+        $dataTable = $db->query("SELECT * FROM references_bu ORDER BY id ASC LIMIT 100", 0);
         if (mysqli_num_rows($dataTable) > 0) {
             $no = 0;
             while ($row = mysqli_fetch_array($dataTable)) {
@@ -20,11 +18,37 @@
         ?>
                 <tr>
                     <td><?= $no ?>.</td>
-                    <td><?= $row['functional_code']; ?></td>
-                    <td><?= $row['functional_name']; ?></td>
-                    <td><?= $row['functional_person']; ?></td>
-                    <td><?= $row['functional_person_email']; ?></td>
-                    <td><?= $row['functional_under']; ?></td>
+                    <td>
+                        <div style="display: flex;justify-content:flex-start;align-items: center;">
+                            <div class="table-icon">
+                                <i class="fas fa-info-circle"></i>
+                            </div>
+                            <div style="margin-left: 5px;">
+                                <div style="font-size: 15px;font-weight: 500;">
+                                    <?= $row['bu_name']; ?> - <?= $row['bu_code']; ?>
+                                </div>
+                                <div style="font-size: 12px;font-weight: 300;">
+                                    <?= $row['bu_desc']; ?>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div style="display: flex;justify-content:flex-start;align-items: center;">
+                            <div class="table-icon">
+                                <i class="far fa-id-badge"></i>
+                            </div>
+                            <div style="margin-left: 5px;">
+                                <div style="font-size: 15px;font-weight: 500;">
+                                    <?= $row['bu_general_manager']; ?>
+                                </div>
+                                <div style="font-size: 12px;font-weight: 300;">
+                                    <?= $row['bu_general_manager_email']; ?>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td><?= $row['under']; ?></td>
                     <td>
                         <div style="display: flex;justify-content: center;align-items: center;">
                             <a href="#EditFunctional<?= $row['id']; ?>" class="btn btn-sm btn-behind-green" data-toggle="modal" title="Edit Functional" style="margin-left: 5px;">
@@ -90,7 +114,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Close</a>
-                                    <button type="submit" name="edit_functional" class="btn btn-behind-green"><i class="fas fa-save"></i> Edit</button>
+                                    <button type="submit" name="edit_bu" class="btn btn-behind-green"><i class="fas fa-save"></i> Edit</button>
                                 </div>
                             </form>
                         </div>
@@ -136,7 +160,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> No</a>
-                                    <button type="submit" name="delete_functional" class="btn btn-danger"><i class="fas fa-check-circle"></i> Yes</button>
+                                    <button type="submit" name="delete_bu" class="btn btn-danger"><i class="fas fa-check-circle"></i> Yes</button>
                                 </div>
                             </form>
                         </div>

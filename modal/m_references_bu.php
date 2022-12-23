@@ -1,15 +1,15 @@
 <div class="row">
     <div class="col-sm-3" style="margin-top: 15px;margin-left: 15px;">
-        <!-- Add Functional -->
-        <a href="#modal-Functional" class="btn btn-sm btn-primary" data-toggle="modal" title="Add Functional"><i class="fas fa-plus-circle"></i>
-            <font class="f-action">Add Functional</font>
+        <!-- Add Business Unit -->
+        <a href="#modal-Business-Unit" class="btn btn-sm btn-primary" data-toggle="modal" title="Add Business Unit"><i class="fas fa-plus-circle"></i>
+            <font class="f-action">Add Business Unit</font>
         </a>
-        <div class="modal fade" id="modal-Functional">
+        <div class="modal fade" id="modal-Business-Unit">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form action="references_functional.php" method="POST">
+                    <form action="references_bu.php" method="POST">
                         <div class="modal-header">
-                            <h4 class="modal-title">[Add Data] Functional</h4>
+                            <h4 class="modal-title">[Add Data] Business Unit</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                         </div>
                         <div class="modal-body">
@@ -17,14 +17,14 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="IdFunctionalCode">Functional Code <font style="color: red;">*</font></label>
-                                            <input type="text" class="form-control" name="NameFunctionalCode" id="IdFunctionalCode" placeholder="Functional Code ..." required />
+                                            <label for="IdBusinessUnitName">Business Unit Name <font style="color: red;">*</font></label>
+                                            <input type="text" class="form-control" name="NameBusinessUnitName" id="IdBusinessUnitName" placeholder="Business Unit Name ..." required />
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="IdFunctionalName">Functional Name <font style="color: red;">*</font></label>
-                                            <input type="text" class="form-control" name="NameFunctionalName" id="IdFunctionalName" placeholder="Functional Name ..." required />
+                                            <label for="IdBusinessUnitDesc">Business Unit Desc <font style="color: red;">*</font></label>
+                                            <input type="text" class="form-control" name="NameBusinessUnitDesc" id="IdBusinessUnitDesc" placeholder="Business Unit Desc ..." required />
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -37,13 +37,19 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="IdName">Name <font style="color: red;">*</font></label>
                                             <input type="text" class="form-control" name="Name" id="IdName" placeholder="Name ..." required />
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="IdKNCode">KN Code <font style="color: red;">*</font></label>
+                                            <input type="text" class="form-control" name="NameKNCode" id="IdNameKNCode" placeholder="KN Code ..." required />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="IdEmail">Email <font style="color: red;">*</font></label>
                                             <input type="email" class="form-control" name="Email" id="IdEmail" placeholder="Email ..." required />
@@ -57,7 +63,7 @@
                         </div>
                         <div class="modal-footer">
                             <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Close</a>
-                            <button type="submit" name="add_functional" class="btn btn-primary"><i class="fas fa-save"></i> Save</button>
+                            <button type="submit" name="add_bu" class="btn btn-primary"><i class="fas fa-save"></i> Save</button>
                         </div>
                     </form>
                 </div>
