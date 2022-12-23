@@ -5,7 +5,7 @@ include 'include/head.php';
 include 'include/alert.php';
 include 'include/dataTablesCSS.php';
 ?>
-<title>Business Unit - <?= $Rapps['app_name'] ?> | General Management</title>
+<title>Business Unit & Functional - <?= $Rapps['app_name'] ?> | General Management</title>
 <?php
 // Insert
 if (isset($_POST["add_bu"])) {
@@ -43,18 +43,20 @@ if (isset($_POST["edit_bu"])) {
     $page      = 'references_bu.php';
     // End Info Page
 
-    $ID                 = $_POST['ID'];
-    $NameFunctionalCode = $_POST['NameFunctionalCode'];
-    $NameFunctionalName = $_POST['NameFunctionalName'];
-    $Name               = $_POST['Name'];
-    $Email              = $_POST['Email'];
-    $NameUnder          = $_POST['NameUnder'];
+    $ID                   = $_POST['ID'];
+    $NameBusinessUnitName = $_POST['NameBusinessUnitName'];
+    $NameBusinessUnitDesc = $_POST['NameBusinessUnitDesc'];
+    $NameUnder            = $_POST['NameUnder'];
+    $Name                 = $_POST['Name'];
+    $NameKNCode           = $_POST['NameKNCode'];
+    $Email                = $_POST['Email'];
 
-    $edit    = $db->query("UPDATE references_bu SET functional_code='$NameFunctionalCode',
-                                                            functional_name='$NameFunctionalName',
-                                                            functional_person='$Name',
-                                                            functional_person_email='$Email',
-                                                            functional_under='$NameUnder'
+    $edit    = $db->query("UPDATE references_bu SET bu_name='$NameBusinessUnitName',
+                                                    bu_desc='$NameBusinessUnitDesc',
+                                                    under='$NameUnder',
+                                                    bu_general_manager='$Name',
+                                                    bu_code='$NameKNCode',
+                                                    bu_general_manager_email='$Email'
                            WHERE id='$ID'");
 
     if ($edit) {
@@ -98,7 +100,7 @@ if (isset($_POST["delete_bu"])) {
                                 </div>
                                 <div style="margin-left: 10px;">
                                     <div>
-                                        <h2 class="pageheader-title" style="color: #003369;">Business Unit </h2>
+                                        <h2 class="pageheader-title" style="color: #003369;">Business Unit & Functional </h2>
                                     </div>
                                     <div style="margin-top: -10px;">
                                         <font>REFERENCES</font>
@@ -110,7 +112,7 @@ if (isset($_POST["delete_bu"])) {
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
-                                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Business Unit</a></li>
+                                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Business Unit & Functional</a></li>
                                     </ol>
                                 </nav>
                             </div>
@@ -123,7 +125,7 @@ if (isset($_POST["delete_bu"])) {
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
-                            <h5 class="card-header"><i class="fas fa-list"></i> Data Business Unit</h5>
+                            <h5 class="card-header"><i class="fas fa-list"></i> Data Business Unit & Functional</h5>
                             <?php include "modal/m_references_bu.php"; ?>
                             <hr />
                             <div class="card-body">

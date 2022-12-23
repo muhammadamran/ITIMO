@@ -4,7 +4,7 @@
             <th>#</th>
             <th>Details</th>
             <th>Branch<font style="color:transparent">.</font>Name</th>
-            <th>Branch<font style="color:transparent">.</font>Descrition</th>
+            <th>Branch<font style="color:transparent">.</font>Desc.</th>
             <th>Branch<font style="color:transparent">.</font>Manager</th>
             <th>Province</th>
             <th class="no-sort">Action</th>

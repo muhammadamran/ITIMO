@@ -3,7 +3,7 @@
         <tr style="text-align: center;">
             <th>#</th>
             <th>Department<font style="color:transparent">.</font>Name</th>
-            <th>Department<font style="color:transparent">.</font>Descrition</th>
+            <th>Department<font style="color:transparent">.</font>Desc.</th>
             <th>General<font style="color:transparent">.</font>Manager</th>
             <th>PT</th>
             <th class="no-sort">Action</th>

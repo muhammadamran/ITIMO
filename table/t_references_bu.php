@@ -2,8 +2,9 @@
     <thead>
         <tr style="text-align: center;">
             <th>#</th>
-            <th>Business<font style="color:transparent">.</font>Unit (KN Code)<font style="color:transparent">.</font>&<font style="color:transparent">.</font>Desc.</th>
-            <th>Name<font style="color:transparent">.</font>&<font style="color:transparent">.</font>KN<font style="color:transparent">.</font>Code</th>
+            <th>Business<font style="color:transparent">.</font>Unit (KN Code)<font style="color:transparent">.</font>&<font style="color:transparent">.</font>Functional<font style="color:transparent">.</font>Desc.</th>
+            <th>Name<font style="color:transparent">.</font>&<font style="color:transparent">.</font>Email
+            </th>
             <th>Under</th>
             <th class="no-sort">Action</th>
         </tr>
@@ -18,6 +19,7 @@
         ?>
                 <tr>
                     <td><?= $no ?>.</td>
+                    <!-- Business Unit - KN Code & Functional Desc -->
                     <td>
                         <div style="display: flex;justify-content:flex-start;align-items: center;">
                             <div class="table-icon">
@@ -33,6 +35,7 @@
                             </div>
                         </div>
                     </td>
+                    <!-- Name & Email -->
                     <td>
                         <div style="display: flex;justify-content:flex-start;align-items: center;">
                             <div class="table-icon">
@@ -48,13 +51,15 @@
                             </div>
                         </div>
                     </td>
+                    <!-- Under -->
                     <td><?= $row['under']; ?></td>
+                    <!-- Action -->
                     <td>
                         <div style="display: flex;justify-content: center;align-items: center;">
-                            <a href="#EditFunctional<?= $row['id']; ?>" class="btn btn-sm btn-behind-green" data-toggle="modal" title="Edit Functional" style="margin-left: 5px;">
+                            <a href="#EditBU<?= $row['id']; ?>" class="btn btn-sm btn-behind-green" data-toggle="modal" title="Edit Functional" style="margin-left: 5px;">
                                 <i class="fas fa-edit"></i> Edit
                             </a>
-                            <a href="#DeleteFunctional<?= $row['id']; ?>" class="btn btn-sm btn-behind-green" data-toggle="modal" title="Delete Functional" style="margin-left: 5px;">
+                            <a href="#DeleteBU<?= $row['id']; ?>" class="btn btn-sm btn-behind-green" data-toggle="modal" title="Delete Functional" style="margin-left: 5px;">
                                 <i class="fas fa-trash"></i> Delete
                             </a>
                         </div>
@@ -62,11 +67,11 @@
                 </tr>
 
                 <!-- Edit -->
-                <div class="modal fade" id="EditFunctional<?= $row['id']; ?>">
+                <div class="modal fade" id="EditBU<?= $row['id']; ?>">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title">[Edit Data] Functional</h4>
+                                <h4 class="modal-title">[Edit Data] Business Unit & Functional</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             </div>
                             <form action="" method="POST">
@@ -75,38 +80,44 @@
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <label for="IdFunctionalCode">Functional Code</label>
-                                                    <input type="text" class="form-control" name="NameFunctionalCode" id="IdFunctionalCode" value="<?= $row['functional_code']; ?>" placeholder="Functional Code ..." />
+                                                    <label for="IdBusinessUnitName">Business Unit & Functional Name </label>
+                                                    <input type="text" class="form-control" name="NameBusinessUnitName" id="IdBusinessUnitName" value="<?= $row['bu_name']; ?>" placeholder="Business Unit & Functional Name ..." />
                                                     <input type="hidden" name="ID" value="<?= $row['id']; ?>" />
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <label for="IdFunctionalName">Functional Name</label>
-                                                    <input type="text" class="form-control" name="NameFunctionalName" id="IdFunctionalName" value="<?= $row['functional_name']; ?>" placeholder="Functional Name ..." />
+                                                    <label for="IdBusinessUnitDesc">Business Unit & Functional Desc </label>
+                                                    <input type="text" class="form-control" name="NameBusinessUnitDesc" id="IdBusinessUnitDesc" value="<?= $row['bu_desc']; ?>" placeholder="Business Unit & Functional Desc ..." />
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <label for="IdUnder">Under</label>
+                                                    <label for="IdUnder">Under </label>
                                                     <select type="text" class="form-control" name="NameUnder" id="IdUnder">
-                                                        <option value="<?= $row['functional_under']; ?>"><?= $row['functional_under']; ?></option>
+                                                        <option value="<?= $row['under']; ?>"><?= $row['under']; ?></option>
                                                         <option value="">Choose Under</option>
                                                         <option value="PT. Kuehne Nagel Indonesia">PT. Kuehne Nagel Indonesia</option>
                                                         <option value="Naku Logistics Indonesia">Naku Logistics Indonesia</option>
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <label for="IdName">Name</label>
-                                                    <input type="text" class="form-control" name="Name" id="IdName" value="<?= $row['functional_person']; ?>" placeholder="Name ..." />
+                                                    <label for="IdName">Name </label>
+                                                    <input type="text" class="form-control" name="Name" id="IdName" value="<?= $row['bu_general_manager']; ?>" placeholder="Name ..." />
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <label for="IdEmail">Email</label>
-                                                    <input type="email" class="form-control" name="Email" id="IdEmail" value="<?= $row['functional_person_email']; ?>" placeholder="Email ..." />
+                                                    <label for="IdKNCode">KN Code </label>
+                                                    <input type="text" class="form-control" name="NameKNCode" id="IdNameKNCode" value="<?= $row['bu_code']; ?>" placeholder="KN Code ..." />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="IdEmail">Email </label>
+                                                    <input type="email" class="form-control" name="Email" id="IdEmail" value="<?= $row['bu_general_manager_email']; ?>" placeholder="Email ..." />
                                                 </div>
                                             </div>
                                         </div>
@@ -123,11 +134,11 @@
                 <!-- End Edit -->
 
                 <!-- Delete -->
-                <div class="modal fade" id="DeleteFunctional<?= $row['id']; ?>">
+                <div class="modal fade" id="DeleteBU<?= $row['id']; ?>">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title">[Delete Data] Functional</h4>
+                                <h4 class="modal-title">[Delete Data] Business Unit & Functional</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             </div>
                             <form action="" method="POST">
@@ -147,11 +158,12 @@
                                                 </div>
                                                 <p class="mb-1" style="display: grid;">
                                                     <font><b>ID</b>: <?= $row['id']; ?></font>
-                                                    <font><b>Functional Code</b>: <?= $row['functional_code']; ?></font>
-                                                    <font><b>Functional Name</b>: <?= $row['functional_name']; ?></font>
-                                                    <font><b>Under</b>: <?= $row['functional_under']; ?></font>
-                                                    <font><b>Name</b>: <?= $row['functional_person']; ?></font>
-                                                    <font><b>Email</b>: <?= $row['functional_person_email']; ?></font>
+                                                    <font><b>Business Unit & Functional Name</b>: <?= $row['bu_name']; ?></font>
+                                                    <font><b>Business Unit & Functional Desc</b>: <?= $row['bu_desc']; ?></font>
+                                                    <font><b>Under</b>: <?= $row['under']; ?></font>
+                                                    <font><b>Name</b>: <?= $row['bu_general_manager']; ?></font>
+                                                    <font><b>KN Code</b>: <?= $row['bu_code']; ?></font>
+                                                    <font><b>Email</b>: <?= $row['bu_general_manager_email']; ?></font>
                                                     <input type="hidden" name="ID" value="<?= $row['id']; ?>" />
                                                 </p>
                                             </a>
