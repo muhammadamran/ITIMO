@@ -1737,6 +1737,7 @@ Left Navigation Sidebar
     background-color: #9e9e9e40;
     color: rgba(0,0,0,.87);
     border-radius: 10px;
+    font-weight: bolder;
 }
 
 .nav-left-sidebar .navbar-nav .nav-link:focus,

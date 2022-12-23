@@ -431,15 +431,20 @@ $inv = mysqli_fetch_array($role);
                         Navigation | Administration
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?= $uriSegments[2] == 'references_department.php' || $uriSegments[2] == 'references_branch.php' || $uriSegments[2] == 'references_positions.php' ? 'active' : '' ?>" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-setup" aria-controls="submenu-14">
+                        <a class="nav-link <?= $uriSegments[2] == 'references_functional.php' || $uriSegments[2] == 'references_department.php' || $uriSegments[2] == 'references_branch.php' || $uriSegments[2] == 'references_positions.php' ? 'active' : '' ?>" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-setup" aria-controls="submenu-14">
                             <i class="fas fa-asterisk" id="sidebar-font"></i>
                             <span>References</span>
                         </a>
-                        <div id="submenu-setup" class="collapse submenu <?= $uriSegments[2] == 'references_department.php' || $uriSegments[2] == 'references_branch.php' || $uriSegments[2] == 'references_positions.php' ? 'show' : '' ?>">
+                        <div id="submenu-setup" class="collapse submenu <?= $uriSegments[2] == 'references_functional.php' || $uriSegments[2] == 'references_department.php' || $uriSegments[2] == 'references_branch.php' || $uriSegments[2] == 'references_positions.php' ? 'show' : '' ?>">
                             <ul class="nav flex-column">
-                                <li class="nav-item">
+                                <!-- <li class="nav-item">
                                     <a class="nav-link <?= $uriSegments[2] == 'references_department.php' ? 'active' : '' ?>" href="references_department.php">
                                         <span>Departement</span>
+                                    </a>
+                                </li> -->
+                                <li class="nav-item">
+                                    <a class="nav-link <?= $uriSegments[2] == 'references_functional.php' ? 'active' : '' ?>" href="references_functional.php">
+                                        <span>Functional</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
