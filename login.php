@@ -207,11 +207,19 @@ function date_indo($date, $print_day = false)
                         <input class="form-control form-control-lg" name="username" type="text" autofocus placeholder="Username" autocomplete="off">
                     </div>
                     <div class="form-group">
-                        <input class="form-control form-control-lg" name="password" type="password" placeholder="Password">
+                        <input class="form-control form-control-lg" name="password" type="password" id="password" placeholder="Password">
                     </div>
-                    <div class="checkbox checkbox-css">
-                        <input type="checkbox" id="ckb1" onclick="myFunction()" />
-                        <label for="ckb1">Lihat Password</label>
+                    <div class="form-group">
+                        <div class="checkbox checkbox-css">
+                            <input type="checkbox" id="ckb1" onclick="myFunction()" />
+                            <label for="ckb1">Show password</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="checkbox checkbox-css">
+                            <input type="checkbox" id="ckb2" checked />
+                            <label for="ckb2">Remember me</label>
+                        </div>
                     </div>
                     <button type="submit" name="submit" value="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>
                 </form>
@@ -234,6 +242,17 @@ function date_indo($date, $print_day = false)
         $(document).ready(function() {
             $(".preloader").fadeOut();
         })
+    </script>
+    <!-- Show Password -->
+    <script type="text/javascript">
+        function myFunction() {
+            var x = document.getElementById("password");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
     </script>
 </body>
 
