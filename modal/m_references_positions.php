@@ -1,15 +1,15 @@
 <div class="row">
     <div class="col-sm-3" style="margin-top: 15px;margin-left: 15px;">
-        <!-- Add Positions -->
-        <a href="#modal-Positions" class="btn btn-sm btn-primary" data-toggle="modal" title="Add Positions"><i class="fas fa-plus-circle"></i>
-            <font class="f-action">Add Positions</font>
+        <!-- Add Dept. & Positions -->
+        <a href="#modal-Dept-Positions" class="btn btn-sm btn-primary" data-toggle="modal" title="Add Dept. & Positions"><i class="fas fa-plus-circle"></i>
+            <font class="f-action">Add Dept. & Positions</font>
         </a>
-        <div class="modal fade" id="modal-Positions">
+        <div class="modal fade" id="modal-Dept-Positions">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <form action="references_positions.php" method="POST">
                         <div class="modal-header">
-                            <h4 class="modal-title">[Add Data] Positions</h4>
+                            <h4 class="modal-title">[Add Data] Dept. & Positions</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                         </div>
                         <div class="modal-body">
@@ -17,30 +17,34 @@
                                 <div class="row">
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <label for="IdPositions">Positions <font style="color: red;">*</font></label>
-                                            <input type="text" class="form-control" name="NamePositions" id="IdPositions" placeholder="Positions ..." required />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label for="IdPositionsDescritption">Positions Descritption <font style="color: red;">*</font></label>
-                                            <input type="text" class="form-control" name="NamePositionsDescritption" id="IdPositionsDescritption" placeholder="Positions Descritption ..." required />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label for="IdGeneralManager">General Manager <font style="color: red;">*</font></label>
-                                            <input type="text" class="form-control" name="NameGeneralManager" id="IdGeneralManager" placeholder="General Manager ..." required />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label for="IdPT">PT <font style="color: red;">*</font></label>
-                                            <select type="text" class="form-control" name="NamePT" id="IdPT" required>
-                                                <option value="">Choose PT</option>
-                                                <option value="PT. Kuehne Nagel Indonesia">PT. Kuehne Nagel Indonesia</option>
-                                                <option value="Naku Logistics Indonesia">Naku Logistics Indonesia</option>
+                                            <label for="IdBusineesUnit">Business Unit & Functional <font style="color: red;">*</font></label>
+                                            <select class="form-control" name="NameBusineesUnit" id="IdBusineesUnit" placeholder="Province ..." required>
+                                                <option value="">Choose Business Unit & Functional</option>
+                                                <?php
+                                                $dataBU = $db->query("SELECT * FROM references_bu ORDER BY id ASC");
+                                                foreach ($dataBU as $optionBU) {
+                                                ?>
+                                                    <option value="<?= $optionBU['bu_name'] ?>"><?= $optionBU['bu_name'] ?></option>
+                                                <?php } ?>
                                             </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="IdDeptPositionsName">Dept. & Positions Name <font style="color: red;">*</font></label>
+                                            <input type="text" class="form-control" name="NameDeptPositionsName" id="IdDeptPositionsName" placeholder="Dept. & Positions Name ..." required />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="IdDeptPositionsCode">Dept. & Positions Code <font style="color: red;">*</font></label>
+                                            <input type="text" class="form-control" name="NameDeptPositionsCode" id="IdDeptPositionsCode" placeholder="Dept. & Positions Code ..." required />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="IdDeptPositionsDescritption">Dept. & Positions Descritption</label>
+                                            <input type="text" class="form-control" name="NameDeptPositionsDescritption" id="IdDeptPositionsDescritption" placeholder="Dept. & Positions Descritption ..." />
                                         </div>
                                     </div>
                                     <div class="col-md-12">

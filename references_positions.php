@@ -5,7 +5,7 @@ include 'include/head.php';
 include 'include/alert.php';
 include 'include/dataTablesCSS.php';
 ?>
-<title>Position - <?= $Rapps['app_name'] ?> | General Management</title>
+<title>Departement & Positions - <?= $Rapps['app_name'] ?> | General Management</title>
 <?php
 // Insert
 if (isset($_POST["add_positions"])) {
@@ -13,19 +13,19 @@ if (isset($_POST["add_positions"])) {
     $page      = 'references_positions.php';
     // End Info Page
 
-    $NameDepartment              = $_POST['NameDepartment'];
-    $NameDepartmentDescritption  = $_POST['NameDepartmentDescritption'];
-    $NameGeneralManager          = $_POST['NameGeneralManager'];
-    $NamePT                      = $_POST['NamePT'];
+    $NameBusineesUnit               = $_POST['NameBusineesUnit'];
+    $NameDeptPositionsName          = $_POST['NameDeptPositionsName'];
+    $NameDeptPositionsCode          = $_POST['NameDeptPositionsCode'];
+    $NameDeptPositionsDescritption  = $_POST['NameDeptPositionsDescritption'];
 
-    $available = $db->query("SELECT department_name FROM references_positions WHERE department_name='$NameDepartment'");
+    $available = $db->query("SELECT positions_name,positions_code FROM references_positions WHERE positions_name='$NameDeptPositionsName' AND positions_code='$NameDeptPositionsCode'");
     if (mysqli_num_rows($available) == 1) {
         echo "<script>window.location.href='references_positions.php?Available=true&page=$page';</script>";
     } else {
         $insert    = $db->query("INSERT INTO references_positions
-                          (id,department_name,desc_positions,gm_positions,pt)
+                          (id,bu_name,positions_name,positions_code,positions_desc)
                            VALUES
-                          ('','$NameDepartment','$NameDepartmentDescritption','$NameGeneralManager')
+                          ('','$NameBusineesUnit','$NameDeptPositionsName','$NameDeptPositionsCode','$NameDeptPositionsDescritption')
                           ");
 
         if ($insert) {
@@ -41,16 +41,16 @@ if (isset($_POST["edit_positions"])) {
     $page      = 'references_positions.php';
     // End Info Page
 
-    $ID                          = $_POST['ID'];
-    $NameDepartment              = $_POST['NameDepartment'];
-    $NameDepartmentDescritption  = $_POST['NameDepartmentDescritption'];
-    $NameGeneralManager          = $_POST['NameGeneralManager'];
-    $NamePT                      = $_POST['NamePT'];
+    $ID                             = $_POST['ID'];
+    $NameBusineesUnit               = $_POST['NameBusineesUnit'];
+    $NameDeptPositionsName          = $_POST['NameDeptPositionsName'];
+    $NameDeptPositionsCode          = $_POST['NameDeptPositionsCode'];
+    $NameDeptPositionsDescritption  = $_POST['NameDeptPositionsDescritption'];
 
-    $edit    = $db->query("UPDATE references_positions SET department_name='$NameDepartment',
-                                                            desc_positions='$NameDepartmentDescritption',
-                                                            gm_positions='$NameGeneralManager',
-                                                            pt='$NamePT'
+    $edit    = $db->query("UPDATE references_positions SET bu_name='$NameBusineesUnit',
+                                                           positions_name='$NameDeptPositionsName',
+                                                           positions_code='$NameDeptPositionsCode',
+                                                           positions_desc='$NameDeptPositionsDescritption'
                            WHERE id='$ID'");
 
     if ($edit) {
@@ -94,7 +94,7 @@ if (isset($_POST["delete_positions"])) {
                                 </div>
                                 <div style="margin-left: 10px;">
                                     <div>
-                                        <h2 class="pageheader-title" style="color: #003369;">Positions </h2>
+                                        <h2 class="pageheader-title" style="color: #003369;">Departement & Positions </h2>
                                     </div>
                                     <div style="margin-top: -10px;">
                                         <font>REFERENCES</font>
@@ -106,7 +106,7 @@ if (isset($_POST["delete_positions"])) {
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
-                                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Positions</a></li>
+                                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Departement & Positions</a></li>
                                     </ol>
                                 </nav>
                             </div>
@@ -119,7 +119,7 @@ if (isset($_POST["delete_positions"])) {
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
-                            <h5 class="card-header"><i class="fas fa-list"></i> Data Positions</h5>
+                            <h5 class="card-header"><i class="fas fa-list"></i> Data Departement & Positions</h5>
                             <?php include "modal/m_references_positions.php"; ?>
                             <hr />
                             <div class="card-body">
@@ -146,28 +146,12 @@ if (isset($_POST["delete_positions"])) {
 <script type="text/javascript" src="assets/plugins/chosen/chosen.jquery.js"></script>
 <script type="text/javascript">
     // Add
-    $("#IdBranch").mask("***");
-
-    $("#IdPoscode").mask("99999");
-
-    function myFunction() {
-        var x = document.getElementById("IdBranch");
-        x.value = x.value.toUpperCase();
-    }
-    $("#IdProvince").chosen({
+    $("#IdBusineesUnit").chosen({
         width: "100%"
     });
 
     // Edit
-    $("#EditIdBranch").mask("***");
-
-    $("#EditIdPoscode").mask("99999");
-
-    function EditmyFunction() {
-        var x = document.getElementById("EditIdBranch");
-        x.value = x.value.toUpperCase();
-    }
-    $("#EditIdProvince").chosen({
+    $("#EditIdBusineesUnit").chosen({
         width: "100%"
     });
 </script>
