@@ -15,23 +15,17 @@
                         <div class="modal-body">
                             <fieldset>
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="IdBranch">Branch <font style="color: red;">*</font></label>
                                             <input type="text" class="form-control" name="NameBranch" id="IdBranch" onkeyup="myFunction()" placeholder="Branch ..." required />
                                             <small><i>** write character + hold shift</i></small>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="IdDescriptionBranch">Description Branch <font style="color: red;">*</font></label>
                                             <input type="text" class="form-control" name="NameDescriptionBranch" id="IdDescriptionBranch" placeholder="Description Branch ..." required />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="IdBranchManager">Branch Manager</label>
-                                            <input type="text" class="form-control" name="NameBranchManager" id="IdBranchManager" placeholder="Branch Manager ..." />
                                         </div>
                                     </div>
                                     <div class="col-md-4">

@@ -15,7 +15,6 @@ if (isset($_POST["add_branch"])) {
 
     $NameBranch             = $_POST['NameBranch'];
     $NameDescriptionBranch  = $_POST['NameDescriptionBranch'];
-    $NameBranchManager      = $_POST['NameBranchManager'];
     $NameTelepone           = $_POST['NameTelepone'];
     $NameFax                = $_POST['NameFax'];
     $NameEmail              = $_POST['NameEmail'];
@@ -28,9 +27,9 @@ if (isset($_POST["add_branch"])) {
         echo "<script>window.location.href='references_branch.php?Available=true&page=$page';</script>";
     } else {
         $insert    = $db->query("INSERT INTO references_branch
-                          (id,branch_name,desc_branch,branch_manager,telp,fax,email,address_branch,province,poscode)
+                          (id,branch_name,desc_branch,telp,fax,email,address_branch,province,poscode)
                            VALUES
-                          ('','$NameBranch','$NameDescriptionBranch','$NameBranchManager','$NameTelepone','$NameFax','$NameEmail','$NameAddress','$NameProvince','$NamePoscode')
+                          ('','$NameBranch','$NameDescriptionBranch','$NameTelepone','$NameFax','$NameEmail','$NameAddress','$NameProvince','$NamePoscode')
                           ");
 
         if ($insert) {
@@ -49,7 +48,6 @@ if (isset($_POST["edit_branch"])) {
     $ID                     = $_POST['ID'];
     $NameBranch             = $_POST['NameBranch'];
     $NameDescriptionBranch  = $_POST['NameDescriptionBranch'];
-    $NameBranchManager      = $_POST['NameBranchManager'];
     $NameTelepone           = $_POST['NameTelepone'];
     $NameFax                = $_POST['NameFax'];
     $NameEmail              = $_POST['NameEmail'];
@@ -59,7 +57,6 @@ if (isset($_POST["edit_branch"])) {
 
     $edit    = $db->query("UPDATE references_branch SET branch_name='$NameBranch',
                                                         desc_branch='$NameDescriptionBranch',
-                                                        branch_manager='$NameBranchManager',
                                                         telp='$NameTelepone',
                                                         fax='$NameFax',
                                                         email='$NameEmail',

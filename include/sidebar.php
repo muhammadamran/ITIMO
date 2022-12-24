@@ -487,6 +487,11 @@ $inv = mysqli_fetch_array($role);
                                         <span>Dept. & Positions</span>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link <?= $uriSegments[2] == 'references_branch.php' ? 'active' : '' ?>" href="references_branch.php">
+                                        <span>Branch</span>
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </li>

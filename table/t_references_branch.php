@@ -5,7 +5,6 @@
             <th>Details</th>
             <th>Branch<font style="color:transparent">.</font>Name</th>
             <th>Branch<font style="color:transparent">.</font>Desc.</th>
-            <th>Branch<font style="color:transparent">.</font>Manager</th>
             <th>Province</th>
             <th class="no-sort">Action</th>
         </tr>
@@ -27,7 +26,6 @@
                     </td>
                     <td><?= $row['branch_name']; ?></td>
                     <td><?= $row['desc_branch']; ?></td>
-                    <td><?= $row['branch_manager']; ?></td>
                     <td><?= $row['province']; ?></td>
                     <td>
                         <div style="display: flex;justify-content: center;align-items: center;">
@@ -85,16 +83,6 @@
                                         <div class="col-sm-6">
                                             <div style="display: flex;justify-content:flex-start;align-items: center;margin-bottom: 10px">
                                                 <div class="table-icon">
-                                                    <i class="fas fa-user"></i>
-                                                </div>
-                                                <div style="margin-left: 5px;">
-                                                    <div style="font-size: 15px;font-weight: 500;">
-                                                        <?= $row['branch_manager']; ?>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div style="display: flex;justify-content:flex-start;align-items: center;margin-bottom: 10px">
-                                                <div class="table-icon">
                                                     <i class="fas fa-map"></i>
                                                 </div>
                                                 <div style="margin-left: 5px;">
@@ -130,23 +118,17 @@
                                 <div class="modal-body">
                                     <fieldset>
                                         <div class="row">
-                                            <div class="col-md-4">
+                                            <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="IdBranch">Branch </label>
                                                     <input type="text" class="form-control" name="NameBranch" id="EditIdBranch" onkeyup="EditmyFunction()" value="<?= $row['branch_name'] ?>" placeholder="Branch ..." readonly />
                                                     <input type="hidden" name="ID" value="<?= $row['id']; ?>" />
                                                 </div>
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="IdDescriptionBranch">Description Branch </label>
                                                     <input type="text" class="form-control" name="NameDescriptionBranch" id="EditIdDescriptionBranch" value="<?= $row['desc_branch'] ?>" placeholder="Description Branch ..." />
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label for="IdBranchManager">Branch Manager</label>
-                                                    <input type="text" class="form-control" name="NameBranchManager" id="EditIdBranchManager" value="<?= $row['branch_manager'] ?>" placeholder="Branch Manager ..." />
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
@@ -270,7 +252,6 @@
                                                     <font><b>ID</b>: <?= $row['id']; ?></font>
                                                     <font><b>Branch Name</b>: <?= $row['branch_name']; ?></font>
                                                     <font><b>Branch Description</b>: <?= $row['desc_branch']; ?></font>
-                                                    <font><b>Branch Manager</b>: <?= $row['branch_manager']; ?></font>
                                                     <font><b>Province</b>: <?= $row['province']; ?></font>
                                                     <input type="hidden" name="ID" value="<?= $row['id']; ?>" />
                                                 </p>
