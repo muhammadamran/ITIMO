@@ -9,7 +9,7 @@
     </thead>
     <tbody>
         <?php
-        $dataTable = $db->query("SELECT * FROM references_bu ORDER BY id ASC LIMIT 100", 0);
+        $dataTable = $db->query("SELECT * FROM references_bu ORDER BY id ASC", 0);
         if (mysqli_num_rows($dataTable) > 0) {
             $no = 0;
             while ($row = mysqli_fetch_array($dataTable)) {
