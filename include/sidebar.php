@@ -338,7 +338,7 @@ $inv = mysqli_fetch_array($role);
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-joine" aria-controls="submenu-11">
-                            <i class="fas fa-fw fa-asterisk" id="sidebar-font"></i>
+                            <i class="fas fa-user-plus" id="sidebar-font"></i>
                             <span>Joiner</span>
                         </a>
                         <div id="submenu-joine" class="collapse submenu">
@@ -368,7 +368,7 @@ $inv = mysqli_fetch_array($role);
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-transfer" aria-controls="submenu-12">
-                            <i class="fas fa-fw fa-asterisk" id="sidebar-font"></i>
+                            <i class="fas fa-people-arrows" id="sidebar-font"></i>
                             <span>Transfer</span>
                         </a>
                         <div id="submenu-transfer" class="collapse submenu">
@@ -398,7 +398,7 @@ $inv = mysqli_fetch_array($role);
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-leaver" aria-controls="submenu-13">
-                            <i class="fas fa-fw fa-asterisk" id="sidebar-font"></i>
+                            <i class="fas fa-user-minus" id="sidebar-font"></i>
                             <span>Leaver</span>
                         </a>
                         <div id="submenu-leaver" class="collapse submenu">
@@ -426,6 +426,46 @@ $inv = mysqli_fetch_array($role);
                             </ul>
                         </div>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-employee" aria-controls="submenu-14">
+                            <i class="fas fa-id-card-alt" id="sidebar-font"></i>
+                            <span>Employee</span>
+                        </a>
+                        <div id="submenu-employee" class="collapse submenu">
+                            <ul class="nav flex-column">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="adm_user.php">
+                                        <span>Summary</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="adm_user.php">
+                                        <span>General Manager</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="adm_user.php">
+                                        <span>Manager</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="adm_user.php">
+                                        <span>Branh Manager</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="adm_user.php">
+                                        <span>Supervisor/Team Lead</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="adm_user.php">
+                                        <span>Excecutive</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
                     <li class="nav-divider">
                         <hr>
                         Navigation | Administration
@@ -438,11 +478,6 @@ $inv = mysqli_fetch_array($role);
                         <div id="submenu-setup" class="collapse submenu <?= $uriSegments[2] == 'references_bu.php' || $uriSegments[2] == 'references_positions.php' || $uriSegments[2] == 'references_branch.php' ? 'show' : '' ?>">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
-                                    <a class="nav-link <?= $uriSegments[2] == 'references_branch.php' ? 'active' : '' ?>" href="references_branch.php">
-                                        <span>Branch</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
                                     <a class="nav-link <?= $uriSegments[2] == 'references_bu.php' ? 'active' : '' ?>" href="references_bu.php">
                                         <span>B.U & Functional</span>
                                     </a>
@@ -454,6 +489,24 @@ $inv = mysqli_fetch_array($role);
                                 </li>
                             </ul>
                         </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link  <?= $uriSegments[2] == 'app_company.php' ? 'active' : '' ?>" href="app_company.php">
+                            <i class="fas fa-users-cog" id="sidebar-font"></i>
+                            <span>Users Apps</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link  <?= $uriSegments[2] == 'app_company.php' ? 'active' : '' ?>" href="app_company.php">
+                            <i class="fas fa-building" id="sidebar-font"></i>
+                            <span>Company</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link  <?= $uriSegments[2] == 'app_setting.php' ? 'active' : '' ?>" href="app_setting.php">
+                            <i class="fas fa-cogs" id="sidebar-font"></i>
+                            <span>Settings</span>
+                        </a>
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link" href="adm_report.php">

@@ -14,20 +14,18 @@ if (isset($_POST["add_bu"])) {
     // End Info Page
 
     $NameBusinessUnitName = $_POST['NameBusinessUnitName'];
+    $NameBusinessUnitCode = $_POST['NameBusinessUnitCode'];
     $NameBusinessUnitDesc = $_POST['NameBusinessUnitDesc'];
     $NameUnder            = $_POST['NameUnder'];
-    $Name                 = $_POST['Name'];
-    $NameKNCode           = $_POST['NameKNCode'];
-    $Email                = $_POST['Email'];
 
     $available = $db->query("SELECT bu_name FROM references_bu WHERE bu_name='$NameBusinessUnitName'");
     if (mysqli_num_rows($available) == 1) {
         echo "<script>window.location.href='references_bu.php?Available=true&page=$page';</script>";
     } else {
         $insert    = $db->query("INSERT INTO references_bu
-                          (id,bu_name,bu_desc,under,bu_general_manager,bu_code,bu_general_manager_email,level,status)
+                          (id,bu_name,bu_code,bu_desc,under)
                            VALUES
-                          ('','$NameBusinessUnitName','$NameBusinessUnitDesc','$NameUnder','$Name','$NameKNCode','$Email','Level 1','FTE')
+                          ('','$NameBusinessUnitName','$NameBusinessUnitCode','$NameBusinessUnitDesc','$NameUnder')
                           ");
 
         if ($insert) {
@@ -45,18 +43,14 @@ if (isset($_POST["edit_bu"])) {
 
     $ID                   = $_POST['ID'];
     $NameBusinessUnitName = $_POST['NameBusinessUnitName'];
+    $NameBusinessUnitCode = $_POST['NameBusinessUnitCode'];
     $NameBusinessUnitDesc = $_POST['NameBusinessUnitDesc'];
     $NameUnder            = $_POST['NameUnder'];
-    $Name                 = $_POST['Name'];
-    $NameKNCode           = $_POST['NameKNCode'];
-    $Email                = $_POST['Email'];
 
     $edit    = $db->query("UPDATE references_bu SET bu_name='$NameBusinessUnitName',
+                                                    bu_code='$NameBusinessUnitCode',
                                                     bu_desc='$NameBusinessUnitDesc',
-                                                    under='$NameUnder',
-                                                    bu_general_manager='$Name',
-                                                    bu_code='$NameKNCode',
-                                                    bu_general_manager_email='$Email'
+                                                    under='$NameUnder'
                            WHERE id='$ID'");
 
     if ($edit) {

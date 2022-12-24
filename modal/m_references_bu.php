@@ -15,19 +15,25 @@
                         <div class="modal-body">
                             <fieldset>
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="IdBusinessUnitName">Business Unit & Functional Name <font style="color: red;">*</font></label>
                                             <input type="text" class="form-control" name="NameBusinessUnitName" id="IdBusinessUnitName" placeholder="Business Unit & Functional Name ..." required />
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="IdBusinessUnitCode">Business Unit & Functional Code <font style="color: red;">*</font></label>
+                                            <input type="text" class="form-control" name="NameBusinessUnitCode" id="IdBusinessUnitCode" placeholder="Business Unit & Functional Code ..." required />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="IdBusinessUnitDesc">Business Unit & Functional Desc <font style="color: red;">*</font></label>
                                             <input type="text" class="form-control" name="NameBusinessUnitDesc" id="IdBusinessUnitDesc" placeholder="Business Unit & Functional Desc ..." required />
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="IdUnder">Under <font style="color: red;">*</font></label>
                                             <select type="text" class="form-control" name="NameUnder" id="IdUnder" required>
@@ -35,24 +41,6 @@
                                                 <option value="PT. Kuehne Nagel Indonesia">PT. Kuehne Nagel Indonesia</option>
                                                 <option value="Naku Logistics Indonesia">Naku Logistics Indonesia</option>
                                             </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="IdName">Name <font style="color: red;">*</font></label>
-                                            <input type="text" class="form-control" name="Name" id="IdName" placeholder="Name ..." required />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="IdKNCode">KN Code <font style="color: red;">*</font></label>
-                                            <input type="text" class="form-control" name="NameKNCode" id="IdNameKNCode" placeholder="KN Code ..." required />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="IdEmail">Email <font style="color: red;">*</font></label>
-                                            <input type="email" class="form-control" name="Email" id="IdEmail" placeholder="Email ..." required />
                                         </div>
                                     </div>
                                     <div class="col-md-12">

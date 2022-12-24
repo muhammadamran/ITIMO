@@ -3,8 +3,6 @@
         <tr style="text-align: center;">
             <th>#</th>
             <th>Business<font style="color:transparent">.</font>Unit (KN Code)<font style="color:transparent">.</font>&<font style="color:transparent">.</font>Functional<font style="color:transparent">.</font>Desc.</th>
-            <th>Name<font style="color:transparent">.</font>&<font style="color:transparent">.</font>Email
-            </th>
             <th>Under</th>
             <th class="no-sort">Action</th>
         </tr>
@@ -31,22 +29,6 @@
                                 </div>
                                 <div style="font-size: 12px;font-weight: 300;">
                                     <?= $row['bu_desc']; ?>
-                                </div>
-                            </div>
-                        </div>
-                    </td>
-                    <!-- Name & Email -->
-                    <td>
-                        <div style="display: flex;justify-content:flex-start;align-items: center;">
-                            <div class="table-icon">
-                                <i class="far fa-id-badge"></i>
-                            </div>
-                            <div style="margin-left: 5px;">
-                                <div style="font-size: 15px;font-weight: 500;">
-                                    <?= $row['bu_general_manager']; ?>
-                                </div>
-                                <div style="font-size: 12px;font-weight: 300;">
-                                    <?= $row['bu_general_manager_email']; ?>
                                 </div>
                             </div>
                         </div>
@@ -78,20 +60,26 @@
                                 <div class="modal-body">
                                     <fieldset>
                                         <div class="row">
-                                            <div class="col-md-4">
+                                            <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label for="IdBusinessUnitName">Business Unit & Functional Name </label>
                                                     <input type="text" class="form-control" name="NameBusinessUnitName" id="IdBusinessUnitName" value="<?= $row['bu_name']; ?>" placeholder="Business Unit & Functional Name ..." />
                                                     <input type="hidden" name="ID" value="<?= $row['id']; ?>" />
                                                 </div>
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="IdBusinessUnitCode">Business Unit & Functional Code </label>
+                                                    <input type="text" class="form-control" name="NameBusinessUnitCode" id="IdBusinessUnitCode" value="<?= $row['bu_code']; ?>" placeholder="Business Unit & Functional Code ..." />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label for="IdBusinessUnitDesc">Business Unit & Functional Desc </label>
                                                     <input type="text" class="form-control" name="NameBusinessUnitDesc" id="IdBusinessUnitDesc" value="<?= $row['bu_desc']; ?>" placeholder="Business Unit & Functional Desc ..." />
                                                 </div>
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label for="IdUnder">Under </label>
                                                     <select type="text" class="form-control" name="NameUnder" id="IdUnder">
@@ -100,24 +88,6 @@
                                                         <option value="PT. Kuehne Nagel Indonesia">PT. Kuehne Nagel Indonesia</option>
                                                         <option value="Naku Logistics Indonesia">Naku Logistics Indonesia</option>
                                                     </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label for="IdName">Name </label>
-                                                    <input type="text" class="form-control" name="Name" id="IdName" value="<?= $row['bu_general_manager']; ?>" placeholder="Name ..." />
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label for="IdKNCode">KN Code </label>
-                                                    <input type="text" class="form-control" name="NameKNCode" id="IdNameKNCode" value="<?= $row['bu_code']; ?>" placeholder="KN Code ..." />
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label for="IdEmail">Email </label>
-                                                    <input type="email" class="form-control" name="Email" id="IdEmail" value="<?= $row['bu_general_manager_email']; ?>" placeholder="Email ..." />
                                                 </div>
                                             </div>
                                         </div>
@@ -159,11 +129,9 @@
                                                 <p class="mb-1" style="display: grid;">
                                                     <font><b>ID</b>: <?= $row['id']; ?></font>
                                                     <font><b>Business Unit & Functional Name</b>: <?= $row['bu_name']; ?></font>
+                                                    <font><b>Business Unit & Functional Code</b>: <?= $row['bu_code']; ?></font>
                                                     <font><b>Business Unit & Functional Desc</b>: <?= $row['bu_desc']; ?></font>
                                                     <font><b>Under</b>: <?= $row['under']; ?></font>
-                                                    <font><b>Name</b>: <?= $row['bu_general_manager']; ?></font>
-                                                    <font><b>KN Code</b>: <?= $row['bu_code']; ?></font>
-                                                    <font><b>Email</b>: <?= $row['bu_general_manager_email']; ?></font>
                                                     <input type="hidden" name="ID" value="<?= $row['id']; ?>" />
                                                 </p>
                                             </a>
