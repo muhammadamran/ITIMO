@@ -5,7 +5,7 @@ include 'include/head.php';
 include 'include/alert.php';
 include 'include/dataTablesCSS.php';
 ?>
-<title>Users Apps - <?= $Rapps['app_name'] ?> | General Management</title>
+<title>Search - <?= $Rapps['app_name'] ?> | General Management</title>
 <?php
 // Add
 if (isset($_POST["add_user"])) {
@@ -103,11 +103,11 @@ if (isset($_POST["reset_password"])) {
                         <div class="page-header">
                             <div class="c-page">
                                 <div class="bg-page">
-                                    <i class="fas fa-users-cog icon-page"></i>
+                                    <i class="fas fa-search icon-page"></i>
                                 </div>
                                 <div style="margin-left: 10px;">
                                     <div>
-                                        <h2 class="pageheader-title" style="color: #003369;">Users Apps </h2>
+                                        <h2 class="pageheader-title" style="color: #003369;">Search </h2>
                                     </div>
                                     <div style="margin-top: -10px;">
                                         <font>ADMINISTRATION</font>
@@ -119,7 +119,7 @@ if (isset($_POST["reset_password"])) {
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
-                                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Users Apps</a></li>
+                                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Search</a></li>
                                     </ol>
                                 </nav>
                             </div>
@@ -131,12 +131,12 @@ if (isset($_POST["reset_password"])) {
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
-                            <h5 class="card-header"><i class="fas fa-list"></i> Data Users Apps</h5>
-                            <?php include "modal/m_adm_user.php"; ?>
+                            <h5 class="card-header"><i class="fas fa-list"></i> Data Search</h5>
+                            <!--  -->
                             <hr />
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <?php include "table/t_adm_user.php"; ?>
+                                    <!--  -->
                                 </div>
                             </div>
                         </div>
@@ -154,14 +154,3 @@ if (isset($_POST["reset_password"])) {
 </div>
 <?php include "include/footer.php"; ?>
 <?php include "include/dataTablesJS.php"; ?>
-<script type="text/javascript">
-    // SIGN IN SUCCESS
-    if (window?.location?.href?.indexOf('SignInsuccess') > -1) {
-        Swal.fire({
-            title: 'Sign In Success!',
-            icon: 'success',
-            text: 'Behind - General Management!'
-        })
-        history.replaceState({}, '', './index.php');
-    }
-</script>

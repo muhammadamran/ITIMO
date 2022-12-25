@@ -24,7 +24,7 @@ $inv = mysqli_fetch_array($role);
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link  <?= $uriSegments[2] == 'search.php' ? 'active' : '' ?>" href="index.php">
+                        <a class="nav-link  <?= $uriSegments[2] == 'search.php' ? 'active' : '' ?>" href="search.php">
                             <i class="fa fa-fw fa-search" id="sidebar-font"></i>
                             <span>Search</span>
                         </a>
@@ -496,9 +496,15 @@ $inv = mysqli_fetch_array($role);
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link  <?= $uriSegments[2] == 'app_company.php' ? 'active' : '' ?>" href="app_company.php">
+                        <a class="nav-link  <?= $uriSegments[2] == 'adm_user.php' ? 'active' : '' ?>" href="adm_user.php">
                             <i class="fas fa-users-cog" id="sidebar-font"></i>
                             <span>Users Apps</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link  <?= $uriSegments[2] == 'adm_email.php' ? 'active' : '' ?>" href="adm_email.php">
+                            <i class="fas fa-envelope-open-text" id="sidebar-font"></i>
+                            <span>Email Notif System</span>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -508,7 +514,7 @@ $inv = mysqli_fetch_array($role);
                         </a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="adm_report.php">
+                        <a class="nav-link  <?= $uriSegments[2] == 'log_report.php' ? 'active' : '' ?>" href="log_report.php">
                             <i class="fa fa-fw fa-file" id="sidebar-font"></i>
                             <span>Log Report</span>
                         </a>
