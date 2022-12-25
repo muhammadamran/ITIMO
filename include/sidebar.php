@@ -14,24 +14,32 @@ $inv = mysqli_fetch_array($role);
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav flex-column">
+                    <!-- NAV MAIN MENU -->
                     <li class="nav-divider">
                         Navigation | Main Menu
                     </li>
+                    <!-- DASHBOARD -->
                     <li class="nav-item">
                         <a class="nav-link  <?= $uriSegments[2] == 'index.php' ? 'active' : '' ?>" href="index.php">
                             <i class="fas fa-chart-pie" id="sidebar-font"></i>
                             <span>Dashboard</span>
                         </a>
                     </li>
+                    <!-- END DASHBOARD -->
+                    <!-- SEARCH -->
                     <li class="nav-item">
                         <a class="nav-link  <?= $uriSegments[2] == 'search.php' ? 'active' : '' ?>" href="search.php">
                             <i class="fa fa-fw fa-search" id="sidebar-font"></i>
                             <span>Search</span>
                         </a>
                     </li>
+                    <!-- END SEARCH -->
+                    <!-- END NAV MAIN MENU -->
+                    <!-- NAV IT -->
                     <li class="nav-divider">
                         Navigation | IT
                     </li>
+                    <!-- LAPTOP -->
                     <li class="nav-item">
                         <a class="nav-link <?= $uriSegments[2] == 'laptop_summary.php' ? 'active' : '' ?>" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-laptop" aria-controls="submenu-1">
                             <i class="fas fa-laptop" id="sidebar-font"></i>
@@ -62,6 +70,8 @@ $inv = mysqli_fetch_array($role);
                             </ul>
                         </div>
                     </li>
+                    <!-- END LAPTOP -->
+                    <!-- MONITOR/LCD -->
                     <li class="nav-item">
                         <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-monitor-lcd" aria-controls="submenu-2">
                             <i class="fas fa-desktop" id="sidebar-font"></i>
@@ -92,6 +102,8 @@ $inv = mysqli_fetch_array($role);
                             </ul>
                         </div>
                     </li>
+                    <!-- END MONITOR/LCD -->
+                    <!-- PC -->
                     <li class="nav-item">
                         <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-pc" aria-controls="submenu-3">
                             <i class="fas fa-server" id="sidebar-font"></i>
@@ -122,6 +134,8 @@ $inv = mysqli_fetch_array($role);
                             </ul>
                         </div>
                     </li>
+                    <!-- END PC -->
+                    <!-- TV -->
                     <li class="nav-item">
                         <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-tv" aria-controls="submenu-4">
                             <i class="fas fa-tv" id="sidebar-font"></i>
@@ -152,6 +166,8 @@ $inv = mysqli_fetch_array($role);
                             </ul>
                         </div>
                     </li>
+                    <!-- END TV -->
+                    <!-- PHONE -->
                     <li class="nav-item">
                         <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-phone" aria-controls="submenu-5">
                             <i class="fas fa-mobile" id="sidebar-font"></i>
@@ -182,6 +198,8 @@ $inv = mysqli_fetch_array($role);
                             </ul>
                         </div>
                     </li>
+                    <!-- END PHONE -->
+                    <!-- IPAD -->
                     <li class="nav-item">
                         <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-ipad" aria-controls="submenu-6">
                             <i class="fas fa-tablet" id="sidebar-font"></i>
@@ -212,6 +230,8 @@ $inv = mysqli_fetch_array($role);
                             </ul>
                         </div>
                     </li>
+                    <!-- END IPAD -->
+                    <!-- HANDPHONE -->
                     <li class="nav-item">
                         <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-headphone" aria-controls="submenu-7">
                             <i class="fas fa-headphones" id="sidebar-font"></i>
@@ -242,6 +262,8 @@ $inv = mysqli_fetch_array($role);
                             </ul>
                         </div>
                     </li>
+                    <!-- END HANDPHONE -->
+                    <!-- SWITCH/ROUTER -->
                     <li class="nav-item">
                         <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-switch" aria-controls="submenu-8">
                             <i class="fas fa-fw fa-asterisk" id="sidebar-font"></i>
@@ -272,6 +294,8 @@ $inv = mysqli_fetch_array($role);
                             </ul>
                         </div>
                     </li>
+                    <!-- END SWITCH/ROUTER -->
+                    <!-- RF SCANNER -->
                     <li class="nav-item">
                         <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-rf" aria-controls="submenu-9">
                             <i class="fas fa-fw fa-asterisk" id="sidebar-font"></i>
@@ -302,6 +326,8 @@ $inv = mysqli_fetch_array($role);
                             </ul>
                         </div>
                     </li>
+                    <!-- END RF SCANNER -->
+                    <!-- ETC -->
                     <li class="nav-item">
                         <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-etc" aria-controls="submenu-10">
                             <i class="fas fa-list" id="sidebar-font"></i>
@@ -332,40 +358,46 @@ $inv = mysqli_fetch_array($role);
                             </ul>
                         </div>
                     </li>
+                    <!-- END ETC -->
+                    <!-- END NAV IT -->
+                    <!-- NAV HRGA -->
                     <li class="nav-divider">
                         <hr>
                         Navigation | HRGA
                     </li>
+                    <!-- JOINER -->
                     <li class="nav-item">
-                        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-joine" aria-controls="submenu-11">
+                        <a class="nav-link <?= $uriSegments[2] == 'onboard_joiner_new.php' || $uriSegments[2] == 'onboard_joiner_process.php' || $uriSegments[2] == 'onboard_joined.php' || $uriSegments[2] == 'onboard_cancelled.php' ? 'active' : '' ?>" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-joiner" aria-controls="submenu-11">
                             <i class="fas fa-user-plus" id="sidebar-font"></i>
                             <span>Joiner</span>
                         </a>
-                        <div id="submenu-joine" class="collapse submenu">
+                        <div id="submenu-joiner" class="collapse submenu <?= $uriSegments[2] == 'onboard_joiner_new.php' || $uriSegments[2] == 'onboard_joiner_process.php' || $uriSegments[2] == 'onboard_joined.php' || $uriSegments[2] == 'onboard_cancelled.php' ? 'show' : '' ?>">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="adm_user.php">
-                                        <span>Summary</span>
+                                    <a class="nav-link <?= $uriSegments[2] == 'onboard_joiner_new.php' ? 'active' : '' ?> " href="onboard_joiner_new.php">
+                                        <span>New</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="adm_user.php">
-                                        <span>Available</span>
+                                    <a class="nav-link <?= $uriSegments[2] == 'onboard_joiner_process.php' ? 'active' : '' ?>" href="onboard_joiner_process.php">
+                                        <span>On Process</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="adm_user.php">
-                                        <span>In Use</span>
+                                    <a class="nav-link <?= $uriSegments[2] == 'onboard_joined.php' ? 'active' : '' ?>" href="onboard_joined.php">
+                                        <span>Joined/Done</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="adm_user.php">
-                                        <span>Broken/Disposed</span>
+                                    <a class="nav-link <?= $uriSegments[2] == 'onboard_cancelled.php' ? 'active' : '' ?>" href="onboard_cancelled.php">
+                                        <span>Cancelled</span>
                                     </a>
                                 </li>
                             </ul>
                         </div>
                     </li>
+                    <!-- END JOINER -->
+                    <!-- TRANSFER -->
                     <li class="nav-item">
                         <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-transfer" aria-controls="submenu-12">
                             <i class="fas fa-people-arrows" id="sidebar-font"></i>
@@ -396,6 +428,8 @@ $inv = mysqli_fetch_array($role);
                             </ul>
                         </div>
                     </li>
+                    <!-- END TRANSFER -->
+                    <!-- LEAVER -->
                     <li class="nav-item">
                         <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-leaver" aria-controls="submenu-13">
                             <i class="fas fa-user-minus" id="sidebar-font"></i>
@@ -426,6 +460,8 @@ $inv = mysqli_fetch_array($role);
                             </ul>
                         </div>
                     </li>
+                    <!-- END LEAVER -->
+                    <!-- EMPLOYEE -->
                     <li class="nav-item">
                         <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-employee" aria-controls="submenu-14">
                             <i class="fas fa-id-card-alt" id="sidebar-font"></i>
@@ -466,10 +502,13 @@ $inv = mysqli_fetch_array($role);
                             </ul>
                         </div>
                     </li>
+                    <!-- END EMPLOYEE -->
+                    <!-- NAV ADMINISTRATION -->
                     <li class="nav-divider">
                         <hr>
                         Navigation | Administration
                     </li>
+                    <!-- REFERENCES -->
                     <li class="nav-item">
                         <a class="nav-link <?= $uriSegments[2] == 'references_bu.php' || $uriSegments[2] == 'references_positions.php' || $uriSegments[2] == 'references_branch.php' ? 'active' : '' ?>" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-setup" aria-controls="submenu-14">
                             <i class="fas fa-asterisk" id="sidebar-font"></i>
@@ -495,30 +534,40 @@ $inv = mysqli_fetch_array($role);
                             </ul>
                         </div>
                     </li>
+                    <!-- END REFERENCES -->
+                    <!-- USERS APPS -->
                     <li class="nav-item">
                         <a class="nav-link  <?= $uriSegments[2] == 'adm_user.php' ? 'active' : '' ?>" href="adm_user.php">
                             <i class="fas fa-users-cog" id="sidebar-font"></i>
                             <span>Users Apps</span>
                         </a>
                     </li>
+                    <!-- END USERS APPS -->
+                    <!-- EMAIL NOTIF SYSTEM -->
                     <li class="nav-item">
                         <a class="nav-link  <?= $uriSegments[2] == 'adm_email.php' ? 'active' : '' ?>" href="adm_email.php">
                             <i class="fas fa-envelope-open-text" id="sidebar-font"></i>
                             <span>Email Notif System</span>
                         </a>
                     </li>
+                    <!-- END EMAIL NOTIF SYSTEM -->
+                    <!-- SETTINGS -->
                     <li class="nav-item">
                         <a class="nav-link  <?= $uriSegments[2] == 'app_setting.php' ? 'active' : '' ?>" href="app_setting.php">
                             <i class="fas fa-cogs" id="sidebar-font"></i>
                             <span>Settings</span>
                         </a>
                     </li>
+                    <!-- END SETTINGS -->
+                    <!-- LOG REPORT -->
                     <li class="nav-item ">
                         <a class="nav-link  <?= $uriSegments[2] == 'log_report.php' ? 'active' : '' ?>" href="log_report.php">
                             <i class="fa fa-fw fa-file" id="sidebar-font"></i>
                             <span>Log Report</span>
                         </a>
                     </li>
+                    <!-- END LOG REPORT -->
+                    <!-- END NAV ADMINISTRATION -->
                     <li class="nav-divider">
                         <hr>
                     </li>

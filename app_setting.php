@@ -157,7 +157,7 @@ if (isset($_POST["edit_setting"])) {
                                         <h2 class="pageheader-title" style="color: #003369;">Settings </h2>
                                     </div>
                                     <div style="margin-top: -10px;">
-                                        <font>REFERENCES</font>
+                                        <font>ADMINISTRATION</font>
                                     </div>
                                 </div>
                             </div>
@@ -205,7 +205,7 @@ if (isset($_POST["edit_setting"])) {
                                                     <form action="" method="POST" style="display: contents;" enctype="multipart/form-data">
                                                         <input type="hidden" name="ID" value="<?= $resultdataSetting['id']; ?>" />
                                                         <div style="display: grid;justify-items: center;">
-                                                            <img src="assets/apps/logo/<?= $resultdataSetting['logo'];  ?>" alt="Logo" style="width:285px" />
+                                                            <img src="assets/apps/logo/<?= $resultdataSetting['logo'];  ?>" alt="Logo" style="width:200px" />
                                                             <br><br>
                                                             <input type="file" name="UploadLogo" required>
                                                             <hr />

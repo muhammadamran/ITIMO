@@ -156,7 +156,7 @@ function date_indo($date, $print_day = false)
 <body style="background:url('assets/apps/background/<?= $Rapps['background_login']; ?>') no-repeat fixed center center;background-size: 100%">
     <div class="preloader">
         <div class="loading">
-            <img src="assets/apps/loader/loader.svg" width="150">
+            <img src="assets/apps/loader/<?= $Rapps['loader'] ?>" width="150">
         </div>
     </div>
     <div class="splash-container">
