@@ -2,14 +2,14 @@
     <thead>
         <tr style="text-align: center;">
             <th>#</th>
-            <th>Email</th>
-            <th>Scope</th>
+            <th>Business<font style="color:transparent">.</font>Unit (KN Code)<font style="color:transparent">.</font>&<font style="color:transparent">.</font>Functional<font style="color:transparent">.</font>Desc.</th>
+            <th>Under</th>
             <th class="no-sort">Action</th>
         </tr>
     </thead>
     <tbody>
         <?php
-        $dataTable = $db->query("SELECT * FROM references_email ORDER BY id ASC", 0);
+        $dataTable = $db->query("SELECT * FROM references_bu ORDER BY id ASC", 0);
         if (mysqli_num_rows($dataTable) > 0) {
             $no = 0;
             while ($row = mysqli_fetch_array($dataTable)) {
@@ -17,14 +17,31 @@
         ?>
                 <tr>
                     <td><?= $no ?>.</td>
-                    <td><?= $row['email']; ?></td>
-                    <td><?= $row['scope']; ?></td>
+                    <!-- Business Unit - KN Code & Functional Desc -->
+                    <td>
+                        <div style="display: flex;justify-content:flex-start;align-items: center;">
+                            <div class="table-icon">
+                                <i class="fas fa-info-circle"></i>
+                            </div>
+                            <div style="margin-left: 5px;">
+                                <div style="font-size: 15px;font-weight: 500;">
+                                    <?= $row['bu_name']; ?> - <?= $row['bu_code']; ?>
+                                </div>
+                                <div style="font-size: 12px;font-weight: 300;">
+                                    <?= $row['bu_desc']; ?>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <!-- Under -->
+                    <td><?= $row['under']; ?></td>
+                    <!-- Action -->
                     <td>
                         <div style="display: flex;justify-content: center;align-items: center;">
-                            <a href="#EditEmail<?= $row['id']; ?>" class="btn btn-sm btn-behind-green" data-toggle="modal" title="Edit Email Notif System" style="margin-left: 5px;">
+                            <a href="#EditBU<?= $row['id']; ?>" class="btn btn-sm btn-behind-green" data-toggle="modal" title="Edit Functional" style="margin-left: 5px;">
                                 <i class="fas fa-edit"></i> Edit
                             </a>
-                            <a href="#DeleteEmail<?= $row['id']; ?>" class="btn btn-sm btn-behind-green" data-toggle="modal" title="Delete Email Notif System" style="margin-left: 5px;">
+                            <a href="#DeleteBU<?= $row['id']; ?>" class="btn btn-sm btn-behind-green" data-toggle="modal" title="Delete Functional" style="margin-left: 5px;">
                                 <i class="fas fa-trash"></i> Delete
                             </a>
                         </div>
@@ -32,33 +49,44 @@
                 </tr>
 
                 <!-- Edit -->
-                <div class="modal fade" id="EditEmail<?= $row['id']; ?>">
+                <div class="modal fade" id="EditBU<?= $row['id']; ?>">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title">[Edit Data] Email Notif System</h4>
+                                <h4 class="modal-title">[Edit Data] Business Unit & Functional</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             </div>
                             <form action="" method="POST">
                                 <div class="modal-body">
                                     <fieldset>
                                         <div class="row">
-                                            <div class="col-md-6">
+                                            <div class="col-md-3">
                                                 <div class="form-group">
-                                                    <label for="IdEmail">Email</label>
-                                                    <input type="text" class="form-control" name="NameEmail" id="IdEmail" value="<?= $row['email']; ?>" placeholder="Email ..." />
+                                                    <label for="IdBusinessUnitName">Business Unit & Functional Name </label>
+                                                    <input type="text" class="form-control" name="NameBusinessUnitName" id="IdBusinessUnitName" value="<?= $row['bu_name']; ?>" placeholder="Business Unit & Functional Name ..." />
                                                     <input type="hidden" name="ID" value="<?= $row['id']; ?>" />
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-3">
                                                 <div class="form-group">
-                                                    <label for="IdScope">Scope</label>
-                                                    <select class="form-control" name="NameScope" id="IdScope" placeholder="Scope ...">
-                                                        <option value="<?= $row['scope'] ?>"><?= $row['scope'] ?></option>
-                                                        <option value="">Choose Scope</option>
-                                                        <option value="IT">IT</option>
-                                                        <option value="HR">HR</option>
-                                                        <option value="GA">GA</option>
+                                                    <label for="IdBusinessUnitCode">Business Unit & Functional Code </label>
+                                                    <input type="text" class="form-control" name="NameBusinessUnitCode" id="IdBusinessUnitCode" value="<?= $row['bu_code']; ?>" placeholder="Business Unit & Functional Code ..." />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="IdBusinessUnitDesc">Business Unit & Functional Desc </label>
+                                                    <input type="text" class="form-control" name="NameBusinessUnitDesc" id="IdBusinessUnitDesc" value="<?= $row['bu_desc']; ?>" placeholder="Business Unit & Functional Desc ..." />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="IdUnder">Under </label>
+                                                    <select type="text" class="form-control" name="NameUnder" id="IdUnder">
+                                                        <option value="<?= $row['under']; ?>"><?= $row['under']; ?></option>
+                                                        <option value="">Choose Under</option>
+                                                        <option value="PT. Kuehne Nagel Indonesia">PT. Kuehne Nagel Indonesia</option>
+                                                        <option value="Naku Logistics Indonesia">Naku Logistics Indonesia</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -67,7 +95,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Close</a>
-                                    <button type="submit" name="edit_email" class="btn btn-behind-green"><i class="fas fa-save"></i> Edit</button>
+                                    <button type="submit" name="edit_bu" class="btn btn-behind-green"><i class="fas fa-save"></i> Edit</button>
                                 </div>
                             </form>
                         </div>
@@ -76,11 +104,11 @@
                 <!-- End Edit -->
 
                 <!-- Delete -->
-                <div class="modal fade" id="DeleteEmail<?= $row['id']; ?>">
+                <div class="modal fade" id="DeleteBU<?= $row['id']; ?>">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title">[Delete Data] Email Notif System</h4>
+                                <h4 class="modal-title">[Delete Data] Business Unit & Functional</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             </div>
                             <form action="" method="POST">
@@ -100,8 +128,10 @@
                                                 </div>
                                                 <p class="mb-1" style="display: grid;">
                                                     <font><b>ID</b>: <?= $row['id']; ?></font>
-                                                    <font><b>Email</b>: <?= $row['email']; ?></font>
-                                                    <font><b>Scope</b>: <?= $row['scope']; ?></font>
+                                                    <font><b>Business Unit & Functional Name</b>: <?= $row['bu_name']; ?></font>
+                                                    <font><b>Business Unit & Functional Code</b>: <?= $row['bu_code']; ?></font>
+                                                    <font><b>Business Unit & Functional Desc</b>: <?= $row['bu_desc']; ?></font>
+                                                    <font><b>Under</b>: <?= $row['under']; ?></font>
                                                     <input type="hidden" name="ID" value="<?= $row['id']; ?>" />
                                                 </p>
                                             </a>
@@ -110,51 +140,13 @@
                                 </div>
                                 <div class="modal-footer">
                                     <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> No</a>
-                                    <button type="submit" name="delete_email" class="btn btn-danger"><i class="fas fa-check-circle"></i> Yes</button>
+                                    <button type="submit" name="delete_bu" class="btn btn-danger"><i class="fas fa-check-circle"></i> Yes</button>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
                 <!-- End Delete -->
-
-                <!-- Reset Password -->
-                <div class="modal fade" id="ResetPasswordUser<?= $row['user_id']; ?>">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title">[Reset Password] Users</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                            </div>
-                            <form action="" method="POST">
-                                <div class="modal-body">
-                                    <fieldset>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="IdUsername">Username</label>
-                                                    <input type="text" class="form-control" name="NameUsername" id="IdUsername" value="<?= $row['user_name']; ?>" placeholder="Username ..." readonly />
-                                                    <input type="hidden" name="ID" value="<?= $row['user_id']; ?>" />
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="IdPassword">Password</label>
-                                                    <input type="password" class="form-control" name="NamePassword" id="IdPassword" value="<?= $row['user_pass']; ?>" placeholder="Password ..." required />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </fieldset>
-                                </div>
-                                <div class="modal-footer">
-                                    <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Close</a>
-                                    <button type="submit" name="edit_user" class="btn btn-behind-green"><i class="fas fa-save"></i> Edit</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Reset Password -->
             <?php } ?>
         <?php } else { ?>
             <tr>

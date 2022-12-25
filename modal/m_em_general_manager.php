@@ -1,15 +1,15 @@
 <div class="row">
     <div class="col-sm-3" style="margin-top: 15px;margin-left: 15px;">
-        <!-- Add Email Notif System -->
-        <a href="#modal-Email-Notif-System" class="btn btn-sm btn-primary" data-toggle="modal" title="Add Email Notif System"><i class="fas fa-plus-circle"></i>
-            <font class="f-action">Add Email Notif System</font>
+        <!-- Add Employee General Manager -->
+        <a href="#modal-Employee-General-Manager" class="btn btn-sm btn-primary" data-toggle="modal" title="Add Employee General Manager"><i class="fas fa-plus-circle"></i>
+            <font class="f-action">Add Employee General Manager</font>
         </a>
-        <div class="modal fade" id="modal-Email-Notif-System">
+        <div class="modal fade" id="modal-Employee-General-Manager">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <form action="adm_email.php" method="POST">
                         <div class="modal-header">
-                            <h4 class="modal-title">[Add Data] Email Notif System</h4>
+                            <h4 class="modal-title">[Add Data] Employee General Manager</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                         </div>
                         <div class="modal-body">
@@ -46,6 +46,6 @@
                 </div>
             </div>
         </div>
-        <!-- End Add Email Notif System -->
+        <!-- End Employee General Manager -->
     </div>
 </div>

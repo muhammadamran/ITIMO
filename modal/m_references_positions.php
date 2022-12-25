@@ -61,6 +61,6 @@
                 </div>
             </div>
         </div>
-        <!-- End Add Users -->
+        <!-- End Add Dept. & Positions -->
     </div>
 </div>

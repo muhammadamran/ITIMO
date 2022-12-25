@@ -13,7 +13,7 @@
     </thead>
     <tbody>
         <?php
-        $dataTable = $db->query("SELECT * FROM tb_user ORDER BY user_id DESC LIMIT 100", 0);
+        $dataTable = $db->query("SELECT * FROM tb_user ORDER BY user_id ASC", 0);
         if (mysqli_num_rows($dataTable) > 0) {
             $no = 0;
             while ($row = mysqli_fetch_array($dataTable)) {

@@ -118,6 +118,6 @@
                 </div>
             </div>
         </div>
-        <!-- End Add Users -->
+        <!-- End Add Branch -->
     </div>
 </div>

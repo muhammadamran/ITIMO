@@ -1,8 +1,8 @@
 <?php
 $loginow = $_SESSION['username'];
 include 'include/connection.php';
-$role = $db->query("SELECT user_role FROM tb_user WHERE user_name = '$loginow' ");
-$inv = mysqli_fetch_array($role);
+$role    = $db->query("SELECT user_role FROM tb_user WHERE user_name = '$loginow' ");
+$Rrole   = mysqli_fetch_array($role);
 ?>
 <?php $uriSegments = explode("/", parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)); ?>
 <div class="nav-left-sidebar sidebar-light">
@@ -463,40 +463,40 @@ $inv = mysqli_fetch_array($role);
                     <!-- END LEAVER -->
                     <!-- EMPLOYEE -->
                     <li class="nav-item">
-                        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-employee" aria-controls="submenu-14">
+                        <a class="nav-link <?= $uriSegments[2] == 'em_summary.php' || $uriSegments[2] == 'em_general_manager.php' || $uriSegments[2] == 'em_manager.php' || $uriSegments[2] == 'em_supervisor.php' || $uriSegments[2] == 'em_staff.php' ? 'active' : '' ?>" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-employee" aria-controls="submenu-14">
                             <i class="fas fa-id-card-alt" id="sidebar-font"></i>
                             <span>Employee</span>
                         </a>
-                        <div id="submenu-employee" class="collapse submenu">
+                        <div id="submenu-employee" class="collapse submenu <?= $uriSegments[2] == 'em_summary.php' || $uriSegments[2] == 'em_general_manager.php' || $uriSegments[2] == 'em_manager.php' || $uriSegments[2] == 'em_supervisor.php' || $uriSegments[2] == 'em_staff.php' ? 'show' : '' ?>">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="adm_user.php">
+                                    <a class="nav-link <?= $uriSegments[2] == 'em_summary.php' ? 'active' : '' ?>" href="em_summary.php">
                                         <span>Summary</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="adm_user.php">
+                                    <a class="nav-link <?= $uriSegments[2] == 'em_general_manager.php' ? 'active' : '' ?>" href="em_general_manager.php">
                                         <span>General Manager</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="adm_user.php">
+                                    <a class="nav-link <?= $uriSegments[2] == 'em_manager.php' ? 'active' : '' ?>" href="em_manager.php">
                                         <span>Manager</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="adm_user.php">
-                                        <span>Branh Manager</span>
+                                    <a class="nav-link <?= $uriSegments[2] == 'em_branch_manager.php' ? 'active' : '' ?>" href="em_branch_manager.php">
+                                        <span>Branch Manager</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="adm_user.php">
+                                    <a class="nav-link <?= $uriSegments[2] == 'em_supervisor.php' ? 'active' : '' ?>" href="em_supervisor.php">
                                         <span>Supervisor/Team Lead</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="adm_user.php">
-                                        <span>Excecutive</span>
+                                    <a class="nav-link <?= $uriSegments[2] == 'em_staff.php' ? 'active' : '' ?>" href="em_staff.php">
+                                        <span>Staff</span>
                                     </a>
                                 </li>
                             </ul>

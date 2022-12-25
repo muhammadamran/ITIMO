@@ -57,6 +57,6 @@
                 </div>
             </div>
         </div>
-        <!-- End Add Users -->
+        <!-- End Add Business Unit & Functional -->
     </div>
 </div>
