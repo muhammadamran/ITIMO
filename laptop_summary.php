@@ -1,4 +1,3 @@
-<title>Laptop Summary - IT IMO (Inventory Management On Boarding) | General Management</title>
 <?php
 include 'include/connection.php';
 include 'include/restrict.php';
@@ -6,6 +5,7 @@ include 'include/head.php';
 include 'include/alert.php';
 include 'include/dataTablesCSS.php';
 ?>
+<title>Laptop Summary - <?= $Rapps['app_name'] ?> | General Management</title>
 <div class="dashboard-main-wrapper">
     <?php include "include/header.php"; ?>
     <?php include "include/sidebar.php"; ?>
@@ -23,7 +23,7 @@ include 'include/dataTablesCSS.php';
                                 </div>
                                 <div style="margin-left: 10px;">
                                     <div>
-                                        <h2 class="pageheader-title" style="color: #003369;">Summary </h2>
+                                        <h2 class="pageheader-title" style="color: #003369;">Laptop Summary </h2>
                                     </div>
                                     <div style="margin-top: -10px;">
                                         <font>LAPTOP</font>
@@ -35,7 +35,7 @@ include 'include/dataTablesCSS.php';
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
-                                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Summary</a></li>
+                                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Laptop Summary</a></li>
                                     </ol>
                                 </nav>
                             </div>
@@ -100,8 +100,16 @@ include 'include/dataTablesCSS.php';
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
-                            <h5 class="card-header"><i class="fas fa-list"></i> Data Users</h5>
-                            <?php include "modal/m_adm_user.php"; ?>
+                            <h5 class="card-header"><i class="fas fa-list"></i> Data Laptop Summary</h5>
+                            <!-- Add Laptop  -->
+                            <div class="row">
+                                <div class="col-sm-3" style="margin-top: 15px;margin-left: 15px;">
+                                    <a href="laptop_summary_add.php" target="_blank" class="btn btn-sm btn-primary" title="Add Laptop"><i class="fas fa-plus-circle"></i>
+                                        <font class="f-action">Add Laptop</font>
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- End Add Laptop  -->
                             <hr />
                             <div class="card-body">
                                 <div class="table-responsive">
