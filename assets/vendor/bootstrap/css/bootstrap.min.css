@@ -3055,7 +3055,8 @@ input[type=button].btn-block,input[type=reset].btn-block,input[type=submit].btn-
     margin-bottom:0;
     list-style:none;
     margin-left: 15px;
-    background: #e7e7e7;
+    /* background: #e7e7e7; */
+    background: #607d8b;
     color: rgba(0,0,0,.87);
 }
 .nav-link{

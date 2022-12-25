@@ -88,6 +88,6 @@ function date_indo($date, $print_day = false)
 <body>
     <div class="preloader">
         <div class="loading">
-            <img src="assets/images/loader.svg" width="150">
+            <img src="assets/apps/loader/loader.svg" width="150">
         </div>
     </div>

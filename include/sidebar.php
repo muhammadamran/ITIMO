@@ -502,12 +502,6 @@ $inv = mysqli_fetch_array($role);
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link  <?= $uriSegments[2] == 'app_company.php' ? 'active' : '' ?>" href="app_company.php">
-                            <i class="fas fa-building" id="sidebar-font"></i>
-                            <span>Company</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link  <?= $uriSegments[2] == 'app_setting.php' ? 'active' : '' ?>" href="app_setting.php">
                             <i class="fas fa-cogs" id="sidebar-font"></i>
                             <span>Settings</span>
