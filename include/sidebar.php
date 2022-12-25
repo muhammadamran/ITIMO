@@ -8,7 +8,7 @@ $Rrole   = mysqli_fetch_array($role);
 <div class="nav-left-sidebar sidebar-light">
     <div class="menu-list">
         <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="d-xl-none d-lg-none" href="#">Dashboard</a>
+            <a class="d-xl-none d-lg-none" href="#" style="font-size: 18px;font-weight: bolder;color:#003369">NAVIGATION</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>

@@ -74,7 +74,7 @@ include 'include/dataTablesCSS.php';
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label for="IdType">Type <font style="color: red;">*</font></label>
-                                                <input type="text" class="form-control" name="Type" id="IdType" placeholder="Type ..." required />
+                                                <input type="text" class="form-control" name="Type" id="IdType" value="LAPTOP" placeholder="Type ..." readonly />
                                             </div>
                                         </div>
                                         <div class="col-md-6">
