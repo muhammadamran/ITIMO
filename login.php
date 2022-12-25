@@ -22,7 +22,7 @@ if (isset($_POST['submit'])) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Login - Behind | General Management</title>
+    <title>Login - <?= $Rapps['app_name'] ?> | General Management</title>
     <link rel="icon" type="image/png" sizes="32x32" href="assets/apps/icon/logo.png">
     <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
     <link href="assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
@@ -153,7 +153,7 @@ function date_indo($date, $print_day = false)
 }
 ?>
 
-<body style="background:url('assets/apps/background/4.jpeg') no-repeat fixed center center;background-size: 100%">
+<body style="background:url('assets/apps/background/<?= $Rapps['background_login']; ?>') no-repeat fixed center center;background-size: 100%">
     <div class="preloader">
         <div class="loading">
             <img src="assets/apps/loader/loader.svg" width="150">
@@ -161,7 +161,7 @@ function date_indo($date, $print_day = false)
     </div>
     <div class="splash-container">
         <div class="card ">
-            <div class="card-header text-center"><a href="index.php"><img class="logo-img" src="assets/apps/logo/behind.svg" alt="logo" width="100%"></a>
+            <div class="card-header text-center"><a href="index.php"><img class="logo-img" src="assets/apps/logo/<?= $Rapps['logo']; ?>" alt="logo" width="100%"></a>
                 <hr>
                 <span class="splash-description" style="padding-bottom: 0px;">Please enter your user information.</span>
             </div>
@@ -229,8 +229,12 @@ function date_indo($date, $print_day = false)
                 <p align="center">
                     <img src="assets/apps/logo/header.png" width="#">
                 </p>
+                <hr />
                 <p align="center">
-                    Behind - General Management
+                    <small> <?= $Rapps['app_name']; ?>
+                        <br>
+                        <?= $Rapps['footer']; ?>
+                    </small>
                 </p>
                 <br>
             </div>

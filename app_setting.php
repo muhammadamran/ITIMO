@@ -10,39 +10,129 @@ include 'include/dataTablesCSS.php';
 $dataSettings       = $db->query("SELECT * FROM tb_setting ORDER BY id ASC");
 $resultdataSetting  = mysqli_fetch_array($dataSettings);
 // Icon
-if (isset($_POST["edit_bu"])) {
+if (isset($_POST["_uploadIcon"])) {
     // Info Page
-    $page      = 'references_bu.php';
+    $page      = 'app_setting.php';
     // End Info Page
 
-    $ID                   = $_POST['ID'];
+    $ID             = $_POST['ID'];
+    $UploadIcon     = 'Icon_' . time() . "_" . $_FILES['UploadIcon']['name'];
 
-    $edit    = $db->query("UPDATE references_bu SET bu_name='$NameBusinessUnitName',
-                                                    bu_code='$NameBusinessUnitCode',
-                                                    bu_desc='$NameBusinessUnitDesc',
-                                                    under='$NameUnder'
+    $dir            = "assets/apps/icon/";
+    $timeUpload     = date('Y-m-d-h-m-i');
+    $file_name      = $timeUpload . "_" . $_FILES["UploadIcon"]["name"];
+    $size           = $_FILES["UploadIcon"]["size"];
+    $tmp_file_name  = $_FILES["UploadIcon"]["tmp_name"];
+    $filename       = $_FILES['UploadIcon']['name'];
+    $exp            = explode('.', $filename);
+    $ext            = end($exp);
+    if ($ext == 'jpg' || $ext == 'jpeg' || $ext == 'png' || $ext == 'gif' || $ext == 'svg') {
+        move_uploaded_file($tmp_file_name, $dir . $UploadIcon);
+        $edit    = $db->query("UPDATE tb_setting SET icon='$UploadIcon' WHERE id='$ID'");
+
+        echo "<script>window.location.href='app_setting.php?UpdateSuccess=true&page=$page';</script>";
+    } else {
+        echo "<script>window.location.href='app_setting.php?ExtentionFialed=true&page=$page';</script>";
+    }
+}
+// Logo
+if (isset($_POST["_uploadLogo"])) {
+    // Info Page
+    $page      = 'app_setting.php';
+    // End Info Page
+
+    $ID             = $_POST['ID'];
+    $UploadLogo       = 'Logo_' . time() . "_" . $_FILES['UploadLogo']['name'];
+
+    $dir            = "assets/apps/logo/";
+    $timeUpload     = date('Y-m-d-h-m-i');
+    $file_name      = $timeUpload . "_" . $_FILES["UploadLogo"]["name"];
+    $size           = $_FILES["UploadLogo"]["size"];
+    $tmp_file_name  = $_FILES["UploadLogo"]["tmp_name"];
+    $filename       = $_FILES['UploadLogo']['name'];
+    $exp            = explode('.', $filename);
+    $ext            = end($exp);
+    if ($ext == 'jpg' || $ext == 'jpeg' || $ext == 'png' || $ext == 'gif' || $ext == 'svg') {
+        move_uploaded_file($tmp_file_name, $dir . $UploadLogo);
+        $edit    = $db->query("UPDATE tb_setting SET logo='$UploadLogo' WHERE id='$ID'");
+
+        echo "<script>window.location.href='app_setting.php?UpdateSuccess=true&page=$page';</script>";
+    } else {
+        echo "<script>window.location.href='app_setting.php?ExtentionFialed=true&page=$page';</script>";
+    }
+}
+// Loader
+if (isset($_POST["_uploadLoader"])) {
+    // Info Page
+    $page      = 'app_setting.php';
+    // End Info Page
+
+    $ID             = $_POST['ID'];
+    $UploadLoader       = 'Loader_' . time() . "_" . $_FILES['UploadLoader']['name'];
+
+    $dir            = "assets/apps/loader/";
+    $timeUpload     = date('Y-m-d-h-m-i');
+    $file_name      = $timeUpload . "_" . $_FILES["UploadLoader"]["name"];
+    $size           = $_FILES["UploadLoader"]["size"];
+    $tmp_file_name  = $_FILES["UploadLoader"]["tmp_name"];
+    $filename       = $_FILES['UploadLoader']['name'];
+    $exp            = explode('.', $filename);
+    $ext            = end($exp);
+    if ($ext == 'jpg' || $ext == 'jpeg' || $ext == 'png' || $ext == 'gif' || $ext == 'svg') {
+        move_uploaded_file($tmp_file_name, $dir . $UploadLoader);
+        $edit    = $db->query("UPDATE tb_setting SET loader='$UploadLoader' WHERE id='$ID'");
+
+        echo "<script>window.location.href='app_setting.php?UpdateSuccess=true&page=$page';</script>";
+    } else {
+        echo "<script>window.location.href='app_setting.php?ExtentionFialed=true&page=$page';</script>";
+    }
+}
+// Bg
+if (isset($_POST["_uploadBg"])) {
+    // Info Page
+    $page      = 'app_setting.php';
+    // End Info Page
+
+    $ID             = $_POST['ID'];
+    $UploadBg       = 'Bg_' . time() . "_" . $_FILES['UploadBg']['name'];
+
+    $dir            = "assets/apps/background/";
+    $timeUpload     = date('Y-m-d-h-m-i');
+    $file_name      = $timeUpload . "_" . $_FILES["UploadBg"]["name"];
+    $size           = $_FILES["UploadBg"]["size"];
+    $tmp_file_name  = $_FILES["UploadBg"]["tmp_name"];
+    $filename       = $_FILES['UploadBg']['name'];
+    $exp            = explode('.', $filename);
+    $ext            = end($exp);
+    if ($ext == 'jpg' || $ext == 'jpeg' || $ext == 'png' || $ext == 'gif' || $ext == 'svg') {
+        move_uploaded_file($tmp_file_name, $dir . $UploadBg);
+        $edit    = $db->query("UPDATE tb_setting SET background_login='$UploadBg' WHERE id='$ID'");
+
+        echo "<script>window.location.href='app_setting.php?UpdateSuccess=true&page=$page';</script>";
+    } else {
+        echo "<script>window.location.href='app_setting.php?ExtentionFialed=true&page=$page';</script>";
+    }
+}
+// Edit
+if (isset($_POST["edit_setting"])) {
+    // Info Page
+    $page      = 'app_setting.php';
+    // End Info Page
+
+    $ID                 = $_POST['ID'];
+    $AppName            = $_POST['AppName'];
+    $NameEmailHelpDesk  = $_POST['NameEmailHelpDesk'];
+    $NameFooter         = $_POST['NameFooter'];
+
+    $edit    = $db->query("UPDATE tb_setting SET app_name='$AppName',
+                                                 email_helpdesk='$NameEmailHelpDesk',
+                                                 footer='$NameFooter'
                            WHERE id='$ID'");
 
     if ($edit) {
-        echo "<script>window.location.href='references_bu.php?UpdateSuccess=true&page=$page';</script>";
+        echo "<script>window.location.href='app_setting.php?UpdateSuccess=true&page=$page';</script>";
     } else {
-        echo "<script>window.location.href='references_bu.php?UpdateFailed=true&page=$page';</script>";
-    }
-}
-// Delete
-if (isset($_POST["delete_bu"])) {
-    // Info Page
-    $page      = 'references_bu.php';
-    // End Info Page
-
-    $ID        = $_POST['ID'];
-
-    $delete    = $db->query("DELETE FROM references_bu WHERE id='$ID'");
-
-    if ($delete) {
-        echo "<script>window.location.href='references_bu.php?DeleteSuccess=true&page=$page';</script>";
-    } else {
-        echo "<script>window.location.href='references_bu.php?DeleteFailed=true&page=$page';</script>";
+        echo "<script>window.location.href='app_setting.php?UpdateFailed=true&page=$page';</script>";
     }
 }
 ?>
@@ -99,10 +189,12 @@ if (isset($_POST["delete_bu"])) {
                                                 <div class="form-group">
                                                     <form action="" method="POST" style="display: contents;" enctype="multipart/form-data">
                                                         <input type="hidden" name="ID" value="<?= $resultdataSetting['id']; ?>" />
-                                                        <img src="assets/apps/icon/<?= $resultdataSetting['icon'];  ?>" alt="Icon" style="width:200px" />
-                                                        <br><br>
-                                                        <input type="file" name="UploadBg" required>
-                                                        <hr />
+                                                        <div style="display: grid;justify-items: center;">
+                                                            <img src="assets/apps/icon/<?= $resultdataSetting['icon'];  ?>" alt="Icon" style="width:200px" />
+                                                            <br><br>
+                                                            <input type="file" name="UploadIcon" required>
+                                                            <hr />
+                                                        </div>
                                                         <button class="btn btn-sm btn-primary" type="submit" name="_uploadIcon"><i class="fas fa-images"></i> Change Icon</button>
                                                     </form>
                                                 </div>
@@ -112,10 +204,12 @@ if (isset($_POST["delete_bu"])) {
                                                 <div class="form-group">
                                                     <form action="" method="POST" style="display: contents;" enctype="multipart/form-data">
                                                         <input type="hidden" name="ID" value="<?= $resultdataSetting['id']; ?>" />
-                                                        <img src="assets/apps/logo/<?= $resultdataSetting['logo'];  ?>" alt="Logo" style="width:200px" />
-                                                        <br><br>
-                                                        <input type="file" name="UploadBg" required>
-                                                        <hr />
+                                                        <div style="display: grid;justify-items: center;">
+                                                            <img src="assets/apps/logo/<?= $resultdataSetting['logo'];  ?>" alt="Logo" style="width:285px" />
+                                                            <br><br>
+                                                            <input type="file" name="UploadLogo" required>
+                                                            <hr />
+                                                        </div>
                                                         <button class="btn btn-sm btn-primary" type="submit" name="_uploadLogo"><i class="fas fa-images"></i> Change Logo</button>
                                                     </form>
                                                 </div>
@@ -125,10 +219,12 @@ if (isset($_POST["delete_bu"])) {
                                                 <div class="form-group">
                                                     <form action="" method="POST" style="display: contents;" enctype="multipart/form-data">
                                                         <input type="hidden" name="ID" value="<?= $resultdataSetting['id']; ?>" />
-                                                        <img src="assets/apps/loader/<?= $resultdataSetting['loader'];  ?>" alt="Loader" style="width:200px" />
-                                                        <br><br>
-                                                        <input type="file" name="UploadBg" required>
-                                                        <hr />
+                                                        <div style="display: grid;justify-items: center;">
+                                                            <img src="assets/apps/loader/<?= $resultdataSetting['loader'];  ?>" alt="Loader" style="width:200px" />
+                                                            <br><br>
+                                                            <input type="file" name="UploadLoader" required>
+                                                            <hr />
+                                                        </div>
                                                         <button class="btn btn-sm btn-primary" type="submit" name="_uploadLoader"><i class="fas fa-images"></i> Change Loader</button>
                                                     </form>
                                                 </div>
@@ -138,10 +234,12 @@ if (isset($_POST["delete_bu"])) {
                                                 <div class="form-group">
                                                     <form action="" method="POST" style="display: contents;" enctype="multipart/form-data">
                                                         <input type="hidden" name="ID" value="<?= $resultdataSetting['id']; ?>" />
-                                                        <img src="assets/apps/background/<?= $resultdataSetting['background_login'];  ?>" alt="Background Sign In" style="width:200px" />
-                                                        <br><br>
-                                                        <input type="file" name="UploadBg" required>
-                                                        <hr />
+                                                        <div style="display: grid;justify-items: center;">
+                                                            <img src="assets/apps/background/<?= $resultdataSetting['background_login'];  ?>" alt="Background Sign In" style="width:285px" />
+                                                            <br><br>
+                                                            <input type="file" name="UploadBg" required>
+                                                            <hr />
+                                                        </div>
                                                         <button class="btn btn-sm btn-primary" type="submit" name="_uploadBg"><i class="fas fa-images"></i> Change Background</button>
                                                     </form>
                                                 </div>
@@ -177,7 +275,7 @@ if (isset($_POST["delete_bu"])) {
                                                     <hr />
                                                 </div>
                                                 <div class="col-md-12">
-                                                    <button type="submit" name="add_settings" class="btn btn-sm btn-primary"><i class="fas fa-list"></i> Change Settings</button>
+                                                    <button type="submit" name="edit_setting" class="btn btn-sm btn-primary"><i class="fas fa-list"></i> Change Settings</button>
                                                 </div>
                                             </form>
                                         </div>

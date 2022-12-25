@@ -65,4 +65,13 @@ $page = (isset($_GET['page']));
         })
         history.replaceState({}, '', './<?= $_GET['page'] ?>');
     }
+    // EXTENTION FAILED
+    if (window?.location?.href?.indexOf('ExtentionFialed') > -1) {
+        Swal.fire({
+            title: 'Failed!',
+            icon: 'error',
+            text: 'Extention not recognized!'
+        })
+        history.replaceState({}, '', './<?= $_GET['page'] ?>');
+    }
 </script>
