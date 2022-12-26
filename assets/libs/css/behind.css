@@ -189,3 +189,19 @@ tbody {
     width: 45px;
     height: 45px;
 }
+
+.text-loading-wait {
+    margin-left: 20px;
+    font-size: 18px;
+    font-weight: 700;
+    font-family: Poppins, Open Sans, Helvetica, Arial, sans-serif;
+    color: #04326ce6;
+}
+
+.loading-divider {
+    background: #04326ce6;
+    height: 5px;
+    margin: 5px -1px;
+    box-sizing: border-box;
+    border-radius: 100px;
+}

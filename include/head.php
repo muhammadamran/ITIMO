@@ -89,5 +89,8 @@ function date_indo($date, $print_day = false)
     <div class="preloader">
         <div class="loading">
             <img src="assets/apps/loader/<?= $Rapps['loader'] ?>" width="150">
+            <br>
+            <div class="loading-divider"></div>
+            <font class="text-loading-wait">Please wait ...</font>
         </div>
     </div>

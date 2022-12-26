@@ -8,14 +8,60 @@
             <th>Hostname<font style="color:transparent">.</font>&<font style="color:transparent">.</font>Username</th>
             <th>Usage<font style="color:transparent">.</font>State<font style="color:transparent">.</font>&<font style="color:transparent">.</font>Ownership<font style="color:transparent">.</font>Sta.</th>
             <th>Branch<font style="color:transparent">.</font>Loc.<font style="color:transparent">.</font>&<font style="color:transparent">.</font>Details</th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
         <?php
-        $dataTable = $db->query("SELECT *,lap.username AS userLap,emp.username AS userEmp
-        FROM tb_laptop_master AS lap
-        LEFT OUTER JOIN tb_employee AS emp ON lap.username=emp.username
-        ORDER BY lap.id DESC", 0);
+        if (isset($_POST["find_filter"])) {
+            function where_add($_wh, $_add)
+            {
+                $wh = '';
+                if ($wh == '') {
+                    return 'WHERE ' . $_add;
+                } else {
+                    return $_wh . ' AND ' . $_add;
+                }
+            }
+            $i = 1;
+            $_where = '';
+            $i = 1;
+            $_where = '';
+            if ($FindSerialNumber == true) {
+                $_where = where_add($_where, ' lap.serial_number=' . "'$FindSerialNumber'" . '');
+            }
+            if ($FindProductName == true) {
+                $_where = where_add($_where, ' lap.product_name=' . "'$FindProductName'" . '');
+            }
+            if ($FindBrand == true) {
+                $_where = where_add($_where, ' lap.brand=' . "'$FindBrand'" . '');
+            }
+            if ($FindHostname == true) {
+                $_where = where_add($_where, ' lap.hostname=' . "'$FindHostname'" . '');
+            }
+            if ($FindUsername == true) {
+                $_where = where_add($_where, ' lap.username=' . "'$FindUsername'" . '');
+            }
+            if ($FindUS == true) {
+                $_where = where_add($_where, ' lap.status_use=' . "'$FindUS'" . '');
+            }
+            if ($FindOS == true) {
+                $_where = where_add($_where, ' lap.status_available=' . "'$FindOS'" . '');
+            }
+            if ($FindBranchLoc == true) {
+                $_where = where_add($_where, ' lap.location_branch=' . "'$FindBranchLoc'" . '');
+            }
+            $dataTable = $db->query("SELECT *,lap.id,emp.id AS idEmp,lap.username AS userLap,emp.username AS userEmp
+            FROM tb_laptop_master AS lap
+            LEFT OUTER JOIN tb_employee AS emp ON lap.username=emp.username
+            $_where
+            ORDER BY lap.id DESC", 0);
+        } else {
+            $dataTable = $db->query("SELECT *,lap.id,emp.id AS idEmp,lap.username AS userLap,emp.username AS userEmp
+            FROM tb_laptop_master AS lap
+            LEFT OUTER JOIN tb_employee AS emp ON lap.username=emp.username
+            ORDER BY lap.id DESC", 0);
+        }
         if (mysqli_num_rows($dataTable) > 0) {
             $no = 0;
             while ($row = mysqli_fetch_array($dataTable)) {
@@ -26,7 +72,7 @@
                     <!-- History -->
                     <td>
                         <div style="display: flex;justify-content: center;align-items: center;">
-                            <a href="" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="right" data-content="Details Devices History: <?= $row['serial_number']; ?>">
+                            <a href="laptop_summary_history.php?SN=<?= $row['serial_number']; ?>" target="_blank" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="right" data-content="Details Devices History: <?= $row['serial_number']; ?>">
                                 <div class="table-icon-blue">
                                     <i class="fas fa-file-invoice"></i>
                                 </div>
@@ -145,6 +191,16 @@
                                     <?php } ?>
                                 </div>
                             </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div style="display: flex;justify-content: center;align-items: center;">
+                            <a href="laptop_summary_edit.php?ID=<?= $row['id']; ?>" target="_blank" class="btn btn-sm btn-behind-green" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="left" data-content="Edit Device: <?= $row['serial_number']; ?>" style="margin-left: 5px;">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <a href="#DeleteRoomLocation<?= $row['id']; ?>" class="btn btn-sm btn-behind-green" data-toggle="modal" title="Delete Device: <?= $row['serial_number']; ?>" style="margin-left: 5px;">
+                                <i class="fas fa-trash"></i>
+                            </a>
                         </div>
                     </td>
                 </tr>

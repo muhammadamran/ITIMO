@@ -14,6 +14,40 @@ $FindUsername     = '';
 $FindUS           = '';
 $FindOS           = '';
 $FindBranchLoc    = '';
+
+if (isset($_POST["find_filter"])) {
+    if ($_POST["FindSerialNumber"] != '') {
+        $FindSerialNumber = $_POST['FindSerialNumber'];
+    }
+
+    if ($_POST["FindProductName"] != '') {
+        $FindProductName = $_POST['FindProductName'];
+    }
+
+    if ($_POST["FindBrand"] != '') {
+        $FindBrand = $_POST['FindBrand'];
+    }
+
+    if ($_POST["FindHostname"] != '') {
+        $FindHostname = $_POST['FindHostname'];
+    }
+
+    if ($_POST["FindUsername"] != '') {
+        $FindUsername = $_POST['FindUsername'];
+    }
+
+    if ($_POST["FindUS"] != '') {
+        $FindUS = $_POST['FindUS'];
+    }
+
+    if ($_POST["FindOS"] != '') {
+        $FindOS = $_POST['FindOS'];
+    }
+
+    if ($_POST["FindBranchLoc"] != '') {
+        $FindBranchLoc = $_POST['FindBranchLoc'];
+    }
+}
 ?>
 <title>Laptop Summary - <?= $Rapps['app_name'] ?> | General Management</title>
 <div class="dashboard-main-wrapper">

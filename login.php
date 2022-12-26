@@ -28,6 +28,8 @@ if (isset($_POST['submit'])) {
     <link href="assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/libs/css/style.css">
     <link rel="stylesheet" href="assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
+    <!-- behind css -->
+    <link rel="stylesheet" href="assets/libs/css/behind.css">
     <!-- Loading -->
     <script src="http://code.jquery.com/jquery-2.2.1.min.js"></script>
     <style>
@@ -157,6 +159,9 @@ function date_indo($date, $print_day = false)
     <div class="preloader">
         <div class="loading">
             <img src="assets/apps/loader/<?= $Rapps['loader'] ?>" width="150">
+            <br>
+            <div class="loading-divider"></div>
+            <font class="text-loading-wait">Please wait ...</font>
         </div>
     </div>
     <div class="splash-container">
