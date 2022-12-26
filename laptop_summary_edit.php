@@ -4,8 +4,10 @@ include 'include/restrict.php';
 include 'include/head.php';
 include 'include/alert.php';
 include 'include/dataTablesCSS.php';
+$data       = $db->query("SELECT * FROM tb_laptop_master WHERE id='" . $_GET['ID'] . "'");
+$row        = mysqli_fetch_array($data);
 ?>
-<title>Add Laptop Summary - <?= $Rapps['app_name'] ?> | General Management</title>
+<title>Edit Laptop Summary - <?= $Rapps['app_name'] ?> | General Management</title>
 <link href="assets/plugins/chosen/chosen.css" rel="stylesheet" type="text/css" />
 <div class="dashboard-main-wrapper">
     <?php include "include/header.php"; ?>
@@ -24,7 +26,7 @@ include 'include/dataTablesCSS.php';
                                 </div>
                                 <div style="margin-left: 10px;">
                                     <div>
-                                        <h2 class="pageheader-title" style="color: #003369;">Add Laptop Summary </h2>
+                                        <h2 class="pageheader-title" style="color: #003369;">Edit Laptop Summary </h2>
                                     </div>
                                     <div style="margin-top: -10px;">
                                         <font>LAPTOP</font>
@@ -37,7 +39,7 @@ include 'include/dataTablesCSS.php';
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
                                         <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Laptop Summary</a></li>
-                                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Add</a></li>
+                                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Edit</a></li>
                                     </ol>
                                 </nav>
                             </div>
@@ -50,35 +52,46 @@ include 'include/dataTablesCSS.php';
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
-                            <h5 class="card-header"><i class="fas fa-plus-circle"></i> Add Laptop</h5>
+                            <h5 class="card-header"><i class="fas fa-plus-circle"></i> Edit Laptop</h5>
+                            <div style="padding: 15px;margin-bottom: -30px;">
+                                <div class="alert alert-primary" role="alert">
+                                    <h4 class="alert-heading">Important!</h4>
+                                    <hr>
+                                    <p>
+                                        The following is the appropriate device master form for assets management that has been released by the finance department.
+                                    </p>
+                                </div>
+                            </div>
+                            <hr>
                             <div class="card-body">
-                                <form action="" method="POST">
+                                <form action="laptop_summary.php" method="POST">
                                     <fieldset>
                                         <div class="row">
                                             <div class="col-sm-8">
                                                 <div class="row">
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <label for="IdSerialNumber">Serial Number <font style="color: red;">*</font></label>
-                                                            <input type="text" class="form-control" name="SerialNumber" id="IdSerialNumber" placeholder="Serial Number ..." required />
+                                                            <label for="IdSerialNumber">Serial Number</label>
+                                                            <input type="text" class="form-control" name="SerialNumber" id="IdSerialNumber" value="<?= $row['serial_number']; ?>" placeholder="Serial Number ..." />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label for="IdProductName">Product Name</label>
-                                                            <input type="text" class="form-control" name="ProductName" id="IdProductName" placeholder="Product Name ..." />
+                                                            <input type="text" class="form-control" name="ProductName" id="IdProductName" value="<?= $row['product_name']; ?>" placeholder="Product Name ..." />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label for="IdBrand">Brand</label>
-                                                            <input type="text" class="form-control" name="Brand" id="IdBrand" placeholder="Brand ..." />
+                                                            <input type="text" class="form-control" name="Brand" id="IdBrand" value="<?= $row['brand']; ?>" placeholder="Brand ..." />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label for="IdDeviceRelease">Device Release</label>
                                                             <select class="form-control" name="DeviceRelease" id="IdDeviceRelease" placeholder="Device Release ...">
+                                                                <option value="<?= $row['device_releases_years']; ?>"><?= $row['device_releases_years']; ?></option>
                                                                 <option value="">Choose Device Release</option>
                                                                 <?php
                                                                 for ($iYear = date('Y'); $iYear >= date('Y') - 20; $iYear -= 1) {
@@ -92,7 +105,7 @@ include 'include/dataTablesCSS.php';
                                                         <div class="form-group">
                                                             <label for="IdMemory">Memory Size</label>
                                                             <div class="input-group mb-3">
-                                                                <input type="text" class="form-control" name="Memory" id="IdMemory" placeholder="Memory Size ...">
+                                                                <input type="text" class="form-control" name="Memory" id="IdMemory" value="<?= $row['memory']; ?>" placeholder="Memory Size ...">
                                                                 <div class="input-group-append"><span class="input-group-text">GB</span></div>
                                                             </div>
                                                         </div>
@@ -101,7 +114,7 @@ include 'include/dataTablesCSS.php';
                                                         <div class="form-group">
                                                             <label for="IdDiskSpace">Disk Space Size</label>
                                                             <div class="input-group mb-3">
-                                                                <input type="text" class="form-control" name="DiskSpace" id="IdDiskSpace" placeholder="Disk Space Size ...">
+                                                                <input type="text" class="form-control" name="DiskSpace" id="IdDiskSpace" value="<?= $row['disk']; ?>" placeholder="Disk Space Size ...">
                                                                 <div class="input-group-append"><span class="input-group-text">GB</span></div>
                                                             </div>
                                                         </div>
@@ -110,6 +123,7 @@ include 'include/dataTablesCSS.php';
                                                         <div class="form-group">
                                                             <label for="IdDiskType">Disk Type</label>
                                                             <select class="form-control" name="DiskType" id="IdDiskType" placeholder="Disk Type ...">
+                                                                <option value="<?= $row['disk_type']; ?>"><?= $row['disk_type']; ?></option>
                                                                 <option value="">Choose Disk Type</option>
                                                                 <option value="HDD">HDD</option>
                                                                 <option value="SSD">SSD</option>
@@ -119,25 +133,26 @@ include 'include/dataTablesCSS.php';
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label for="IdProcessor">Processor</label>
-                                                            <input type="text" class="form-control" name="Processor" id="IdProcessor" placeholder="Processor ..." />
+                                                            <input type="text" class="form-control" name="Processor" id="IdProcessor" value="<?= $row['processor']; ?>" placeholder="Processor ..." />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label for="IdHostname">Hostname</label>
-                                                            <input type="text" class="form-control" name="Hostname" id="IdHostname" placeholder="Hostname ..." />
+                                                            <input type="text" class="form-control" name="Hostname" id="IdHostname" value="<?= $row['hostname']; ?>" placeholder="Hostname ..." />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label for="IdUsername">Username</label>
-                                                            <input type="text" class="form-control" name="Username" id="IdUsername" placeholder="Username ..." />
+                                                            <input type="text" class="form-control" name="Username" id="IdUsername" value="<?= $row['username']; ?>" placeholder="Username ..." />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label for="IdUsageState">Usage State</label>
                                                             <select class="form-control" name="UsageState" id="IdUsageState" placeholder="Usage State ...">
+                                                                <option value="<?= $row['status_use']; ?>"><?= $row['status_use']; ?></option>
                                                                 <option value="">Choose Usage State</option>
                                                                 <option value="In Use">In Use</option>
                                                                 <option value="Not In Use">Not In Use</option>
@@ -148,8 +163,8 @@ include 'include/dataTablesCSS.php';
                                                         <div class="form-group">
                                                             <label for="IdOwnershipStatus">Ownership Status</label>
                                                             <select class="form-control" name="OwnershipStatus" id="IdOwnershipStatus" placeholder="Ownership Status ...">
+                                                                <option value="<?= $row['status_available']; ?>"><?= $row['status_available']; ?></option>
                                                                 <option value="">Choose Ownership Status</option>
-                                                                <option value="NEW">NEW</option>
                                                                 <option value="PERMANENT">PERMANENT</option>
                                                                 <option value="AVAILABLE">AVAILABLE</option>
                                                                 <option value="BROKEN">BROKEN</option>
@@ -162,6 +177,7 @@ include 'include/dataTablesCSS.php';
                                                         <div class="form-group">
                                                             <label for="IdBranchLocation">Branch Location</label>
                                                             <select class="form-control" name="BranchLocation" id="IdBranchLocation" placeholder="Branch Location ...">
+                                                                <option value="<?= $row['location_branch']; ?>"><?= $row['location_branch']; ?></option>
                                                                 <option value="">Choose Branch Location</option>
                                                                 <?php
                                                                 $dataBL = $db->query("SELECT * FROM references_branch ORDER BY id ASC");
@@ -177,6 +193,7 @@ include 'include/dataTablesCSS.php';
                                                         <div class="form-group">
                                                             <label for="IdRoomLocation">Room Location</label>
                                                             <select class="form-control" name="RoomLocation" id="IdRoomLocation" placeholder="Room Location ...">
+                                                                <option value="<?= $row['location_room']; ?>"><?= $row['location_room']; ?></option>
                                                                 <option value="">Choose Room Location</option>
                                                                 <?php
                                                                 $dataRL = $db->query("SELECT * FROM references_room_loc ORDER BY id ASC");
@@ -195,13 +212,14 @@ include 'include/dataTablesCSS.php';
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="IdPONumber">PO Number</label>
-                                                            <input type="text" class="form-control" name="PONumber" id="IdPONumber" placeholder="PO Number ..." />
+                                                            <input type="text" class="form-control" name="PONumber" id="IdPONumber" value="<?= $row['po_no']; ?>" placeholder="PO Number ..." />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="IdCostCenter">Cost Center</label>
                                                             <select class="form-control" name="CostCenter" id="IdCostCenter" multiple placeholder="Cost Center ...">
+                                                                <option value="<?= $row['cost_center']; ?>"><?= $row['cost_center']; ?></option>
                                                                 <option value="">Choose Cost Center</option>
                                                                 <?php
                                                                 $dataCC = $db->query("SELECT * FROM references_costcenter ORDER BY id ASC");
@@ -216,13 +234,14 @@ include 'include/dataTablesCSS.php';
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="IdAssetNumber">Asset Number</label>
-                                                            <input type="text" class="form-control" name="AssetNumber" id="IdAssetNumber" placeholder="Asset Number ..." />
+                                                            <input type="text" class="form-control" name="AssetNumber" id="IdAssetNumber" value="<?= $row['asset_no']; ?>" placeholder="Asset Number ..." />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="IdAssetof">Asset of</label>
                                                             <select class="form-control" class="form-control" name="Assetof" id="IdAssetof" placeholder="Asset of ...">
+                                                                <option value="<?= $row['asset_of']; ?>"><?= $row['asset_of']; ?></option>
                                                                 <option value="">Choose Assets of</option>
                                                                 <?php
                                                                 $dataBU = $db->query("SELECT * FROM references_bu ORDER BY id ASC");
@@ -258,6 +277,7 @@ include 'include/dataTablesCSS.php';
                                                         <div class="form-group">
                                                             <label for="IdPurchaseYears">Purchase Years</label>
                                                             <select class="form-control" name="PurchaseYear" id="IdPurchaseYears" placeholder="Purchase Years ...">
+                                                                <option value="<?= $row['purchase_year']; ?>"><?= $row['purchase_year']; ?></option>
                                                                 <option value="">Choose Purchase Years</option>
                                                                 <?php
                                                                 for ($pYear = date('Y'); $pYear >= date('Y') - 20; $pYear -= 1) {
@@ -270,7 +290,8 @@ include 'include/dataTablesCSS.php';
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="IdPurchaseBatch">Purchase Batch</label>
-                                                            <select class="form-control" name="PurchaseYear" id="IdPurchaseBatch" placeholder="Purchase Batch ...">
+                                                            <select class="form-control" name="PurchaseBatch" id="IdPurchaseBatch" placeholder="Purchase Batch ...">
+                                                                <option value="<?= $row['purchase_batch']; ?>"><?= $row['purchase_batch']; ?></option>
                                                                 <option value="">Choose Purchase Batch</option>
                                                                 <?php
                                                                 $Batch = 0;
@@ -287,27 +308,24 @@ include 'include/dataTablesCSS.php';
                                                             <label for="IdPrices">Prices</label>
                                                             <div class="input-group mb-3">
                                                                 <div class="input-group-append"><span class="input-group-text">Rp.</span></div>
-                                                                <input type="text" class="form-control" name="Prices" id="IdPrices" placeholder="Prices ...">
+                                                                <input type="text" class="form-control" name="Prices" id="IdPrices" value="<?= $row['prices']; ?>" placeholder="Prices ...">
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="IdRemarks">Remarks</label>
-                                                            <textarea type="text" class="form-control" name="Remarks" id="IdRemarks" placeholder="Remarks ..."></textarea>
+                                                            <textarea type="text" class="form-control" name="Remarks" id="IdRemarks" placeholder="Remarks ..."><?= $row['remarks']; ?></textarea>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <font style="color: red;">*</font> <i>Required.</i>
                                             </div>
                                             <div class="col-md-12">
                                                 <hr />
                                             </div>
                                             <div class="col-md-12" style="display: flex;justify-content: flex-end;align-items: center;">
                                                 <a href="javascript:;" onclick="window.open('laptop_summary.php', '_self', ''); window.close();" class="btn btn-light" data-dismiss="modal" style="margin-right: 5px;"><i class="fas fa-times-circle"></i> Close</a>
-                                                <button type="submit" name="add_costcenter" class="btn btn-primary"><i class="fas fa-save"></i> Save</button>
+                                                <button type="submit" name="edit_" class="btn btn-primary"><i class="fas fa-save"></i> Save</button>
                                             </div>
                                         </div>
                                     </fieldset>

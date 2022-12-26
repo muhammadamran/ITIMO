@@ -51,8 +51,18 @@ include 'include/dataTablesCSS.php';
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
                             <h5 class="card-header"><i class="fas fa-plus-circle"></i> Add Laptop</h5>
+                            <div style="padding: 15px;margin-bottom: -30px;">
+                                <div class="alert alert-primary" role="alert">
+                                    <h4 class="alert-heading">Important!</h4>
+                                    <hr>
+                                    <p>
+                                        The following is the appropriate device master form for assets management that has been released by the finance department.
+                                    </p>
+                                </div>
+                            </div>
+                            <hr>
                             <div class="card-body">
-                                <form action="" method="POST">
+                                <form action="laptop_summary.php" method="POST">
                                     <fieldset>
                                         <div class="row">
                                             <div class="col-sm-8">
@@ -149,7 +159,6 @@ include 'include/dataTablesCSS.php';
                                                             <label for="IdOwnershipStatus">Ownership Status</label>
                                                             <select class="form-control" name="OwnershipStatus" id="IdOwnershipStatus" placeholder="Ownership Status ...">
                                                                 <option value="">Choose Ownership Status</option>
-                                                                <option value="NEW">NEW</option>
                                                                 <option value="PERMANENT">PERMANENT</option>
                                                                 <option value="AVAILABLE">AVAILABLE</option>
                                                                 <option value="BROKEN">BROKEN</option>
@@ -270,7 +279,7 @@ include 'include/dataTablesCSS.php';
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="IdPurchaseBatch">Purchase Batch</label>
-                                                            <select class="form-control" name="PurchaseYear" id="IdPurchaseBatch" placeholder="Purchase Batch ...">
+                                                            <select class="form-control" name="PurchaseBatch" id="IdPurchaseBatch" placeholder="Purchase Batch ...">
                                                                 <option value="">Choose Purchase Batch</option>
                                                                 <?php
                                                                 $Batch = 0;
@@ -307,7 +316,7 @@ include 'include/dataTablesCSS.php';
                                             </div>
                                             <div class="col-md-12" style="display: flex;justify-content: flex-end;align-items: center;">
                                                 <a href="javascript:;" onclick="window.open('laptop_summary.php', '_self', ''); window.close();" class="btn btn-light" data-dismiss="modal" style="margin-right: 5px;"><i class="fas fa-times-circle"></i> Close</a>
-                                                <button type="submit" name="add_costcenter" class="btn btn-primary"><i class="fas fa-save"></i> Save</button>
+                                                <button type="submit" name="add_" class="btn btn-primary"><i class="fas fa-save"></i> Save</button>
                                             </div>
                                         </div>
                                     </fieldset>

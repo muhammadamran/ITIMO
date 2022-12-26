@@ -6,6 +6,158 @@ include 'include/alert.php';
 include 'include/dataTablesCSS.php';
 ?>
 <?php
+// Add
+if (isset($_POST["add_"])) {
+    // Info Page
+    $page      = 'laptop_summary.php';
+    // End Info Page
+
+    // serial_number
+    $SerialNumber       = $_POST['SerialNumber'];
+    // product_name
+    $ProductName        = $_POST['ProductName'];
+    // brand
+    $Brand              = $_POST['Brand'];
+    // device_releases_years
+    $DeviceRelease      = $_POST['DeviceRelease'];
+    // memory
+    $Memory             = $_POST['Memory'];
+    // disk
+    $DiskSpace          = $_POST['DiskSpace'];
+    // disk_type
+    $DiskType           = $_POST['DiskType'];
+    // processor
+    $Processor          = $_POST['Processor'];
+    // hostname
+    $Hostname           = $_POST['Hostname'];
+    // username
+    $Username           = $_POST['Username'];
+    // status_use
+    $UsageState         = $_POST['UsageState'];
+    // status_available
+    $OwnershipStatus    = $_POST['OwnershipStatus'];
+    // location_branch
+    $BranchLocation     = $_POST['BranchLocation'];
+    // location_room
+    $RoomLocation       = $_POST['RoomLocation'];
+    // po_no
+    $PONumber           = $_POST['PONumber'];
+    // cost_center
+    $CostCenter         = $_POST['CostCenter'];
+    // asset_no
+    $AssetNumber        = $_POST['AssetNumber'];
+    // asset_of
+    $Assetof            = $_POST['Assetof'];
+    // purchase_year
+    $PurchaseYear       = $_POST['PurchaseYear'];
+    // purchase_batch
+    $PurchaseBatch      = $_POST['PurchaseBatch'];
+    // prices
+    $Prices             = $_POST['Prices'];
+    // remarks
+    $Remarks            = $_POST['Remarks'];
+    $created_by         = $_SESSION['username'];
+    $created_date       = date('Y-m-d H:m:i');
+
+    $available = $db->query("SELECT serial_number,product_name,brand FROM tb_laptop_master WHERE serial_number='$SerialNumber' AND product_name='$ProductName' AND brand='$Brand'");
+    if (mysqli_num_rows($available) == 1) {
+        echo "<script>window.location.href='laptop_summary.php?Available=true&page=$page';</script>";
+    } else {
+        $insert = $db->query("INSERT INTO tb_laptop_master
+                            (id,type,serial_number,product_name,brand,device_releases_years,memory,disk,disk_type,processor,hostname,username,status_use,status_available,location_branch,location_room,po_no,cost_center,asset_no,asset_of,purchase_year,purchase_batch,prices,remarks,created_by,created_date)
+                            VALUES
+                            ('','LAPTOP','$SerialNumber','$ProductName','$Brand','$DeviceRelease','$Memory','$DiskSpace','$DiskType','$Processor','$Hostname','$Username','$UsageState','$OwnershipStatus','$BranchLocation','$RoomLocation','$PONumber','$CostCenter','$AssetNumber','$Assetof','$PurchaseYear','$PurchaseBatch','$Prices','$Remarks','$created_by','$created_date')
+                            ");
+
+        if ($insert) {
+            echo "<script>window.location.href='laptop_summary.php?InsertSuccess=true&page=$page';</script>";
+        } else {
+            echo "<script>window.location.href='laptop_summary.php?InsertFailed=true&page=$page';</script>";
+        }
+    }
+}
+
+// Edit
+if (isset($_POST["edit_"])) {
+    // Info Page
+    $page      = 'laptop_summary.php';
+    // End Info Page
+
+    $ID         = $_POST['id'];
+    $SerialNumber       = $_POST['SerialNumber'];
+    $ProductName        = $_POST['ProductName'];
+    $Brand              = $_POST['Brand'];
+    $DeviceRelease      = $_POST['DeviceRelease'];
+    $Memory             = $_POST['Memory'];
+    $DiskSpace          = $_POST['DiskSpace'];
+    $DiskType           = $_POST['DiskType'];
+    $Processor          = $_POST['Processor'];
+    $Hostname           = $_POST['Hostname'];
+    $Username           = $_POST['Username'];
+    $UsageState         = $_POST['UsageState'];
+    $OwnershipStatus    = $_POST['OwnershipStatus'];
+    $BranchLocation     = $_POST['BranchLocation'];
+    $RoomLocation       = $_POST['RoomLocation'];
+    $PONumber           = $_POST['PONumber'];
+    $CostCenter         = $_POST['CostCenter'];
+    $AssetNumber        = $_POST['AssetNumber'];
+    $Assetof            = $_POST['Assetof'];
+    $PurchaseYear       = $_POST['PurchaseYear'];
+    $PurchaseBatch      = $_POST['PurchaseBatch'];
+    $Prices             = $_POST['Prices'];
+    $Remarks            = $_POST['Remarks'];
+    $created_by         = $_SESSION['username'];
+    $created_date       = date('Y-m-d H:m:i');
+
+    $edit    = $db->query("UPDATE tb_laptop_master SET serial_number='$SerialNumber',
+                                                       product_name='$ProductName',
+                                                       brand='$Brand',
+                                                       device_releases_years='$DeviceRelease',
+                                                       memory='$Memory',
+                                                       disk='$DiskSpace',
+                                                       disk_type='$DiskType',
+                                                       processor='$Processor',
+                                                       hostname='$Hostname',
+                                                       username='$Username',
+                                                       status_use='$UsageState',
+                                                       status_available='$OwnershipStatus',
+                                                       location_branch='$BranchLocation',
+                                                       location_room='$RoomLocation',
+                                                       po_no='$PONumber',
+                                                       cost_center='$CostCenter',
+                                                       asset_no='$AssetNumber',
+                                                       asset_of='$Assetof',
+                                                       purchase_year='$PurchaseYear',
+                                                       purchase_batch='$PurchaseBatch',
+                                                       prices='$Prices',
+                                                       remarks='$Remarks',
+                                                       created_by='$created_by',
+                                                       created_date='$created_date'
+                           WHERE id='$ID'");
+
+    if ($edit) {
+        echo "<script>window.location.href='laptop_summary.php?UpdateSuccess=true&page=$page';</script>";
+    } else {
+        echo "<script>window.location.href='laptop_summary.php?UpdateFailed=true&page=$page';</script>";
+    }
+}
+// Delete
+if (isset($_POST["delete_"])) {
+    // Info Page
+    $page      = 'laptop_summary.php';
+    // End Info Page
+
+    $ID        = $_POST['ID'];
+
+    $delete    = $db->query("DELETE FROM tb_laptop_master WHERE id='$ID'");
+
+    if ($delete) {
+        echo "<script>window.location.href='laptop_summary.php?DeleteSuccess=true&page=$page';</script>";
+    } else {
+        echo "<script>window.location.href='laptop_summary.php?DeleteFailed=true&page=$page';</script>";
+    }
+}
+
 $FindSerialNumber = '';
 $FindProductName  = '';
 $FindBrand        = '';
@@ -14,7 +166,6 @@ $FindUsername     = '';
 $FindUS           = '';
 $FindOS           = '';
 $FindBranchLoc    = '';
-
 if (isset($_POST["find_filter"])) {
     if ($_POST["FindSerialNumber"] != '') {
         $FindSerialNumber = $_POST['FindSerialNumber'];
@@ -184,6 +335,35 @@ if (isset($_POST["find_filter"])) {
                             </div>
                             <!-- End Add Laptop  -->
                             <hr />
+                            <div style="padding: 15px;">
+                                <div class="alert alert-primary" role="alert">
+                                    <h4 class="alert-heading">Information!</h4>
+                                    <?php
+                                    $TotalData       = $db->query("SELECT COUNT(*) AS total_,
+                                                                   (SELECT COUNT(*) FROM tb_laptop_master WHERE status_available='AVAILABLE') AS t_AVAILABLE,
+                                                                   (SELECT COUNT(*) FROM tb_laptop_master WHERE status_available='BROKEN') AS t_BROKEN,
+                                                                   (SELECT COUNT(*) FROM tb_laptop_master WHERE status_available='DISPOSED') AS t_DISPOSED,
+                                                                   (SELECT COUNT(*) FROM tb_laptop_master WHERE status_available='PERMANENT') AS t_PERMANENT,
+                                                                   (SELECT COUNT(*) FROM tb_laptop_master WHERE status_available='TEMP') AS t_TEMP,
+                                                                   (SELECT COUNT(*) FROM tb_laptop_master WHERE status_available IS NULL OR status_available='' OR status_available='-' OR status_available='NA' OR status_available='N/A' OR status_available='#N/A') AS t_NULL
+                                                                   FROM tb_laptop_master");
+                                    $resultTotalData = mysqli_fetch_array($TotalData);
+                                    ?>
+                                    <p>
+                                        Total Serial Number <b><?= $resultTotalData['total_']; ?> Laptop.</b> Details Status Devices:
+                                    <ul>
+                                        <li>AVAILABLE <b><?= $resultTotalData['t_AVAILABLE']; ?></b></li>
+                                        <li>BROKEN <b><?= $resultTotalData['t_BROKEN']; ?></b></li>
+                                        <li>DISPOSED <b><?= $resultTotalData['t_DISPOSED']; ?></b></li>
+                                        <li>PERMANENT <b><?= $resultTotalData['t_PERMANENT']; ?></b></li>
+                                        <li>TEMP <b><?= $resultTotalData['t_TEMP']; ?></b></li>
+                                        <li>??? <b><?= $resultTotalData['t_NULL']; ?></b></li>
+                                    </ul>
+                                    </p>
+                                    <hr>
+                                    <p class="mb-0">Total Details Status Devices: <b><?= $resultTotalData['t_AVAILABLE'] + $resultTotalData['t_BROKEN'] + $resultTotalData['t_DISPOSED'] + $resultTotalData['t_PERMANENT'] + $resultTotalData['t_TEMP'] + $resultTotalData['t_NULL']; ?> </b>.</p>
+                                </div>
+                            </div>
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <?php include "table/t_laptop_summary.php"; ?>

@@ -3,6 +3,7 @@
         <tr style="text-align: center;">
             <th>#</th>
             <th class="no-sort">History</th>
+            <th>Status<font style="color:transparent">.</font>Device</th>
             <th>Description</th>
             <th>SN<font style="color:transparent">.</font>&<font style="color:transparent">.</font>Product<font style="color:transparent">.</font>Name/Brand</th>
             <th>Hostname<font style="color:transparent">.</font>&<font style="color:transparent">.</font>Username</th>
@@ -77,6 +78,54 @@
                                     <i class="fas fa-file-invoice"></i>
                                 </div>
                             </a>
+                        </div>
+                    </td>
+                    <!-- Status Device -->
+                    <td>
+                        <div style="display: flex;justify-content: center;align-items: center;">
+                            <?php if ($row['status_use'] == 'In Use' && $row['status_available'] == 'PERMANENT') { ?>
+                                <a href="laptop_summary_history.php?SN=<?= $row['serial_number']; ?>" target="_blank" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="right" data-content="Assets Users: <?= $row['serial_number']; ?>">
+                                    <div class="table-icon-Assets-Users">
+                                        <i class="fas fa-user-lock"></i>
+                                    </div>
+                                </a>
+                            <?php } else if ($row['status_use'] == 'In Use' && $row['status_available'] == 'TEMP') { ?>
+                                <a href="laptop_summary_history.php?SN=<?= $row['serial_number']; ?>" target="_blank" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="right" data-content="Assets Users Temp: <?= $row['serial_number']; ?>">
+                                    <div class="table-icon-Assets-Users-Temp">
+                                        <i class="fas fa-user-lock"></i>
+                                    </div>
+                                </a>
+                            <?php } else if ($row['status_use'] == 'Not In Use' && $row['status_available'] == 'TEMP') { ?>
+                                <a href="laptop_summary_history.php?SN=<?= $row['serial_number']; ?>" target="_blank" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="right" data-content="Assets IT Temp: <?= $row['serial_number']; ?>">
+                                    <div class="table-icon-Assets-IT-Temp">
+                                        <i class="fas fa-user-check"></i>
+                                    </div>
+                                </a>
+                            <?php } else if ($row['status_use'] == 'Not In Use' && $row['status_available'] == 'BROKEN') { ?>
+                                <a href="laptop_summary_history.php?SN=<?= $row['serial_number']; ?>" target="_blank" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="right" data-content="Device Broken: <?= $row['serial_number']; ?>">
+                                    <div class="table-icon-Device-Broken">
+                                        <i class="fas fa-heart-broken"></i>
+                                    </div>
+                                </a>
+                            <?php } else if ($row['status_use'] == 'Not In Use' && $row['status_available'] == 'AVAILABLE') { ?>
+                                <a href="laptop_summary_history.php?SN=<?= $row['serial_number']; ?>" target="_blank" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="right" data-content="Device can use: <?= $row['serial_number']; ?>">
+                                    <div class="table-icon-Device-can-use">
+                                        <i class="fas fa-user-check"></i>
+                                    </div>
+                                </a>
+                            <?php } else if ($row['status_use'] == 'Not In Use' && $row['status_available'] == 'DISPOSED') { ?>
+                                <a href="laptop_summary_history.php?SN=<?= $row['serial_number']; ?>" target="_blank" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="right" data-content="Device Disposed: <?= $row['serial_number']; ?>">
+                                    <div class="table-icon-Device-Disposed">
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                    </div>
+                                </a>
+                            <?php } else { ?>
+                                <a href="laptop_summary_history.php?SN=<?= $row['serial_number']; ?>" target="_blank" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="right" data-content="???: <?= $row['serial_number']; ?>">
+                                    <div class="table-icon-NULL">
+                                        <i class="far fa-question-circle"></i>
+                                    </div>
+                                </a>
+                            <?php } ?>
                         </div>
                     </td>
                     <!-- Description -->
@@ -195,15 +244,48 @@
                     </td>
                     <td>
                         <div style="display: flex;justify-content: center;align-items: center;">
-                            <a href="laptop_summary_edit.php?ID=<?= $row['id']; ?>" target="_blank" class="btn btn-sm btn-behind-green" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="left" data-content="Edit Device: <?= $row['serial_number']; ?>" style="margin-left: 5px;">
+                            <!-- <a href="laptop_summary_edit.php?ID=<?= $row['id']; ?>" target="_blank" class="btn btn-sm btn-behind-green" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="left" data-content="Edit Device: <?= $row['serial_number']; ?>" style="margin-left: 5px;">
                                 <i class="fas fa-edit"></i>
-                            </a>
-                            <a href="#DeleteRoomLocation<?= $row['id']; ?>" class="btn btn-sm btn-behind-green" data-toggle="modal" title="Delete Device: <?= $row['serial_number']; ?>" style="margin-left: 5px;">
+                            </a> -->
+                            <a href="#Delete<?= $row['id']; ?>" class="btn btn-sm btn-behind-green" data-toggle="modal" title="Delete Device: <?= $row['serial_number']; ?>" style="margin-left: 5px;">
                                 <i class="fas fa-trash"></i>
                             </a>
                         </div>
                     </td>
                 </tr>
+
+                <!-- Delete -->
+                <div class="modal fade" id="Delete<?= $row['id']; ?>">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">[Delete Data] Laptop</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            </div>
+                            <form action="" method="POST">
+                                <div class="modal-body">
+                                    <fieldset>
+                                        <div class="list-group">
+                                            <a href="#" class="behind-list-group-item list-group-item-action flex-column align-items-start active">
+                                                <div class="d-flex w-100 justify-content-between">
+                                                    <h5 class="mb-1 text-white">Warning!</h5>
+                                                    <small><?= date('d F Y') ?></small>
+                                                </div>
+                                                <p class="mb-1">Are you sure you want to delete this data?, please click <b>Yes</b> if you want to delete this data from the system?</p>
+                                            </a>
+                                            <input type="hidden" name="ID" value="<?= $row['id']; ?>" />
+                                        </div>
+                                    </fieldset>
+                                </div>
+                                <div class="modal-footer">
+                                    <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> No</a>
+                                    <button type="submit" name="delete_" class="btn btn-danger"><i class="fas fa-check-circle"></i> Yes</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Delete -->
             <?php } ?>
         <?php } else { ?>
         <?php } ?>

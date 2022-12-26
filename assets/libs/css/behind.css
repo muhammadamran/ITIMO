@@ -201,7 +201,84 @@ tbody {
 .loading-divider {
     background: #04326ce6;
     height: 5px;
-    margin: 5px -1px;
+    margin: 15px 5px -1px;
     box-sizing: border-box;
     border-radius: 100px;
+}
+
+.table-icon-NULL {
+    padding: 5px 10px 5px 10px;
+    font-size: 20px;
+    background: #607d8b;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.table-icon-Assets-IT-Temp {
+    padding: 5px 10px 5px 10px;
+    font-size: 20px;
+    background: #003369;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.table-icon-Assets-Users {
+    padding: 5px 10px 5px 10px;
+    font-size: 20px;
+    background: #07b383;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.table-icon-Assets-Users-Temp {
+    padding: 5px 10px 5px 10px;
+    font-size: 20px;
+    background: #0998b0;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.table-icon-Device-Broken {
+    padding: 5px 10px 5px 10px;
+    font-size: 20px;
+    background: #da0419;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.table-icon-Device-can-use {
+    padding: 5px 10px 5px 10px;
+    font-size: 20px;
+    background: #ffb739;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.table-icon-Device-Disposed {
+    padding: 5px 10px 5px 10px;
+    font-size: 20px;
+    background: #1f202b;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.padd-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0px;
+    margin-bottom: -15px;
+    padding: 15px;
+}
+
+.alert-primary {
+    color: #fff;
+    background-color: #003369;
+    border-color: #003369;
+}
+
+.alert-important {
+    color: #fff;
+    background-color: #f44336;
+    border-color: #f44336;
 }
