@@ -164,7 +164,8 @@ tbody {
 }
 
 .table-icon-blue {
-    padding: 10px;
+    /* padding: 10px; */
+    padding: 5px 10px 5px 10px;
     font-size: 20px;
     background: #07b383;
     /* background: #0099da; */

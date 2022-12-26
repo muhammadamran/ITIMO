@@ -2,14 +2,14 @@
     <thead>
         <tr style="text-align: center;">
             <th>#</th>
-            <th>Room Location</th>
+            <th>Cost Center</th>
             <th>Remarks</th>
             <th class="no-sort">Action</th>
         </tr>
     </thead>
     <tbody>
         <?php
-        $dataTable = $db->query("SELECT * FROM references_room_loc ORDER BY id ASC", 0);
+        $dataTable = $db->query("SELECT * FROM references_costcenter ORDER BY id ASC", 0);
         if (mysqli_num_rows($dataTable) > 0) {
             $no = 0;
             while ($row = mysqli_fetch_array($dataTable)) {
@@ -17,14 +17,14 @@
         ?>
                 <tr>
                     <td><?= $no ?>.</td>
-                    <td><?= $row['room']; ?></td>
+                    <td><?= $row['costcenter']; ?></td>
                     <td><?= $row['remarks']; ?></td>
                     <td>
                         <div style="display: flex;justify-content: center;align-items: center;">
-                            <a href="#EditRoomLocation<?= $row['id']; ?>" class="btn btn-sm btn-behind-green" data-toggle="modal" title="Edit Email Notif System" style="margin-left: 5px;">
+                            <a href="#EditCostCenter<?= $row['id']; ?>" class="btn btn-sm btn-behind-green" data-toggle="modal" title="Edit Email Notif System" style="margin-left: 5px;">
                                 <i class="fas fa-edit"></i> Edit
                             </a>
-                            <a href="#DeleteRoomLocation<?= $row['id']; ?>" class="btn btn-sm btn-behind-green" data-toggle="modal" title="Delete Email Notif System" style="margin-left: 5px;">
+                            <a href="#DeleteCostCenter<?= $row['id']; ?>" class="btn btn-sm btn-behind-green" data-toggle="modal" title="Delete Email Notif System" style="margin-left: 5px;">
                                 <i class="fas fa-trash"></i> Delete
                             </a>
                         </div>
@@ -32,11 +32,11 @@
                 </tr>
 
                 <!-- Edit -->
-                <div class="modal fade" id="EditRoomLocation<?= $row['id']; ?>">
+                <div class="modal fade" id="EditCostCenter<?= $row['id']; ?>">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title">[Edit Data] Room Location</h4>
+                                <h4 class="modal-title">[Edit Data] Cost Center</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             </div>
                             <form action="" method="POST">
@@ -45,8 +45,8 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="IdRoomLocation">Room Location</label>
-                                                    <input type="text" class="form-control" name="RoomLocation" id="IdRoomLocation" value="<?= $row['room']; ?>" placeholder="Room Location ..." />
+                                                    <label for="IdCostCenter">Cost Center</label>
+                                                    <input type="text" class="form-control" name="CostCenter" id="IdCostCenter" value="<?= $row['costcenter']; ?>" placeholder="Cost Center ..." />
                                                     <input type="hidden" name="ID" value="<?= $row['id']; ?>" />
                                                 </div>
                                             </div>
@@ -61,7 +61,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <a href="javascript:;" class="btn btn-light" data-dismiss="modal"><i class="fas fa-times-circle"></i> Close</a>
-                                    <button type="submit" name="edit_room_loc" class="btn btn-behind-green"><i class="fas fa-save"></i> Edit</button>
+                                    <button type="submit" name="edit_costcenter" class="btn btn-behind-green"><i class="fas fa-save"></i> Edit</button>
                                 </div>
                             </form>
                         </div>
@@ -70,11 +70,11 @@
                 <!-- End Edit -->
 
                 <!-- Delete -->
-                <div class="modal fade" id="DeleteRoomLocation<?= $row['id']; ?>">
+                <div class="modal fade" id="DeleteCostCenter<?= $row['id']; ?>">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title">[Delete Data] Room Location</h4>
+                                <h4 class="modal-title">[Delete Data] Cost Center</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             </div>
                             <form action="" method="POST">
@@ -94,7 +94,7 @@
                                                 </div>
                                                 <p class="mb-1" style="display: grid;">
                                                     <font><b>ID</b>: <?= $row['id']; ?></font>
-                                                    <font><b>Room Location</b>: <?= $row['room']; ?></font>
+                                                    <font><b>Cost Center</b>: <?= $row['costcenter']; ?></font>
                                                     <font><b>Remarks</b>: <?= $row['remarks']; ?></font>
                                                     <input type="hidden" name="ID" value="<?= $row['id']; ?>" />
                                                 </p>
@@ -104,7 +104,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> No</a>
-                                    <button type="submit" name="delete_room_loc" class="btn btn-danger"><i class="fas fa-check-circle"></i> Yes</button>
+                                    <button type="submit" name="delete_costcenter" class="btn btn-danger"><i class="fas fa-check-circle"></i> Yes</button>
                                 </div>
                             </form>
                         </div>

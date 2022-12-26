@@ -5,6 +5,16 @@ include 'include/head.php';
 include 'include/alert.php';
 include 'include/dataTablesCSS.php';
 ?>
+<?php
+$FindSerialNumber = '';
+$FindProductName  = '';
+$FindBrand        = '';
+$FindHostname     = '';
+$FindUsername     = '';
+$FindUS           = '';
+$FindOS           = '';
+$FindBranchLoc    = '';
+?>
 <title>Laptop Summary - <?= $Rapps['app_name'] ?> | General Management</title>
 <div class="dashboard-main-wrapper">
     <?php include "include/header.php"; ?>
@@ -50,46 +60,75 @@ include 'include/dataTablesCSS.php';
                         <div class="card">
                             <h5 class="card-header"><i class="fas fa-filter"></i> Filter Data Laptop Summary</h5>
                             <div class="card-body">
-                                <fieldset>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label for="FindHostname">Hostname</label>
-                                                <input type="text" class="form-control" name="FindHostname" id="FindHostname" value="<?= $FindHostname; ?>" placeholder="Hostname ..." readonly />
+                                <form action="" method="POST">
+                                    <fieldset>
+                                        <div class="row">
+                                            <!-- Find Serial Number -->
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="IdFindSerialNumber">Serial Number</label>
+                                                    <input type="text" class="form-control" name="FindSerialNumber" id="IdFindSerialNumber" value="<?= $FindSerialNumber; ?>" placeholder="Serial Number ..." />
+                                                </div>
+                                            </div>
+                                            <!-- Find Product Name -->
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="IdFindProductName">Product Name</label>
+                                                    <input type="text" class="form-control" name="FindProductName" id="IdFindProductName" value="<?= $FindProductName; ?>" placeholder="Product Name ..." />
+                                                </div>
+                                            </div>
+                                            <!-- Find Brand -->
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="IdFindBrand">Brand</label>
+                                                    <input type="text" class="form-control" name="FindBrand" id="IdFindBrand" value="<?= $FindBrand; ?>" placeholder="Brand ..." />
+                                                </div>
+                                            </div>
+                                            <!-- Find Hostname -->
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="IdFindHostname">Hostname</label>
+                                                    <input type="text" class="form-control" name="FindHostname" id="IdFindHostname" value="<?= $FindHostname; ?>" placeholder="Hostname ..." />
+                                                </div>
+                                            </div>
+                                            <!-- Find Username -->
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="IdFindUsername">Username</label>
+                                                    <input type="text" class="form-control" name="FindUsername" id="IdFindUsername" value="<?= $FindUsername; ?>" placeholder="Username ..." />
+                                                </div>
+                                            </div>
+                                            <!-- Find Usage State -->
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="IdFindUS">Usage State</label>
+                                                    <input type="text" class="form-control" name="FindUS" id="IdFindUS" value="<?= $FindUS; ?>" placeholder="Usage State ..." />
+                                                </div>
+                                            </div>
+                                            <!-- Find Ownership Status -->
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="IdFindOS">Ownership Status</label>
+                                                    <input type="text" class="form-control" name="FindOS" id="IdFindOS" value="<?= $FindOS; ?>" placeholder="Ownership Status ..." />
+                                                </div>
+                                            </div>
+                                            <!-- Find Branch Loc -->
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="IdFindBranchLoc">Branch Location</label>
+                                                    <input type="text" class="form-control" name="FindBranchLoc" id="IdFindBranchLoc" value="<?= $FindBranchLoc; ?>" placeholder="Branch Location ..." />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <hr />
+                                            </div>
+                                            <div class="col-md-12" style="display: flex;justify-content: flex-end;align-items: center;">
+                                                <a href="" class="btn btn-behind-green" data-dismiss="modal" style="margin-right: 5px;"><i class="fas fa-refresh"></i> Refresh</a>
+                                                <button type="submit" name="find_filter" class="btn btn-primary"><i class="fas fa-filter"></i> Filter</button>
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label for="FindProductName">Product Name</label>
-                                                <input type="text" class="form-control" name="FindProductName" id="FindProductName" value="<?= $FindProductName; ?>" placeholder="ProductName ..." readonly />
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label for="FindUsername">Username</label>
-                                                <input type="text" class="form-control" name="FindUsername" id="FindUsername" value="<?= $FindUsername; ?>" placeholder="ProductName ..." readonly />
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label for="IdEmail">Email</label>
-                                                <input type="email" class="form-control" name="NameEmail" id="IdEmail" value="<?= $row['user_email']; ?>" placeholder="Email ..." required />
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label for="IdRole">Role</label>
-                                                <select class="form-control" name="NameRole" id="IdRole" placeholder="Role ..." required>
-                                                    <option value="<?= $row['user_role'] ?>"><?= $row['user_role'] ?></option>
-                                                    <option value="">Choose Role</option>
-                                                    <option value="Admin">Admin</option>
-                                                    <option value="User">User</option>
-                                                    <option value="HRGA">HRGA</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </fieldset>
+                                    </fieldset>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -128,3 +167,46 @@ include 'include/dataTablesCSS.php';
 </div>
 <?php include "include/footer.php"; ?>
 <?php include "include/dataTablesJS.php"; ?>
+<script type="text/javascript">
+    // Find
+    $(function() {
+        $("#IdFindSerialNumber").autocomplete({
+            source: 'function/autocomplete/data.php?function=AutoFindSerialNumber'
+        });
+    });
+    $(function() {
+        $("#IdFindProductName").autocomplete({
+            source: 'function/autocomplete/data.php?function=AutoFindProductName'
+        });
+    });
+    $(function() {
+        $("#IdFindBrand").autocomplete({
+            source: 'function/autocomplete/data.php?function=AutoFindBrand'
+        });
+    });
+    $(function() {
+        $("#IdFindHostname").autocomplete({
+            source: 'function/autocomplete/data.php?function=AutoFindHostname'
+        });
+    });
+    $(function() {
+        $("#IdFindUsername").autocomplete({
+            source: 'function/autocomplete/data.php?function=AutoFindUsername'
+        });
+    });
+    $(function() {
+        $("#IdFindUS").autocomplete({
+            source: 'function/autocomplete/data.php?function=AutoFindUS'
+        });
+    });
+    $(function() {
+        $("#IdFindOS").autocomplete({
+            source: 'function/autocomplete/data.php?function=AutoFindOS'
+        });
+    });
+    $(function() {
+        $("#IdFindBranchLoc").autocomplete({
+            source: 'function/autocomplete/data.php?function=AutoFindBranchLoc'
+        });
+    });
+</script>

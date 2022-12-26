@@ -123,7 +123,7 @@
                                     </fieldset>
                                 </div>
                                 <div class="modal-footer">
-                                    <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Close</a>
+                                    <a href="javascript:;" class="btn btn-light" data-dismiss="modal"><i class="fas fa-times-circle"></i> Close</a>
                                     <button type="submit" name="edit_positions" class="btn btn-behind-green"><i class="fas fa-save"></i> Edit</button>
                                 </div>
                             </form>

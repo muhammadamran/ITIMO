@@ -66,7 +66,7 @@
                                     </fieldset>
                                 </div>
                                 <div class="modal-footer">
-                                    <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Close</a>
+                                    <a href="javascript:;" class="btn btn-light" data-dismiss="modal"><i class="fas fa-times-circle"></i> Close</a>
                                     <button type="submit" name="edit_email" class="btn btn-behind-green"><i class="fas fa-save"></i> Edit</button>
                                 </div>
                             </form>
@@ -117,44 +117,6 @@
                     </div>
                 </div>
                 <!-- End Delete -->
-
-                <!-- Reset Password -->
-                <div class="modal fade" id="ResetPasswordUser<?= $row['user_id']; ?>">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title">[Reset Password] Users</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                            </div>
-                            <form action="" method="POST">
-                                <div class="modal-body">
-                                    <fieldset>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="IdUsername">Username</label>
-                                                    <input type="text" class="form-control" name="NameUsername" id="IdUsername" value="<?= $row['user_name']; ?>" placeholder="Username ..." readonly />
-                                                    <input type="hidden" name="ID" value="<?= $row['user_id']; ?>" />
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="IdPassword">Password</label>
-                                                    <input type="password" class="form-control" name="NamePassword" id="IdPassword" value="<?= $row['user_pass']; ?>" placeholder="Password ..." required />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </fieldset>
-                                </div>
-                                <div class="modal-footer">
-                                    <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Close</a>
-                                    <button type="submit" name="edit_user" class="btn btn-behind-green"><i class="fas fa-save"></i> Edit</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Reset Password -->
             <?php } ?>
         <?php } else { ?>
             <tr>

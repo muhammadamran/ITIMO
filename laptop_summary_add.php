@@ -52,142 +52,266 @@ include 'include/dataTablesCSS.php';
                         <div class="card">
                             <h5 class="card-header"><i class="fas fa-plus-circle"></i> Add Laptop</h5>
                             <div class="card-body">
-                                <fieldset>
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label for="IdSerial Number">Serial Number <font style="color: red;">*</font></label>
-                                                <input type="text" class="form-control" name="SerialNumber" id="IdSerialNumber" placeholder="Serial Number ..." required />
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label for="IdProductName">Product Name <font style="color: red;">*</font></label>
-                                                <input type="text" class="form-control" name="ProductName" id="IdProductName" placeholder="Product Name ..." required />
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label for="IdBrand">Brand <font style="color: red;">*</font></label>
-                                                <input type="text" class="form-control" name="Brand" id="IdBrand" placeholder="Brand ..." required />
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label for="IdDeviceRelease">Device Release <font style="color: red;">*</font></label>
-                                                <select class="form-control" name="DeviceRelease" id="IdDeviceRelease" placeholder="Device Release ..." required>
-                                                    <option value="">Choose Device Release</option>
-                                                    <?php
-                                                    for ($i = date('Y'); $i >= date('Y') - 20; $i -= 1) {
-                                                        echo "<option value='$i'> $i </option>";
-                                                    }
-                                                    ?>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label for="IdMemory">Memory <font style="color: red;">*</font></label>
-                                                <div class="input-group mb-3">
-                                                    <input type="number" class="form-control" name="Memory" id="IdMemory" placeholder="Memory ..." required>
-                                                    <div class="input-group-append"><span class="input-group-text">RAM</span></div>
+                                <form action="" method="POST">
+                                    <fieldset>
+                                        <div class="row">
+                                            <div class="col-sm-8">
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label for="IdSerialNumber">Serial Number <font style="color: red;">*</font></label>
+                                                            <input type="text" class="form-control" name="SerialNumber" id="IdSerialNumber" placeholder="Serial Number ..." required />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label for="IdProductName">Product Name</label>
+                                                            <input type="text" class="form-control" name="ProductName" id="IdProductName" placeholder="Product Name ..." />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label for="IdBrand">Brand</label>
+                                                            <input type="text" class="form-control" name="Brand" id="IdBrand" placeholder="Brand ..." />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label for="IdDeviceRelease">Device Release</label>
+                                                            <select class="form-control" name="DeviceRelease" id="IdDeviceRelease" placeholder="Device Release ...">
+                                                                <option value="">Choose Device Release</option>
+                                                                <?php
+                                                                for ($iYear = date('Y'); $iYear >= date('Y') - 20; $iYear -= 1) {
+                                                                    echo "<option value='$iYear'> $iYear </option>";
+                                                                }
+                                                                ?>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label for="IdMemory">Memory Size</label>
+                                                            <div class="input-group mb-3">
+                                                                <input type="text" class="form-control" name="Memory" id="IdMemory" placeholder="Memory Size ...">
+                                                                <div class="input-group-append"><span class="input-group-text">GB</span></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label for="IdDiskSpace">Disk Space Size</label>
+                                                            <div class="input-group mb-3">
+                                                                <input type="text" class="form-control" name="DiskSpace" id="IdDiskSpace" placeholder="Disk Space Size ...">
+                                                                <div class="input-group-append"><span class="input-group-text">GB</span></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label for="IdDiskType">Disk Type</label>
+                                                            <select class="form-control" name="DiskType" id="IdDiskType" placeholder="Disk Type ...">
+                                                                <option value="">Choose Disk Type</option>
+                                                                <option value="HDD">HDD</option>
+                                                                <option value="SSD">SSD</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label for="IdProcessor">Processor</label>
+                                                            <input type="text" class="form-control" name="Processor" id="IdProcessor" placeholder="Processor ..." />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label for="IdHostname">Hostname</label>
+                                                            <input type="text" class="form-control" name="Hostname" id="IdHostname" placeholder="Hostname ..." />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label for="IdUsername">Username</label>
+                                                            <input type="text" class="form-control" name="Username" id="IdUsername" placeholder="Username ..." />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label for="IdUsageState">Usage State</label>
+                                                            <select class="form-control" name="UsageState" id="IdUsageState" placeholder="Usage State ...">
+                                                                <option value="">Choose Usage State</option>
+                                                                <option value="In Use">In Use</option>
+                                                                <option value="Not In Use">Not In Use</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label for="IdOwnershipStatus">Ownership Status</label>
+                                                            <select class="form-control" name="OwnershipStatus" id="IdOwnershipStatus" placeholder="Ownership Status ...">
+                                                                <option value="">Choose Ownership Status</option>
+                                                                <option value="NEW">NEW</option>
+                                                                <option value="PERMANENT">PERMANENT</option>
+                                                                <option value="AVAILABLE">AVAILABLE</option>
+                                                                <option value="BROKEN">BROKEN</option>
+                                                                <option value="DISPOSED">DISPOSED</option>
+                                                                <option value="TEMP">TEMP</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label for="IdBranchLocation">Branch Location</label>
+                                                            <select class="form-control" name="BranchLocation" id="IdBranchLocation" placeholder="Branch Location ...">
+                                                                <option value="">Choose Branch Location</option>
+                                                                <?php
+                                                                $dataBL = $db->query("SELECT * FROM references_branch ORDER BY id ASC");
+                                                                foreach ($dataBL as $optionBL) {
+                                                                ?>
+                                                                    <option data-tokens="<?= $optionBL['branch_name'] ?>" value="<?= $optionBL['branch_name'] ?>"><?= $optionBL['branch_name'] ?></option>
+                                                                <?php } ?>
+                                                            </select>
+                                                            <a href="references_branch.php" target="_blank"><i class="far fa-plus"></i> <small>Open master</small></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label for="IdRoomLocation">Room Location</label>
+                                                            <select class="form-control" name="RoomLocation" id="IdRoomLocation" placeholder="Room Location ...">
+                                                                <option value="">Choose Room Location</option>
+                                                                <?php
+                                                                $dataRL = $db->query("SELECT * FROM references_room_loc ORDER BY id ASC");
+                                                                foreach ($dataRL as $optionRL) {
+                                                                ?>
+                                                                    <option data-tokens="<?= $optionRL['room'] ?>" value="<?= $optionRL['room'] ?>"><?= $optionRL['room'] ?></option>
+                                                                <?php } ?>
+                                                            </select>
+                                                            <a href="references_room_loc.php" target="_blank"><i class="far fa-plus"></i> <small>Open master</small></a>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label for="IdDiskSpace">Disk Space <font style="color: red;">*</font></label>
-                                                <div class="input-group mb-3">
-                                                    <input type="number" class="form-control" name="DiskSpace" id="IdDiskSpace" placeholder="Disk Space ..." required>
-                                                    <div class="input-group-append"><span class="input-group-text">GB</span></div>
+                                            <div class="col-sm-4">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="IdPONumber">PO Number</label>
+                                                            <input type="text" class="form-control" name="PONumber" id="IdPONumber" placeholder="PO Number ..." />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="IdCostCenter">Cost Center</label>
+                                                            <select class="form-control" name="CostCenter" id="IdCostCenter" multiple placeholder="Cost Center ...">
+                                                                <option value="">Choose Cost Center</option>
+                                                                <?php
+                                                                $dataCC = $db->query("SELECT * FROM references_costcenter ORDER BY id ASC");
+                                                                foreach ($dataCC as $optionCC) {
+                                                                ?>
+                                                                    <option data-tokens="<?= $optionCC['costcenter'] ?>" value="<?= $optionCC['costcenter'] ?>"><?= $optionCC['costcenter'] ?></option>
+                                                                <?php } ?>
+                                                            </select>
+                                                            <a href="references_costcenter.php" target="_blank"><i class="far fa-plus"></i> <small>Open master</small></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="IdAssetNumber">Asset Number</label>
+                                                            <input type="text" class="form-control" name="AssetNumber" id="IdAssetNumber" placeholder="Asset Number ..." />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="IdAssetof">Asset of</label>
+                                                            <select class="form-control" class="form-control" name="Assetof" id="IdAssetof" placeholder="Asset of ...">
+                                                                <option value="">Choose Assets of</option>
+                                                                <?php
+                                                                $dataBU = $db->query("SELECT * FROM references_bu ORDER BY id ASC");
+                                                                foreach ($dataBU as $optionBU) {
+                                                                ?>
+                                                                    <option data-tokens="<?= $optionBU['bu_name'] ?>" value="<?= $optionBU['bu_name'] ?>"><?= $optionBU['bu_name'] ?></option>
+                                                                <?php } ?>
+                                                                <option value="CL">CL</option>
+                                                                <option value="ES">ES</option>
+                                                                <option value="ESA">ESA</option>
+                                                                <option value="ESKO">ESKO</option>
+                                                                <option value="ESN">ESN</option>
+                                                                <option value="ESTM">ESTM</option>
+                                                                <option value="SC">SC</option>
+                                                                <option value="VVS">VVS</option>
+                                                                <option value="AC">AC</option>
+                                                                <option value="BM">BM</option>
+                                                                <option value="OCC">OCC</option>
+                                                                <option value="SC">SC</option>
+                                                                <option value="SPE">SPE</option>
+                                                                <option value="LIIP">LIIP</option>
+                                                                <option value="NAC">NAC</option>
+                                                                <option value="NFL">NFL</option>
+                                                                <option value="NP">NP</option>
+                                                                <option value="SPS">SPS</option>
+                                                                <option value="VVS">VVS</option>
+                                                                <option value="ZO">ZO</option>
+                                                                <option value="ZS">ZS</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="IdPurchaseYears">Purchase Years</label>
+                                                            <select class="form-control" name="PurchaseYear" id="IdPurchaseYears" placeholder="Purchase Years ...">
+                                                                <option value="">Choose Purchase Years</option>
+                                                                <?php
+                                                                for ($pYear = date('Y'); $pYear >= date('Y') - 20; $pYear -= 1) {
+                                                                    echo "<option value='$pYear'> $pYear </option>";
+                                                                }
+                                                                ?>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="IdPurchaseBatch">Purchase Batch</label>
+                                                            <select class="form-control" name="PurchaseYear" id="IdPurchaseBatch" placeholder="Purchase Batch ...">
+                                                                <option value="">Choose Purchase Batch</option>
+                                                                <?php
+                                                                $Batch = 0;
+                                                                while ($Batch <= 99) {
+                                                                    $Batch++;
+                                                                    echo "<option value='$Batch'> $Batch </option>";
+                                                                }
+                                                                ?>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="IdPrices">Prices</label>
+                                                            <div class="input-group mb-3">
+                                                                <div class="input-group-append"><span class="input-group-text">Rp.</span></div>
+                                                                <input type="text" class="form-control" name="Prices" id="IdPrices" placeholder="Prices ...">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="IdRemarks">Remarks</label>
+                                                            <textarea type="text" class="form-control" name="Remarks" id="IdRemarks" placeholder="Remarks ..."></textarea>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label for="IdDiskType">Disk Type <font style="color: red;">*</font></label>
-                                                <select class="form-control" name="DiskType" id="IdDiskType" placeholder="Disk Type ..." required>
-                                                    <option value="">Choose Disk Type</option>
-                                                    <option value="HDD">HDD</option>
-                                                    <option value="SSD">SSD</option>
-                                                </select>
+                                            <div class="col-md-12">
+                                                <font style="color: red;">*</font> <i>Required.</i>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <hr />
+                                            </div>
+                                            <div class="col-md-12" style="display: flex;justify-content: flex-end;align-items: center;">
+                                                <a href="javascript:;" onclick="window.open('laptop_summary.php', '_self', ''); window.close();" class="btn btn-light" data-dismiss="modal" style="margin-right: 5px;"><i class="fas fa-times-circle"></i> Close</a>
+                                                <button type="submit" name="add_costcenter" class="btn btn-primary"><i class="fas fa-save"></i> Save</button>
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label for="IdProcessor">Processor <font style="color: red;">*</font></label>
-                                                <input type="text" class="form-control" name="Processor" id="IdProcessor" placeholder="Processor ..." required />
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label for="IdHostname">Hostname <font style="color: red;">*</font></label>
-                                                <input type="text" class="form-control" name="Hostname" id="IdHostname" placeholder="Hostname ..." required />
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label for="IdUsername">Username <font style="color: red;">*</font></label>
-                                                <input type="text" class="form-control" name="Username" id="IdUsername" placeholder="Username ..." required />
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label for="IdUsageState">Usage State <font style="color: red;">*</font></label>
-                                                <select class="form-control" name="UsageState" id="IdUsageState" placeholder="Usage State ..." required>
-                                                    <option value="">Choose Usage State</option>
-                                                    <option value="In Use">In Use</option>
-                                                    <option value="Not In Use">Not In Use</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label for="IdOwnershipStatus">Ownership Status <font style="color: red;">*</font></label>
-                                                <select class="form-control" name="OwnershipStatus" id="IdOwnershipStatus" placeholder="Ownership Status ..." required>
-                                                    <option value="">Choose Ownership Status</option>
-                                                    <option value="NEW">NEW</option>
-                                                    <option value="PERMANENT">PERMANENT</option>
-                                                    <option value="AVAILABLE">AVAILABLE</option>
-                                                    <option value="BROKEN">BROKEN</option>
-                                                    <option value="DISPOSED">DISPOSED</option>
-                                                    <option value="TEMP">TEMP</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label for="IdBranchLocation">Branch Location <font style="color: red;">*</font></label>
-                                                <select class="form-control" name="BranchLocation" id="IdBranchLocation" placeholder="Branch Location ..." required>
-                                                    <option value="">Choose Branch Location</option>
-                                                    <?php
-                                                    $dataBU = $db->query("SELECT * FROM references_branch ORDER BY id ASC");
-                                                    foreach ($dataBU as $optionBU) {
-                                                    ?>
-                                                        <option data-tokens="<?= $optionBU['branch_name'] ?>" value="<?= $optionBU['branch_name'] ?>"><?= $optionBU['branch_name'] ?></option>
-                                                    <?php } ?>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label for="IdRoomLocation">Room Location <font style="color: red;">*</font></label>
-                                                <select class="form-control" name="RoomLocation" id="IdRoomLocation" placeholder="Room Location ..." required>
-                                                    <option value="">Choose Room Location</option>
-                                                    <?php
-                                                    $dataBU = $db->query("SELECT * FROM references_room_loc ORDER BY id ASC");
-                                                    foreach ($dataBU as $optionBU) {
-                                                    ?>
-                                                        <option data-tokens="<?= $optionBU['room'] ?>" value="<?= $optionBU['room'] ?>"><?= $optionBU['room'] ?></option>
-                                                    <?php } ?>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <font style="color: red;">*</font> <i>Required.</i>
-                                        </div>
-                                    </div>
-                                </fieldset>
+                                    </fieldset>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -201,6 +325,10 @@ include 'include/dataTablesCSS.php';
 </div>
 <?php include "include/footer.php"; ?>
 <?php include "include/dataTablesJS.php"; ?>
+<script src="assets/plugins/jquery.maskedinput/src/jquery.maskedinput.js"></script>
+<!-- New Mask -->
+<script src="assets/plugins/mask/dist/jquery.mask.min.js"></script>
+<!-- End New Mask -->
 <script type="text/javascript" src="assets/plugins/chosen/chosen.jquery.js"></script>
 <script type="text/javascript">
     // Product Name
@@ -222,6 +350,7 @@ include 'include/dataTablesCSS.php';
         });
     });
     // Select Find
+    // Single
     $("#IdDeviceRelease").chosen({
         width: "100%"
     });
@@ -231,4 +360,30 @@ include 'include/dataTablesCSS.php';
     $("#IdRoomLocation").chosen({
         width: "100%"
     });
+    $("#IdAssetof").chosen({
+        width: "100%"
+    });
+    $("#IdPurchaseYears").chosen({
+        width: "100%"
+    });
+    $("#IdPurchaseBatch").chosen({
+        width: "100%"
+    });
+    // Multiple
+    $("#IdCostCenter").chosen({
+        width: "95%"
+    });
+
+    // Masking
+    $(document).ready(function() {
+        $('#IdDiskSpace').mask('###.###.###.###.###.###', {
+            reverse: true
+        });
+        $('#IdMemory').mask('99', {
+            reverse: true
+        });
+        $('#IdPrices').mask('###.###.###.###.###.###', {
+            reverse: true
+        });
+    })
 </script>
