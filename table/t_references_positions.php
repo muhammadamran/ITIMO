@@ -88,7 +88,7 @@
                                             <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label for="IdBusineesUnit">Business Unit & Functional</label>
-                                                    <select class="form-control" name="NameBusineesUnit" id="EditIdBusineesUnit" placeholder="Province ...">
+                                                    <select class="form-control" data-live-search="true" name="NameBusineesUnit" id="EditIdBusineesUnit" placeholder="Business Unit & Functional ...">
                                                         <option value="<?= $row['bu_name']; ?>"><?= $row['bu_name']; ?></option>
                                                         <option value="">Choose Business Unit & Functional</option>
                                                         <?php

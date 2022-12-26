@@ -18,13 +18,13 @@
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="IdBusineesUnit">Business Unit & Functional <font style="color: red;">*</font></label>
-                                            <select class="form-control" name="NameBusineesUnit" id="IdBusineesUnit" placeholder="Province ..." required>
+                                            <select class="form-control" data-live-search="true" name="NameBusineesUnit" id="IdBusineesUnit" placeholder="Business Unit & Functional ..." required>
                                                 <option value="">Choose Business Unit & Functional</option>
                                                 <?php
                                                 $dataBU = $db->query("SELECT * FROM references_bu ORDER BY id ASC");
                                                 foreach ($dataBU as $optionBU) {
                                                 ?>
-                                                    <option value="<?= $optionBU['bu_name'] ?>"><?= $optionBU['bu_name'] ?></option>
+                                                    <option data-tokens="<?= $optionBU['bu_name'] ?>" value="<?= $optionBU['bu_name'] ?>"><?= $optionBU['bu_name'] ?></option>
                                                 <?php } ?>
                                             </select>
                                         </div>

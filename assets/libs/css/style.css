@@ -1462,7 +1462,8 @@ Top Header
 
 .nav-user-dropdown {
     padding: 0px;
-    min-width: 230px;
+    /* min-width: 230px; */
+    min-width: 415px;
     margin: 0px;
 }
 
@@ -1685,6 +1686,7 @@ Left Navigation Sidebar
 .nav-left-sidebar .navbar {
     position: relative;
     padding: 14px;
+    margin-top: 15px;
 }
 
 .nav-left-sidebar .navbar-nav .nav-item {}
@@ -1957,7 +1959,7 @@ Container / Wrapper
 }
 
 .dashboard-content {
-    padding: 30px 30px 60px 30px;
+    padding: 45px 30px 60px 30px;
 }
 
 

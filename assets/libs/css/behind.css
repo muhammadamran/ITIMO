@@ -176,3 +176,15 @@ tbody {
     background-color: #07b383;
     color: #fff;
 }
+
+.header-profiles {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #003369;
+    color: #fff;
+    padding: 0px 10px;
+    border-radius: 100%;
+    width: 45px;
+    height: 45px;
+}

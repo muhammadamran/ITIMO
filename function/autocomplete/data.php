@@ -43,14 +43,14 @@ function AutoBrand()
         echo json_encode($data);
     }
 }
-// Type
-function AutoType()
+// Username
+function AutoUsername()
 {
     global $db;
     $searchTerm = $_GET['term'];
-    $sql = $db->query("SELECT type FROM tb_laptop_master  WHERE type LIKE '%" . $searchTerm . "%'  GROUP BY type ORDER BY id ASC LIMIT 10");
+    $sql = $db->query("SELECT username FROM tb_employee  WHERE username LIKE '%" . $searchTerm . "%'  GROUP BY username ORDER BY id ASC LIMIT 10");
     while ($row = mysqli_fetch_array($sql)) {
-        $data[] = $row['type'];
+        $data[] = $row['username'];
     }
 
     $check = json_encode($data);

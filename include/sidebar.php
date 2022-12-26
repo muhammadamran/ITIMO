@@ -510,11 +510,11 @@ $Rrole   = mysqli_fetch_array($role);
                     </li>
                     <!-- REFERENCES -->
                     <li class="nav-item">
-                        <a class="nav-link <?= $uriSegments[2] == 'references_bu.php' || $uriSegments[2] == 'references_positions.php' || $uriSegments[2] == 'references_branch.php' ? 'active' : '' ?>" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-setup" aria-controls="submenu-14">
+                        <a class="nav-link <?= $uriSegments[2] == 'references_bu.php' || $uriSegments[2] == 'references_positions.php' || $uriSegments[2] == 'references_branch.php' || $uriSegments[2] == 'references_room_loc.php'  ? 'active' : '' ?>" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-setup" aria-controls="submenu-14">
                             <i class="fas fa-asterisk" id="sidebar-font"></i>
                             <span>References</span>
                         </a>
-                        <div id="submenu-setup" class="collapse submenu <?= $uriSegments[2] == 'references_bu.php' || $uriSegments[2] == 'references_positions.php' || $uriSegments[2] == 'references_branch.php' ? 'show' : '' ?>">
+                        <div id="submenu-setup" class="collapse submenu <?= $uriSegments[2] == 'references_bu.php' || $uriSegments[2] == 'references_positions.php' || $uriSegments[2] == 'references_branch.php' || $uriSegments[2] == 'references_room_loc.php'  ? 'show' : '' ?>">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
                                     <a class="nav-link <?= $uriSegments[2] == 'references_bu.php' ? 'active' : '' ?>" href="references_bu.php">
@@ -529,6 +529,11 @@ $Rrole   = mysqli_fetch_array($role);
                                 <li class="nav-item">
                                     <a class="nav-link <?= $uriSegments[2] == 'references_branch.php' ? 'active' : '' ?>" href="references_branch.php">
                                         <span>Branch</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link <?= $uriSegments[2] == 'references_room_loc.php' ? 'active' : '' ?>" href="references_room_loc.php">
+                                        <span>Room Location</span>
                                     </a>
                                 </li>
                             </ul>
