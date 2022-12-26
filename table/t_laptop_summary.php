@@ -3,6 +3,7 @@
         <tr style="text-align: center;">
             <th>#</th>
             <th class="no-sort">History</th>
+            <th>Asset<font style="color:transparent">.</font>File</th>
             <th>Status<font style="color:transparent">.</font>Device</th>
             <th>Description</th>
             <th>SN<font style="color:transparent">.</font>&<font style="color:transparent">.</font>Product<font style="color:transparent">.</font>Name/Brand</th>
@@ -73,7 +74,17 @@
                     <!-- History -->
                     <td>
                         <div style="display: flex;justify-content: center;align-items: center;">
-                            <a href="laptop_summary_history.php?SN=<?= $row['serial_number']; ?>" target="_blank" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="right" data-content="Details Devices History: <?= $row['serial_number']; ?>">
+                            <a href="laptop_summary_history.php?SN=<?= $row['serial_number']; ?>" target="_blank" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="right" data-content="Detail Device History: <?= $row['serial_number']; ?>">
+                                <div class="table-icon-blue">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                            </a>
+                        </div>
+                    </td>
+                    <!-- Asset File -->
+                    <td>
+                        <div style="display: flex;justify-content: center;align-items: center;">
+                            <a href="laptop_summary_history.php?SN=<?= $row['serial_number']; ?>" target="_blank" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="right" data-content="Asset File Device: <?= $row['serial_number']; ?>">
                                 <div class="table-icon-blue">
                                     <i class="fas fa-file-invoice"></i>
                                 </div>

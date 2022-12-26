@@ -329,7 +329,12 @@ if (isset($_POST["find_filter"])) {
                             <div class="row">
                                 <div class="col-sm-3" style="margin-top: 15px;margin-left: 15px;">
                                     <a href="laptop_summary_add.php" target="_blank" class="btn btn-sm btn-primary" title="Add Laptop"><i class="fas fa-plus-circle"></i>
-                                        <font class="f-action">Add Laptop</font>
+                                        <font class="f-action"></font>
+                                    </a>
+                                    <!-- End Add Laptop  -->
+                                    <!-- Add Laptop  -->
+                                    <a href="laptop_summary_allocate.php" target="_blank" class="btn btn-sm btn-primary" title="Allocate Device"><i class="fas fa-user-plus"></i></i>
+                                        <font class="f-action"></font>
                                     </a>
                                 </div>
                             </div>
