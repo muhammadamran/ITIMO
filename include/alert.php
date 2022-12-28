@@ -74,4 +74,22 @@ $page = (isset($_GET['page']));
         })
         history.replaceState({}, '', './<?= $_GET['page'] ?>');
     }
+    // UPLOAD SUCCESS
+    if (window?.location?.href?.indexOf('UploadSuccess') > -1) {
+        Swal.fire({
+            title: 'Success!',
+            icon: 'success',
+            text: 'Import data successfully!'
+        })
+        history.replaceState({}, '', './<?= $_GET['page'] ?>');
+    }
+    // UPLOAD FAILED
+    if (window?.location?.href?.indexOf('UploadFailed') > -1) {
+        Swal.fire({
+            title: 'Failed!',
+            icon: 'error',
+            text: 'Import data unsuccessfully!, Check Extention not recognized!'
+        })
+        history.replaceState({}, '', './<?= $_GET['page'] ?>');
+    }
 </script>

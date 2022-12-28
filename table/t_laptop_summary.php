@@ -2,8 +2,7 @@
     <thead>
         <tr style="text-align: center;">
             <th>#</th>
-            <th class="no-sort">History</th>
-            <th>Asset<font style="color:transparent">.</font>File</th>
+            <th class="no-sort">History<font style="color:transparent">.</font>&<font style="color:transparent">.</font>Asset<font style="color:transparent">.</font>File</th>
             <th>Status<font style="color:transparent">.</font>Device</th>
             <th>Description</th>
             <th>SN<font style="color:transparent">.</font>&<font style="color:transparent">.</font>Product<font style="color:transparent">.</font>Name/Brand</th>
@@ -71,68 +70,67 @@
         ?>
                 <tr>
                     <td><?= $no ?>.</td>
-                    <!-- History -->
+                    <!-- History & Asset File  -->
                     <td>
                         <div style="display: flex;justify-content: center;align-items: center;">
-                            <a href="laptop_summary_history.php?SN=<?= $row['serial_number']; ?>" target="_blank" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="right" data-content="Detail Device History: <?= $row['serial_number']; ?>">
-                                <div class="table-icon-blue">
-                                    <i class="fas fa-clock"></i>
-                                </div>
-                            </a>
-                        </div>
-                    </td>
-                    <!-- Asset File -->
-                    <td>
-                        <div style="display: flex;justify-content: center;align-items: center;">
-                            <a href="laptop_summary_history.php?SN=<?= $row['serial_number']; ?>" target="_blank" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="right" data-content="Asset File Device: <?= $row['serial_number']; ?>">
-                                <div class="table-icon-blue">
-                                    <i class="fas fa-file-invoice"></i>
-                                </div>
-                            </a>
+                            <div>
+                                <a href="laptop_summary_history.php?SN=<?= $row['serial_number']; ?>" target="_blank" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="right" data-content="Detail Device History: <?= $row['serial_number']; ?>">
+                                    <div class="table-icon-Assets-IT-Temp">
+                                        <i class="fas fa-clock"></i>
+                                    </div>
+                                </a>
+                            </div>
+                            <div style="margin-left:5px">
+                                <a href="laptop_summary_asset.php?SN=<?= $row['serial_number']; ?>" target="_blank" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="right" data-content="Asset File Device: <?= $row['serial_number']; ?>">
+                                    <div class="table-icon-Assets-IT-Temp">
+                                        <i class="fas fa-file-invoice"></i>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
                     </td>
                     <!-- Status Device -->
                     <td>
                         <div style="display: flex;justify-content: center;align-items: center;">
                             <?php if ($row['status_use'] == 'In Use' && $row['status_available'] == 'PERMANENT') { ?>
-                                <a href="laptop_summary_history.php?SN=<?= $row['serial_number']; ?>" target="_blank" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="right" data-content="Assets Users: <?= $row['serial_number']; ?>">
-                                    <div class="table-icon-Assets-Users">
-                                        <i class="fas fa-user-lock"></i>
+                                <a href="#" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="right" data-content="Assets Users: <?= $row['serial_number']; ?>">
+                                    <div class="table-icon-Assets-IT-Temp">
+                                        <i class="fas fa-lock"></i>
                                     </div>
                                 </a>
                             <?php } else if ($row['status_use'] == 'In Use' && $row['status_available'] == 'TEMP') { ?>
-                                <a href="laptop_summary_history.php?SN=<?= $row['serial_number']; ?>" target="_blank" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="right" data-content="Assets Users Temp: <?= $row['serial_number']; ?>">
-                                    <div class="table-icon-Assets-Users-Temp">
-                                        <i class="fas fa-user-lock"></i>
+                                <a href="#" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="right" data-content="Assets Users Temp: <?= $row['serial_number']; ?>">
+                                    <div class="table-icon-Assets-IT-Temp">
+                                        <i class="fas fa-lock"></i>
                                     </div>
                                 </a>
                             <?php } else if ($row['status_use'] == 'Not In Use' && $row['status_available'] == 'TEMP') { ?>
-                                <a href="laptop_summary_history.php?SN=<?= $row['serial_number']; ?>" target="_blank" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="right" data-content="Assets IT Temp: <?= $row['serial_number']; ?>">
+                                <a href="#" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="right" data-content="Assets IT Temp: <?= $row['serial_number']; ?>">
                                     <div class="table-icon-Assets-IT-Temp">
-                                        <i class="fas fa-user-check"></i>
+                                        <i class="fas fa-check-circle"></i>
                                     </div>
                                 </a>
                             <?php } else if ($row['status_use'] == 'Not In Use' && $row['status_available'] == 'BROKEN') { ?>
-                                <a href="laptop_summary_history.php?SN=<?= $row['serial_number']; ?>" target="_blank" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="right" data-content="Device Broken: <?= $row['serial_number']; ?>">
-                                    <div class="table-icon-Device-Broken">
+                                <a href="#" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="right" data-content="Device Broken: <?= $row['serial_number']; ?>">
+                                    <div class="table-icon-Assets-IT-Temp">
                                         <i class="fas fa-heart-broken"></i>
                                     </div>
                                 </a>
                             <?php } else if ($row['status_use'] == 'Not In Use' && $row['status_available'] == 'AVAILABLE') { ?>
-                                <a href="laptop_summary_history.php?SN=<?= $row['serial_number']; ?>" target="_blank" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="right" data-content="Device can use: <?= $row['serial_number']; ?>">
-                                    <div class="table-icon-Device-can-use">
-                                        <i class="fas fa-user-check"></i>
+                                <a href="#" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="right" data-content="Device can use: <?= $row['serial_number']; ?>">
+                                    <div class="table-icon-Assets-IT-Temp">
+                                        <i class="fas fa-check-circle"></i>
                                     </div>
                                 </a>
                             <?php } else if ($row['status_use'] == 'Not In Use' && $row['status_available'] == 'DISPOSED') { ?>
-                                <a href="laptop_summary_history.php?SN=<?= $row['serial_number']; ?>" target="_blank" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="right" data-content="Device Disposed: <?= $row['serial_number']; ?>">
-                                    <div class="table-icon-Device-Disposed">
+                                <a href="#" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="right" data-content="Device Disposed: <?= $row['serial_number']; ?>">
+                                    <div class="table-icon-Assets-IT-Temp">
                                         <i class="fas fa-exclamation-triangle"></i>
                                     </div>
                                 </a>
                             <?php } else { ?>
-                                <a href="laptop_summary_history.php?SN=<?= $row['serial_number']; ?>" target="_blank" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="right" data-content="???: <?= $row['serial_number']; ?>">
-                                    <div class="table-icon-NULL">
+                                <a href="#" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="right" data-content="???: <?= $row['serial_number']; ?>">
+                                    <div class="table-icon-Assets-IT-Temp">
                                         <i class="far fa-question-circle"></i>
                                     </div>
                                 </a>
@@ -255,11 +253,11 @@
                     </td>
                     <td>
                         <div style="display: flex;justify-content: center;align-items: center;">
-                            <!-- <a href="laptop_summary_edit.php?ID=<?= $row['id']; ?>" target="_blank" class="btn btn-sm btn-behind-green" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="left" data-content="Edit Device: <?= $row['serial_number']; ?>" style="margin-left: 5px;">
-                                <i class="fas fa-edit"></i>
-                            </a> -->
+                            <a href="laptop_summary_edit.php?ID=<?= $row['id']; ?>" target="_blank" class="btn btn-sm btn-behind-green" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="left" data-content="Edit Device: <?= $row['serial_number']; ?>" style="margin-left: 5px;">
+                                <i class="fas fa-edit"></i> Edit
+                            </a>
                             <a href="#Delete<?= $row['id']; ?>" class="btn btn-sm btn-behind-green" data-toggle="modal" title="Delete Device: <?= $row['serial_number']; ?>" style="margin-left: 5px;">
-                                <i class="fas fa-trash"></i>
+                                <i class="fas fa-trash"></i> Delete
                             </a>
                         </div>
                     </td>

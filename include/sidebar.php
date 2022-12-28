@@ -41,14 +41,35 @@ $Rrole   = mysqli_fetch_array($role);
                     </li>
                     <!-- LAPTOP -->
                     <li class="nav-item">
-                        <a class="nav-link <?= $uriSegments[2] == 'laptop_summary.php' || $uriSegments[2] == 'laptop_summary_add.php' || $uriSegments[2] == 'laptop_summary_edit.php'  ? 'active' : '' ?>" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-laptop" aria-controls="submenu-1">
+                        <a class="nav-link <?=
+                                            $uriSegments[2] == 'laptop_summary.php' ||
+                                                $uriSegments[2] == 'laptop_summary_add.php' ||
+                                                $uriSegments[2] == 'laptop_summary_edit.php' ||
+                                                $uriSegments[2] == 'laptop_summary_allocate.php' ||
+                                                $uriSegments[2] == 'laptop_summary_asset.php' ||
+                                                $uriSegments[2] == 'laptop_summary_history.php'
+                                                ? 'active' : '' ?>" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-laptop" aria-controls="submenu-1">
                             <i class="fas fa-laptop" id="sidebar-font"></i>
                             <span>Laptop</span>
                         </a>
-                        <div id="submenu-laptop" class="collapse submenu <?= $uriSegments[2] == 'laptop_summary.php' || $uriSegments[2] == 'laptop_summary_add.php' || $uriSegments[2] == 'laptop_summary_edit.php'  ? 'show' : '' ?>">
+                        <div id="submenu-laptop" class="collapse submenu <?=
+                                                                            $uriSegments[2] == 'laptop_summary.php' ||
+                                                                                $uriSegments[2] == 'laptop_summary_add.php' ||
+                                                                                $uriSegments[2] == 'laptop_summary_edit.php' ||
+                                                                                $uriSegments[2] == 'laptop_summary_allocate.php' ||
+                                                                                $uriSegments[2] == 'laptop_summary_asset.php' ||
+                                                                                $uriSegments[2] == 'laptop_summary_history.php'
+                                                                                ? 'show' : '' ?>">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
-                                    <a class="nav-link <?= $uriSegments[2] == 'laptop_summary.php' || $uriSegments[2] == 'laptop_summary_add.php' || $uriSegments[2] == 'laptop_summary_edit.php' ? 'active' : '' ?>" href="laptop_summary.php">
+                                    <a class="nav-link <?=
+                                                        $uriSegments[2] == 'laptop_summary.php' ||
+                                                            $uriSegments[2] == 'laptop_summary_add.php' ||
+                                                            $uriSegments[2] == 'laptop_summary_edit.php' ||
+                                                            $uriSegments[2] == 'laptop_summary_allocate.php' ||
+                                                            $uriSegments[2] == 'laptop_summary_asset.php' ||
+                                                            $uriSegments[2] == 'laptop_summary_history.php'
+                                                            ? 'active' : '' ?>" href="laptop_summary.php">
                                         <span>Summary</span>
                                     </a>
                                 </li>

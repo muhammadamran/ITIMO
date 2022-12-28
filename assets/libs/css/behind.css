@@ -216,7 +216,7 @@ tbody {
 
 .table-icon-Assets-IT-Temp {
     padding: 5px 10px 5px 10px;
-    font-size: 20px;
+    /* font-size: 20px; */
     background: #003369;
     color: #fff;
     border-radius: 5px;

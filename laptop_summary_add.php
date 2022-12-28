@@ -75,20 +75,20 @@ include 'include/dataTablesCSS.php';
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <label for="IdProductName">Product Name</label>
-                                                            <input type="text" class="form-control" name="ProductName" id="IdProductName" placeholder="Product Name ..." />
+                                                            <label for="IdProductName">Product Name <font style="color: red;">*</font></label>
+                                                            <input type="text" class="form-control" name="ProductName" id="IdProductName" placeholder="Product Name ..." required />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <label for="IdBrand">Brand</label>
-                                                            <input type="text" class="form-control" name="Brand" id="IdBrand" placeholder="Brand ..." />
+                                                            <label for="IdBrand">Brand <font style="color: red;">*</font></label>
+                                                            <input type="text" class="form-control" name="Brand" id="IdBrand" placeholder="Brand ..." required />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <label for="IdDeviceRelease">Device Release</label>
-                                                            <select class="form-control" name="DeviceRelease" id="IdDeviceRelease" placeholder="Device Release ...">
+                                                            <label for="IdDeviceRelease">Device Release <font style="color: red;">*</font></label>
+                                                            <select class="form-control" name="DeviceRelease" id="IdDeviceRelease" placeholder="Device Release ..." required>
                                                                 <option value="">Choose Device Release</option>
                                                                 <?php
                                                                 for ($iYear = date('Y'); $iYear >= date('Y') - 20; $iYear -= 1) {
@@ -100,26 +100,26 @@ include 'include/dataTablesCSS.php';
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <label for="IdMemory">Memory Size</label>
+                                                            <label for="IdMemory">Memory Size <font style="color: red;">*</font></label>
                                                             <div class="input-group mb-3">
-                                                                <input type="text" class="form-control" name="Memory" id="IdMemory" placeholder="Memory Size ...">
+                                                                <input type="text" class="form-control" name="Memory" id="IdMemory" placeholder="Memory Size ..." required>
                                                                 <div class="input-group-append"><span class="input-group-text">GB</span></div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <label for="IdDiskSpace">Disk Space Size</label>
+                                                            <label for="IdDiskSpace">Disk Space Size <font style="color: red;">*</font></label>
                                                             <div class="input-group mb-3">
-                                                                <input type="text" class="form-control" name="DiskSpace" id="IdDiskSpace" placeholder="Disk Space Size ...">
+                                                                <input type="text" class="form-control" name="DiskSpace" id="IdDiskSpace" placeholder="Disk Space Size ..." required>
                                                                 <div class="input-group-append"><span class="input-group-text">GB</span></div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <label for="IdDiskType">Disk Type</label>
-                                                            <select class="form-control" name="DiskType" id="IdDiskType" placeholder="Disk Type ...">
+                                                            <label for="IdDiskType">Disk Type <font style="color: red;">*</font></label>
+                                                            <select class="form-control" name="DiskType" id="IdDiskType" placeholder="Disk Type ..." required>
                                                                 <option value="">Choose Disk Type</option>
                                                                 <option value="HDD">HDD</option>
                                                                 <option value="SSD">SSD</option>
@@ -128,26 +128,26 @@ include 'include/dataTablesCSS.php';
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <label for="IdProcessor">Processor</label>
-                                                            <input type="text" class="form-control" name="Processor" id="IdProcessor" placeholder="Processor ..." />
+                                                            <label for="IdProcessor">Processor <font style="color: red;">*</font></label>
+                                                            <input type="text" class="form-control" name="Processor" id="IdProcessor" placeholder="Processor ..." required />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <label for="IdHostname">Hostname</label>
-                                                            <input type="text" class="form-control" name="Hostname" id="IdHostname" placeholder="Hostname ..." />
+                                                            <label for="IdHostname">Hostname <font style="color: red;">*</font></label>
+                                                            <input type="text" class="form-control" name="Hostname" id="IdHostname" placeholder="Hostname ..." required />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <label for="IdUsername">Username</label>
-                                                            <input type="text" class="form-control" name="Username" id="IdUsername" placeholder="Username ..." />
+                                                            <label for="IdUsername">Username <font style="color: red;">*</font></label>
+                                                            <input type="text" class="form-control" name="Username" id="IdUsername" placeholder="Username ..." required />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <label for="IdUsageState">Usage State</label>
-                                                            <select class="form-control" name="UsageState" id="IdUsageState" placeholder="Usage State ...">
+                                                            <label for="IdUsageState">Usage State <font style="color: red;">*</font></label>
+                                                            <select class="form-control" name="UsageState" id="IdUsageState" placeholder="Usage State ..." required>
                                                                 <option value="">Choose Usage State</option>
                                                                 <option value="In Use">In Use</option>
                                                                 <option value="Not In Use">Not In Use</option>
@@ -156,8 +156,8 @@ include 'include/dataTablesCSS.php';
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <label for="IdOwnershipStatus">Ownership Status</label>
-                                                            <select class="form-control" name="OwnershipStatus" id="IdOwnershipStatus" placeholder="Ownership Status ...">
+                                                            <label for="IdOwnershipStatus">Ownership Status <font style="color: red;">*</font></label>
+                                                            <select class="form-control" name="OwnershipStatus" id="IdOwnershipStatus" placeholder="Ownership Status ..." required>
                                                                 <option value="">Choose Ownership Status</option>
                                                                 <option value="PERMANENT">PERMANENT</option>
                                                                 <option value="AVAILABLE">AVAILABLE</option>
@@ -169,8 +169,8 @@ include 'include/dataTablesCSS.php';
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <label for="IdBranchLocation">Branch Location</label>
-                                                            <select class="form-control" name="BranchLocation" id="IdBranchLocation" placeholder="Branch Location ...">
+                                                            <label for="IdBranchLocation">Branch Location <font style="color: red;">*</font></label>
+                                                            <select class="form-control" name="BranchLocation" id="IdBranchLocation" placeholder="Branch Location ..." required>
                                                                 <option value="">Choose Branch Location</option>
                                                                 <?php
                                                                 $dataBL = $db->query("SELECT * FROM references_branch ORDER BY id ASC");
@@ -184,8 +184,8 @@ include 'include/dataTablesCSS.php';
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <label for="IdRoomLocation">Room Location</label>
-                                                            <select class="form-control" name="RoomLocation" id="IdRoomLocation" placeholder="Room Location ...">
+                                                            <label for="IdRoomLocation">Room Location <font style="color: red;">*</font></label>
+                                                            <select class="form-control" name="RoomLocation" id="IdRoomLocation" placeholder="Room Location ..." required>
                                                                 <option value="">Choose Room Location</option>
                                                                 <?php
                                                                 $dataRL = $db->query("SELECT * FROM references_room_loc ORDER BY id ASC");
@@ -203,14 +203,14 @@ include 'include/dataTablesCSS.php';
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="IdPONumber">PO Number</label>
-                                                            <input type="text" class="form-control" name="PONumber" id="IdPONumber" placeholder="PO Number ..." />
+                                                            <label for="IdPONumber">PO Number <font style="color: red;">*</font></label>
+                                                            <input type="text" class="form-control" name="PONumber" id="IdPONumber" placeholder="PO Number ..." required />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="IdCostCenter">Cost Center</label>
-                                                            <select class="form-control" name="CostCenter" id="IdCostCenter" multiple placeholder="Cost Center ...">
+                                                            <label for="IdCostCenter">Cost Center <font style="color: red;">*</font></label>
+                                                            <select class="form-control" name="CostCenter[]" id="IdCostCenter" multiple placeholder="Cost Center ..." required>
                                                                 <option value="">Choose Cost Center</option>
                                                                 <?php
                                                                 $dataCC = $db->query("SELECT * FROM references_costcenter ORDER BY id ASC");
@@ -224,14 +224,14 @@ include 'include/dataTablesCSS.php';
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="IdAssetNumber">Asset Number</label>
-                                                            <input type="text" class="form-control" name="AssetNumber" id="IdAssetNumber" placeholder="Asset Number ..." />
+                                                            <label for="IdAssetNumber">Asset Number <font style="color: red;">*</font></label>
+                                                            <input type="text" class="form-control" name="AssetNumber" id="IdAssetNumber" placeholder="Asset Number ..." required />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="IdAssetof">Asset of</label>
-                                                            <select class="form-control" class="form-control" name="Assetof" id="IdAssetof" placeholder="Asset of ...">
+                                                            <label for="IdAssetof">Asset of <font style="color: red;">*</font></label>
+                                                            <select class="form-control" class="form-control" name="Assetof" id="IdAssetof" placeholder="Asset of ..." required>
                                                                 <option value="">Choose Assets of</option>
                                                                 <?php
                                                                 $dataBU = $db->query("SELECT * FROM references_bu ORDER BY id ASC");
@@ -265,8 +265,8 @@ include 'include/dataTablesCSS.php';
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="IdPurchaseYears">Purchase Years</label>
-                                                            <select class="form-control" name="PurchaseYear" id="IdPurchaseYears" placeholder="Purchase Years ...">
+                                                            <label for="IdPurchaseYears">Purchase Years <font style="color: red;">*</font></label>
+                                                            <select class="form-control" name="PurchaseYear" id="IdPurchaseYears" placeholder="Purchase Years ..." required>
                                                                 <option value="">Choose Purchase Years</option>
                                                                 <?php
                                                                 for ($pYear = date('Y'); $pYear >= date('Y') - 20; $pYear -= 1) {
@@ -278,8 +278,8 @@ include 'include/dataTablesCSS.php';
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="IdPurchaseBatch">Purchase Batch</label>
-                                                            <select class="form-control" name="PurchaseBatch" id="IdPurchaseBatch" placeholder="Purchase Batch ...">
+                                                            <label for="IdPurchaseBatch">Purchase Batch <font style="color: red;">*</font></label>
+                                                            <select class="form-control" name="PurchaseBatch" id="IdPurchaseBatch" placeholder="Purchase Batch ..." required>
                                                                 <option value="">Choose Purchase Batch</option>
                                                                 <?php
                                                                 $Batch = 0;
@@ -293,16 +293,16 @@ include 'include/dataTablesCSS.php';
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="IdPrices">Prices</label>
+                                                            <label for="IdPrices">Prices <font style="color: red;">*</font></label>
                                                             <div class="input-group mb-3">
                                                                 <div class="input-group-append"><span class="input-group-text">Rp.</span></div>
-                                                                <input type="text" class="form-control" name="Prices" id="IdPrices" placeholder="Prices ...">
+                                                                <input type="text" class="form-control" name="Prices" id="IdPrices" placeholder="Prices ..." required>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="IdRemarks">Remarks</label>
+                                                            <label for="IdRemarks">Remarks </label>
                                                             <textarea type="text" class="form-control" name="Remarks" id="IdRemarks" placeholder="Remarks ..."></textarea>
                                                         </div>
                                                     </div>

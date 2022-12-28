@@ -6,6 +6,40 @@ include 'include/alert.php';
 include 'include/dataTablesCSS.php';
 ?>
 <?php
+// Import XLS
+if (isset($_POST["import_"])) {
+    if (isset($_FILES["ImportXLS"])) {
+        // Info Page
+        $page      = 'laptop_summary.php';
+        // End Info Page
+
+        $created_by         = $_SESSION['username'];
+        $created_date       = date('Y-m-d H:m:i');
+
+        $dir = "files/import/laptop/";
+        $timeUpload = date('Y-m-d-h-m-i');
+        $file_name = "Laptop_" . $timeUpload . "_" . $_FILES["ImportXLS"]["name"];
+        $size = $_FILES["ImportXLS"]["size"];
+        $tmp_file_name = $_FILES["ImportXLS"]["tmp_name"];
+        $filename = $_FILES['ImportXLS']['name'];
+        $exp = explode('.', $filename);
+        $ext = end($exp);
+        if ($ext == 'xlsx' || $ext == 'xls' || $ext == 'xlsm' || $ext == 'xlsb') {
+            move_uploaded_file($tmp_file_name, $dir . $file_name);
+            include 'laptop_read_file.php';
+            $update = $db->query("UPDATE tb_laptop_master SET created_by='$created_by',
+                                                              created_date='$created_date'
+                                WHERE created_by IS NULL");
+            echo "<script>window.location.href='laptop_summary.php?UploadSuccess=true&page=$page';</script>";
+        } else {
+            echo "<script>window.location.href='laptop_summary.php?Available=true&page=$page';</script>";
+        }
+    } else {
+        echo "File not selected";
+        echo "<script>window.location.href='laptop_summary.php?UploadFailed=true&page=$page';</script>";
+    }
+}
+
 // Add
 if (isset($_POST["add_"])) {
     // Info Page
@@ -44,6 +78,10 @@ if (isset($_POST["add_"])) {
     $PONumber           = $_POST['PONumber'];
     // cost_center
     $CostCenter         = $_POST['CostCenter'];
+    $CC                 = "";
+    foreach ($CostCenter as $row) {
+        $CC .= $row . ",";
+    }
     // asset_no
     $AssetNumber        = $_POST['AssetNumber'];
     // asset_of
@@ -66,7 +104,7 @@ if (isset($_POST["add_"])) {
         $insert = $db->query("INSERT INTO tb_laptop_master
                             (id,type,serial_number,product_name,brand,device_releases_years,memory,disk,disk_type,processor,hostname,username,status_use,status_available,location_branch,location_room,po_no,cost_center,asset_no,asset_of,purchase_year,purchase_batch,prices,remarks,created_by,created_date)
                             VALUES
-                            ('','LAPTOP','$SerialNumber','$ProductName','$Brand','$DeviceRelease','$Memory','$DiskSpace','$DiskType','$Processor','$Hostname','$Username','$UsageState','$OwnershipStatus','$BranchLocation','$RoomLocation','$PONumber','$CostCenter','$AssetNumber','$Assetof','$PurchaseYear','$PurchaseBatch','$Prices','$Remarks','$created_by','$created_date')
+                            ('','LAPTOP','$SerialNumber','$ProductName','$Brand','$DeviceRelease','$Memory','$DiskSpace','$DiskType','$Processor','$Hostname','$Username','$UsageState','$OwnershipStatus','$BranchLocation','$RoomLocation','$PONumber','$CC','$AssetNumber','$Assetof','$PurchaseYear','$PurchaseBatch','$Prices','$Remarks','$created_by','$created_date')
                             ");
 
         if ($insert) {
@@ -83,7 +121,7 @@ if (isset($_POST["edit_"])) {
     $page      = 'laptop_summary.php';
     // End Info Page
 
-    $ID         = $_POST['id'];
+    $ID                 = $_POST['ID'];
     $SerialNumber       = $_POST['SerialNumber'];
     $ProductName        = $_POST['ProductName'];
     $Brand              = $_POST['Brand'];
@@ -100,6 +138,10 @@ if (isset($_POST["edit_"])) {
     $RoomLocation       = $_POST['RoomLocation'];
     $PONumber           = $_POST['PONumber'];
     $CostCenter         = $_POST['CostCenter'];
+    $CC                 = "";
+    foreach ($CostCenter as $row) {
+        $CC .= $row . ",";
+    }
     $AssetNumber        = $_POST['AssetNumber'];
     $Assetof            = $_POST['Assetof'];
     $PurchaseYear       = $_POST['PurchaseYear'];
@@ -124,7 +166,7 @@ if (isset($_POST["edit_"])) {
                                                        location_branch='$BranchLocation',
                                                        location_room='$RoomLocation',
                                                        po_no='$PONumber',
-                                                       cost_center='$CostCenter',
+                                                       cost_center='$CC',
                                                        asset_no='$AssetNumber',
                                                        asset_of='$Assetof',
                                                        purchase_year='$PurchaseYear',
@@ -324,18 +366,68 @@ if (isset($_POST["find_filter"])) {
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
-                            <h5 class="card-header"><i class="fas fa-list"></i> Data Laptop Summary</h5>
+                            <div style="display: flex;justify-content: space-between;align-items: center;">
+                                <div>
+                                    <h5 class="card-header-custom"><i class="fas fa-list"></i> Data Laptop Summary</h5>
+                                </div>
+                                <div>
+                                    <div class="card-header-custom">
+                                        <a href="laptop_summary_allocate.php" target="_blank" class="btn btn-sm btn-primary" title="Allocate Device"><i class="fas fa-user-plus"></i></i>
+                                            <font class="f-action"></font>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
                             <!-- Add Laptop  -->
                             <div class="row">
-                                <div class="col-sm-3" style="margin-top: 15px;margin-left: 15px;">
+                                <div class="col-sm-3" style="margin-top: 0px;margin-left: 15px;">
+                                    <!-- Add Laptop -->
                                     <a href="laptop_summary_add.php" target="_blank" class="btn btn-sm btn-primary" title="Add Laptop"><i class="fas fa-plus-circle"></i>
                                         <font class="f-action"></font>
                                     </a>
-                                    <!-- End Add Laptop  -->
-                                    <!-- Add Laptop  -->
-                                    <a href="laptop_summary_allocate.php" target="_blank" class="btn btn-sm btn-primary" title="Allocate Device"><i class="fas fa-user-plus"></i></i>
-                                        <font class="f-action"></font>
+                                    <!-- End Add Laptop -->
+                                    <!-- Add Import XLS -->
+                                    <a href="#modal-Import-XLS" class="btn btn-sm btn-primary" data-toggle="modal" title="Import XLS"><i class="fas fa-file-upload"></i>
+                                        <font class="f-action"> Import XLS</font>
                                     </a>
+                                    <div class="modal fade" id="modal-Import-XLS">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <form action="" method="POST" enctype="multipart/form-data">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">[File Data] Import XLS</h4>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <fieldset>
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <div class="form-group">
+                                                                        <label for="IdImportXLS">Import XLS <font style="color: red;">*</font></label>
+                                                                        <input type="file" class="form-control" name="ImportXLS" id="IdImportXLS" placeholder="Import XLS ..." required />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <font style="color: red;">*</font> <i>Required.</i>
+                                                                </div>
+                                                            </div>
+                                                        </fieldset>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <a href="javascript:;" class="btn btn-light" data-dismiss="modal"><i class="fas fa-times-circle"></i> Close</a>
+                                                        <button type="submit" name="import_" class="btn btn-primary"><i class="fas fa-file-upload"></i> Import</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Add Import XLS -->
+                                    <!-- Download Template -->
+                                    <a href="files/template/laptop/template_laptop_master.xls" target="_blank" class="btn btn-sm btn-primary" title="Download Template"><i class="fas fa-file-download"></i>
+                                        <font class="f-action"> Template XLS</font>
+                                    </a>
+                                    <!-- End Download Template -->
                                 </div>
                             </div>
                             <!-- End Add Laptop  -->

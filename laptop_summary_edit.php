@@ -72,7 +72,8 @@ $row        = mysqli_fetch_array($data);
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label for="IdSerialNumber">Serial Number</label>
-                                                            <input type="text" class="form-control" name="SerialNumber" id="IdSerialNumber" value="<?= $row['serial_number']; ?>" placeholder="Serial Number ..." />
+                                                            <input type="text" class="form-control" name="SerialNumber" id="IdSerialNumber" value="<?= $row['serial_number']; ?>" placeholder="Serial Number ..." readonly />
+                                                            <input type="hidden" name="ID" value="<?= $row['id']; ?>" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
@@ -218,8 +219,14 @@ $row        = mysqli_fetch_array($data);
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="IdCostCenter">Cost Center</label>
-                                                            <select class="form-control" name="CostCenter" id="IdCostCenter" multiple placeholder="Cost Center ...">
-                                                                <option value="<?= $row['cost_center']; ?>"><?= $row['cost_center']; ?></option>
+                                                            <select class="form-control" name="CostCenter[]" id="IdCostCenter" multiple placeholder="Cost Center ...">
+                                                                <?php
+                                                                // FOR COST CENTER
+                                                                $expl       = explode(',', $row['cost_center'], -1);
+                                                                foreach ($expl as $dataCC) {
+                                                                ?>
+                                                                    <option value="<?= $dataCC; ?>" selected><?= $dataCC; ?></option>
+                                                                <?php } ?>
                                                                 <option value="">Choose Cost Center</option>
                                                                 <?php
                                                                 $dataCC = $db->query("SELECT * FROM references_costcenter ORDER BY id ASC");
@@ -325,7 +332,7 @@ $row        = mysqli_fetch_array($data);
                                             </div>
                                             <div class="col-md-12" style="display: flex;justify-content: flex-end;align-items: center;">
                                                 <a href="javascript:;" onclick="window.open('laptop_summary.php', '_self', ''); window.close();" class="btn btn-light" data-dismiss="modal" style="margin-right: 5px;"><i class="fas fa-times-circle"></i> Close</a>
-                                                <button type="submit" name="edit_" class="btn btn-primary"><i class="fas fa-save"></i> Save</button>
+                                                <button type="submit" name="edit_" class="btn btn-behind-green"><i class="fas fa-edit"></i> Edit</button>
                                             </div>
                                         </div>
                                     </fieldset>
