@@ -83,22 +83,14 @@ $row        = mysqli_fetch_array($data);
                                                 <div class="row">
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <?php if ($row['serial_number'] == NULL) { ?>
-                                                                <label for="IdSerialNumber" style="color: red;">Serial Number</label>
-                                                            <?php } else { ?>
-                                                                <label for="IdSerialNumber">Serial Number</label>
-                                                            <?php } ?>
+                                                            <label for="IdSerialNumber">Serial Number</label>
                                                             <input type="text" class="form-control" name="SerialNumber" id="IdSerialNumber" value="<?= $row['serial_number']; ?>" placeholder="Serial Number ..." readonly />
                                                             <input type="hidden" name="ID" value="<?= $row['id']; ?>" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <?php if ($row['product_name'] == NULL) { ?>
-                                                                <label for="IdProductName" style="color: red;">Product Name</label>
-                                                            <?php } else { ?>
-                                                                <label for="IdProductName">Product Name</label>
-                                                            <?php } ?>
+                                                            <label for="IdProductName">Product Name</label>
                                                             <input type="text" class="form-control" name="ProductName" id="IdProductName" value="<?= $row['product_name']; ?>" placeholder="Product Name ..." />
                                                         </div>
                                                     </div>
@@ -142,7 +134,7 @@ $row        = mysqli_fetch_array($data);
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <label for="IdDiskType" style="color: red;">Disk Type</label>
+                                                            <label for="IdDiskType">Disk Type</label>
                                                             <select class="form-control" name="DiskType" id="IdDiskType" placeholder="Disk Type ...">
                                                                 <option value="<?= $row['disk_type']; ?>"><?= $row['disk_type']; ?></option>
                                                                 <option value="">Choose Disk Type</option>

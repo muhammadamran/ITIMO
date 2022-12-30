@@ -70,13 +70,14 @@ $resultdM   = mysqli_fetch_array($dataMaster);
                                         <!-- Data Master -->
                                         <div class="cd-timeline__block js-cd-block">
                                             <div class="cd-timeline__img cd-timeline__img--picture js-cd-img">
-                                                <img src="assets/vendor/timeline/img/users.png" alt="Picture">
+                                                <img src="assets/vendor/timeline/img/allocation.png" alt="Picture">
                                             </div>
                                             <div class="cd-timeline__content js-cd-content">
                                                 <h3>SN: <?= $resultdM['serial_number']; ?> - <?= $resultdM['product_name']; ?></h3>
                                                 <div style="display: grid;margin-top: -12px;">
-                                                    <font style="font-size: 12px;font-weight: 700;">Detail:</font>
+                                                    <font style="font-size: 12px;font-weight: 700;">Detail: <br><i style="font-size: 8px;font-weight: 500;">last time change <?= $resultdM['created_date']; ?></i></font>
                                                 </div>
+                                                <div class="page-divider"></div>
                                                 <div class="row" style="margin-top: 10px;">
                                                     <div class="col-sm-6">
                                                         <div style="display: flex;justify-content:flex-start;align-items: center;">
@@ -121,7 +122,17 @@ $resultdM   = mysqli_fetch_array($dataMaster);
                                                     </div>
                                                 </div>
                                                 <a href="#0" class="btn btn-primary btn-lg">Read More</a>
-                                                <span class="cd-timeline__date">12 July, 2016<br><small>Data Master Current</small></span>
+                                                <?php
+                                                $alldate = $resultdM['created_date'];
+                                                $tgl = substr($alldate, 0, 10);
+                                                $time = substr($alldate, 10, 20);
+                                                ?>
+                                                <span class="cd-timeline__date"><?= date_indo($tgl, TRUE); ?>
+                                                    <br>
+                                                    <font style="font-size: 12px;font-weight:500"><i><?= $time; ?></i></font>
+                                                    <br>
+                                                    <small><i class="fas fa-check-circle"></i> Data Master Current</small>
+                                                </span>
                                             </div>
                                         </div>
                                         <!-- End Data Master -->
@@ -134,12 +145,16 @@ $resultdM   = mysqli_fetch_array($dataMaster);
                                         ?>
                                                 <div class="cd-timeline__block js-cd-block">
                                                     <div class="cd-timeline__img cd-timeline__img--picture js-cd-img">
-                                                        <img src="assets/vendor/timeline/img/laptop.png" alt="Picture">
+                                                        <?php if ($row['status_history'] == 'Change Username') { ?>
+                                                            <img src="assets/vendor/timeline/img/users.png" alt="Picture">
+                                                        <?php } else if ($row['status_history'] == 'Change Hostname') { ?>
+                                                            <img src="assets/vendor/timeline/img/laptop.png" alt="Picture">
+                                                        <?php } ?>
                                                     </div>
                                                     <div class="cd-timeline__content js-cd-content">
                                                         <h3>SN: <?= $row['serial_number']; ?> - <?= $row['product_name']; ?></h3>
                                                         <div style="display: grid;margin-top: -12px;">
-                                                            <font style="font-size: 12px;font-weight: 700;">Detail:</font>
+                                                            <font style="font-size: 12px;font-weight: 700;">Detail: <br><i style="font-size: 8px;font-weight: 500;">last time <?= $row['status_history']; ?> <?= $row['created_date']; ?></i></font>
                                                         </div>
                                                         <div class="row" style="margin-top: 10px;">
                                                             <div class="col-sm-6">
@@ -185,7 +200,17 @@ $resultdM   = mysqli_fetch_array($dataMaster);
                                                             </div>
                                                         </div>
                                                         <a href="#0" class="btn btn-primary btn-lg">Read More</a>
-                                                        <span class="cd-timeline__date">12 July, 2016<br><small>Histoty <?= $no ?></small></span>
+                                                        <?php
+                                                        $alldate = $row['created_date'];
+                                                        $tgl = substr($alldate, 0, 10);
+                                                        $time = substr($alldate, 10, 20);
+                                                        ?>
+                                                        <span class="cd-timeline__date"><?= date_indo($tgl, TRUE); ?>
+                                                            <br>
+                                                            <font style="font-size: 12px;font-weight:500"><i><?= $time; ?></i></font>
+                                                            <br>
+                                                            <small><i class="fas fa-clock"></i> History <?= $no ?></small>
+                                                        </span>
                                                     </div>
                                                 </div>
                                             <?php } ?>

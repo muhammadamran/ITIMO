@@ -115,16 +115,29 @@ include 'include/dataTablesCSS.php';
                                                         <div class="col-md-12">
                                                             <h4><u>Input Username</u></h4>
                                                         </div>
-                                                        <div class="col-md-12">
+                                                        <div class="col-md-6">
                                                             <div class="form-group">
-                                                                <label for="IdUsername">New Username</label>
-                                                                <input type="text" class="form-control" name="NewUsername" id="IdNewUsername" placeholder="Username ..." />
+                                                                <label for="IdUsername">New Username <font style="color: red;">*</font></label>
+                                                                <input type="text" class="form-control" name="NewUsername" id="IdNewUsername" placeholder="Username ..." required />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="IdOwnershipStatus">Ownership Status <font style="color: red;">*</font></label>
+                                                                <select class="form-control" name="OwnershipStatus" id="IdOwnershipStatus" placeholder="Ownership Status ..." required>
+                                                                    <option value="">Choose Ownership Status</option>
+                                                                    <option value="PERMANENT">PERMANENT</option>
+                                                                    <option value="TEMP">TEMP</option>
+                                                                </select>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-8">
                                                     <div id="ShowSelectSN"></div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <font style="color: red;">*</font> <i>Required.</i>
                                                 </div>
                                                 <div class="col-sm-12">
                                                     <hr />
@@ -173,14 +186,17 @@ include 'include/dataTablesCSS.php';
                                                         </div>
                                                         <div class="col-md-12">
                                                             <div class="form-group">
-                                                                <label for="IdHostname">New Hostname</label>
-                                                                <input type="text" class="form-control" name="NewHostname" id="IdNewHostname" placeholder="Hostname ..." />
+                                                                <label for="IdHostname">New Hostname <font style="color: red;">*</font></label>
+                                                                <input type="text" class="form-control" name="NewHostname" id="IdNewHostname" placeholder="Hostname ..." required />
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-8">
                                                     <div id="ShowSelectHN"></div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <font style="color: red;">*</font> <i>Required.</i>
                                                 </div>
                                                 <div class="col-sm-12">
                                                     <hr />

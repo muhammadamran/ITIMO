@@ -200,6 +200,125 @@ if (isset($_POST["delete_"])) {
     }
 }
 
+// new username
+if (isset($_POST["newusername_"])) {
+    // Info Page
+    $page      = 'laptop_summary.php';
+    // End Info Page
+
+    $NewUsername        = $_POST['NewUsername'];
+    $ID                 = $_POST['ID'];
+    $SerialNumber       = $_POST['SerialNumber'];
+    $ProductName        = $_POST['ProductName'];
+    $Brand              = $_POST['Brand'];
+    $DeviceRelease      = $_POST['DeviceRelease'];
+    $Memory             = $_POST['Memory'];
+    $DiskSpace          = $_POST['DiskSpace'];
+    $DiskType           = $_POST['DiskType'];
+    $Processor          = $_POST['Processor'];
+    $Hostname           = $_POST['Hostname'];
+    $Username           = $_POST['Username'];
+    $UsageState         = $_POST['UsageState'];
+    $OwnershipStatus    = $_POST['OwnershipStatus'];
+    $BranchLocation     = $_POST['BranchLocation'];
+    $RoomLocation       = $_POST['RoomLocation'];
+    $PONumber           = $_POST['PONumber'];
+    $CostCenter         = $_POST['CostCenter'];
+    $CC                 = "";
+    foreach ($CostCenter as $row) {
+        $CC .= $row . ",";
+    }
+    $AssetNumber        = $_POST['AssetNumber'];
+    $Assetof            = $_POST['Assetof'];
+    $PurchaseYear       = $_POST['PurchaseYear'];
+    $PurchaseBatch      = $_POST['PurchaseBatch'];
+    $Prices             = $_POST['Prices'];
+    $Remarks            = $_POST['Remarks'];
+    $created_by         = $_SESSION['username'];
+    $created_date       = date('Y-m-d H:m:i');
+    $status_history     = 'Change Username';
+
+    $data   = $db->query("SELECT * FROM tb_laptop_master WHERE serial_number='$SerialNumber' AND product_name='$ProductName' AND brand='$Brand'");
+    $result = mysqli_fetch_array($data);
+
+    $query  = $db->query("INSERT INTO tb_laptop_master_history
+                        (id,id_master,type,serial_number,product_name,brand,device_releases_years,memory,disk,disk_type,processor,hostname,username,status_use,status_available,location_branch,location_room,po_no,cost_center,asset_no,asset_of,purchase_year,purchase_batch,prices,remarks,created_by,created_date,status_history)
+                        VALUES
+                        ('','" . $result['id'] . "','" . $result['type'] . "','" . $result['serial_number'] . "','" . $result['product_name'] . "','" . $result['brand'] . "','" . $result['device_releases_years'] . "','" . $result['memory'] . "','" . $result['disk'] . "','" . $result['disk_type'] . "','" . $result['processor'] . "','" . $result['hostname'] . "','" . $result['username'] . "','" . $result['status_use'] . "','" . $result['status_available'] . "','" . $result['location_branch'] . "','" . $result['location_room'] . "','" . $result['po_no'] . "','" . $result['cost_center'] . "','" . $result['asset_no'] . "','" . $result['asset_of'] . "','" . $result['purchase_year'] . "','" . $result['purchase_batch'] . "','" . $result['prices'] . "','" . $result['remarks'] . "','" . $result['created_by'] . "','" . $result['created_date'] . "','$status_history')
+                        ");
+
+    $query  .= $db->query("UPDATE tb_laptop_master SET username='$NewUsername',
+                        status_available='$OwnershipStatus',
+                        created_by='$created_by',
+                        created_date='$created_date'
+                        WHERE id='$ID'");
+
+    if ($query) {
+        echo "<script>window.location.href='laptop_summary.php?UpdateSuccess=true&page=$page';</script>";
+    } else {
+        echo "<script>window.location.href='laptop_summary.php?UpdateFailed=true&page=$page';</script>";
+    }
+}
+
+// new hostname
+if (isset($_POST["newhostname_"])) {
+    // Info Page
+    $page      = 'laptop_summary.php';
+    // End Info Page
+
+    $NewHostname        = $_POST['NewHostname'];
+    $ID                 = $_POST['ID'];
+    $SerialNumber       = $_POST['SerialNumber'];
+    $ProductName        = $_POST['ProductName'];
+    $Brand              = $_POST['Brand'];
+    $DeviceRelease      = $_POST['DeviceRelease'];
+    $Memory             = $_POST['Memory'];
+    $DiskSpace          = $_POST['DiskSpace'];
+    $DiskType           = $_POST['DiskType'];
+    $Processor          = $_POST['Processor'];
+    $Hostname           = $_POST['Hostname'];
+    $Username           = $_POST['Username'];
+    $UsageState         = $_POST['UsageState'];
+    $OwnershipStatus    = $_POST['OwnershipStatus'];
+    $BranchLocation     = $_POST['BranchLocation'];
+    $RoomLocation       = $_POST['RoomLocation'];
+    $PONumber           = $_POST['PONumber'];
+    $CostCenter         = $_POST['CostCenter'];
+    $CC                 = "";
+    foreach ($CostCenter as $row) {
+        $CC .= $row . ",";
+    }
+    $AssetNumber        = $_POST['AssetNumber'];
+    $Assetof            = $_POST['Assetof'];
+    $PurchaseYear       = $_POST['PurchaseYear'];
+    $PurchaseBatch      = $_POST['PurchaseBatch'];
+    $Prices             = $_POST['Prices'];
+    $Remarks            = $_POST['Remarks'];
+    $created_by         = $_SESSION['username'];
+    $created_date       = date('Y-m-d H:m:i');
+    $status_history     = 'Change Hostname';
+
+    $data   = $db->query("SELECT * FROM tb_laptop_master WHERE serial_number='$SerialNumber' AND product_name='$ProductName' AND brand='$Brand'");
+    $result = mysqli_fetch_array($data);
+
+    $query  = $db->query("INSERT INTO tb_laptop_master_history
+                        (id,id_master,type,serial_number,product_name,brand,device_releases_years,memory,disk,disk_type,processor,hostname,username,status_use,status_available,location_branch,location_room,po_no,cost_center,asset_no,asset_of,purchase_year,purchase_batch,prices,remarks,created_by,created_date,status_history)
+                        VALUES
+                        ('','" . $result['id'] . "','" . $result['type'] . "','" . $result['serial_number'] . "','" . $result['product_name'] . "','" . $result['brand'] . "','" . $result['device_releases_years'] . "','" . $result['memory'] . "','" . $result['disk'] . "','" . $result['disk_type'] . "','" . $result['processor'] . "','" . $result['hostname'] . "','" . $result['username'] . "','" . $result['status_use'] . "','" . $result['status_available'] . "','" . $result['location_branch'] . "','" . $result['location_room'] . "','" . $result['po_no'] . "','" . $result['cost_center'] . "','" . $result['asset_no'] . "','" . $result['asset_of'] . "','" . $result['purchase_year'] . "','" . $result['purchase_batch'] . "','" . $result['prices'] . "','" . $result['remarks'] . "','" . $result['created_by'] . "','" . $result['created_date'] . "','$status_history')
+                        ");
+
+    $query  .= $db->query("UPDATE tb_laptop_master SET hostname='$NewHostname',
+                        created_by='$created_by',
+                        created_date='$created_date'
+                        WHERE id='$ID'");
+
+    if ($query) {
+        echo "<script>window.location.href='laptop_summary.php?UpdateSuccess=true&page=$page';</script>";
+    } else {
+        echo "<script>window.location.href='laptop_summary.php?UpdateFailed=true&page=$page';</script>";
+    }
+}
+
 $FindSerialNumber = '';
 $FindProductName  = '';
 $FindBrand        = '';

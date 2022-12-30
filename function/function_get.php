@@ -84,16 +84,10 @@ function SNone()
                     <input type="text" class="form-control" name="Username" id="IdUsername" value="<?= $resultSN['username']; ?>" placeholder="Username ..." readonly />
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-6">
                 <div class="form-group">
                     <label for="IdUsageState">Usage State</label>
                     <input type="text" class="form-control" name="UsageState" id="IdUsageState" value="<?= $resultSN['status_use']; ?>" placeholder="Usage State ..." readonly />
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label for="IdOwnershipStatus">Ownership Status</label>
-                    <input type="text" class="form-control" name="OwnershipStatus" id="IdOwnershipStatus" value="<?= $resultSN['status_available']; ?>" placeholder="Ownership Status ..." readonly />
                 </div>
             </div>
             <div class="col-md-3">
