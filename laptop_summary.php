@@ -407,24 +407,6 @@ if (isset($_POST["find_filter"])) {
                         <div class="card">
                             <h5 class="card-header"><i class="fas fa-filter"></i> Filter Data Laptop Summary</h5>
                             <div class="card-body">
-                                <!-- <div class="row">
-                                    <div class="col-sm-12">
-                                        <div class="form-group">
-                                            <label for="IdSelectFilter">Filter</label>
-                                            <select class="form-control" name="CostCenter" id="IdSelectFilter" multiple placeholder="Cost Center ..." required>
-                                                <option value="">Choose Filter</option>
-                                                <option value="VSerialNumber">Serial Number</option>
-                                                <option value="VProductName">Product Name</option>
-                                                <option value="VBrand">Brand</option>
-                                                <option value="VHostname">Hostname</option>
-                                                <option value="VUsername">Username</option>
-                                                <option value="VUsageState">Usage State</option>
-                                                <option value="VOwner">Ownership Status</option>
-                                                <option value="VBranch">Branch Location</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div> -->
                                 <form action="" method="POST">
                                     <fieldset>
                                         <div class="row">
@@ -620,7 +602,7 @@ if (isset($_POST["find_filter"])) {
                             <div class="row">
                                 <div class="col-sm-3" style="margin-top: 0px;margin-left: 15px;">
                                     <!-- Add Laptop -->
-                                    <a href="laptop_summary_add.php" target="_blank" class="btn btn-sm btn-primary" title="Add Laptop"><i class="fas fa-plus-circle"></i>
+                                    <a href="laptop_summary_add.php" class="btn btn-sm btn-primary" title="Add Laptop"><i class="fas fa-plus-circle"></i>
                                         <font class="f-action"></font>
                                     </a>
                                     <!-- End Add Laptop -->

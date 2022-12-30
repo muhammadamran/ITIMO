@@ -83,6 +83,13 @@ function date_indo($date, $print_day = false)
     }
     return $tgl_indo;
 }
+
+// RUPIAH
+function Rupiah($angka)
+{
+    $hasil = "Rp. " . number_format($angka, 2, ',', '.');
+    return $hasil;
+}
 ?>
 
 <body>

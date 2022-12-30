@@ -70,19 +70,9 @@ include 'include/dataTablesCSS.php';
                                     <option value="VLaptop">Laptop</option>
                                 </select>
                             </h5>
-                            <div style="padding: 15px;margin-bottom: -30px;">
-                                <div class="alert alert-primary" role="alert">
-                                    <h4 class="alert-heading">Important!</h4>
-                                    <hr>
-                                    <p>
-                                        The following is the appropriate device master form for assets management that has been released by the finance department.
-                                    </p>
-                                </div>
-                            </div>
-                            <hr>
                             <div class="card-body">
                                 <div id="FormUser" style="display:none">
-                                    <div class="row" style="display: flex;justify-content: flex-start;align-items: end;margin-top: -15px;">
+                                    <div class="row" style="display: flex;justify-content: flex-start;align-items: end;margin-top: 5px;">
                                         <div>
                                             <div style="font-size: 15px;margin-bottom: 10px;margin-top: -25px;background: #003369;border-radius: 10px;margin-left: 15px;color: #fff;padding: 10px;">
                                                 <i class="fas fa-user-plus"></i> USER
@@ -151,7 +141,7 @@ include 'include/dataTablesCSS.php';
                                     </form>
                                 </div>
                                 <div id="FormLaptop" style="display:none">
-                                    <div class="row" style="display: flex;justify-content: flex-start;align-items: end;margin-top: -15px;">
+                                    <div class="row" style="display: flex;justify-content: flex-start;align-items: end;margin-top: 5px;">
                                         <div>
                                             <div style="font-size: 15px;margin-bottom: 10px;margin-top: -25px;background: #003369;border-radius: 10px;margin-left: 15px;color: #fff;padding: 10px;">
                                                 <i class="fas fa-laptop"></i> LAPTOP

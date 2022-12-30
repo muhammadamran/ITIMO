@@ -290,3 +290,16 @@ tbody {
     box-sizing: border-box;
     border-radius: 10px;
 }
+
+.doc-asset {
+    background: #003369;
+    color: #fff;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 4px;
+    font-size: 100px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 6px 3px 3px 0px rgb(203 204 205);
+}

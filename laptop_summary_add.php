@@ -63,16 +63,6 @@ include 'include/dataTablesCSS.php';
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
                             <h5 class="card-header"><i class="fas fa-plus-circle"></i> Add Laptop</h5>
-                            <div style="padding: 15px;margin-bottom: -30px;">
-                                <div class="alert alert-primary" role="alert">
-                                    <h4 class="alert-heading">Important!</h4>
-                                    <hr>
-                                    <p>
-                                        The following is the appropriate device master form for assets management that has been released by the finance department.
-                                    </p>
-                                </div>
-                            </div>
-                            <hr>
                             <div class="card-body">
                                 <form action="laptop_summary.php" method="POST">
                                     <fieldset>

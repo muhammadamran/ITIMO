@@ -24,7 +24,7 @@ $resultdM   = mysqli_fetch_array($dataMaster);
                         <div class="page-header">
                             <div class="c-page">
                                 <div class="bg-page">
-                                    <i class="fas fa-history icon-page"></i>
+                                    <i class="fas fa-laptop icon-page"></i>
                                 </div>
                                 <div style="margin-left: 10px;">
                                     <div>
@@ -50,20 +50,22 @@ $resultdM   = mysqli_fetch_array($dataMaster);
                 </div>
                 <!-- End Page Title -->
 
+                <!-- Back -->
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <a href="#" onclick="history.back();" class="btn btn-primary"><i class="fas fa-caret-square-left"></i> Back</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Back -->
+
                 <!-- First Row -->
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
-                            <div style="padding: 15px;margin-bottom: -30px;">
-                                <div class="alert alert-primary" role="alert">
-                                    <h4 class="alert-heading">Important!</h4>
-                                    <hr>
-                                    <p>
-                                        The following is the appropriate device master form for assets management that has been released by the finance department.
-                                    </p>
-                                </div>
-                            </div>
-                            <hr>
                             <div class="card-body">
                                 <section class="cd-timeline js-cd-timeline">
                                     <div class="cd-timeline__container">
@@ -121,7 +123,7 @@ $resultdM   = mysqli_fetch_array($dataMaster);
                                                         <hr />
                                                     </div>
                                                 </div>
-                                                <a href="#0" class="btn btn-primary btn-lg">Read More</a>
+                                                <!-- <a href="#0" class="btn btn-primary btn-lg">Read More</a> -->
                                                 <?php
                                                 $alldate = $resultdM['created_date'];
                                                 $tgl = substr($alldate, 0, 10);
@@ -137,7 +139,7 @@ $resultdM   = mysqli_fetch_array($dataMaster);
                                         </div>
                                         <!-- End Data Master -->
                                         <?php
-                                        $dataTable = $db->query("SELECT * FROM tb_laptop_master_history ORDER BY id DESC", 0);
+                                        $dataTable = $db->query("SELECT * FROM tb_laptop_master_history WHERE serial_number='$GET' ORDER BY id DESC", 0);
                                         if (mysqli_num_rows($dataTable) > 0) {
                                             $no = 0;
                                             while ($row = mysqli_fetch_array($dataTable)) {
@@ -199,7 +201,7 @@ $resultdM   = mysqli_fetch_array($dataMaster);
                                                                 <hr />
                                                             </div>
                                                         </div>
-                                                        <a href="#0" class="btn btn-primary btn-lg">Read More</a>
+                                                        <!-- <a href="#0" class="btn btn-primary btn-lg">Read More</a> -->
                                                         <?php
                                                         $alldate = $row['created_date'];
                                                         $tgl = substr($alldate, 0, 10);
