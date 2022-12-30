@@ -48,6 +48,18 @@ $row        = mysqli_fetch_array($data);
                 </div>
                 <!-- End Page Title -->
 
+                <!-- Back -->
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <a href="laptop_summary.php" class="btn btn-primary"><i class="fas fa-caret-square-left"></i> Back</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Back -->
+
                 <!-- First Row -->
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
@@ -71,14 +83,22 @@ $row        = mysqli_fetch_array($data);
                                                 <div class="row">
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <label for="IdSerialNumber">Serial Number</label>
+                                                            <?php if ($row['serial_number'] == NULL) { ?>
+                                                                <label for="IdSerialNumber" style="color: red;">Serial Number</label>
+                                                            <?php } else { ?>
+                                                                <label for="IdSerialNumber">Serial Number</label>
+                                                            <?php } ?>
                                                             <input type="text" class="form-control" name="SerialNumber" id="IdSerialNumber" value="<?= $row['serial_number']; ?>" placeholder="Serial Number ..." readonly />
                                                             <input type="hidden" name="ID" value="<?= $row['id']; ?>" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <label for="IdProductName">Product Name</label>
+                                                            <?php if ($row['product_name'] == NULL) { ?>
+                                                                <label for="IdProductName" style="color: red;">Product Name</label>
+                                                            <?php } else { ?>
+                                                                <label for="IdProductName">Product Name</label>
+                                                            <?php } ?>
                                                             <input type="text" class="form-control" name="ProductName" id="IdProductName" value="<?= $row['product_name']; ?>" placeholder="Product Name ..." />
                                                         </div>
                                                     </div>
@@ -122,7 +142,7 @@ $row        = mysqli_fetch_array($data);
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <label for="IdDiskType">Disk Type</label>
+                                                            <label for="IdDiskType" style="color: red;">Disk Type</label>
                                                             <select class="form-control" name="DiskType" id="IdDiskType" placeholder="Disk Type ...">
                                                                 <option value="<?= $row['disk_type']; ?>"><?= $row['disk_type']; ?></option>
                                                                 <option value="">Choose Disk Type</option>
@@ -140,13 +160,13 @@ $row        = mysqli_fetch_array($data);
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label for="IdHostname">Hostname</label>
-                                                            <input type="text" class="form-control" name="Hostname" id="IdHostname" value="<?= $row['hostname']; ?>" placeholder="Hostname ..." />
+                                                            <input type="text" class="form-control" name="Hostname" id="IdHostname" value="<?= $row['hostname']; ?>" placeholder="Hostname ..." readonly />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label for="IdUsername">Username</label>
-                                                            <input type="text" class="form-control" name="Username" id="IdUsername" value="<?= $row['username']; ?>" placeholder="Username ..." />
+                                                            <input type="text" class="form-control" name="Username" id="IdUsername" value="<?= $row['username']; ?>" placeholder="Username ..." readonly />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">

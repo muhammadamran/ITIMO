@@ -46,6 +46,18 @@ include 'include/dataTablesCSS.php';
                 </div>
                 <!-- End Page Title -->
 
+                <!-- Back -->
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <a href="laptop_summary.php" class="btn btn-primary"><i class="fas fa-caret-square-left"></i> Back</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Back -->
+
                 <!-- First Row -->
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">

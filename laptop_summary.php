@@ -243,6 +243,7 @@ if (isset($_POST["find_filter"])) {
 }
 ?>
 <title>Laptop Summary - <?= $Rapps['app_name'] ?> | General Management</title>
+<link href="assets/plugins/chosen/chosen.css" rel="stylesheet" type="text/css" />
 <div class="dashboard-main-wrapper">
     <?php include "include/header.php"; ?>
     <?php include "include/sidebar.php"; ?>
@@ -287,60 +288,78 @@ if (isset($_POST["find_filter"])) {
                         <div class="card">
                             <h5 class="card-header"><i class="fas fa-filter"></i> Filter Data Laptop Summary</h5>
                             <div class="card-body">
+                                <!-- <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label for="IdSelectFilter">Filter</label>
+                                            <select class="form-control" name="CostCenter" id="IdSelectFilter" multiple placeholder="Cost Center ..." required>
+                                                <option value="">Choose Filter</option>
+                                                <option value="VSerialNumber">Serial Number</option>
+                                                <option value="VProductName">Product Name</option>
+                                                <option value="VBrand">Brand</option>
+                                                <option value="VHostname">Hostname</option>
+                                                <option value="VUsername">Username</option>
+                                                <option value="VUsageState">Usage State</option>
+                                                <option value="VOwner">Ownership Status</option>
+                                                <option value="VBranch">Branch Location</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div> -->
                                 <form action="" method="POST">
                                     <fieldset>
                                         <div class="row">
                                             <!-- Find Serial Number -->
-                                            <div class="col-md-3">
+                                            <div class="col-md-3" id="FormSerialNumber">
                                                 <div class="form-group">
                                                     <label for="IdFindSerialNumber">Serial Number</label>
                                                     <input type="text" class="form-control" name="FindSerialNumber" id="IdFindSerialNumber" value="<?= $FindSerialNumber; ?>" placeholder="Serial Number ..." />
                                                 </div>
                                             </div>
                                             <!-- Find Product Name -->
-                                            <div class="col-md-3">
+                                            <div class="col-md-3" id="FormProductName">
                                                 <div class="form-group">
                                                     <label for="IdFindProductName">Product Name</label>
                                                     <input type="text" class="form-control" name="FindProductName" id="IdFindProductName" value="<?= $FindProductName; ?>" placeholder="Product Name ..." />
                                                 </div>
                                             </div>
                                             <!-- Find Brand -->
-                                            <div class="col-md-3">
+                                            <div class="col-md-3" id="FormBrand">
                                                 <div class="form-group">
                                                     <label for="IdFindBrand">Brand</label>
                                                     <input type="text" class="form-control" name="FindBrand" id="IdFindBrand" value="<?= $FindBrand; ?>" placeholder="Brand ..." />
                                                 </div>
                                             </div>
                                             <!-- Find Hostname -->
-                                            <div class="col-md-3">
+                                            <div class="col-md-3" id="FormHostname">
                                                 <div class="form-group">
                                                     <label for="IdFindHostname">Hostname</label>
                                                     <input type="text" class="form-control" name="FindHostname" id="IdFindHostname" value="<?= $FindHostname; ?>" placeholder="Hostname ..." />
                                                 </div>
                                             </div>
                                             <!-- Find Username -->
-                                            <div class="col-md-3">
+                                            <div class="col-md-3" id="FormUsername">
                                                 <div class="form-group">
                                                     <label for="IdFindUsername">Username</label>
                                                     <input type="text" class="form-control" name="FindUsername" id="IdFindUsername" value="<?= $FindUsername; ?>" placeholder="Username ..." />
                                                 </div>
                                             </div>
                                             <!-- Find Usage State -->
-                                            <div class="col-md-3">
+                                            <div class="col-md-3" id="FormUsageState">
                                                 <div class="form-group">
                                                     <label for="IdFindUS">Usage State</label>
                                                     <input type="text" class="form-control" name="FindUS" id="IdFindUS" value="<?= $FindUS; ?>" placeholder="Usage State ..." />
                                                 </div>
                                             </div>
                                             <!-- Find Ownership Status -->
-                                            <div class="col-md-3">
+                                            <div class="col-md-3" id="FormOwnership">
                                                 <div class="form-group">
                                                     <label for="IdFindOS">Ownership Status</label>
                                                     <input type="text" class="form-control" name="FindOS" id="IdFindOS" value="<?= $FindOS; ?>" placeholder="Ownership Status ..." />
                                                 </div>
                                             </div>
                                             <!-- Find Branch Loc -->
-                                            <div class="col-md-3">
+                                            <div class="col-md-3" id="FormBranch">
                                                 <div class="form-group">
                                                     <label for="IdFindBranchLoc">Branch Location</label>
                                                     <input type="text" class="form-control" name="FindBranchLoc" id="IdFindBranchLoc" value="<?= $FindBranchLoc; ?>" placeholder="Branch Location ..." />
@@ -368,13 +387,112 @@ if (isset($_POST["find_filter"])) {
                         <div class="card">
                             <div style="display: flex;justify-content: space-between;align-items: center;">
                                 <div>
-                                    <h5 class="card-header-custom"><i class="fas fa-list"></i> Data Laptop Summary</h5>
+                                    <h5 class="card-header-custom">
+                                        <i class="fas fa-list"></i> Data Laptop Summary <br><small>Read Information</small>
+                                        <!-- Info -->
+                                        <a href="#modal-Info" data-toggle="modal" class="badge badge-sm badge-light" title="Information"><i class="fas fa-info-circle"></i>
+                                            <font class="f-action"></font>
+                                        </a>
+                                        <div class="modal fade" id="modal-Info">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <form action="adm_email.php" method="POST">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title">Information</h4>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <fieldset>
+                                                                <div class="row">
+                                                                    <div class="col-sm-12">
+                                                                        <div class="table-responsive">
+                                                                            <table id="dataTablesN" class="table table-striped table-bordered first">
+                                                                                <thead>
+                                                                                    <tr style="text-align: center;">
+                                                                                        <th>Usage State</th>
+                                                                                        <th>Status Available</th>
+                                                                                        <th>Description</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                    <tr>
+                                                                                        <td>In Use</td>
+                                                                                        <td>PERMANENT</td>
+                                                                                        <td>
+                                                                                            <span class="badge-dot badge-success mr-1"></span> Assets Users
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>In Use</td>
+                                                                                        <td>TEMP</td>
+                                                                                        <td>
+                                                                                            <span class="badge-dot badge-info mr-1"></span> Assets Users Temp
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>Not In Use</td>
+                                                                                        <td>TEMP</td>
+                                                                                        <td>
+                                                                                            <span class="badge-dot badge-primary mr-1"></span> Assets IT Temp
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>Not In Use</td>
+                                                                                        <td>BROKEN</td>
+                                                                                        <td>
+                                                                                            <span class="badge-dot badge-danger mr-1"></span> Device Broken
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>Not In Use</td>
+                                                                                        <td>AVAILABLE</td>
+                                                                                        <td>
+                                                                                            <span class="badge-dot badge-brand mr-1"></span> Device can use
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>Not In Use</td>
+                                                                                        <td>DISPOSED</td>
+                                                                                        <td>
+                                                                                            <span class="badge-dot badge-dark mr-1"></span> Device Disposed
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>-</td>
+                                                                                        <td>-</td>
+                                                                                        <td>
+                                                                                            <span class="badge-dot badge-light mr-1"></span> ???
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </fieldset>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <a href="javascript:;" class="btn btn-light" data-dismiss="modal"><i class="fas fa-times-circle"></i> Close</a>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Info -->
+                                    </h5>
                                 </div>
                                 <div>
                                     <div class="card-header-custom">
-                                        <a href="laptop_summary_allocate.php" target="_blank" class="btn btn-sm btn-primary" title="Allocate Device"><i class="fas fa-user-plus"></i></i>
-                                            <font class="f-action"></font>
+                                        <a href="laptop_summary_allocate.php" class="btn btn-sm btn-primary" title="Allocate Device">
+                                            <i class="fas fa-user-plus" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Change Username"></i>
+                                            &nbsp; OR &nbsp;
+                                            <i class="fas fa-laptop" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Change Hostname"></i>
                                         </a>
+                                        <!-- Download Template -->
+                                        <a href="files/template/laptop/template_laptop_master.xls" target="_blank" class="btn btn-sm btn-primary" title="Download Template"><i class="fas fa-file-download"></i>
+                                            <font class="f-action"> Template XLS</font>
+                                        </a>
+                                        <!-- End Download Template -->
                                     </div>
                                 </div>
                             </div>
@@ -423,11 +541,6 @@ if (isset($_POST["find_filter"])) {
                                         </div>
                                     </div>
                                     <!-- End Add Import XLS -->
-                                    <!-- Download Template -->
-                                    <a href="files/template/laptop/template_laptop_master.xls" target="_blank" class="btn btn-sm btn-primary" title="Download Template"><i class="fas fa-file-download"></i>
-                                        <font class="f-action"> Template XLS</font>
-                                    </a>
-                                    <!-- End Download Template -->
                                 </div>
                             </div>
                             <!-- End Add Laptop  -->
@@ -478,6 +591,7 @@ if (isset($_POST["find_filter"])) {
 </div>
 <?php include "include/footer.php"; ?>
 <?php include "include/dataTablesJS.php"; ?>
+<script type="text/javascript" src="assets/plugins/chosen/chosen.jquery.js"></script>
 <script type="text/javascript">
     // Find
     $(function() {
@@ -518,6 +632,100 @@ if (isset($_POST["find_filter"])) {
     $(function() {
         $("#IdFindBranchLoc").autocomplete({
             source: 'function/autocomplete/data.php?function=AutoFindBranchLoc'
+        });
+    });
+
+
+    // Multiple
+    $("#IdSelectFilter").chosen({
+        width: "100%"
+    });
+
+    // SELECT FILTER
+    $(function() {
+        $("#IdSelectFilter").change(function() {
+            if ($(this).val() == "VSerialNumber") {
+                $("#FormSerialNumber").show();
+                $("#FormProductName").hide();
+                $("#FormBrand").hide();
+                $("#FormHostname").hide();
+                $("#FormUsername").hide();
+                $("#FormUsageState").hide();
+                $("#FormOwnership").hide();
+                $("#FormBranch").hide();
+            } else if ($(this).val() == "VProductName") {
+                $("#FormSerialNumber").hide();
+                $("#FormProductName").show();
+                $("#FormBrand").hide();
+                $("#FormHostname").hide();
+                $("#FormUsername").hide();
+                $("#FormUsageState").hide();
+                $("#FormOwnership").hide();
+                $("#FormBranch").hide();
+            } else if ($(this).val() == "VBrand") {
+                $("#FormSerialNumber").hide();
+                $("#FormProductName").hide();
+                $("#FormBrand").show();
+                $("#FormHostname").hide();
+                $("#FormUsername").hide();
+                $("#FormUsageState").hide();
+                $("#FormOwnership").hide();
+                $("#FormBranch").hide();
+            } else if ($(this).val() == "VHostname") {
+                $("#FormSerialNumber").hide();
+                $("#FormProductName").hide();
+                $("#FormBrand").hide();
+                $("#FormHostname").show();
+                $("#FormUsername").hide();
+                $("#FormUsageState").hide();
+                $("#FormOwnership").hide();
+                $("#FormBranch").hide();
+            } else if ($(this).val() == "VUsername") {
+                $("#FormSerialNumber").hide();
+                $("#FormProductName").hide();
+                $("#FormBrand").hide();
+                $("#FormHostname").hide();
+                $("#FormUsername").show();
+                $("#FormUsageState").hide();
+                $("#FormOwnership").hide();
+                $("#FormBranch").hide();
+            } else if ($(this).val() == "VUsageState") {
+                $("#FormSerialNumber").hide();
+                $("#FormProductName").hide();
+                $("#FormBrand").hide();
+                $("#FormHostname").hide();
+                $("#FormUsername").hide();
+                $("#FormUsageState").show();
+                $("#FormOwnership").hide();
+                $("#FormBranch").hide();
+            } else if ($(this).val() == "VOwnership") {
+                $("#FormSerialNumber").hide();
+                $("#FormProductName").hide();
+                $("#FormBrand").hide();
+                $("#FormHostname").hide();
+                $("#FormUsername").hide();
+                $("#FormUsageState").hide();
+                $("#FormOwnership").show();
+                $("#FormBranch").hide();
+            } else if ($(this).val() == "VBranch") {
+                $("#FormSerialNumber").hide();
+                $("#FormProductName").hide();
+                $("#FormBrand").hide();
+                $("#FormHostname").hide();
+                $("#FormUsername").hide();
+                $("#FormUsageState").hide();
+                $("#FormOwnership").hide();
+                $("#FormBranch").show();
+            } else {
+                $("#FormSerialNumber").hide();
+                $("#FormProductName").hide();
+                $("#FormBrand").hide();
+                $("#FormHostname").hide();
+                $("#FormUsername").hide();
+                $("#FormUsageState").hide();
+                $("#FormOwnership").hide();
+                $("#FormBranch").hide();
+            }
         });
     });
 </script>

@@ -282,3 +282,11 @@ tbody {
     background-color: #f44336;
     border-color: #f44336;
 }
+
+.page-divider {
+    background: #003369;
+    height: 3px;
+    margin: 0px 0px 15px 0px;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
