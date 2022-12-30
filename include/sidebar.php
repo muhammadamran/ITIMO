@@ -47,7 +47,10 @@ $Rrole   = mysqli_fetch_array($role);
                                                 $uriSegments[2] == 'laptop_summary_edit.php' ||
                                                 $uriSegments[2] == 'laptop_summary_allocate.php' ||
                                                 $uriSegments[2] == 'laptop_summary_asset.php' ||
-                                                $uriSegments[2] == 'laptop_summary_history.php'
+                                                $uriSegments[2] == 'laptop_summary_history.php' ||
+                                                $uriSegments[2] == 'laptop_available.php' ||
+                                                $uriSegments[2] == 'laptop_permanent.php' ||
+                                                $uriSegments[2] == 'laptop_broken.php'
                                                 ? 'active' : '' ?>" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-laptop" aria-controls="submenu-1">
                             <i class="fas fa-laptop" id="sidebar-font"></i>
                             <span>Laptop</span>
@@ -58,7 +61,10 @@ $Rrole   = mysqli_fetch_array($role);
                                                                                 $uriSegments[2] == 'laptop_summary_edit.php' ||
                                                                                 $uriSegments[2] == 'laptop_summary_allocate.php' ||
                                                                                 $uriSegments[2] == 'laptop_summary_asset.php' ||
-                                                                                $uriSegments[2] == 'laptop_summary_history.php'
+                                                                                $uriSegments[2] == 'laptop_summary_history.php' ||
+                                                                                $uriSegments[2] == 'laptop_available.php' ||
+                                                                                $uriSegments[2] == 'laptop_permanent.php' ||
+                                                                                $uriSegments[2] == 'laptop_broken.php'
                                                                                 ? 'show' : '' ?>">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
@@ -74,17 +80,17 @@ $Rrole   = mysqli_fetch_array($role);
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="laptop_available.php">
+                                    <a class="nav-link  <?= $uriSegments[2] == 'laptop_available.php' ? 'active' : '' ?>" href="laptop_available.php">
                                         <span>Available</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="laptop_inuse.php">
-                                        <span>In Use</span>
+                                    <a class="nav-link  <?= $uriSegments[2] == 'laptop_permanent.php' ? 'active' : '' ?>" href="laptop_permanent.php">
+                                        <span>Permanent</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="laptop_broken.php">
+                                    <a class="nav-link  <?= $uriSegments[2] == 'laptop_broken.php' ? 'active' : '' ?>" href="laptop_broken.php">
                                         <span>Broken/Disposed</span>
                                     </a>
                                 </li>

@@ -5,7 +5,7 @@ include 'include/head.php';
 include 'include/alert.php';
 include 'include/dataTablesCSS.php';
 ?>
-<title>Laptop Broken/Disposed - <?= $Rapps['app_name'] ?> | General Management</title>
+<title>Laptop Permanent - <?= $Rapps['app_name'] ?> | General Management</title>
 <link href="assets/plugins/chosen/chosen.css" rel="stylesheet" type="text/css" />
 <div class="dashboard-main-wrapper">
     <?php include "include/header.php"; ?>
@@ -24,7 +24,7 @@ include 'include/dataTablesCSS.php';
                                 </div>
                                 <div style="margin-left: 10px;">
                                     <div>
-                                        <h2 class="pageheader-title" style="color: #003369;">Laptop Broken/Disposed </h2>
+                                        <h2 class="pageheader-title" style="color: #003369;">Laptop Permanent </h2>
                                     </div>
                                     <div style="margin-top: -10px;">
                                         <font>LAPTOP</font>
@@ -36,7 +36,7 @@ include 'include/dataTablesCSS.php';
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
-                                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Laptop Broken/Disposed</a></li>
+                                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Laptop Permanent</a></li>
                                     </ol>
                                 </nav>
                             </div>
@@ -52,7 +52,7 @@ include 'include/dataTablesCSS.php';
                             <div style="display: flex;justify-content: space-between;align-items: center;">
                                 <div>
                                     <h5 class="card-header-custom">
-                                        <i class="fas fa-list"></i> Data Laptop Broken/Disposed <br><small>Read Information</small>
+                                        <i class="fas fa-list"></i> Data Laptop Permanent <br><small>Read Information</small>
                                         <!-- Info -->
                                         <a href="#modal-Info" data-toggle="modal" class="badge badge-sm badge-light" title="Information"><i class="fas fa-info-circle"></i>
                                             <font class="f-action"></font>
@@ -164,17 +164,14 @@ include 'include/dataTablesCSS.php';
                                     <p>
                                         Total Serial Number <b><?= $resultTotalData['total_']; ?> Laptop.</b> Details Status Devices:
                                     <ul>
-                                        <li>BROKEN <b><?= $resultTotalData['t_BROKEN']; ?></b></li>
-                                        <li>DISPOSED <b><?= $resultTotalData['t_DISPOSED']; ?></b></li>
+                                        <li>PERMANENT <b><?= $resultTotalData['t_PERMANENT']; ?></b></li>
                                     </ul>
                                     </p>
-                                    <hr>
-                                    <p class="mb-0">Total Details Status Devices Broken/Disposed: <b><?= $resultTotalData['t_BROKEN'] + $resultTotalData['t_DISPOSED']; ?> </b>.</p>
                                 </div>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <?php include "table/t_laptop_broken.php"; ?>
+                                    <?php include "table/t_laptop_permanent.php"; ?>
                                 </div>
                             </div>
                         </div>
