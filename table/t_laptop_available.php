@@ -222,13 +222,13 @@
                                         <div class="row">
                                             <div class="col-sm-3">
                                                 <div class="doc-asset">
-                                                    <div>
+                                                    <div style="display: grid;justify-content: center;">
                                                         <i class="fas fa-laptop"></i>
                                                     </div>
-                                                    <div style="margin-top: -160px;display: flex;justify-content: center;margin-bottom: 0px;">
+                                                    <div style="margin-top: -110px;display: flex;justify-content: center;margin-bottom: 0px;">
                                                         <font style="font-size: 10px;text-align: center;text-transform:uppercase"><?= $row['brand']; ?></font>
                                                     </div>
-                                                    <div style="display: flex;justify-content: center;margin-top: -25px;">
+                                                    <div style="display: flex;justify-content: center;margin-top: 5px;">
                                                         <font style="font-size: 18px;text-align: center;text-transform:uppercase"><?= $row['product_name']; ?></font>
                                                     </div>
                                                 </div>
@@ -363,6 +363,18 @@
                                                             <div style="margin-left: 5px;">
                                                                 <div style="font-size: 15px;font-weight: 500;">
                                                                     <font>Rp. <?= $row['prices']; ?></font>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <div style="display: flex;justify-content:flex-start;align-items: center;margin-top: 12px;">
+                                                            <div class="table-icon" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Remarks">
+                                                                <i class="fas fa-quote-right"></i>
+                                                            </div>
+                                                            <div style="margin-left: 5px;">
+                                                                <div style="font-size: 15px;font-weight: 500;">
+                                                                    <font><?= $row['remarks']; ?></font>
                                                                 </div>
                                                             </div>
                                                         </div>

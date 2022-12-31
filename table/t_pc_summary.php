@@ -9,15 +9,60 @@
             <th>Hostname<font style="color:transparent">.</font>&<font style="color:transparent">.</font>Username</th>
             <th>Usage<font style="color:transparent">.</font>State<font style="color:transparent">.</font>&<font style="color:transparent">.</font>Ownership<font style="color:transparent">.</font>Sta.</th>
             <th>Branch<font style="color:transparent">.</font>Loc.<font style="color:transparent">.</font>&<font style="color:transparent">.</font>Details</th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
         <?php
-        $dataTable = $db->query("SELECT *,lap.id,emp.id AS idEmp,lap.username AS userLap,emp.username AS userEmp,lap.cost_center AS CC
-            FROM tb_laptop_master AS lap
-            LEFT OUTER JOIN tb_employee AS emp ON lap.username=emp.username
-            WHERE lap.status_available='BROKEN' OR lap.status_available='DISPOSED'
-            ORDER BY lap.id DESC", 0);
+        if (isset($_POST["find_filter"])) {
+            function where_add($_wh, $_add)
+            {
+                $wh = '';
+                if ($wh == '') {
+                    return 'WHERE ' . $_add;
+                } else {
+                    return $_wh . ' AND ' . $_add;
+                }
+            }
+            $i = 1;
+            $_where = '';
+            $i = 1;
+            $_where = '';
+            if ($FindSerialNumber == true) {
+                $_where = where_add($_where, ' pc.serial_number=' . "'$FindSerialNumber'" . '');
+            }
+            if ($FindProductName == true) {
+                $_where = where_add($_where, ' pc.product_name=' . "'$FindProductName'" . '');
+            }
+            if ($FindBrand == true) {
+                $_where = where_add($_where, ' pc.brand=' . "'$FindBrand'" . '');
+            }
+            if ($FindHostname == true) {
+                $_where = where_add($_where, ' pc.hostname=' . "'$FindHostname'" . '');
+            }
+            if ($FindUsername == true) {
+                $_where = where_add($_where, ' pc.username=' . "'$FindUsername'" . '');
+            }
+            if ($FindUS == true) {
+                $_where = where_add($_where, ' pc.status_use=' . "'$FindUS'" . '');
+            }
+            if ($FindOS == true) {
+                $_where = where_add($_where, ' pc.status_available=' . "'$FindOS'" . '');
+            }
+            if ($FindBranchLoc == true) {
+                $_where = where_add($_where, ' pc.location_branch=' . "'$FindBranchLoc'" . '');
+            }
+            $dataTable = $db->query("SELECT *,pc.id,emp.id AS idEmp,pc.username AS userPC,emp.username AS userEmp,pc.cost_center AS CC
+            FROM tb_pc_master AS pc
+            LEFT OUTER JOIN tb_employee AS emp ON pc.username=emp.username
+            $_where
+            ORDER BY pc.id DESC", 0);
+        } else {
+            $dataTable = $db->query("SELECT *,pc.id,emp.id AS idEmp,pc.username AS userPC,emp.username AS userEmp,pc.cost_center AS CC
+            FROM tb_pc_master AS pc
+            LEFT OUTER JOIN tb_employee AS emp ON pc.username=emp.username
+            ORDER BY pc.id DESC", 0);
+        }
         if (mysqli_num_rows($dataTable) > 0) {
             $no = 0;
             while ($row = mysqli_fetch_array($dataTable)) {
@@ -149,10 +194,10 @@
                                     <?php } ?>
                                 </div>
                                 <div style="font-size: 12px;font-weight: 300;">
-                                    <?php if ($row['userLap'] == NULL || $row['userLap'] == '-' || $row['userLap'] == 'NA' || $row['userLap'] == 'N/A' || $row['userLap'] == '#N/A') { ?>
+                                    <?php if ($row['userPC'] == NULL || $row['userPC'] == '-' || $row['userPC'] == 'NA' || $row['userPC'] == 'N/A' || $row['userPC'] == '#N/A') { ?>
                                         <font style="color: red;">Empty</font>
                                     <?php } else { ?>
-                                        <?= $row['userLap']; ?>/<?= $row['type']; ?>
+                                        <?= $row['userPC']; ?>/<?= $row['type']; ?>
                                     <?php } ?>
                                 </div>
                             </div>
@@ -206,6 +251,16 @@
                             </div>
                         </div>
                     </td>
+                    <td>
+                        <div style="display: flex;justify-content: center;align-items: center;">
+                            <a href="laptop_summary_edit.php?ID=<?= $row['id']; ?>" class="btn btn-sm btn-behind-green" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="left" data-content="Edit Device: <?= $row['serial_number']; ?>" style="margin-left: 5px;">
+                                <i class="fas fa-edit"></i> Edit
+                            </a>
+                            <a href="#Delete<?= $row['id']; ?>" class="btn btn-sm btn-behind-green" data-toggle="modal" title="Delete Device: <?= $row['serial_number']; ?>" style="margin-left: 5px;">
+                                <i class="fas fa-trash"></i> Delete
+                            </a>
+                        </div>
+                    </td>
                 </tr>
 
                 <!-- Asset -->
@@ -223,10 +278,10 @@
                                             <div class="col-sm-3">
                                                 <div class="doc-asset">
                                                     <div style="display: grid;justify-content: center;">
-                                                        <i class="fas fa-laptop"></i>
+                                                        <i class="fas fa-mobile"></i>
                                                     </div>
                                                     <div style="margin-top: -110px;display: flex;justify-content: center;margin-bottom: 0px;">
-                                                        <font style="font-size: 10px;text-align: center;text-transform:uppercase"><?= $row['brand']; ?></font>
+                                                        <font style="color:#003369;font-weight: 900;font-size: 10px;text-align: center;text-transform:uppercase"><?= $row['brand']; ?></font>
                                                     </div>
                                                     <div style="display: flex;justify-content: center;margin-top: 5px;">
                                                         <font style="font-size: 18px;text-align: center;text-transform:uppercase"><?= $row['product_name']; ?></font>
@@ -260,7 +315,7 @@
                                                                     <font><?= $row['hostname']; ?></font>
                                                                 </div>
                                                                 <div style="font-size: 12px;font-weight: 300;">
-                                                                    <font><?= $row['userLap']; ?></font>
+                                                                    <font><?= $row['userPC']; ?></font>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -367,18 +422,6 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-sm-3">
-                                                        <div style="display: flex;justify-content:flex-start;align-items: center;margin-top: 12px;">
-                                                            <div class="table-icon" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Remarks">
-                                                                <i class="fas fa-quote-right"></i>
-                                                            </div>
-                                                            <div style="margin-left: 5px;">
-                                                                <div style="font-size: 15px;font-weight: 500;">
-                                                                    <font><?= $row['remarks']; ?></font>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
                                                     <div class="col-sm-6">
                                                         <div style="display: flex;justify-content:flex-start;align-items: center;margin-top: 12px;">
                                                             <div style="padding: 10px;font-size: 20px;background: #003369;color: #ffffff;border-radius: 5px;" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Status Device">
@@ -418,6 +461,39 @@
                     </div>
                 </div>
                 <!-- End Asset -->
+
+                <!-- Delete -->
+                <div class="modal fade" id="Delete<?= $row['id']; ?>">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">[Delete Data] Laptop</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            </div>
+                            <form action="" method="POST">
+                                <div class="modal-body">
+                                    <fieldset>
+                                        <div class="list-group">
+                                            <a href="#" class="behind-list-group-item list-group-item-action flex-column align-items-start active">
+                                                <div class="d-flex w-100 justify-content-between">
+                                                    <h5 class="mb-1 text-white">Warning!</h5>
+                                                    <small><?= date('d F Y') ?></small>
+                                                </div>
+                                                <p class="mb-1">Are you sure you want to delete this data?, please click <b>Yes</b> if you want to delete this data from the system?</p>
+                                            </a>
+                                            <input type="hidden" name="ID" value="<?= $row['id']; ?>" />
+                                        </div>
+                                    </fieldset>
+                                </div>
+                                <div class="modal-footer">
+                                    <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> No</a>
+                                    <button type="submit" name="delete_" class="btn btn-danger"><i class="fas fa-check-circle"></i> Yes</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Delete -->
             <?php } ?>
         <?php } else { ?>
         <?php } ?>
