@@ -186,7 +186,14 @@ $Rrole   = mysqli_fetch_array($role);
                                                                             ? 'show' : '' ?>">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
-                                    <a class="nav-link <?= $uriSegments[2] == 'pc_summary.php' ? 'active' : '' ?>" href="pc_summary.php">
+                                    <a class="nav-link <?=
+                                                        $uriSegments[2] == 'pc_summary.php' ||
+                                                            $uriSegments[2] == 'pc_summary_add.php' ||
+                                                            $uriSegments[2] == 'pc_summary_edit.php' ||
+                                                            $uriSegments[2] == 'pc_summary_allocate.php' ||
+                                                            $uriSegments[2] == 'pc_summary_asset.php' ||
+                                                            $uriSegments[2] == 'pc_summary_history.php'
+                                                            ? 'active' : '' ?>" href="pc_summary.php">
                                         <span>Summary</span>
                                     </a>
                                 </li>

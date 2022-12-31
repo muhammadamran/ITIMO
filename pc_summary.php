@@ -16,9 +16,9 @@ if (isset($_POST["import_"])) {
         $created_by         = $_SESSION['username'];
         $created_date       = date('Y-m-d H:m:i');
 
-        $dir = "files/import/laptop/";
+        $dir = "files/import/pc/";
         $timeUpload = date('Y-m-d-h-m-i');
-        $file_name = "Laptop_" . $timeUpload . "_" . $_FILES["ImportXLS"]["name"];
+        $file_name = "PC_" . $timeUpload . "_" . $_FILES["ImportXLS"]["name"];
         $size = $_FILES["ImportXLS"]["size"];
         $tmp_file_name = $_FILES["ImportXLS"]["tmp_name"];
         $filename = $_FILES['ImportXLS']['name'];
@@ -26,8 +26,8 @@ if (isset($_POST["import_"])) {
         $ext = end($exp);
         if ($ext == 'xlsx' || $ext == 'xls' || $ext == 'xlsm' || $ext == 'xlsb') {
             move_uploaded_file($tmp_file_name, $dir . $file_name);
-            include 'laptop_read_file.php';
-            $update = $db->query("UPDATE tb_laptop_master SET created_by='$created_by',
+            include 'pc_read_file.php';
+            $update = $db->query("UPDATE tb_pc_master SET created_by='$created_by',
                                                               created_date='$created_date'
                                 WHERE created_by IS NULL");
             echo "<script>window.location.href='pc_summary.php?UploadSuccess=true&page=$page';</script>";
@@ -97,14 +97,14 @@ if (isset($_POST["add_"])) {
     $created_by         = $_SESSION['username'];
     $created_date       = date('Y-m-d H:m:i');
 
-    $available = $db->query("SELECT serial_number,product_name,brand FROM tb_laptop_master WHERE serial_number='$SerialNumber' AND product_name='$ProductName' AND brand='$Brand'");
+    $available = $db->query("SELECT serial_number,product_name,brand FROM tb_pc_master WHERE serial_number='$SerialNumber' AND product_name='$ProductName' AND brand='$Brand'");
     if (mysqli_num_rows($available) == 1) {
         echo "<script>window.location.href='pc_summary.php?Available=true&page=$page';</script>";
     } else {
-        $insert = $db->query("INSERT INTO tb_laptop_master
+        $insert = $db->query("INSERT INTO tb_pc_master
                             (id,type,serial_number,product_name,brand,device_releases_years,memory,disk,disk_type,processor,hostname,username,status_use,status_available,location_branch,location_room,po_no,cost_center,asset_no,asset_of,purchase_year,purchase_batch,prices,remarks,created_by,created_date)
                             VALUES
-                            ('','LAPTOP','$SerialNumber','$ProductName','$Brand','$DeviceRelease','$Memory','$DiskSpace','$DiskType','$Processor','$Hostname','$Username','$UsageState','$OwnershipStatus','$BranchLocation','$RoomLocation','$PONumber','$CC','$AssetNumber','$Assetof','$PurchaseYear','$PurchaseBatch','$Prices','$Remarks','$created_by','$created_date')
+                            ('','PC','$SerialNumber','$ProductName','$Brand','$DeviceRelease','$Memory','$DiskSpace','$DiskType','$Processor','$Hostname','$Username','$UsageState','$OwnershipStatus','$BranchLocation','$RoomLocation','$PONumber','$CC','$AssetNumber','$Assetof','$PurchaseYear','$PurchaseBatch','$Prices','$Remarks','$created_by','$created_date')
                             ");
 
         if ($insert) {
@@ -151,7 +151,7 @@ if (isset($_POST["edit_"])) {
     $created_by         = $_SESSION['username'];
     $created_date       = date('Y-m-d H:m:i');
 
-    $edit    = $db->query("UPDATE tb_laptop_master SET serial_number='$SerialNumber',
+    $edit    = $db->query("UPDATE tb_pc_master SET serial_number='$SerialNumber',
                                                        product_name='$ProductName',
                                                        brand='$Brand',
                                                        device_releases_years='$DeviceRelease',
@@ -191,7 +191,7 @@ if (isset($_POST["delete_"])) {
 
     $ID        = $_POST['ID'];
 
-    $delete    = $db->query("DELETE FROM tb_laptop_master WHERE id='$ID'");
+    $delete    = $db->query("DELETE FROM tb_pc_master WHERE id='$ID'");
 
     if ($delete) {
         echo "<script>window.location.href='pc_summary.php?DeleteSuccess=true&page=$page';</script>";
@@ -238,16 +238,16 @@ if (isset($_POST["newusername_"])) {
     $created_date       = date('Y-m-d H:m:i');
     $status_history     = 'Change Username';
 
-    $data   = $db->query("SELECT * FROM tb_laptop_master WHERE serial_number='$SerialNumber' AND product_name='$ProductName' AND brand='$Brand'");
+    $data   = $db->query("SELECT * FROM tb_pc_master WHERE serial_number='$SerialNumber' AND product_name='$ProductName' AND brand='$Brand'");
     $result = mysqli_fetch_array($data);
 
-    $query  = $db->query("INSERT INTO tb_laptop_master_history
+    $query  = $db->query("INSERT INTO tb_pc_master_history
                         (id,id_master,type,serial_number,product_name,brand,device_releases_years,memory,disk,disk_type,processor,hostname,username,status_use,status_available,location_branch,location_room,po_no,cost_center,asset_no,asset_of,purchase_year,purchase_batch,prices,remarks,created_by,created_date,status_history)
                         VALUES
                         ('','" . $result['id'] . "','" . $result['type'] . "','" . $result['serial_number'] . "','" . $result['product_name'] . "','" . $result['brand'] . "','" . $result['device_releases_years'] . "','" . $result['memory'] . "','" . $result['disk'] . "','" . $result['disk_type'] . "','" . $result['processor'] . "','" . $result['hostname'] . "','" . $result['username'] . "','" . $result['status_use'] . "','" . $result['status_available'] . "','" . $result['location_branch'] . "','" . $result['location_room'] . "','" . $result['po_no'] . "','" . $result['cost_center'] . "','" . $result['asset_no'] . "','" . $result['asset_of'] . "','" . $result['purchase_year'] . "','" . $result['purchase_batch'] . "','" . $result['prices'] . "','" . $result['remarks'] . "','" . $result['created_by'] . "','" . $result['created_date'] . "','$status_history')
                         ");
 
-    $query  .= $db->query("UPDATE tb_laptop_master SET username='$NewUsername',
+    $query  .= $db->query("UPDATE tb_pc_master SET username='$NewUsername',
                         status_available='$OwnershipStatus',
                         created_by='$created_by',
                         created_date='$created_date'
@@ -298,16 +298,16 @@ if (isset($_POST["newhostname_"])) {
     $created_date       = date('Y-m-d H:m:i');
     $status_history     = 'Change Hostname';
 
-    $data   = $db->query("SELECT * FROM tb_laptop_master WHERE serial_number='$SerialNumber' AND product_name='$ProductName' AND brand='$Brand'");
+    $data   = $db->query("SELECT * FROM tb_pc_master WHERE serial_number='$SerialNumber' AND product_name='$ProductName' AND brand='$Brand'");
     $result = mysqli_fetch_array($data);
 
-    $query  = $db->query("INSERT INTO tb_laptop_master_history
+    $query  = $db->query("INSERT INTO tb_pc_master_history
                         (id,id_master,type,serial_number,product_name,brand,device_releases_years,memory,disk,disk_type,processor,hostname,username,status_use,status_available,location_branch,location_room,po_no,cost_center,asset_no,asset_of,purchase_year,purchase_batch,prices,remarks,created_by,created_date,status_history)
                         VALUES
                         ('','" . $result['id'] . "','" . $result['type'] . "','" . $result['serial_number'] . "','" . $result['product_name'] . "','" . $result['brand'] . "','" . $result['device_releases_years'] . "','" . $result['memory'] . "','" . $result['disk'] . "','" . $result['disk_type'] . "','" . $result['processor'] . "','" . $result['hostname'] . "','" . $result['username'] . "','" . $result['status_use'] . "','" . $result['status_available'] . "','" . $result['location_branch'] . "','" . $result['location_room'] . "','" . $result['po_no'] . "','" . $result['cost_center'] . "','" . $result['asset_no'] . "','" . $result['asset_of'] . "','" . $result['purchase_year'] . "','" . $result['purchase_batch'] . "','" . $result['prices'] . "','" . $result['remarks'] . "','" . $result['created_by'] . "','" . $result['created_date'] . "','$status_history')
                         ");
 
-    $query  .= $db->query("UPDATE tb_laptop_master SET hostname='$NewHostname',
+    $query  .= $db->query("UPDATE tb_pc_master SET hostname='$NewHostname',
                         created_by='$created_by',
                         created_date='$created_date'
                         WHERE id='$ID'");
@@ -587,10 +587,10 @@ if (isset($_POST["find_filter"])) {
                                         <a href="pc_summary_allocate.php" class="btn btn-sm btn-primary" title="Allocate Device">
                                             <i class="fas fa-user-plus" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Change Username"></i>
                                             &nbsp; OR &nbsp;
-                                            <i class="fas fa-laptop" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Change Hostname"></i>
+                                            <i class="fas fa-mobile" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Change Hostname"></i>
                                         </a>
                                         <!-- Download Template -->
-                                        <a href="files/template/laptop/template_laptop_master.xls" target="_blank" class="btn btn-sm btn-primary" title="Download Template"><i class="fas fa-file-download"></i>
+                                        <a href="files/template/pc/template_pc_master.xls" target="_blank" class="btn btn-sm btn-primary" title="Download Template"><i class="fas fa-file-download"></i>
                                             <font class="f-action"> Template XLS</font>
                                         </a>
                                         <!-- End Download Template -->
@@ -598,14 +598,14 @@ if (isset($_POST["find_filter"])) {
                                 </div>
                             </div>
                             <hr>
-                            <!-- Add Laptop  -->
+                            <!-- Add PC  -->
                             <div class="row">
                                 <div class="col-sm-3" style="margin-top: 0px;margin-left: 15px;">
-                                    <!-- Add Laptop -->
-                                    <a href="pc_summary_add.php" class="btn btn-sm btn-primary" title="Add Laptop"><i class="fas fa-plus-circle"></i>
+                                    <!-- Add PC -->
+                                    <a href="pc_summary_add.php" class="btn btn-sm btn-primary" title="Add PC"><i class="fas fa-plus-circle"></i>
                                         <font class="f-action"></font>
                                     </a>
-                                    <!-- End Add Laptop -->
+                                    <!-- End Add PC -->
                                     <!-- Add Import XLS -->
                                     <a href="#modal-Import-XLS" class="btn btn-sm btn-primary" data-toggle="modal" title="Import XLS"><i class="fas fa-file-upload"></i>
                                         <font class="f-action"> Import XLS</font>
@@ -644,24 +644,24 @@ if (isset($_POST["find_filter"])) {
                                     <!-- End Add Import XLS -->
                                 </div>
                             </div>
-                            <!-- End Add Laptop  -->
+                            <!-- End Add PC  -->
                             <hr />
                             <div style="padding: 15px;">
                                 <div class="alert alert-primary" role="alert">
                                     <h4 class="alert-heading">Information!</h4>
                                     <?php
                                     $TotalData       = $db->query("SELECT COUNT(*) AS total_,
-                                                                   (SELECT COUNT(*) FROM tb_laptop_master WHERE status_available='AVAILABLE') AS t_AVAILABLE,
-                                                                   (SELECT COUNT(*) FROM tb_laptop_master WHERE status_available='BROKEN') AS t_BROKEN,
-                                                                   (SELECT COUNT(*) FROM tb_laptop_master WHERE status_available='DISPOSED') AS t_DISPOSED,
-                                                                   (SELECT COUNT(*) FROM tb_laptop_master WHERE status_available='PERMANENT') AS t_PERMANENT,
-                                                                   (SELECT COUNT(*) FROM tb_laptop_master WHERE status_available='TEMP') AS t_TEMP,
-                                                                   (SELECT COUNT(*) FROM tb_laptop_master WHERE status_available IS NULL OR status_available='' OR status_available='-' OR status_available='NA' OR status_available='N/A' OR status_available='#N/A') AS t_NULL
-                                                                   FROM tb_laptop_master");
+                                                                   (SELECT COUNT(*) FROM tb_pc_master WHERE status_available='AVAILABLE') AS t_AVAILABLE,
+                                                                   (SELECT COUNT(*) FROM tb_pc_master WHERE status_available='BROKEN') AS t_BROKEN,
+                                                                   (SELECT COUNT(*) FROM tb_pc_master WHERE status_available='DISPOSED') AS t_DISPOSED,
+                                                                   (SELECT COUNT(*) FROM tb_pc_master WHERE status_available='PERMANENT') AS t_PERMANENT,
+                                                                   (SELECT COUNT(*) FROM tb_pc_master WHERE status_available='TEMP') AS t_TEMP,
+                                                                   (SELECT COUNT(*) FROM tb_pc_master WHERE status_available IS NULL OR status_available='' OR status_available='-' OR status_available='NA' OR status_available='N/A' OR status_available='#N/A') AS t_NULL
+                                                                   FROM tb_pc_master");
                                     $resultTotalData = mysqli_fetch_array($TotalData);
                                     ?>
                                     <p>
-                                        Total Serial Number <b><?= $resultTotalData['total_']; ?> Laptop.</b> Details Status Devices:
+                                        Total Serial Number <b><?= $resultTotalData['total_']; ?> PC.</b> Details Status Devices:
                                     <ul>
                                         <li>AVAILABLE <b><?= $resultTotalData['t_AVAILABLE']; ?></b></li>
                                         <li>BROKEN <b><?= $resultTotalData['t_BROKEN']; ?></b></li>
@@ -697,42 +697,42 @@ if (isset($_POST["find_filter"])) {
     // Find
     $(function() {
         $("#IdFindSerialNumber").autocomplete({
-            source: 'function/autocomplete/data.php?function=AutoFindSerialNumber'
+            source: 'function/autocomplete/data_pc.php?function=AutoFindSerialNumber'
         });
     });
     $(function() {
         $("#IdFindProductName").autocomplete({
-            source: 'function/autocomplete/data.php?function=AutoFindProductName'
+            source: 'function/autocomplete/data_pc.php?function=AutoFindProductName'
         });
     });
     $(function() {
         $("#IdFindBrand").autocomplete({
-            source: 'function/autocomplete/data.php?function=AutoFindBrand'
+            source: 'function/autocomplete/data_pc.php?function=AutoFindBrand'
         });
     });
     $(function() {
         $("#IdFindHostname").autocomplete({
-            source: 'function/autocomplete/data.php?function=AutoFindHostname'
+            source: 'function/autocomplete/data_pc.php?function=AutoFindHostname'
         });
     });
     $(function() {
         $("#IdFindUsername").autocomplete({
-            source: 'function/autocomplete/data.php?function=AutoFindUsername'
+            source: 'function/autocomplete/data_pc.php?function=AutoFindUsername'
         });
     });
     $(function() {
         $("#IdFindUS").autocomplete({
-            source: 'function/autocomplete/data.php?function=AutoFindUS'
+            source: 'function/autocomplete/data_pc.php?function=AutoFindUS'
         });
     });
     $(function() {
         $("#IdFindOS").autocomplete({
-            source: 'function/autocomplete/data.php?function=AutoFindOS'
+            source: 'function/autocomplete/data_pc.php?function=AutoFindOS'
         });
     });
     $(function() {
         $("#IdFindBranchLoc").autocomplete({
-            source: 'function/autocomplete/data.php?function=AutoFindBranchLoc'
+            source: 'function/autocomplete/data_pc.php?function=AutoFindBranchLoc'
         });
     });
 
