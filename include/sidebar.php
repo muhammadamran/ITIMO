@@ -20,7 +20,7 @@ $Rrole   = mysqli_fetch_array($role);
                     </li>
                     <!-- DASHBOARD -->
                     <li class="nav-item">
-                        <a class="nav-link  <?= $uriSegments[2] == 'index.php' ? 'active' : '' ?>" href="index.php">
+                        <a class="nav-link <?= $uriSegments[2] == 'index.php' ? 'active' : '' ?>" href="index.php">
                             <i class="fas fa-chart-pie" id="sidebar-font"></i>
                             <span>Dashboard</span>
                         </a>
@@ -28,7 +28,7 @@ $Rrole   = mysqli_fetch_array($role);
                     <!-- END DASHBOARD -->
                     <!-- SEARCH -->
                     <li class="nav-item">
-                        <a class="nav-link  <?= $uriSegments[2] == 'search.php' ? 'active' : '' ?>" href="search.php">
+                        <a class="nav-link <?= $uriSegments[2] == 'search.php' ? 'active' : '' ?>" href="search.php">
                             <i class="fa fa-fw fa-search" id="sidebar-font"></i>
                             <span>Search</span>
                         </a>
@@ -50,7 +50,7 @@ $Rrole   = mysqli_fetch_array($role);
                                                 $uriSegments[2] == 'laptop_summary_history.php' ||
                                                 $uriSegments[2] == 'laptop_available.php' ||
                                                 $uriSegments[2] == 'laptop_permanent.php' ||
-                                                $uriSegments[2] == 'laptop_broken.php'
+                                                $uriSegments[2] == 'laptop_bd.php'
                                                 ? 'active' : '' ?>" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-laptop" aria-controls="submenu-1">
                             <i class="fas fa-laptop" id="sidebar-font"></i>
                             <span>Laptop</span>
@@ -64,7 +64,7 @@ $Rrole   = mysqli_fetch_array($role);
                                                                                 $uriSegments[2] == 'laptop_summary_history.php' ||
                                                                                 $uriSegments[2] == 'laptop_available.php' ||
                                                                                 $uriSegments[2] == 'laptop_permanent.php' ||
-                                                                                $uriSegments[2] == 'laptop_broken.php'
+                                                                                $uriSegments[2] == 'laptop_bd.php'
                                                                                 ? 'show' : '' ?>">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
@@ -80,17 +80,17 @@ $Rrole   = mysqli_fetch_array($role);
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link  <?= $uriSegments[2] == 'laptop_available.php' ? 'active' : '' ?>" href="laptop_available.php">
+                                    <a class="nav-link <?= $uriSegments[2] == 'laptop_available.php' ? 'active' : '' ?>" href="laptop_available.php">
                                         <span>Available</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link  <?= $uriSegments[2] == 'laptop_permanent.php' ? 'active' : '' ?>" href="laptop_permanent.php">
+                                    <a class="nav-link <?= $uriSegments[2] == 'laptop_permanent.php' ? 'active' : '' ?>" href="laptop_permanent.php">
                                         <span>Permanent</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link  <?= $uriSegments[2] == 'laptop_broken.php' ? 'active' : '' ?>" href="laptop_broken.php">
+                                    <a class="nav-link <?= $uriSegments[2] == 'laptop_bd.php' ? 'active' : '' ?>" href="laptop_bd.php">
                                         <span>Broken/Disposed</span>
                                     </a>
                                 </li>
@@ -98,6 +98,117 @@ $Rrole   = mysqli_fetch_array($role);
                         </div>
                     </li>
                     <!-- END LAPTOP -->
+                    <!-- SERVER -->
+                    <li class="nav-item">
+                        <a class="nav-link <?=
+                                            $uriSegments[2] == 'server_summary.php' ||
+                                                $uriSegments[2] == 'server_summary_add.php' ||
+                                                $uriSegments[2] == 'server_summary_edit.php' ||
+                                                $uriSegments[2] == 'server_summary_allocate.php' ||
+                                                $uriSegments[2] == 'server_summary_asset.php' ||
+                                                $uriSegments[2] == 'server_summary_history.php' ||
+                                                $uriSegments[2] == 'server_available.php' ||
+                                                $uriSegments[2] == 'server_permanent.php' ||
+                                                $uriSegments[2] == 'server_bd.php'
+                                                ? 'active' : '' ?>" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-server" aria-controls="submenu-3">
+                            <i class="fas fa-server" id="sidebar-font"></i>
+                            <span>Server</span>
+                        </a>
+                        <div id="submenu-server" class="collapse submenu <?=
+                                                                            $uriSegments[2] == 'server_summary.php' ||
+                                                                                $uriSegments[2] == 'server_summary_add.php' ||
+                                                                                $uriSegments[2] == 'server_summary_edit.php' ||
+                                                                                $uriSegments[2] == 'server_summary_allocate.php' ||
+                                                                                $uriSegments[2] == 'server_summary_asset.php' ||
+                                                                                $uriSegments[2] == 'server_summary_history.php' ||
+                                                                                $uriSegments[2] == 'server_available.php' ||
+                                                                                $uriSegments[2] == 'server_permanent.php' ||
+                                                                                $uriSegments[2] == 'server_bd.php'
+                                                                                ? 'show' : '' ?>">
+                            <ul class="nav flex-column">
+                                <li class="nav-item">
+                                    <a class="nav-link <?=
+                                                        $uriSegments[2] == 'server_summary.php' ||
+                                                            $uriSegments[2] == 'server_summary_add.php' ||
+                                                            $uriSegments[2] == 'server_summary_edit.php' ||
+                                                            $uriSegments[2] == 'server_summary_allocate.php' ||
+                                                            $uriSegments[2] == 'server_summary_asset.php' ||
+                                                            $uriSegments[2] == 'server_summary_history.php'
+                                                            ? 'active' : '' ?>" href="server_summary.php">
+                                        <span>Summary</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link <?= $uriSegments[2] == 'server_available.php' ? 'active' : '' ?>" href="server_available.php">
+                                        <span>Available</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link <?= $uriSegments[2] == 'server_permanent.php' ? 'active' : '' ?>" href="server_permanent.php">
+                                        <span>Permanent</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link <?= $uriSegments[2] == 'server_bd.php' ? 'active' : '' ?>" href="server_bd.php">
+                                        <span>Broken/Disposed</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <!-- END SERVER -->
+                    <!-- PC -->
+                    <li class="nav-item">
+                        <a class="nav-link <?=
+                                            $uriSegments[2] == 'pc_summary.php' ||
+                                                $uriSegments[2] == 'pc_summary_add.php' ||
+                                                $uriSegments[2] == 'pc_summary_edit.php' ||
+                                                $uriSegments[2] == 'pc_summary_allocate.php' ||
+                                                $uriSegments[2] == 'pc_summary_asset.php' ||
+                                                $uriSegments[2] == 'pc_summary_history.php' ||
+                                                $uriSegments[2] == 'pc_available.php' ||
+                                                $uriSegments[2] == 'pc_permanent.php' ||
+                                                $uriSegments[2] == 'pc_bd.php'
+                                                ? 'active' : '' ?>" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-pc" aria-controls="submenu-31">
+                            <i class="fas fa-mobile" id="sidebar-font"></i>
+                            <span>PC</span>
+                        </a>
+                        <div id="submenu-pc" class="collapse submenu <?=
+                                                                        $uriSegments[2] == 'pc_summary.php' ||
+                                                                            $uriSegments[2] == 'pc_summary_add.php' ||
+                                                                            $uriSegments[2] == 'pc_summary_edit.php' ||
+                                                                            $uriSegments[2] == 'pc_summary_allocate.php' ||
+                                                                            $uriSegments[2] == 'pc_summary_asset.php' ||
+                                                                            $uriSegments[2] == 'pc_summary_history.php' ||
+                                                                            $uriSegments[2] == 'pc_available.php' ||
+                                                                            $uriSegments[2] == 'pc_permanent.php' ||
+                                                                            $uriSegments[2] == 'pc_bd.php'
+                                                                            ? 'show' : '' ?>">
+                            <ul class="nav flex-column">
+                                <li class="nav-item">
+                                    <a class="nav-link <?= $uriSegments[2] == 'pc_summary.php' ? 'active' : '' ?>" href="pc_summary.php">
+                                        <span>Summary</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link <?= $uriSegments[2] == 'pc_available.php' ? 'active' : '' ?>" href="pc_available.php">
+                                        <span>Available</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link <?= $uriSegments[2] == 'pc_permanent.php' ? 'active' : '' ?>" href="pc_permanent.php">
+                                        <span>Permanent</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link <?= $uriSegments[2] == 'pc_bd.php' ? 'active' : '' ?>" href="pc_bd.php">
+                                        <span>Broken/Disposed</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <!-- END PC -->
                     <!-- MONITOR/LCD -->
                     <li class="nav-item">
                         <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-monitor-lcd" aria-controls="submenu-2">
@@ -130,38 +241,6 @@ $Rrole   = mysqli_fetch_array($role);
                         </div>
                     </li>
                     <!-- END MONITOR/LCD -->
-                    <!-- PC -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-pc" aria-controls="submenu-3">
-                            <i class="fas fa-server" id="sidebar-font"></i>
-                            <span>PC</span>
-                        </a>
-                        <div id="submenu-pc" class="collapse submenu">
-                            <ul class="nav flex-column">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="adm_user.php">
-                                        <span>Summary</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="adm_user.php">
-                                        <span>Available</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="adm_user.php">
-                                        <span>In Use</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="adm_user.php">
-                                        <span>Broken/Disposed</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <!-- END PC -->
                     <!-- TV -->
                     <li class="nav-item">
                         <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-tv" aria-controls="submenu-4">
@@ -197,7 +276,7 @@ $Rrole   = mysqli_fetch_array($role);
                     <!-- PHONE -->
                     <li class="nav-item">
                         <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-phone" aria-controls="submenu-5">
-                            <i class="fas fa-mobile" id="sidebar-font"></i>
+                            <i class="fas fa-mobile-alt" id="sidebar-font"></i>
                             <span>Phone</span>
                         </a>
                         <div id="submenu-phone" class="collapse submenu">
@@ -229,7 +308,7 @@ $Rrole   = mysqli_fetch_array($role);
                     <!-- IPAD -->
                     <li class="nav-item">
                         <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-ipad" aria-controls="submenu-6">
-                            <i class="fas fa-tablet" id="sidebar-font"></i>
+                            <i class="fas fa-tablet-alt" id="sidebar-font"></i>
                             <span>Ipad</span>
                         </a>
                         <div id="submenu-ipad" class="collapse submenu">
@@ -574,7 +653,7 @@ $Rrole   = mysqli_fetch_array($role);
                     <!-- END REFERENCES -->
                     <!-- USERS APPS -->
                     <li class="nav-item">
-                        <a class="nav-link  <?= $uriSegments[2] == 'adm_user.php' ? 'active' : '' ?>" href="adm_user.php">
+                        <a class="nav-link <?= $uriSegments[2] == 'adm_user.php' ? 'active' : '' ?>" href="adm_user.php">
                             <i class="fas fa-users-cog" id="sidebar-font"></i>
                             <span>Users Apps</span>
                         </a>
@@ -582,7 +661,7 @@ $Rrole   = mysqli_fetch_array($role);
                     <!-- END USERS APPS -->
                     <!-- EMAIL NOTIF SYSTEM -->
                     <li class="nav-item">
-                        <a class="nav-link  <?= $uriSegments[2] == 'adm_email.php' ? 'active' : '' ?>" href="adm_email.php">
+                        <a class="nav-link <?= $uriSegments[2] == 'adm_email.php' ? 'active' : '' ?>" href="adm_email.php">
                             <i class="fas fa-envelope-open-text" id="sidebar-font"></i>
                             <span>Email Notif System</span>
                         </a>
@@ -590,7 +669,7 @@ $Rrole   = mysqli_fetch_array($role);
                     <!-- END EMAIL NOTIF SYSTEM -->
                     <!-- SETTINGS -->
                     <li class="nav-item">
-                        <a class="nav-link  <?= $uriSegments[2] == 'app_setting.php' ? 'active' : '' ?>" href="app_setting.php">
+                        <a class="nav-link <?= $uriSegments[2] == 'app_setting.php' ? 'active' : '' ?>" href="app_setting.php">
                             <i class="fas fa-cogs" id="sidebar-font"></i>
                             <span>Settings</span>
                         </a>
@@ -598,7 +677,7 @@ $Rrole   = mysqli_fetch_array($role);
                     <!-- END SETTINGS -->
                     <!-- LOG REPORT -->
                     <li class="nav-item ">
-                        <a class="nav-link  <?= $uriSegments[2] == 'log_report.php' ? 'active' : '' ?>" href="log_report.php">
+                        <a class="nav-link <?= $uriSegments[2] == 'log_report.php' ? 'active' : '' ?>" href="log_report.php">
                             <i class="fa fa-fw fa-file" id="sidebar-font"></i>
                             <span>Log Report</span>
                         </a>

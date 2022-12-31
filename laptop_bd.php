@@ -174,7 +174,7 @@ include 'include/dataTablesCSS.php';
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <?php include "table/t_laptop_broken.php"; ?>
+                                    <?php include "table/t_laptop_bd.php"; ?>
                                 </div>
                             </div>
                         </div>
