@@ -148,7 +148,7 @@ $resultdM   = mysqli_fetch_array($dataMaster);
                                         </div>
                                         <!-- End Data Master -->
                                         <?php
-                                        $dataTable = $db->query("SELECT * FROM tb_pc_master_history WHERE serial_number='$GET' ORDER BY id DESC", 0);
+                                        $dataTable = $db->query("SELECT * FROM tb_pc_history WHERE serial_number='$GET' ORDER BY id DESC", 0);
                                         if (mysqli_num_rows($dataTable) > 0) {
                                             $no = 0;
                                             while ($row = mysqli_fetch_array($dataTable)) {

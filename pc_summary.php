@@ -241,7 +241,7 @@ if (isset($_POST["newusername_"])) {
     $data   = $db->query("SELECT * FROM tb_pc_master WHERE serial_number='$SerialNumber' AND product_name='$ProductName' AND brand='$Brand'");
     $result = mysqli_fetch_array($data);
 
-    $query  = $db->query("INSERT INTO tb_pc_master_history
+    $query  = $db->query("INSERT INTO tb_pc_history
                         (id,id_master,type,serial_number,product_name,brand,device_releases_years,memory,disk,disk_type,processor,hostname,username,status_use,status_available,location_branch,location_room,po_no,cost_center,asset_no,asset_of,purchase_year,purchase_batch,prices,remarks,created_by,created_date,status_history)
                         VALUES
                         ('','" . $result['id'] . "','" . $result['type'] . "','" . $result['serial_number'] . "','" . $result['product_name'] . "','" . $result['brand'] . "','" . $result['device_releases_years'] . "','" . $result['memory'] . "','" . $result['disk'] . "','" . $result['disk_type'] . "','" . $result['processor'] . "','" . $result['hostname'] . "','" . $result['username'] . "','" . $result['status_use'] . "','" . $result['status_available'] . "','" . $result['location_branch'] . "','" . $result['location_room'] . "','" . $result['po_no'] . "','" . $result['cost_center'] . "','" . $result['asset_no'] . "','" . $result['asset_of'] . "','" . $result['purchase_year'] . "','" . $result['purchase_batch'] . "','" . $result['prices'] . "','" . $result['remarks'] . "','" . $result['created_by'] . "','" . $result['created_date'] . "','$status_history')
@@ -301,7 +301,7 @@ if (isset($_POST["newhostname_"])) {
     $data   = $db->query("SELECT * FROM tb_pc_master WHERE serial_number='$SerialNumber' AND product_name='$ProductName' AND brand='$Brand'");
     $result = mysqli_fetch_array($data);
 
-    $query  = $db->query("INSERT INTO tb_pc_master_history
+    $query  = $db->query("INSERT INTO tb_pc_history
                         (id,id_master,type,serial_number,product_name,brand,device_releases_years,memory,disk,disk_type,processor,hostname,username,status_use,status_available,location_branch,location_room,po_no,cost_center,asset_no,asset_of,purchase_year,purchase_batch,prices,remarks,created_by,created_date,status_history)
                         VALUES
                         ('','" . $result['id'] . "','" . $result['type'] . "','" . $result['serial_number'] . "','" . $result['product_name'] . "','" . $result['brand'] . "','" . $result['device_releases_years'] . "','" . $result['memory'] . "','" . $result['disk'] . "','" . $result['disk_type'] . "','" . $result['processor'] . "','" . $result['hostname'] . "','" . $result['username'] . "','" . $result['status_use'] . "','" . $result['status_available'] . "','" . $result['location_branch'] . "','" . $result['location_room'] . "','" . $result['po_no'] . "','" . $result['cost_center'] . "','" . $result['asset_no'] . "','" . $result['asset_of'] . "','" . $result['purchase_year'] . "','" . $result['purchase_batch'] . "','" . $result['prices'] . "','" . $result['remarks'] . "','" . $result['created_by'] . "','" . $result['created_date'] . "','$status_history')

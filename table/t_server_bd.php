@@ -9,53 +9,11 @@
             <th>Hostname<font style="color:transparent">.</font>&<font style="color:transparent">.</font>Username</th>
             <th>Usage<font style="color:transparent">.</font>State<font style="color:transparent">.</font>&<font style="color:transparent">.</font>Ownership<font style="color:transparent">.</font>Sta.</th>
             <th>Branch<font style="color:transparent">.</font>Loc.<font style="color:transparent">.</font>&<font style="color:transparent">.</font>Details</th>
-            <th>Action</th>
         </tr>
     </thead>
     <tbody>
         <?php
-        if (isset($_POST["find_filter"])) {
-            function where_add($_wh, $_add)
-            {
-                $wh = '';
-                if ($wh == '') {
-                    return 'WHERE ' . $_add;
-                } else {
-                    return $_wh . ' AND ' . $_add;
-                }
-            }
-            $i = 1;
-            $_where = '';
-            $i = 1;
-            $_where = '';
-            if ($FindSerialNumber == true) {
-                $_where = where_add($_where, ' serial_number=' . "'$FindSerialNumber'" . '');
-            }
-            if ($FindProductName == true) {
-                $_where = where_add($_where, ' product_name=' . "'$FindProductName'" . '');
-            }
-            if ($FindBrand == true) {
-                $_where = where_add($_where, ' brand=' . "'$FindBrand'" . '');
-            }
-            if ($FindHostname == true) {
-                $_where = where_add($_where, ' hostname=' . "'$FindHostname'" . '');
-            }
-            if ($FindUsername == true) {
-                $_where = where_add($_where, ' username=' . "'$FindUsername'" . '');
-            }
-            if ($FindUS == true) {
-                $_where = where_add($_where, ' status_use=' . "'$FindUS'" . '');
-            }
-            if ($FindOS == true) {
-                $_where = where_add($_where, ' status_available=' . "'$FindOS'" . '');
-            }
-            if ($FindBranchLoc == true) {
-                $_where = where_add($_where, ' location_branch=' . "'$FindBranchLoc'" . '');
-            }
-            $dataTable = $db->query("SELECT * FROM tb_server_master $_where ORDER BY id DESC", 0);
-        } else {
-            $dataTable = $db->query("SELECT * FROM tb_server_master ORDER BY id DESC", 0);
-        }
+        $dataTable = $db->query("SELECT * FROM tb_server_master WHERE status_available='BROKEN' OR status_available='DISPOSED' ORDER BY id DESC", 0);
         if (mysqli_num_rows($dataTable) > 0) {
             $no = 0;
             while ($row = mysqli_fetch_array($dataTable)) {
@@ -67,7 +25,7 @@
                     <td>
                         <div style="display: flex;justify-content: center;align-items: center;">
                             <div>
-                                <a href="server_summary_history.php?SN=<?= $row['serial_number']; ?>" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="right" data-content="Detail Device History: <?= $row['serial_number']; ?>">
+                                <a href="laptop_summary_history.php?SN=<?= $row['serial_number']; ?>" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="right" data-content="Detail Device History: <?= $row['serial_number']; ?>">
                                     <div class="table-icon-Assets-IT-Temp">
                                         <i class="fas fa-clock"></i>
                                     </div>
@@ -242,16 +200,6 @@
                                     <?php } ?>
                                 </div>
                             </div>
-                        </div>
-                    </td>
-                    <td>
-                        <div style="display: flex;justify-content: center;align-items: center;">
-                            <a href="server_summary_edit.php?ID=<?= $row['id']; ?>" class="btn btn-sm btn-behind-green" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="left" data-content="Edit Device: <?= $row['serial_number']; ?>" style="margin-left: 5px;">
-                                <i class="fas fa-edit"></i> Edit
-                            </a>
-                            <a href="#Delete<?= $row['id']; ?>" class="btn btn-sm btn-behind-green" data-toggle="modal" title="Delete Device: <?= $row['serial_number']; ?>" style="margin-left: 5px;">
-                                <i class="fas fa-trash"></i> Delete
-                            </a>
                         </div>
                     </td>
                 </tr>
@@ -466,39 +414,6 @@
                     </div>
                 </div>
                 <!-- End Asset -->
-
-                <!-- Delete -->
-                <div class="modal fade" id="Delete<?= $row['id']; ?>">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title">[Delete Data] Server</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                            </div>
-                            <form action="" method="POST">
-                                <div class="modal-body">
-                                    <fieldset>
-                                        <div class="list-group">
-                                            <a href="#" class="behind-list-group-item list-group-item-action flex-column align-items-start active">
-                                                <div class="d-flex w-100 justify-content-between">
-                                                    <h5 class="mb-1 text-white">Warning!</h5>
-                                                    <small><?= date('d F Y') ?></small>
-                                                </div>
-                                                <p class="mb-1">Are you sure you want to delete this data?, please click <b>Yes</b> if you want to delete this data from the system?</p>
-                                            </a>
-                                            <input type="hidden" name="ID" value="<?= $row['id']; ?>" />
-                                        </div>
-                                    </fieldset>
-                                </div>
-                                <div class="modal-footer">
-                                    <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> No</a>
-                                    <button type="submit" name="delete_" class="btn btn-danger"><i class="fas fa-check-circle"></i> Yes</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Delete -->
             <?php } ?>
         <?php } else { ?>
         <?php } ?>
