@@ -345,19 +345,19 @@ include 'include/dataTablesCSS.php';
     // Product Name
     $(function() {
         $("#IdProductName").autocomplete({
-            source: 'function/autocomplete/data.php?function=AutoProductName'
+            source: 'function/autocomplete/data_server.php?function=AutoProductName'
         });
     });
     // Brand
     $(function() {
         $("#IdBrand").autocomplete({
-            source: 'function/autocomplete/data.php?function=AutoBrand'
+            source: 'function/autocomplete/data_server.php?function=AutoBrand'
         });
     });
     // Username
     $(function() {
         $("#IdUsername").autocomplete({
-            source: 'function/autocomplete/data.php?function=AutoUsername'
+            source: 'function/autocomplete/data_server.php?function=AutoUsername'
         });
     });
     // Select Find

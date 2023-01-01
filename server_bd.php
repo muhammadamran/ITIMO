@@ -27,7 +27,7 @@ include 'include/dataTablesCSS.php';
                                         <h2 class="pageheader-title" style="color: #003369;">Server Broken/Disposed </h2>
                                     </div>
                                     <div style="margin-top: -10px;">
-                                        <font>Server</font>
+                                        <font>SERVER</font>
                                     </div>
                                 </div>
                             </div>

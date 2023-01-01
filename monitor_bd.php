@@ -5,7 +5,7 @@ include 'include/head.php';
 include 'include/alert.php';
 include 'include/dataTablesCSS.php';
 ?>
-<title>Server Broken/Disposed - <?= $Rapps['app_name'] ?> | General Management</title>
+<title>Monitor/LCD Broken/Disposed - <?= $Rapps['app_name'] ?> | General Management</title>
 <link href="assets/plugins/chosen/chosen.css" rel="stylesheet" type="text/css" />
 <div class="dashboard-main-wrapper">
     <?php include "include/header.php"; ?>
@@ -20,14 +20,14 @@ include 'include/dataTablesCSS.php';
                         <div class="page-header">
                             <div class="c-page">
                                 <div class="bg-page">
-                                    <i class="fas fa-server icon-page"></i>
+                                    <i class="fas fa-desktop icon-page"></i>
                                 </div>
                                 <div style="margin-left: 10px;">
                                     <div>
-                                        <h2 class="pageheader-title" style="color: #003369;">Server Broken/Disposed </h2>
+                                        <h2 class="pageheader-title" style="color: #003369;">Monitor/LCD Broken/Disposed </h2>
                                     </div>
                                     <div style="margin-top: -10px;">
-                                        <font>Server</font>
+                                        <font>MONITOR/LCD</font>
                                     </div>
                                 </div>
                             </div>
@@ -36,7 +36,7 @@ include 'include/dataTablesCSS.php';
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
-                                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Server Broken/Disposed</a></li>
+                                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Monitor/LCD Broken/Disposed</a></li>
                                     </ol>
                                 </nav>
                             </div>
@@ -52,7 +52,7 @@ include 'include/dataTablesCSS.php';
                             <div style="display: flex;justify-content: space-between;align-items: center;">
                                 <div>
                                     <h5 class="card-header-custom">
-                                        <i class="fas fa-list"></i> Data Server Broken/Disposed <br><small>Read Information</small>
+                                        <i class="fas fa-list"></i> Data Monitor/LCD Broken/Disposed <br><small>Read Information</small>
                                         <!-- Info -->
                                         <a href="#modal-Info" data-toggle="modal" class="badge badge-sm badge-light" title="Information"><i class="fas fa-info-circle"></i>
                                             <font class="f-action"></font>
@@ -152,17 +152,17 @@ include 'include/dataTablesCSS.php';
                                     <h4 class="alert-heading">Information!</h4>
                                     <?php
                                     $TotalData       = $db->query("SELECT COUNT(*) AS total_,
-                                                                   (SELECT COUNT(*) FROM tb_server_master WHERE status_available='AVAILABLE') AS t_AVAILABLE,
-                                                                   (SELECT COUNT(*) FROM tb_server_master WHERE status_available='BROKEN') AS t_BROKEN,
-                                                                   (SELECT COUNT(*) FROM tb_server_master WHERE status_available='DISPOSED') AS t_DISPOSED,
-                                                                   (SELECT COUNT(*) FROM tb_server_master WHERE status_available='PERMANENT') AS t_PERMANENT,
-                                                                   (SELECT COUNT(*) FROM tb_server_master WHERE status_available='TEMP') AS t_TEMP,
-                                                                   (SELECT COUNT(*) FROM tb_server_master WHERE status_available IS NULL OR status_available='' OR status_available='-' OR status_available='NA' OR status_available='N/A' OR status_available='#N/A') AS t_NULL
-                                                                   FROM tb_server_master");
+                                                                   (SELECT COUNT(*) FROM tb_monitor_master WHERE status_available='AVAILABLE') AS t_AVAILABLE,
+                                                                   (SELECT COUNT(*) FROM tb_monitor_master WHERE status_available='BROKEN') AS t_BROKEN,
+                                                                   (SELECT COUNT(*) FROM tb_monitor_master WHERE status_available='DISPOSED') AS t_DISPOSED,
+                                                                   (SELECT COUNT(*) FROM tb_monitor_master WHERE status_available='PERMANENT') AS t_PERMANENT,
+                                                                   (SELECT COUNT(*) FROM tb_monitor_master WHERE status_available='TEMP') AS t_TEMP,
+                                                                   (SELECT COUNT(*) FROM tb_monitor_master WHERE status_available IS NULL OR status_available='' OR status_available='-' OR status_available='NA' OR status_available='N/A' OR status_available='#N/A') AS t_NULL
+                                                                   FROM tb_monitor_master");
                                     $resultTotalData = mysqli_fetch_array($TotalData);
                                     ?>
                                     <p>
-                                        Total Serial Number <b><?= $resultTotalData['total_']; ?> Server.</b> Details Status Devices:
+                                        Total Serial Number <b><?= $resultTotalData['total_']; ?> Monitor/LCD.</b> Details Status Devices:
                                     <ul>
                                         <li>BROKEN <b><?= $resultTotalData['t_BROKEN']; ?></b></li>
                                         <li>DISPOSED <b><?= $resultTotalData['t_DISPOSED']; ?></b></li>
@@ -174,7 +174,7 @@ include 'include/dataTablesCSS.php';
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <?php include "table/t_server_bd.php"; ?>
+                                    <?php include "table/t_monitor_bd.php"; ?>
                                 </div>
                             </div>
                         </div>
