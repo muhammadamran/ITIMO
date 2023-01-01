@@ -218,29 +218,56 @@ $Rrole   = mysqli_fetch_array($role);
                     <!-- END PC -->
                     <!-- MONITOR/LCD -->
                     <li class="nav-item">
-                        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-monitor-lcd" aria-controls="submenu-2">
+                        <a class="nav-link <?=
+                                            $uriSegments[2] == 'monitor_summary.php' ||
+                                                $uriSegments[2] == 'monitor_summary_add.php' ||
+                                                $uriSegments[2] == 'monitor_summary_edit.php' ||
+                                                $uriSegments[2] == 'monitor_summary_allocate.php' ||
+                                                $uriSegments[2] == 'monitor_summary_asset.php' ||
+                                                $uriSegments[2] == 'monitor_summary_history.php' ||
+                                                $uriSegments[2] == 'monitor_available.php' ||
+                                                $uriSegments[2] == 'monitor_permanent.php' ||
+                                                $uriSegments[2] == 'monitor_bd.php'
+                                                ? 'active' : '' ?>" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-monitor" aria-controls="submenu-32">
                             <i class="fas fa-desktop" id="sidebar-font"></i>
                             <span>Monitor/LCD</span>
                         </a>
-                        <div id="submenu-monitor-lcd" class="collapse submenu">
+                        <div id="submenu-monitor" class="collapse submenu <?=
+                                                                            $uriSegments[2] == 'monitor_summary.php' ||
+                                                                                $uriSegments[2] == 'monitor_summary_add.php' ||
+                                                                                $uriSegments[2] == 'monitor_summary_edit.php' ||
+                                                                                $uriSegments[2] == 'monitor_summary_allocate.php' ||
+                                                                                $uriSegments[2] == 'monitor_summary_asset.php' ||
+                                                                                $uriSegments[2] == 'monitor_summary_history.php' ||
+                                                                                $uriSegments[2] == 'monitor_available.php' ||
+                                                                                $uriSegments[2] == 'monitor_permanent.php' ||
+                                                                                $uriSegments[2] == 'monitor_bd.php'
+                                                                                ? 'show' : '' ?>">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="adm_user.php">
+                                    <a class="nav-link <?=
+                                                        $uriSegments[2] == 'monitor_summary.php' ||
+                                                            $uriSegments[2] == 'monitor_summary_add.php' ||
+                                                            $uriSegments[2] == 'monitor_summary_edit.php' ||
+                                                            $uriSegments[2] == 'monitor_summary_allocate.php' ||
+                                                            $uriSegments[2] == 'monitor_summary_asset.php' ||
+                                                            $uriSegments[2] == 'monitor_summary_history.php'
+                                                            ? 'active' : '' ?>" href="monitor_summary.php">
                                         <span>Summary</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="adm_user.php">
+                                    <a class="nav-link <?= $uriSegments[2] == 'monitor_available.php' ? 'active' : '' ?>" href="monitor_available.php">
                                         <span>Available</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="adm_user.php">
-                                        <span>In Use</span>
+                                    <a class="nav-link <?= $uriSegments[2] == 'monitor_permanent.php' ? 'active' : '' ?>" href="monitor_permanent.php">
+                                        <span>Permanent</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="adm_user.php">
+                                    <a class="nav-link <?= $uriSegments[2] == 'monitor_bd.php' ? 'active' : '' ?>" href="monitor_bd.php">
                                         <span>Broken/Disposed</span>
                                     </a>
                                 </li>
