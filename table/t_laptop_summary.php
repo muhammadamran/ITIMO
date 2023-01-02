@@ -274,7 +274,7 @@
                             <form action="" method="POST">
                                 <div class="modal-body">
                                     <fieldset>
-                                        <div class="row">
+                                        <div class="row" style="align-items: center;">
                                             <div class="col-sm-3">
                                                 <div class="doc-asset">
                                                     <div style="display: grid;justify-content: center;">
@@ -462,11 +462,76 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <!-- HandOver -->
+                                            <?php if ($row['handover'] != NULL) { ?>
+                                                <div class="col-sm-12">
+                                                    <hr>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <div style="display: flex;justify-content:flex-start;align-items: center;margin-top: -5px;">
+                                                        <div class="table-icon" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Handover Pictures">
+                                                            <i class="fas fa-images"></i>
+                                                        </div>
+                                                        <div style="margin-left: 5px;">
+                                                            <div style="font-size: 15px;font-weight: 500;">
+                                                                <font>Handover Pictures</font>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <!-- <div> -->
+                                                    <div style="padding: 325px;margin-top: -305px;margin-bottom: -285px;">
+                                                        <div id="carouselExampleIndicators<?= $row['id']; ?>" class="carousel slide" data-ride="carousel">
+                                                            <ol class="carousel-indicators">
+                                                                <?php
+                                                                $exp       = explode(',', $row['handover'], -1);
+                                                                $i = 0;
+                                                                foreach ($exp as $dataC) {
+                                                                    if ($i == 1) {
+                                                                        $s = 'active';
+                                                                    } else {
+                                                                        $s = '';
+                                                                    }
+                                                                ?>
+                                                                    <li data-target="#carouselExampleIndicators<?= $row['id']; ?>" data-slide-to="<?= $i; ?>" class="<?= $s ?>"></li>
+                                                                <?php $i++;
+                                                                } ?>
+                                                            </ol>
+                                                            <div class="carousel-inner">
+                                                                <?php
+                                                                $i = 0;
+                                                                foreach ($exp as $dataP) {
+                                                                    if ($i == 1) {
+                                                                        $s = 'active';
+                                                                    } else {
+                                                                        $s = '';
+                                                                    }
+                                                                ?>
+                                                                    <div class="carousel-item <?= $s ?>">
+                                                                        <img class="d-block w-100" src="assets/images/handover/laptop/<?= $dataP ?>" alt="<?= $dataP ?>">
+                                                                    </div>
+                                                                <?php $i++;
+                                                                } ?>
+                                                            </div>
+                                                            <a class="carousel-control-prev" href="#carouselExampleIndicators<?= $row['id']; ?>" role="button" data-slide="prev">
+                                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                                <span class="sr-only">Previous</span>
+                                                            </a>
+                                                            <a class="carousel-control-next" href="#carouselExampleIndicators<?= $row['id']; ?>" role="button" data-slide="next">
+                                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                                <span class="sr-only">Next</span>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            <?php } ?>
+                                            <!-- HandOver -->
                                         </div>
                                     </fieldset>
                                 </div>
                                 <div class="modal-footer">
-                                    <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Close</a>
+                                    <button type="button" class="close btn btn-white" data-dismiss="modal" aria-hidden="true" style="padding: 10px;"><i class="fas fa-times-circle"></i> Close</button>
                                 </div>
                             </form>
                         </div>

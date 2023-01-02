@@ -121,6 +121,21 @@ include 'include/dataTablesCSS.php';
                                                                 </select>
                                                             </div>
                                                         </div>
+                                                        <div class="col-md-12">
+                                                            <label class="custom-control custom-checkbox" for="myCheck">
+                                                                <input type="checkbox" class="custom-control-input" id="myCheck" name="check" value="Y" onclick="myFunctionChanged()"><span class="custom-control-label">Add or Change Pictures:</span>
+                                                                <input type="hidden" name="fileload" value="<?= $row['handover']; ?>">
+                                                            </label>
+                                                        </div>
+                                                        <div class="col-md-6" id="text" style="display:none">
+                                                            <div class="form-group">
+                                                                <label for="file">Handover Pictures</label>
+                                                                <input name="file[]" type="file" id="file" class="form-control" /><br />
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <input type="button" id="add_more" class="upload btn btn-sm btn-primary" value="More Files" />
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-8">
@@ -178,6 +193,21 @@ include 'include/dataTablesCSS.php';
                                                             <div class="form-group">
                                                                 <label for="IdHostname">New Hostname <font style="color: red;">*</font></label>
                                                                 <input type="text" class="form-control" name="NewHostname" id="IdNewHostname" placeholder="Hostname ..." required />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <label class="custom-control custom-checkbox" for="myCheck2">
+                                                                <input type="checkbox" class="custom-control-input" id="myCheck2" name="check" value="Y" onclick="myFunctionChanged2()"><span class="custom-control-label">Add or Change Pictures:</span>
+                                                                <input type="hidden" name="fileload" value="<?= $row['handover']; ?>">
+                                                            </label>
+                                                        </div>
+                                                        <div class="col-md-6" id="text2" style="display:none">
+                                                            <div class="form-group">
+                                                                <label for="file">Handover Pictures</label>
+                                                                <input name="file[]" type="file" id="file" class="form-control" /><br />
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <input type="button" id="add_more" class="upload btn btn-sm btn-primary" value="More Files" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -279,4 +309,69 @@ include 'include/dataTablesCSS.php';
         xmlhttp.open("GET", "function/function_get.php/get_sn_two?function=SNtwo&sn_two=" + sn_two, true);
         xmlhttp.send();
     }
+
+    function myFunctionChanged() {
+        var checkBox = document.getElementById("myCheck");
+        var text = document.getElementById("text");
+        if (checkBox.checked == true) {
+            text.style.display = "block";
+        } else {
+            text.style.display = "none";
+        }
+    }
+
+    function myFunctionChanged2() {
+        var checkBox = document.getElementById("myCheck2");
+        var text = document.getElementById("text2");
+        if (checkBox.checked == true) {
+            text.style.display = "block";
+        } else {
+            text.style.display = "none";
+        }
+    }
+
+    var abc = 0;
+    $(document).ready(function() {
+        $('#add_more').click(function() {
+            $(this).before($("<div/>", {
+                id: 'filediv'
+            }).fadeIn('slow').append($("<input/>", {
+                name: 'file[]',
+                type: 'file',
+                id: 'file',
+                class: 'form-control'
+            }), $("<br/>")));
+        });
+        $('body').on('change', '#file', function() {
+            if (this.files && this.files[0]) {
+                abc += 1;
+                var z = abc - 1;
+                var x = $(this).parent().find('#previewimg' + z).remove();
+                $(this).before("<div id='abcd" + abc + "' class='abcd'><img id='previewimg" + abc + "' src='' style='width:140px'/></div>");
+                var reader = new FileReader();
+                reader.onload = imageIsLoaded;
+                reader.readAsDataURL(this.files[0]);
+                $(this).hide();
+                $("#abcd" + abc).append($("<img/>", {
+                    id: 'img',
+                    src: 'assets/icon/remove.png',
+                    alt: 'delete',
+                    style: 'margin-left: 10px;margin-right: 10px;'
+                }).click(function() {
+                    $(this).parent().parent().remove();
+                }));
+            }
+        });
+
+        function imageIsLoaded(e) {
+            $('#previewimg' + abc).attr('src', e.target.result);
+        };
+        $('#upload').click(function(e) {
+            var name = $(":file").val();
+            if (!name) {
+                alert("First Image Must Be Selected");
+                e.preventDefault();
+            }
+        });
+    });
 </script>

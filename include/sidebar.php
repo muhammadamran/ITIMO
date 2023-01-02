@@ -336,29 +336,56 @@ $Rrole   = mysqli_fetch_array($role);
                     <!-- END TV 5 -->
                     <!-- PHONE 6 -->
                     <li class="nav-item">
-                        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-phone" aria-controls="submenu-5">
+                        <a class="nav-link <?=
+                                            $uriSegments[2] == 'phone_summary.php' ||
+                                                $uriSegments[2] == 'phone_summary_add.php' ||
+                                                $uriSegments[2] == 'phone_summary_edit.php' ||
+                                                $uriSegments[2] == 'phone_summary_allocate.php' ||
+                                                $uriSegments[2] == 'phone_summary_asset.php' ||
+                                                $uriSegments[2] == 'phone_summary_history.php' ||
+                                                $uriSegments[2] == 'phone_available.php' ||
+                                                $uriSegments[2] == 'phone_permanent.php' ||
+                                                $uriSegments[2] == 'phone_bd.php'
+                                                ? 'active' : '' ?>" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-phone" aria-controls="submenu-6">
                             <i class="fas fa-mobile-alt" id="sidebar-font"></i>
                             <span>Phone</span>
                         </a>
-                        <div id="submenu-phone" class="collapse submenu">
+                        <div id="submenu-phone" class="collapse submenu <?=
+                                                                        $uriSegments[2] == 'phone_summary.php' ||
+                                                                            $uriSegments[2] == 'phone_summary_add.php' ||
+                                                                            $uriSegments[2] == 'phone_summary_edit.php' ||
+                                                                            $uriSegments[2] == 'phone_summary_allocate.php' ||
+                                                                            $uriSegments[2] == 'phone_summary_asset.php' ||
+                                                                            $uriSegments[2] == 'phone_summary_history.php' ||
+                                                                            $uriSegments[2] == 'phone_available.php' ||
+                                                                            $uriSegments[2] == 'phone_permanent.php' ||
+                                                                            $uriSegments[2] == 'phone_bd.php'
+                                                                            ? 'show' : '' ?>">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="adm_user.php">
+                                    <a class="nav-link <?=
+                                                        $uriSegments[2] == 'phone_summary.php' ||
+                                                            $uriSegments[2] == 'phone_summary_add.php' ||
+                                                            $uriSegments[2] == 'phone_summary_edit.php' ||
+                                                            $uriSegments[2] == 'phone_summary_allocate.php' ||
+                                                            $uriSegments[2] == 'phone_summary_asset.php' ||
+                                                            $uriSegments[2] == 'phone_summary_history.php'
+                                                            ? 'active' : '' ?>" href="phone_summary.php">
                                         <span>Summary</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="adm_user.php">
+                                    <a class="nav-link <?= $uriSegments[2] == 'phone_available.php' ? 'active' : '' ?>" href="phone_available.php">
                                         <span>Available</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="adm_user.php">
-                                        <span>In Use</span>
+                                    <a class="nav-link <?= $uriSegments[2] == 'phone_permanent.php' ? 'active' : '' ?>" href="phone_permanent.php">
+                                        <span>Permanent</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="adm_user.php">
+                                    <a class="nav-link <?= $uriSegments[2] == 'phone_bd.php' ? 'active' : '' ?>" href="phone_bd.php">
                                         <span>Broken/Disposed</span>
                                     </a>
                                 </li>
@@ -368,29 +395,56 @@ $Rrole   = mysqli_fetch_array($role);
                     <!-- END PHONE 6 -->
                     <!-- IPAD 7 -->
                     <li class="nav-item">
-                        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-ipad" aria-controls="submenu-6">
+                        <a class="nav-link <?=
+                                            $uriSegments[2] == 'ipad_summary.php' ||
+                                                $uriSegments[2] == 'ipad_summary_add.php' ||
+                                                $uriSegments[2] == 'ipad_summary_edit.php' ||
+                                                $uriSegments[2] == 'ipad_summary_allocate.php' ||
+                                                $uriSegments[2] == 'ipad_summary_asset.php' ||
+                                                $uriSegments[2] == 'ipad_summary_history.php' ||
+                                                $uriSegments[2] == 'ipad_available.php' ||
+                                                $uriSegments[2] == 'ipad_permanent.php' ||
+                                                $uriSegments[2] == 'ipad_bd.php'
+                                                ? 'active' : '' ?>" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-ipad" aria-controls="submenu-7">
                             <i class="fas fa-tablet-alt" id="sidebar-font"></i>
                             <span>Ipad</span>
                         </a>
-                        <div id="submenu-ipad" class="collapse submenu">
+                        <div id="submenu-ipad" class="collapse submenu <?=
+                                                                        $uriSegments[2] == 'ipad_summary.php' ||
+                                                                            $uriSegments[2] == 'ipad_summary_add.php' ||
+                                                                            $uriSegments[2] == 'ipad_summary_edit.php' ||
+                                                                            $uriSegments[2] == 'ipad_summary_allocate.php' ||
+                                                                            $uriSegments[2] == 'ipad_summary_asset.php' ||
+                                                                            $uriSegments[2] == 'ipad_summary_history.php' ||
+                                                                            $uriSegments[2] == 'ipad_available.php' ||
+                                                                            $uriSegments[2] == 'ipad_permanent.php' ||
+                                                                            $uriSegments[2] == 'ipad_bd.php'
+                                                                            ? 'show' : '' ?>">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="adm_user.php">
+                                    <a class="nav-link <?=
+                                                        $uriSegments[2] == 'ipad_summary.php' ||
+                                                            $uriSegments[2] == 'ipad_summary_add.php' ||
+                                                            $uriSegments[2] == 'ipad_summary_edit.php' ||
+                                                            $uriSegments[2] == 'ipad_summary_allocate.php' ||
+                                                            $uriSegments[2] == 'ipad_summary_asset.php' ||
+                                                            $uriSegments[2] == 'ipad_summary_history.php'
+                                                            ? 'active' : '' ?>" href="ipad_summary.php">
                                         <span>Summary</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="adm_user.php">
+                                    <a class="nav-link <?= $uriSegments[2] == 'ipad_available.php' ? 'active' : '' ?>" href="ipad_available.php">
                                         <span>Available</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="adm_user.php">
-                                        <span>In Use</span>
+                                    <a class="nav-link <?= $uriSegments[2] == 'ipad_permanent.php' ? 'active' : '' ?>" href="ipad_permanent.php">
+                                        <span>Permanent</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="adm_user.php">
+                                    <a class="nav-link <?= $uriSegments[2] == 'ipad_bd.php' ? 'active' : '' ?>" href="ipad_bd.php">
                                         <span>Broken/Disposed</span>
                                     </a>
                                 </li>
@@ -400,29 +454,56 @@ $Rrole   = mysqli_fetch_array($role);
                     <!-- END IPAD 7 -->
                     <!-- HEANDPHONE 8 -->
                     <li class="nav-item">
-                        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-headphone" aria-controls="submenu-7">
-                            <i class="fas fa-headphones" id="sidebar-font"></i>
-                            <span>Headphone</span>
+                        <a class="nav-link <?=
+                                            $uriSegments[2] == 'handphones_summary.php' ||
+                                                $uriSegments[2] == 'handphones_summary_add.php' ||
+                                                $uriSegments[2] == 'handphones_summary_edit.php' ||
+                                                $uriSegments[2] == 'handphones_summary_allocate.php' ||
+                                                $uriSegments[2] == 'handphones_summary_asset.php' ||
+                                                $uriSegments[2] == 'handphones_summary_history.php' ||
+                                                $uriSegments[2] == 'handphones_available.php' ||
+                                                $uriSegments[2] == 'handphones_permanent.php' ||
+                                                $uriSegments[2] == 'handphones_bd.php'
+                                                ? 'active' : '' ?>" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-handphones" aria-controls="submenu-8">
+                            <i class="fas fa-headphones-alt" id="sidebar-font"></i>
+                            <span>Handphones</span>
                         </a>
-                        <div id="submenu-headphone" class="collapse submenu">
+                        <div id="submenu-handphones" class="collapse submenu <?=
+                                                                                $uriSegments[2] == 'headphones_summary.php' ||
+                                                                                    $uriSegments[2] == 'headphones_summary_add.php' ||
+                                                                                    $uriSegments[2] == 'headphones_summary_edit.php' ||
+                                                                                    $uriSegments[2] == 'headphones_summary_allocate.php' ||
+                                                                                    $uriSegments[2] == 'headphones_summary_asset.php' ||
+                                                                                    $uriSegments[2] == 'headphones_summary_history.php' ||
+                                                                                    $uriSegments[2] == 'headphones_available.php' ||
+                                                                                    $uriSegments[2] == 'headphones_permanent.php' ||
+                                                                                    $uriSegments[2] == 'headphones_bd.php'
+                                                                                    ? 'show' : '' ?>">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="adm_user.php">
+                                    <a class="nav-link <?=
+                                                        $uriSegments[2] == 'headphones_summary.php' ||
+                                                            $uriSegments[2] == 'headphones_summary_add.php' ||
+                                                            $uriSegments[2] == 'headphones_summary_edit.php' ||
+                                                            $uriSegments[2] == 'headphones_summary_allocate.php' ||
+                                                            $uriSegments[2] == 'headphones_summary_asset.php' ||
+                                                            $uriSegments[2] == 'headphones_summary_history.php'
+                                                            ? 'active' : '' ?>" href="headphones_summary.php">
                                         <span>Summary</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="adm_user.php">
+                                    <a class="nav-link <?= $uriSegments[2] == 'headphones_available.php' ? 'active' : '' ?>" href="headphones_available.php">
                                         <span>Available</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="adm_user.php">
-                                        <span>In Use</span>
+                                    <a class="nav-link <?= $uriSegments[2] == 'headphones_permanent.php' ? 'active' : '' ?>" href="headphones_permanent.php">
+                                        <span>Permanent</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="adm_user.php">
+                                    <a class="nav-link <?= $uriSegments[2] == 'headphones_bd.php' ? 'active' : '' ?>" href="headphones_bd.php">
                                         <span>Broken/Disposed</span>
                                     </a>
                                 </li>
@@ -432,29 +513,56 @@ $Rrole   = mysqli_fetch_array($role);
                     <!-- END HEANDPHONE 8 -->
                     <!-- SWITCH/ROUTER 9 -->
                     <li class="nav-item">
-                        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-switch" aria-controls="submenu-8">
-                            <i class="fas fa-fw fa-asterisk" id="sidebar-font"></i>
-                            <span>Switch/Router/wifi/AP</span>
+                        <a class="nav-link <?=
+                                            $uriSegments[2] == 'switch_summary.php' ||
+                                                $uriSegments[2] == 'switch_summary_add.php' ||
+                                                $uriSegments[2] == 'switch_summary_edit.php' ||
+                                                $uriSegments[2] == 'switch_summary_allocate.php' ||
+                                                $uriSegments[2] == 'switch_summary_asset.php' ||
+                                                $uriSegments[2] == 'switch_summary_history.php' ||
+                                                $uriSegments[2] == 'switch_available.php' ||
+                                                $uriSegments[2] == 'switch_permanent.php' ||
+                                                $uriSegments[2] == 'switch_bd.php'
+                                                ? 'active' : '' ?>" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-switch" aria-controls="submenu-9">
+                            <i class="fas fa-network-wired" id="sidebar-font"></i>
+                            <span>Switch/Router Etc</span>
                         </a>
-                        <div id="submenu-switch" class="collapse submenu">
+                        <div id="submenu-wifi" class="collapse submenu <?=
+                                                                        $uriSegments[2] == 'switch_summary.php' ||
+                                                                            $uriSegments[2] == 'switch_summary_add.php' ||
+                                                                            $uriSegments[2] == 'switch_summary_edit.php' ||
+                                                                            $uriSegments[2] == 'switch_summary_allocate.php' ||
+                                                                            $uriSegments[2] == 'switch_summary_asset.php' ||
+                                                                            $uriSegments[2] == 'switch_summary_history.php' ||
+                                                                            $uriSegments[2] == 'switch_available.php' ||
+                                                                            $uriSegments[2] == 'switch_permanent.php' ||
+                                                                            $uriSegments[2] == 'switch_bd.php'
+                                                                            ? 'show' : '' ?>">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="adm_user.php">
+                                    <a class="nav-link <?=
+                                                        $uriSegments[2] == 'switch_summary.php' ||
+                                                            $uriSegments[2] == 'switch_summary_add.php' ||
+                                                            $uriSegments[2] == 'switch_summary_edit.php' ||
+                                                            $uriSegments[2] == 'switch_summary_allocate.php' ||
+                                                            $uriSegments[2] == 'switch_summary_asset.php' ||
+                                                            $uriSegments[2] == 'switch_summary_history.php'
+                                                            ? 'active' : '' ?>" href="switch_summary.php">
                                         <span>Summary</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="adm_user.php">
+                                    <a class="nav-link <?= $uriSegments[2] == 'switch_available.php' ? 'active' : '' ?>" href="switch_available.php">
                                         <span>Available</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="adm_user.php">
-                                        <span>In Use</span>
+                                    <a class="nav-link <?= $uriSegments[2] == 'switch_permanent.php' ? 'active' : '' ?>" href="switch_permanent.php">
+                                        <span>Permanent</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="adm_user.php">
+                                    <a class="nav-link <?= $uriSegments[2] == 'switch_bd.php' ? 'active' : '' ?>" href="switch_bd.php">
                                         <span>Broken/Disposed</span>
                                     </a>
                                 </li>
@@ -464,29 +572,56 @@ $Rrole   = mysqli_fetch_array($role);
                     <!-- END SWITCH/ROUTER 9 -->
                     <!-- RF SCANNER 10 -->
                     <li class="nav-item">
-                        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-rf" aria-controls="submenu-9">
-                            <i class="fas fa-fw fa-asterisk" id="sidebar-font"></i>
+                        <a class="nav-link <?=
+                                            $uriSegments[2] == 'scanner_summary.php' ||
+                                                $uriSegments[2] == 'scanner_summary_add.php' ||
+                                                $uriSegments[2] == 'scanner_summary_edit.php' ||
+                                                $uriSegments[2] == 'scanner_summary_allocate.php' ||
+                                                $uriSegments[2] == 'scanner_summary_asset.php' ||
+                                                $uriSegments[2] == 'scanner_summary_history.php' ||
+                                                $uriSegments[2] == 'scanner_available.php' ||
+                                                $uriSegments[2] == 'scanner_permanent.php' ||
+                                                $uriSegments[2] == 'scanner_bd.php'
+                                                ? 'active' : '' ?>" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-scanner" aria-controls="submenu-10">
+                            <i class="fas fa-broadcast-tower" id="sidebar-font"></i>
                             <span>RF Scanner</span>
                         </a>
-                        <div id="submenu-rf" class="collapse submenu">
+                        <div id="submenu-scanner" class="collapse submenu <?=
+                                                                            $uriSegments[2] == 'scanner_summary.php' ||
+                                                                                $uriSegments[2] == 'scanner_summary_add.php' ||
+                                                                                $uriSegments[2] == 'scanner_summary_edit.php' ||
+                                                                                $uriSegments[2] == 'scanner_summary_allocate.php' ||
+                                                                                $uriSegments[2] == 'scanner_summary_asset.php' ||
+                                                                                $uriSegments[2] == 'scanner_summary_history.php' ||
+                                                                                $uriSegments[2] == 'scanner_available.php' ||
+                                                                                $uriSegments[2] == 'scanner_permanent.php' ||
+                                                                                $uriSegments[2] == 'scanner_bd.php'
+                                                                                ? 'show' : '' ?>">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="adm_user.php">
+                                    <a class="nav-link <?=
+                                                        $uriSegments[2] == 'scanner_summary.php' ||
+                                                            $uriSegments[2] == 'scanner_summary_add.php' ||
+                                                            $uriSegments[2] == 'scanner_summary_edit.php' ||
+                                                            $uriSegments[2] == 'scanner_summary_allocate.php' ||
+                                                            $uriSegments[2] == 'scanner_summary_asset.php' ||
+                                                            $uriSegments[2] == 'scanner_summary_history.php'
+                                                            ? 'active' : '' ?>" href="scanner_summary.php">
                                         <span>Summary</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="adm_user.php">
+                                    <a class="nav-link <?= $uriSegments[2] == 'scanner_available.php' ? 'active' : '' ?>" href="scanner_available.php">
                                         <span>Available</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="adm_user.php">
-                                        <span>In Use</span>
+                                    <a class="nav-link <?= $uriSegments[2] == 'scanner_permanent.php' ? 'active' : '' ?>" href="scanner_permanent.php">
+                                        <span>Permanent</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="adm_user.php">
+                                    <a class="nav-link <?= $uriSegments[2] == 'scanner_bd.php' ? 'active' : '' ?>" href="scanner_bd.php">
                                         <span>Broken/Disposed</span>
                                     </a>
                                 </li>
@@ -496,29 +631,56 @@ $Rrole   = mysqli_fetch_array($role);
                     <!-- END RF SCANNER 10 -->
                     <!-- ETC 11 -->
                     <li class="nav-item">
-                        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-etc" aria-controls="submenu-10">
+                        <a class="nav-link <?=
+                                            $uriSegments[2] == 'etc_summary.php' ||
+                                                $uriSegments[2] == 'etc_summary_add.php' ||
+                                                $uriSegments[2] == 'etc_summary_edit.php' ||
+                                                $uriSegments[2] == 'etc_summary_allocate.php' ||
+                                                $uriSegments[2] == 'etc_summary_asset.php' ||
+                                                $uriSegments[2] == 'etc_summary_history.php' ||
+                                                $uriSegments[2] == 'etc_available.php' ||
+                                                $uriSegments[2] == 'etc_permanent.php' ||
+                                                $uriSegments[2] == 'etc_bd.php'
+                                                ? 'active' : '' ?>" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-etc" aria-controls="submenu-11">
                             <i class="fas fa-list" id="sidebar-font"></i>
                             <span>ETC</span>
                         </a>
-                        <div id="submenu-etc" class="collapse submenu">
+                        <div id="submenu-etc" class="collapse submenu <?=
+                                                                        $uriSegments[2] == 'etc_summary.php' ||
+                                                                            $uriSegments[2] == 'etc_summary_add.php' ||
+                                                                            $uriSegments[2] == 'etc_summary_edit.php' ||
+                                                                            $uriSegments[2] == 'etc_summary_allocate.php' ||
+                                                                            $uriSegments[2] == 'etc_summary_asset.php' ||
+                                                                            $uriSegments[2] == 'etc_summary_history.php' ||
+                                                                            $uriSegments[2] == 'etc_available.php' ||
+                                                                            $uriSegments[2] == 'etc_permanent.php' ||
+                                                                            $uriSegments[2] == 'etc_bd.php'
+                                                                            ? 'show' : '' ?>">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="adm_user.php">
+                                    <a class="nav-link <?=
+                                                        $uriSegments[2] == 'etc_summary.php' ||
+                                                            $uriSegments[2] == 'etc_summary_add.php' ||
+                                                            $uriSegments[2] == 'etc_summary_edit.php' ||
+                                                            $uriSegments[2] == 'etc_summary_allocate.php' ||
+                                                            $uriSegments[2] == 'etc_summary_asset.php' ||
+                                                            $uriSegments[2] == 'etc_summary_history.php'
+                                                            ? 'active' : '' ?>" href="etc_summary.php">
                                         <span>Summary</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="adm_user.php">
+                                    <a class="nav-link <?= $uriSegments[2] == 'etc_available.php' ? 'active' : '' ?>" href="etc_available.php">
                                         <span>Available</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="adm_user.php">
-                                        <span>In Use</span>
+                                    <a class="nav-link <?= $uriSegments[2] == 'etc_permanent.php' ? 'active' : '' ?>" href="etc_permanent.php">
+                                        <span>Permanent</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="adm_user.php">
+                                    <a class="nav-link <?= $uriSegments[2] == 'etc_bd.php' ? 'active' : '' ?>" href="etc_bd.php">
                                         <span>Broken/Disposed</span>
                                     </a>
                                 </li>

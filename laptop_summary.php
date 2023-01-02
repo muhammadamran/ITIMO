@@ -39,7 +39,6 @@ if (isset($_POST["import_"])) {
         echo "<script>window.location.href='laptop_summary.php?UploadFailed=true&page=$page';</script>";
     }
 }
-
 // Add
 if (isset($_POST["add_"])) {
     // Info Page
@@ -96,15 +95,26 @@ if (isset($_POST["add_"])) {
     $Remarks            = $_POST['Remarks'];
     $created_by         = $_SESSION['username'];
     $created_date       = date('Y-m-d H:m:i');
+    // Pictures
+    $countfiles = count($_FILES['file']['name']);
+    for ($i = 0; $i < $countfiles; $i++) {
+        $filename = "Laptop_handover_" . $SerialNumber . "_" . date('Ymd') . "." . $_FILES['file']['name'][$i];
+        move_uploaded_file($_FILES['file']['tmp_name'][$i], 'assets/images/handover/laptop/' . $filename);
+    }
+    $fileName = $_FILES['file']['name'];
+    foreach ($fileName as $rowfile) {
+        $FileH .= "Laptop_handover_" . $SerialNumber . "_" . date('Ymd') . "." . $rowfile . ",";
+    }
+    // End Pictures
 
     $available = $db->query("SELECT serial_number,product_name,brand FROM tb_laptop_master WHERE serial_number='$SerialNumber' AND product_name='$ProductName' AND brand='$Brand'");
     if (mysqli_num_rows($available) == 1) {
         echo "<script>window.location.href='laptop_summary.php?Available=true&page=$page';</script>";
     } else {
         $insert = $db->query("INSERT INTO tb_laptop_master
-                            (id,type,serial_number,product_name,brand,device_releases_years,memory,disk,disk_type,processor,hostname,username,status_use,status_available,location_branch,location_room,po_no,cost_center,asset_no,asset_of,purchase_year,purchase_batch,prices,remarks,created_by,created_date)
+                            (id,type,serial_number,product_name,brand,device_releases_years,memory,disk,disk_type,processor,hostname,username,status_use,status_available,location_branch,location_room,po_no,cost_center,asset_no,asset_of,purchase_year,purchase_batch,prices,remarks,created_by,created_date,handover)
                             VALUES
-                            ('','LAPTOP','$SerialNumber','$ProductName','$Brand','$DeviceRelease','$Memory','$DiskSpace','$DiskType','$Processor','$Hostname','$Username','$UsageState','$OwnershipStatus','$BranchLocation','$RoomLocation','$PONumber','$CC','$AssetNumber','$Assetof','$PurchaseYear','$PurchaseBatch','$Prices','$Remarks','$created_by','$created_date')
+                            ('','LAPTOP','$SerialNumber','$ProductName','$Brand','$DeviceRelease','$Memory','$DiskSpace','$DiskType','$Processor','$Hostname','$Username','$UsageState','$OwnershipStatus','$BranchLocation','$RoomLocation','$PONumber','$CC','$AssetNumber','$Assetof','$PurchaseYear','$PurchaseBatch','$Prices','$Remarks','$created_by','$created_date','$FileH')
                             ");
 
         if ($insert) {
@@ -114,7 +124,6 @@ if (isset($_POST["add_"])) {
         }
     }
 }
-
 // Edit
 if (isset($_POST["edit_"])) {
     // Info Page
@@ -150,6 +159,24 @@ if (isset($_POST["edit_"])) {
     $Remarks            = $_POST['Remarks'];
     $created_by         = $_SESSION['username'];
     $created_date       = date('Y-m-d H:m:i');
+    $fileload           = $_POST['fileload'];
+    $check              = $_POST['check'];
+
+    if ($check == 'Y') {
+        // Pictures
+        $countfiles = count($_FILES['file']['name']);
+        for ($i = 0; $i < $countfiles; $i++) {
+            $filename = "Laptop_handover_" . $SerialNumber . "_" . date('Ymd') . "." . $_FILES['file']['name'][$i];
+            move_uploaded_file($_FILES['file']['tmp_name'][$i], 'assets/images/handover/laptop/' . $filename);
+        }
+        $fileName = $_FILES['file']['name'];
+        foreach ($fileName as $rowfile) {
+            $FileH .= "Laptop_handover_" . $SerialNumber . "_" . date('Ymd') . "." . $rowfile . ",";
+        }
+        // End Pictures
+    } else {
+        $FileH = $fileload;
+    }
 
     $edit    = $db->query("UPDATE tb_laptop_master SET serial_number='$SerialNumber',
                                                        product_name='$ProductName',
@@ -174,7 +201,8 @@ if (isset($_POST["edit_"])) {
                                                        prices='$Prices',
                                                        remarks='$Remarks',
                                                        created_by='$created_by',
-                                                       created_date='$created_date'
+                                                       created_date='$created_date',
+                                                       handover='$FileH'
                            WHERE id='$ID'");
 
     if ($edit) {
@@ -199,7 +227,6 @@ if (isset($_POST["delete_"])) {
         echo "<script>window.location.href='laptop_summary.php?DeleteFailed=true&page=$page';</script>";
     }
 }
-
 // new username
 if (isset($_POST["newusername_"])) {
     // Info Page
@@ -237,20 +264,40 @@ if (isset($_POST["newusername_"])) {
     $created_by         = $_SESSION['username'];
     $created_date       = date('Y-m-d H:m:i');
     $status_history     = 'Change Username';
+    // Allocate
+    $fileload           = $_POST['fileload'];
+    $check              = $_POST['check'];
+    if ($check == 'Y') {
+        // Pictures
+        $countfiles = count($_FILES['file']['name']);
+        for ($i = 0; $i < $countfiles; $i++) {
+            $filename = "Laptop_handover_" . $SerialNumber . "_" . date('Ymd') . "." . $_FILES['file']['name'][$i];
+            move_uploaded_file($_FILES['file']['tmp_name'][$i], 'assets/images/handover/laptop/' . $filename);
+        }
+        $fileName = $_FILES['file']['name'];
+        foreach ($fileName as $rowfile) {
+            $FileH .= "Laptop_handover_" . $SerialNumber . "_" . date('Ymd') . "." . $rowfile . ",";
+        }
+        // End Pictures
+    } else {
+        $FileH = $fileload;
+    }
+    // End Allocate
 
     $data   = $db->query("SELECT * FROM tb_laptop_master WHERE serial_number='$SerialNumber' AND product_name='$ProductName' AND brand='$Brand'");
     $result = mysqli_fetch_array($data);
 
     $query  = $db->query("INSERT INTO tb_laptop_history
-                        (id,id_master,type,serial_number,product_name,brand,device_releases_years,memory,disk,disk_type,processor,hostname,username,status_use,status_available,location_branch,location_room,po_no,cost_center,asset_no,asset_of,purchase_year,purchase_batch,prices,remarks,created_by,created_date,status_history)
+                        (id,id_master,type,serial_number,product_name,brand,device_releases_years,memory,disk,disk_type,processor,hostname,username,status_use,status_available,location_branch,location_room,po_no,cost_center,asset_no,asset_of,purchase_year,purchase_batch,prices,remarks,created_by,created_date,status_history,handover)
                         VALUES
-                        ('','" . $result['id'] . "','" . $result['type'] . "','" . $result['serial_number'] . "','" . $result['product_name'] . "','" . $result['brand'] . "','" . $result['device_releases_years'] . "','" . $result['memory'] . "','" . $result['disk'] . "','" . $result['disk_type'] . "','" . $result['processor'] . "','" . $result['hostname'] . "','" . $result['username'] . "','" . $result['status_use'] . "','" . $result['status_available'] . "','" . $result['location_branch'] . "','" . $result['location_room'] . "','" . $result['po_no'] . "','" . $result['cost_center'] . "','" . $result['asset_no'] . "','" . $result['asset_of'] . "','" . $result['purchase_year'] . "','" . $result['purchase_batch'] . "','" . $result['prices'] . "','" . $result['remarks'] . "','" . $result['created_by'] . "','" . $result['created_date'] . "','$status_history')
+                        ('','" . $result['id'] . "','" . $result['type'] . "','" . $result['serial_number'] . "','" . $result['product_name'] . "','" . $result['brand'] . "','" . $result['device_releases_years'] . "','" . $result['memory'] . "','" . $result['disk'] . "','" . $result['disk_type'] . "','" . $result['processor'] . "','" . $result['hostname'] . "','" . $result['username'] . "','" . $result['status_use'] . "','" . $result['status_available'] . "','" . $result['location_branch'] . "','" . $result['location_room'] . "','" . $result['po_no'] . "','" . $result['cost_center'] . "','" . $result['asset_no'] . "','" . $result['asset_of'] . "','" . $result['purchase_year'] . "','" . $result['purchase_batch'] . "','" . $result['prices'] . "','" . $result['remarks'] . "','" . $result['created_by'] . "','" . $result['created_date'] . "','$status_history','" . $result['handover'] . "')
                         ");
 
     $query  .= $db->query("UPDATE tb_laptop_master SET username='$NewUsername',
                         status_available='$OwnershipStatus',
                         created_by='$created_by',
-                        created_date='$created_date'
+                        created_date='$created_date',
+                        handover='$FileH'
                         WHERE id='$ID'");
 
     if ($query) {
@@ -298,18 +345,39 @@ if (isset($_POST["newhostname_"])) {
     $created_date       = date('Y-m-d H:m:i');
     $status_history     = 'Change Hostname';
 
+    // Allocate
+    $fileload           = $_POST['fileload'];
+    $check              = $_POST['check'];
+    if ($check == 'Y') {
+        // Pictures
+        $countfiles = count($_FILES['file']['name']);
+        for ($i = 0; $i < $countfiles; $i++) {
+            $filename = "Laptop_handover_" . $SerialNumber . "_" . date('Ymd') . "." . $_FILES['file']['name'][$i];
+            move_uploaded_file($_FILES['file']['tmp_name'][$i], 'assets/images/handover/laptop/' . $filename);
+        }
+        $fileName = $_FILES['file']['name'];
+        foreach ($fileName as $rowfile) {
+            $FileH .= "Laptop_handover_" . $SerialNumber . "_" . date('Ymd') . "." . $rowfile . ",";
+        }
+        // End Pictures
+    } else {
+        $FileH = $fileload;
+    }
+    // End Allocate
+
     $data   = $db->query("SELECT * FROM tb_laptop_master WHERE serial_number='$SerialNumber' AND product_name='$ProductName' AND brand='$Brand'");
     $result = mysqli_fetch_array($data);
 
     $query  = $db->query("INSERT INTO tb_laptop_history
-                        (id,id_master,type,serial_number,product_name,brand,device_releases_years,memory,disk,disk_type,processor,hostname,username,status_use,status_available,location_branch,location_room,po_no,cost_center,asset_no,asset_of,purchase_year,purchase_batch,prices,remarks,created_by,created_date,status_history)
+                        (id,id_master,type,serial_number,product_name,brand,device_releases_years,memory,disk,disk_type,processor,hostname,username,status_use,status_available,location_branch,location_room,po_no,cost_center,asset_no,asset_of,purchase_year,purchase_batch,prices,remarks,created_by,created_date,status_history,handover)
                         VALUES
-                        ('','" . $result['id'] . "','" . $result['type'] . "','" . $result['serial_number'] . "','" . $result['product_name'] . "','" . $result['brand'] . "','" . $result['device_releases_years'] . "','" . $result['memory'] . "','" . $result['disk'] . "','" . $result['disk_type'] . "','" . $result['processor'] . "','" . $result['hostname'] . "','" . $result['username'] . "','" . $result['status_use'] . "','" . $result['status_available'] . "','" . $result['location_branch'] . "','" . $result['location_room'] . "','" . $result['po_no'] . "','" . $result['cost_center'] . "','" . $result['asset_no'] . "','" . $result['asset_of'] . "','" . $result['purchase_year'] . "','" . $result['purchase_batch'] . "','" . $result['prices'] . "','" . $result['remarks'] . "','" . $result['created_by'] . "','" . $result['created_date'] . "','$status_history')
+                        ('','" . $result['id'] . "','" . $result['type'] . "','" . $result['serial_number'] . "','" . $result['product_name'] . "','" . $result['brand'] . "','" . $result['device_releases_years'] . "','" . $result['memory'] . "','" . $result['disk'] . "','" . $result['disk_type'] . "','" . $result['processor'] . "','" . $result['hostname'] . "','" . $result['username'] . "','" . $result['status_use'] . "','" . $result['status_available'] . "','" . $result['location_branch'] . "','" . $result['location_room'] . "','" . $result['po_no'] . "','" . $result['cost_center'] . "','" . $result['asset_no'] . "','" . $result['asset_of'] . "','" . $result['purchase_year'] . "','" . $result['purchase_batch'] . "','" . $result['prices'] . "','" . $result['remarks'] . "','" . $result['created_by'] . "','" . $result['created_date'] . "','$status_history','" . $result['handover'] . "')
                         ");
 
     $query  .= $db->query("UPDATE tb_laptop_master SET hostname='$NewHostname',
                         created_by='$created_by',
-                        created_date='$created_date'
+                        created_date='$created_date',
+                        handover='$FileH'
                         WHERE id='$ID'");
 
     if ($query) {

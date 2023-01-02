@@ -64,7 +64,7 @@ include 'include/dataTablesCSS.php';
                         <div class="card">
                             <h5 class="card-header"><i class="fas fa-plus-circle"></i> Add Laptop</h5>
                             <div class="card-body">
-                                <form action="laptop_summary.php" method="POST">
+                                <form action="laptop_summary.php" method="POST" enctype="multipart/form-data">
                                     <fieldset>
                                         <div class="row">
                                             <div class="col-sm-8">
@@ -310,6 +310,15 @@ include 'include/dataTablesCSS.php';
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="file">Handover Pictures</label>
+                                                    <input name="file[]" type="file" id="file" class="form-control" /><br />
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="button" id="add_more" class="upload btn btn-sm btn-primary" value="More Files" />
+                                                </div>
+                                            </div>
                                             <div class="col-md-12">
                                                 <font style="color: red;">*</font> <i>Required.</i>
                                             </div>
@@ -396,5 +405,50 @@ include 'include/dataTablesCSS.php';
         $('#IdPrices').mask('###.###.###.###.###.###', {
             reverse: true
         });
-    })
+    });
+
+    var abc = 0;
+    $(document).ready(function() {
+        $('#add_more').click(function() {
+            $(this).before($("<div/>", {
+                id: 'filediv'
+            }).fadeIn('slow').append($("<input/>", {
+                name: 'file[]',
+                type: 'file',
+                id: 'file',
+                class: 'form-control'
+            }), $("<br/>")));
+        });
+        $('body').on('change', '#file', function() {
+            if (this.files && this.files[0]) {
+                abc += 1;
+                var z = abc - 1;
+                var x = $(this).parent().find('#previewimg' + z).remove();
+                $(this).before("<div id='abcd" + abc + "' class='abcd'><img id='previewimg" + abc + "' src='' style='width:140px'/></div>");
+                var reader = new FileReader();
+                reader.onload = imageIsLoaded;
+                reader.readAsDataURL(this.files[0]);
+                $(this).hide();
+                $("#abcd" + abc).append($("<img/>", {
+                    id: 'img',
+                    src: 'assets/icon/remove.png',
+                    alt: 'delete',
+                    style: 'margin-left: 10px;margin-right: 10px;'
+                }).click(function() {
+                    $(this).parent().parent().remove();
+                }));
+            }
+        });
+
+        function imageIsLoaded(e) {
+            $('#previewimg' + abc).attr('src', e.target.result);
+        };
+        $('#upload').click(function(e) {
+            var name = $(":file").val();
+            if (!name) {
+                alert("First Image Must Be Selected");
+                e.preventDefault();
+            }
+        });
+    });
 </script>
