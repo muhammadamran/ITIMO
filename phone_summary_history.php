@@ -251,19 +251,19 @@ $resultdM   = mysqli_fetch_array($dataMaster);
     // Product Name
     $(function() {
         $("#IdProductName").autocomplete({
-            source: 'function/autocomplete/data.php?function=AutoProductName'
+            source: 'function/autocomplete/data_phone.php?function=AutoProductName'
         });
     });
     // Brand
     $(function() {
         $("#IdBrand").autocomplete({
-            source: 'function/autocomplete/data.php?function=AutoBrand'
+            source: 'function/autocomplete/data_phone.php?function=AutoBrand'
         });
     });
     // Username
     $(function() {
         $("#IdUsername").autocomplete({
-            source: 'function/autocomplete/data.php?function=AutoUsername'
+            source: 'function/autocomplete/data_phone.php?function=AutoUsername'
         });
     });
     // Select Find

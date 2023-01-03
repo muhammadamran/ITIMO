@@ -765,42 +765,42 @@ if (isset($_POST["find_filter"])) {
     // Find
     $(function() {
         $("#IdFindSerialNumber").autocomplete({
-            source: 'function/autocomplete/data.php?function=AutoFindSerialNumber'
+            source: 'function/autocomplete/data_scanner.php?function=AutoFindSerialNumber'
         });
     });
     $(function() {
         $("#IdFindProductName").autocomplete({
-            source: 'function/autocomplete/data.php?function=AutoFindProductName'
+            source: 'function/autocomplete/data_scanner.php?function=AutoFindProductName'
         });
     });
     $(function() {
         $("#IdFindBrand").autocomplete({
-            source: 'function/autocomplete/data.php?function=AutoFindBrand'
+            source: 'function/autocomplete/data_scanner.php?function=AutoFindBrand'
         });
     });
     $(function() {
         $("#IdFindHostname").autocomplete({
-            source: 'function/autocomplete/data.php?function=AutoFindHostname'
+            source: 'function/autocomplete/data_scanner.php?function=AutoFindHostname'
         });
     });
     $(function() {
         $("#IdFindUsername").autocomplete({
-            source: 'function/autocomplete/data.php?function=AutoFindUsername'
+            source: 'function/autocomplete/data_scanner.php?function=AutoFindUsername'
         });
     });
     $(function() {
         $("#IdFindUS").autocomplete({
-            source: 'function/autocomplete/data.php?function=AutoFindUS'
+            source: 'function/autocomplete/data_scanner.php?function=AutoFindUS'
         });
     });
     $(function() {
         $("#IdFindOS").autocomplete({
-            source: 'function/autocomplete/data.php?function=AutoFindOS'
+            source: 'function/autocomplete/data_scanner.php?function=AutoFindOS'
         });
     });
     $(function() {
         $("#IdFindBranchLoc").autocomplete({
-            source: 'function/autocomplete/data.php?function=AutoFindBranchLoc'
+            source: 'function/autocomplete/data_scanner.php?function=AutoFindBranchLoc'
         });
     });
 
