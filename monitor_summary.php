@@ -10,15 +10,15 @@ include 'include/dataTablesCSS.php';
 if (isset($_POST["import_"])) {
     if (isset($_FILES["ImportXLS"])) {
         // Info Page
-        $page      = 'laptop_summary.php';
+        $page      = 'monitor_summary.php';
         // End Info Page
 
         $created_by         = $_SESSION['username'];
         $created_date       = date('Y-m-d H:m:i');
 
-        $dir = "files/import/laptop/";
+        $dir = "files/import/monitor/";
         $timeUpload = date('Y-m-d-h-m-i');
-        $file_name = "Laptop_" . $timeUpload . "_" . $_FILES["ImportXLS"]["name"];
+        $file_name = "Monitor_" . $timeUpload . "_" . $_FILES["ImportXLS"]["name"];
         $size = $_FILES["ImportXLS"]["size"];
         $tmp_file_name = $_FILES["ImportXLS"]["tmp_name"];
         $filename = $_FILES['ImportXLS']['name'];
@@ -26,23 +26,23 @@ if (isset($_POST["import_"])) {
         $ext = end($exp);
         if ($ext == 'xlsx' || $ext == 'xls' || $ext == 'xlsm' || $ext == 'xlsb') {
             move_uploaded_file($tmp_file_name, $dir . $file_name);
-            include 'laptop_read_file.php';
-            $update = $db->query("UPDATE tb_laptop_master SET created_by='$created_by',
+            include 'monitor_read_file.php';
+            $update = $db->query("UPDATE tb_monitor_master SET created_by='$created_by',
                                                               created_date='$created_date'
                                 WHERE created_by IS NULL");
-            echo "<script>window.location.href='laptop_summary.php?UploadSuccess=true&page=$page';</script>";
+            echo "<script>window.location.href='monitor_summary.php?UploadSuccess=true&page=$page';</script>";
         } else {
-            echo "<script>window.location.href='laptop_summary.php?Available=true&page=$page';</script>";
+            echo "<script>window.location.href='monitor_summary.php?Available=true&page=$page';</script>";
         }
     } else {
         echo "File not selected";
-        echo "<script>window.location.href='laptop_summary.php?UploadFailed=true&page=$page';</script>";
+        echo "<script>window.location.href='monitor_summary.php?UploadFailed=true&page=$page';</script>";
     }
 }
 // Add
 if (isset($_POST["add_"])) {
     // Info Page
-    $page      = 'laptop_summary.php';
+    $page      = 'monitor_summary.php';
     // End Info Page
 
     // serial_number
@@ -98,36 +98,36 @@ if (isset($_POST["add_"])) {
     // Pictures
     $countfiles = count($_FILES['file']['name']);
     for ($i = 0; $i < $countfiles; $i++) {
-        $filename = "Laptop_handover_" . $SerialNumber . "_" . date('Ymd') . "." . $_FILES['file']['name'][$i];
-        move_uploaded_file($_FILES['file']['tmp_name'][$i], 'assets/images/handover/laptop/' . $filename);
+        $filename = "Monitor_handover_" . $SerialNumber . "_" . date('Ymd') . "." . $_FILES['file']['name'][$i];
+        move_uploaded_file($_FILES['file']['tmp_name'][$i], 'assets/images/handover/monitor/' . $filename);
     }
     $fileName = $_FILES['file']['name'];
     foreach ($fileName as $rowfile) {
-        $FileH .= "Laptop_handover_" . $SerialNumber . "_" . date('Ymd') . "." . $rowfile . ",";
+        $FileH .= "Monitor_handover_" . $SerialNumber . "_" . date('Ymd') . "." . $rowfile . ",";
     }
     // End Pictures
 
-    $available = $db->query("SELECT serial_number,product_name,brand FROM tb_laptop_master WHERE serial_number='$SerialNumber' AND product_name='$ProductName' AND brand='$Brand'");
+    $available = $db->query("SELECT serial_number,product_name,brand FROM tb_monitor_master WHERE serial_number='$SerialNumber' AND product_name='$ProductName' AND brand='$Brand'");
     if (mysqli_num_rows($available) == 1) {
-        echo "<script>window.location.href='laptop_summary.php?Available=true&page=$page';</script>";
+        echo "<script>window.location.href='monitor_summary.php?Available=true&page=$page';</script>";
     } else {
-        $insert = $db->query("INSERT INTO tb_laptop_master
+        $insert = $db->query("INSERT INTO tb_monitor_master
                             (id,type,serial_number,product_name,brand,device_releases_years,memory,disk,disk_type,processor,hostname,username,status_use,status_available,location_branch,location_room,po_no,cost_center,asset_no,asset_of,purchase_year,purchase_batch,prices,remarks,created_by,created_date,handover)
                             VALUES
-                            ('','LAPTOP','$SerialNumber','$ProductName','$Brand','$DeviceRelease','$Memory','$DiskSpace','$DiskType','$Processor','$Hostname','$Username','$UsageState','$OwnershipStatus','$BranchLocation','$RoomLocation','$PONumber','$CC','$AssetNumber','$Assetof','$PurchaseYear','$PurchaseBatch','$Prices','$Remarks','$created_by','$created_date','$FileH')
+                            ('','MONITOR','$SerialNumber','$ProductName','$Brand','$DeviceRelease','$Memory','$DiskSpace','$DiskType','$Processor','$Hostname','$Username','$UsageState','$OwnershipStatus','$BranchLocation','$RoomLocation','$PONumber','$CC','$AssetNumber','$Assetof','$PurchaseYear','$PurchaseBatch','$Prices','$Remarks','$created_by','$created_date','$FileH')
                             ");
 
         if ($insert) {
-            echo "<script>window.location.href='laptop_summary.php?InsertSuccess=true&page=$page';</script>";
+            echo "<script>window.location.href='monitor_summary.php?InsertSuccess=true&page=$page';</script>";
         } else {
-            echo "<script>window.location.href='laptop_summary.php?InsertFailed=true&page=$page';</script>";
+            echo "<script>window.location.href='monitor_summary.php?InsertFailed=true&page=$page';</script>";
         }
     }
 }
 // Edit
 if (isset($_POST["edit_"])) {
     // Info Page
-    $page      = 'laptop_summary.php';
+    $page      = 'monitor_summary.php';
     // End Info Page
 
     $ID                 = $_POST['ID'];
@@ -166,19 +166,19 @@ if (isset($_POST["edit_"])) {
         // Pictures
         $countfiles = count($_FILES['file']['name']);
         for ($i = 0; $i < $countfiles; $i++) {
-            $filename = "Laptop_handover_" . $SerialNumber . "_" . date('Ymd') . "." . $_FILES['file']['name'][$i];
-            move_uploaded_file($_FILES['file']['tmp_name'][$i], 'assets/images/handover/laptop/' . $filename);
+            $filename = "Monitor_handover_" . $SerialNumber . "_" . date('Ymd') . "." . $_FILES['file']['name'][$i];
+            move_uploaded_file($_FILES['file']['tmp_name'][$i], 'assets/images/handover/monitor/' . $filename);
         }
         $fileName = $_FILES['file']['name'];
         foreach ($fileName as $rowfile) {
-            $FileH .= "Laptop_handover_" . $SerialNumber . "_" . date('Ymd') . "." . $rowfile . ",";
+            $FileH .= "Monitor_handover_" . $SerialNumber . "_" . date('Ymd') . "." . $rowfile . ",";
         }
         // End Pictures
     } else {
         $FileH = $fileload;
     }
 
-    $edit    = $db->query("UPDATE tb_laptop_master SET serial_number='$SerialNumber',
+    $edit    = $db->query("UPDATE tb_monitor_master SET serial_number='$SerialNumber',
                                                        product_name='$ProductName',
                                                        brand='$Brand',
                                                        device_releases_years='$DeviceRelease',
@@ -206,31 +206,31 @@ if (isset($_POST["edit_"])) {
                            WHERE id='$ID'");
 
     if ($edit) {
-        echo "<script>window.location.href='laptop_summary.php?UpdateSuccess=true&page=$page';</script>";
+        echo "<script>window.location.href='monitor_summary.php?UpdateSuccess=true&page=$page';</script>";
     } else {
-        echo "<script>window.location.href='laptop_summary.php?UpdateFailed=true&page=$page';</script>";
+        echo "<script>window.location.href='monitor_summary.php?UpdateFailed=true&page=$page';</script>";
     }
 }
 // Delete
 if (isset($_POST["delete_"])) {
     // Info Page
-    $page      = 'laptop_summary.php';
+    $page      = 'monitor_summary.php';
     // End Info Page
 
     $ID        = $_POST['ID'];
 
-    $delete    = $db->query("DELETE FROM tb_laptop_master WHERE id='$ID'");
+    $delete    = $db->query("DELETE FROM tb_monitor_master WHERE id='$ID'");
 
     if ($delete) {
-        echo "<script>window.location.href='laptop_summary.php?DeleteSuccess=true&page=$page';</script>";
+        echo "<script>window.location.href='monitor_summary.php?DeleteSuccess=true&page=$page';</script>";
     } else {
-        echo "<script>window.location.href='laptop_summary.php?DeleteFailed=true&page=$page';</script>";
+        echo "<script>window.location.href='monitor_summary.php?DeleteFailed=true&page=$page';</script>";
     }
 }
 // new username
 if (isset($_POST["newusername_"])) {
     // Info Page
-    $page      = 'laptop_summary.php';
+    $page      = 'monitor_summary.php';
     // End Info Page
 
     $NewUsername        = $_POST['NewUsername'];
@@ -271,12 +271,12 @@ if (isset($_POST["newusername_"])) {
         // Pictures
         $countfiles = count($_FILES['file']['name']);
         for ($i = 0; $i < $countfiles; $i++) {
-            $filename = "Laptop_handover_" . $SerialNumber . "_" . date('Ymd') . "." . $_FILES['file']['name'][$i];
-            move_uploaded_file($_FILES['file']['tmp_name'][$i], 'assets/images/handover/laptop/' . $filename);
+            $filename = "Monitor_handover_" . $SerialNumber . "_" . date('Ymd') . "." . $_FILES['file']['name'][$i];
+            move_uploaded_file($_FILES['file']['tmp_name'][$i], 'assets/images/handover/monitor/' . $filename);
         }
         $fileName = $_FILES['file']['name'];
         foreach ($fileName as $rowfile) {
-            $FileH .= "Laptop_handover_" . $SerialNumber . "_" . date('Ymd') . "." . $rowfile . ",";
+            $FileH .= "Monitor_handover_" . $SerialNumber . "_" . date('Ymd') . "." . $rowfile . ",";
         }
         // End Pictures
     } else {
@@ -284,16 +284,16 @@ if (isset($_POST["newusername_"])) {
     }
     // End Allocate
 
-    $data   = $db->query("SELECT * FROM tb_laptop_master WHERE serial_number='$SerialNumber' AND product_name='$ProductName' AND brand='$Brand'");
+    $data   = $db->query("SELECT * FROM tb_monitor_master WHERE serial_number='$SerialNumber' AND product_name='$ProductName' AND brand='$Brand'");
     $result = mysqli_fetch_array($data);
 
-    $query  = $db->query("INSERT INTO tb_laptop_history
+    $query  = $db->query("INSERT INTO tb_monitor_history
                         (id,id_master,type,serial_number,product_name,brand,device_releases_years,memory,disk,disk_type,processor,hostname,username,status_use,status_available,location_branch,location_room,po_no,cost_center,asset_no,asset_of,purchase_year,purchase_batch,prices,remarks,created_by,created_date,status_history,handover)
                         VALUES
                         ('','" . $result['id'] . "','" . $result['type'] . "','" . $result['serial_number'] . "','" . $result['product_name'] . "','" . $result['brand'] . "','" . $result['device_releases_years'] . "','" . $result['memory'] . "','" . $result['disk'] . "','" . $result['disk_type'] . "','" . $result['processor'] . "','" . $result['hostname'] . "','" . $result['username'] . "','" . $result['status_use'] . "','" . $result['status_available'] . "','" . $result['location_branch'] . "','" . $result['location_room'] . "','" . $result['po_no'] . "','" . $result['cost_center'] . "','" . $result['asset_no'] . "','" . $result['asset_of'] . "','" . $result['purchase_year'] . "','" . $result['purchase_batch'] . "','" . $result['prices'] . "','" . $result['remarks'] . "','" . $result['created_by'] . "','" . $result['created_date'] . "','$status_history','" . $result['handover'] . "')
                         ");
 
-    $query  .= $db->query("UPDATE tb_laptop_master SET username='$NewUsername',
+    $query  .= $db->query("UPDATE tb_monitor_master SET username='$NewUsername',
                         status_available='$OwnershipStatus',
                         created_by='$created_by',
                         created_date='$created_date',
@@ -301,16 +301,16 @@ if (isset($_POST["newusername_"])) {
                         WHERE id='$ID'");
 
     if ($query) {
-        echo "<script>window.location.href='laptop_summary.php?UpdateSuccess=true&page=$page';</script>";
+        echo "<script>window.location.href='monitor_summary.php?UpdateSuccess=true&page=$page';</script>";
     } else {
-        echo "<script>window.location.href='laptop_summary.php?UpdateFailed=true&page=$page';</script>";
+        echo "<script>window.location.href='monitor_summary.php?UpdateFailed=true&page=$page';</script>";
     }
 }
 
 // new hostname
 if (isset($_POST["newhostname_"])) {
     // Info Page
-    $page      = 'laptop_summary.php';
+    $page      = 'monitor_summary.php';
     // End Info Page
 
     $NewHostname        = $_POST['NewHostname'];
@@ -352,12 +352,12 @@ if (isset($_POST["newhostname_"])) {
         // Pictures
         $countfiles = count($_FILES['file']['name']);
         for ($i = 0; $i < $countfiles; $i++) {
-            $filename = "Laptop_handover_" . $SerialNumber . "_" . date('Ymd') . "." . $_FILES['file']['name'][$i];
-            move_uploaded_file($_FILES['file']['tmp_name'][$i], 'assets/images/handover/laptop/' . $filename);
+            $filename = "Monitor_handover_" . $SerialNumber . "_" . date('Ymd') . "." . $_FILES['file']['name'][$i];
+            move_uploaded_file($_FILES['file']['tmp_name'][$i], 'assets/images/handover/monitor/' . $filename);
         }
         $fileName = $_FILES['file']['name'];
         foreach ($fileName as $rowfile) {
-            $FileH .= "Laptop_handover_" . $SerialNumber . "_" . date('Ymd') . "." . $rowfile . ",";
+            $FileH .= "Monitor_handover_" . $SerialNumber . "_" . date('Ymd') . "." . $rowfile . ",";
         }
         // End Pictures
     } else {
@@ -365,25 +365,25 @@ if (isset($_POST["newhostname_"])) {
     }
     // End Allocate
 
-    $data   = $db->query("SELECT * FROM tb_laptop_master WHERE serial_number='$SerialNumber' AND product_name='$ProductName' AND brand='$Brand'");
+    $data   = $db->query("SELECT * FROM tb_monitor_master WHERE serial_number='$SerialNumber' AND product_name='$ProductName' AND brand='$Brand'");
     $result = mysqli_fetch_array($data);
 
-    $query  = $db->query("INSERT INTO tb_laptop_history
+    $query  = $db->query("INSERT INTO tb_monitor_history
                         (id,id_master,type,serial_number,product_name,brand,device_releases_years,memory,disk,disk_type,processor,hostname,username,status_use,status_available,location_branch,location_room,po_no,cost_center,asset_no,asset_of,purchase_year,purchase_batch,prices,remarks,created_by,created_date,status_history,handover)
                         VALUES
                         ('','" . $result['id'] . "','" . $result['type'] . "','" . $result['serial_number'] . "','" . $result['product_name'] . "','" . $result['brand'] . "','" . $result['device_releases_years'] . "','" . $result['memory'] . "','" . $result['disk'] . "','" . $result['disk_type'] . "','" . $result['processor'] . "','" . $result['hostname'] . "','" . $result['username'] . "','" . $result['status_use'] . "','" . $result['status_available'] . "','" . $result['location_branch'] . "','" . $result['location_room'] . "','" . $result['po_no'] . "','" . $result['cost_center'] . "','" . $result['asset_no'] . "','" . $result['asset_of'] . "','" . $result['purchase_year'] . "','" . $result['purchase_batch'] . "','" . $result['prices'] . "','" . $result['remarks'] . "','" . $result['created_by'] . "','" . $result['created_date'] . "','$status_history','" . $result['handover'] . "')
                         ");
 
-    $query  .= $db->query("UPDATE tb_laptop_master SET hostname='$NewHostname',
+    $query  .= $db->query("UPDATE tb_monitor_master SET hostname='$NewHostname',
                         created_by='$created_by',
                         created_date='$created_date',
                         handover='$FileH'
                         WHERE id='$ID'");
 
     if ($query) {
-        echo "<script>window.location.href='laptop_summary.php?UpdateSuccess=true&page=$page';</script>";
+        echo "<script>window.location.href='monitor_summary.php?UpdateSuccess=true&page=$page';</script>";
     } else {
-        echo "<script>window.location.href='laptop_summary.php?UpdateFailed=true&page=$page';</script>";
+        echo "<script>window.location.href='monitor_summary.php?UpdateFailed=true&page=$page';</script>";
     }
 }
 
@@ -429,7 +429,7 @@ if (isset($_POST["find_filter"])) {
     }
 }
 ?>
-<title>Laptop Summary - <?= $Rapps['app_name'] ?> | General Management</title>
+<title>Monitor/LCD Summary - <?= $Rapps['app_name'] ?> | General Management</title>
 <link href="assets/plugins/chosen/chosen.css" rel="stylesheet" type="text/css" />
 <div class="dashboard-main-wrapper">
     <?php include "include/header.php"; ?>
@@ -444,14 +444,14 @@ if (isset($_POST["find_filter"])) {
                         <div class="page-header">
                             <div class="c-page">
                                 <div class="bg-page">
-                                    <i class="fas fa-laptop icon-page"></i>
+                                    <i class="fas fa-desktop icon-page"></i>
                                 </div>
                                 <div style="margin-left: 10px;">
                                     <div>
-                                        <h2 class="pageheader-title" style="color: #003369;">Laptop Summary </h2>
+                                        <h2 class="pageheader-title" style="color: #003369;">Monitor/LCD Summary </h2>
                                     </div>
                                     <div style="margin-top: -10px;">
-                                        <font>LAPTOP</font>
+                                        <font>MONITOR/LCD</font>
                                     </div>
                                 </div>
                             </div>
@@ -460,7 +460,7 @@ if (isset($_POST["find_filter"])) {
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
-                                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Laptop Summary</a></li>
+                                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Monitor/LCD Summary</a></li>
                                     </ol>
                                 </nav>
                             </div>
@@ -473,7 +473,7 @@ if (isset($_POST["find_filter"])) {
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
-                            <h5 class="card-header"><i class="fas fa-filter"></i> Filter Data Laptop Summary</h5>
+                            <h5 class="card-header"><i class="fas fa-filter"></i> Filter Data Monitor/LCD Summary</h5>
                             <div class="card-body">
                                 <form action="" method="POST">
                                     <fieldset>
@@ -557,7 +557,7 @@ if (isset($_POST["find_filter"])) {
                             <div style="display: flex;justify-content: space-between;align-items: center;">
                                 <div>
                                     <h5 class="card-header-custom">
-                                        <i class="fas fa-list"></i> Data Laptop Summary <br><small>Read Information</small>
+                                        <i class="fas fa-list"></i> Data Monitor/LCD Summary <br><small>Read Information</small>
                                         <!-- Info -->
                                         <a href="#modal-Info" data-toggle="modal" class="badge badge-sm badge-light" title="Information"><i class="fas fa-info-circle"></i>
                                             <font class="f-action"></font>
@@ -652,13 +652,13 @@ if (isset($_POST["find_filter"])) {
                                 </div>
                                 <div>
                                     <div class="card-header-custom">
-                                        <a href="laptop_summary_allocate.php" class="btn btn-sm btn-primary" title="Allocate Device">
+                                        <a href="monitor_summary_allocate.php" class="btn btn-sm btn-primary" title="Allocate Device">
                                             <i class="fas fa-user-plus" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Change Username"></i>
                                             &nbsp; OR &nbsp;
-                                            <i class="fas fa-laptop" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Change Hostname"></i>
+                                            <i class="fas fa-desktop" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Change Hostname"></i>
                                         </a>
                                         <!-- Download Template -->
-                                        <a href="files/template/laptop/template_laptop_master.xls" target="_blank" class="btn btn-sm btn-primary" title="Download Template"><i class="fas fa-file-download"></i>
+                                        <a href="files/template/monitor/template_monitor_master.xls" target="_blank" class="btn btn-sm btn-primary" title="Download Template"><i class="fas fa-file-download"></i>
                                             <font class="f-action"> Template XLS</font>
                                         </a>
                                         <!-- End Download Template -->
@@ -666,14 +666,14 @@ if (isset($_POST["find_filter"])) {
                                 </div>
                             </div>
                             <hr>
-                            <!-- Add Laptop  -->
+                            <!-- Add Monitor/LCD  -->
                             <div class="row">
                                 <div class="col-sm-3" style="margin-top: 0px;margin-left: 15px;">
-                                    <!-- Add Laptop -->
-                                    <a href="laptop_summary_add.php" class="btn btn-sm btn-primary" title="Add Laptop"><i class="fas fa-plus-circle"></i>
+                                    <!-- Add Monitor/LCD -->
+                                    <a href="monitor_summary_add.php" class="btn btn-sm btn-primary" title="Add Monitor/LCD"><i class="fas fa-plus-circle"></i>
                                         <font class="f-action"></font>
                                     </a>
-                                    <!-- End Add Laptop -->
+                                    <!-- End Add Monitor/LCD -->
                                     <!-- Add Import XLS -->
                                     <a href="#modal-Import-XLS" class="btn btn-sm btn-primary" data-toggle="modal" title="Import XLS"><i class="fas fa-file-upload"></i>
                                         <font class="f-action"> Import XLS</font>
@@ -712,24 +712,24 @@ if (isset($_POST["find_filter"])) {
                                     <!-- End Add Import XLS -->
                                 </div>
                             </div>
-                            <!-- End Add Laptop  -->
+                            <!-- End Add Monitor/LCD  -->
                             <hr />
                             <div style="padding: 15px;">
                                 <div class="alert alert-primary" role="alert">
                                     <h4 class="alert-heading">Information!</h4>
                                     <?php
                                     $TotalData       = $db->query("SELECT COUNT(*) AS total_,
-                                                                   (SELECT COUNT(*) FROM tb_laptop_master WHERE status_available='AVAILABLE') AS t_AVAILABLE,
-                                                                   (SELECT COUNT(*) FROM tb_laptop_master WHERE status_available='BROKEN') AS t_BROKEN,
-                                                                   (SELECT COUNT(*) FROM tb_laptop_master WHERE status_available='DISPOSED') AS t_DISPOSED,
-                                                                   (SELECT COUNT(*) FROM tb_laptop_master WHERE status_available='PERMANENT') AS t_PERMANENT,
-                                                                   (SELECT COUNT(*) FROM tb_laptop_master WHERE status_available='TEMP') AS t_TEMP,
-                                                                   (SELECT COUNT(*) FROM tb_laptop_master WHERE status_available IS NULL OR status_available='' OR status_available='-' OR status_available='NA' OR status_available='N/A' OR status_available='#N/A') AS t_NULL
-                                                                   FROM tb_laptop_master");
+                                                                   (SELECT COUNT(*) FROM tb_monitor_master WHERE status_available='AVAILABLE') AS t_AVAILABLE,
+                                                                   (SELECT COUNT(*) FROM tb_monitor_master WHERE status_available='BROKEN') AS t_BROKEN,
+                                                                   (SELECT COUNT(*) FROM tb_monitor_master WHERE status_available='DISPOSED') AS t_DISPOSED,
+                                                                   (SELECT COUNT(*) FROM tb_monitor_master WHERE status_available='PERMANENT') AS t_PERMANENT,
+                                                                   (SELECT COUNT(*) FROM tb_monitor_master WHERE status_available='TEMP') AS t_TEMP,
+                                                                   (SELECT COUNT(*) FROM tb_monitor_master WHERE status_available IS NULL OR status_available='' OR status_available='-' OR status_available='NA' OR status_available='N/A' OR status_available='#N/A') AS t_NULL
+                                                                   FROM tb_monitor_master");
                                     $resultTotalData = mysqli_fetch_array($TotalData);
                                     ?>
                                     <p>
-                                        Total Serial Number <b><?= $resultTotalData['total_']; ?> Laptop.</b> Details Status Devices:
+                                        Total Serial Number <b><?= $resultTotalData['total_']; ?> Monitor/LCD.</b> Details Status Devices:
                                     <ul>
                                         <li>AVAILABLE <b><?= $resultTotalData['t_AVAILABLE']; ?></b></li>
                                         <li>BROKEN <b><?= $resultTotalData['t_BROKEN']; ?></b></li>
@@ -745,7 +745,7 @@ if (isset($_POST["find_filter"])) {
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <?php include "table/t_laptop_summary.php"; ?>
+                                    <?php include "table/t_monitor_summary.php"; ?>
                                 </div>
                             </div>
                         </div>
@@ -765,42 +765,42 @@ if (isset($_POST["find_filter"])) {
     // Find
     $(function() {
         $("#IdFindSerialNumber").autocomplete({
-            source: 'function/autocomplete/data.php?function=AutoFindSerialNumber'
+            source: 'function/autocomplete/data_monitor.php?function=AutoFindSerialNumber'
         });
     });
     $(function() {
         $("#IdFindProductName").autocomplete({
-            source: 'function/autocomplete/data.php?function=AutoFindProductName'
+            source: 'function/autocomplete/data_monitor.php?function=AutoFindProductName'
         });
     });
     $(function() {
         $("#IdFindBrand").autocomplete({
-            source: 'function/autocomplete/data.php?function=AutoFindBrand'
+            source: 'function/autocomplete/data_monitor.php?function=AutoFindBrand'
         });
     });
     $(function() {
         $("#IdFindHostname").autocomplete({
-            source: 'function/autocomplete/data.php?function=AutoFindHostname'
+            source: 'function/autocomplete/data_monitor.php?function=AutoFindHostname'
         });
     });
     $(function() {
         $("#IdFindUsername").autocomplete({
-            source: 'function/autocomplete/data.php?function=AutoFindUsername'
+            source: 'function/autocomplete/data_monitor.php?function=AutoFindUsername'
         });
     });
     $(function() {
         $("#IdFindUS").autocomplete({
-            source: 'function/autocomplete/data.php?function=AutoFindUS'
+            source: 'function/autocomplete/data_monitor.php?function=AutoFindUS'
         });
     });
     $(function() {
         $("#IdFindOS").autocomplete({
-            source: 'function/autocomplete/data.php?function=AutoFindOS'
+            source: 'function/autocomplete/data_monitor.php?function=AutoFindOS'
         });
     });
     $(function() {
         $("#IdFindBranchLoc").autocomplete({
-            source: 'function/autocomplete/data.php?function=AutoFindBranchLoc'
+            source: 'function/autocomplete/data_monitor.php?function=AutoFindBranchLoc'
         });
     });
 

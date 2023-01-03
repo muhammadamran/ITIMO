@@ -5,7 +5,7 @@ include 'include/head.php';
 include 'include/alert.php';
 include 'include/dataTablesCSS.php';
 ?>
-<title>Add Laptop Summary - <?= $Rapps['app_name'] ?> | General Management</title>
+<title>Add Monitor/LCD Summary - <?= $Rapps['app_name'] ?> | General Management</title>
 <link href="assets/plugins/chosen/chosen.css" rel="stylesheet" type="text/css" />
 <div class="dashboard-main-wrapper">
     <?php include "include/header.php"; ?>
@@ -20,14 +20,14 @@ include 'include/dataTablesCSS.php';
                         <div class="page-header">
                             <div class="c-page">
                                 <div class="bg-page">
-                                    <i class="fas fa-laptop icon-page"></i>
+                                    <i class="fas fa-desktop icon-page"></i>
                                 </div>
                                 <div style="margin-left: 10px;">
                                     <div>
-                                        <h2 class="pageheader-title" style="color: #003369;">Add Laptop Summary </h2>
+                                        <h2 class="pageheader-title" style="color: #003369;">Add Monitor/LCD Summary </h2>
                                     </div>
                                     <div style="margin-top: -10px;">
-                                        <font>LAPTOP</font>
+                                        <font>MONITOR/LCD</font>
                                     </div>
                                 </div>
                             </div>
@@ -36,7 +36,7 @@ include 'include/dataTablesCSS.php';
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
-                                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Laptop Summary</a></li>
+                                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Monitor/LCD Summary</a></li>
                                         <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Add</a></li>
                                     </ol>
                                 </nav>
@@ -51,7 +51,7 @@ include 'include/dataTablesCSS.php';
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
                             <div class="card-body">
-                                <a href="laptop_summary.php" class="btn btn-primary"><i class="fas fa-caret-square-left"></i> Back</a>
+                                <a href="monitor_summary.php" class="btn btn-primary"><i class="fas fa-caret-square-left"></i> Back</a>
                             </div>
                         </div>
                     </div>
@@ -62,9 +62,9 @@ include 'include/dataTablesCSS.php';
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
-                            <h5 class="card-header"><i class="fas fa-plus-circle"></i> Add Laptop</h5>
+                            <h5 class="card-header"><i class="fas fa-plus-circle"></i> Add Monitor/LCD</h5>
                             <div class="card-body">
-                                <form action="laptop_summary.php" method="POST" enctype="multipart/form-data">
+                                <form action="monitor_summary.php" method="POST" enctype="multipart/form-data">
                                     <fieldset>
                                         <div class="row">
                                             <div class="col-sm-8">
@@ -326,7 +326,7 @@ include 'include/dataTablesCSS.php';
                                                 <hr />
                                             </div>
                                             <div class="col-md-12" style="display: flex;justify-content: flex-end;align-items: center;">
-                                                <a href="javascript:;" onclick="window.open('laptop_summary.php', '_self', ''); window.close();" class="btn btn-light" data-dismiss="modal" style="margin-right: 5px;"><i class="fas fa-times-circle"></i> Close</a>
+                                                <a href="javascript:;" onclick="window.open('monitor_summary.php', '_self', ''); window.close();" class="btn btn-light" data-dismiss="modal" style="margin-right: 5px;"><i class="fas fa-times-circle"></i> Close</a>
                                                 <button type="submit" name="add_" class="btn btn-primary"><i class="fas fa-save"></i> Save</button>
                                             </div>
                                         </div>
@@ -354,19 +354,19 @@ include 'include/dataTablesCSS.php';
     // Product Name
     $(function() {
         $("#IdProductName").autocomplete({
-            source: 'function/autocomplete/data.php?function=AutoProductName'
+            source: 'function/autocomplete/data_monitor.php?function=AutoProductName'
         });
     });
     // Brand
     $(function() {
         $("#IdBrand").autocomplete({
-            source: 'function/autocomplete/data.php?function=AutoBrand'
+            source: 'function/autocomplete/data_monitor.php?function=AutoBrand'
         });
     });
     // Username
     $(function() {
         $("#IdUsername").autocomplete({
-            source: 'function/autocomplete/data.php?function=AutoUsername'
+            source: 'function/autocomplete/data_monitor.php?function=AutoUsername'
         });
     });
     // Select Find
