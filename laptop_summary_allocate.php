@@ -97,7 +97,7 @@ include 'include/dataTablesCSS.php';
                                             <div class="page-divider"></div>
                                         </div>
                                     </div>
-                                    <form action="laptop_summary.php" method="POST">
+                                    <form action="laptop_summary.php" method="POST" enctype="multipart/form-data">
                                         <fieldset>
                                             <div class="row">
                                                 <div class="col-sm-4">
@@ -181,7 +181,7 @@ include 'include/dataTablesCSS.php';
                                             <div class="page-divider"></div>
                                         </div>
                                     </div>
-                                    <form action="laptop_summary.php" method="POST">
+                                    <form action="laptop_summary.php" method="POST" enctype="multipart/form-data">
                                         <fieldset>
                                             <div class="row">
                                                 <div class="col-sm-4">
@@ -207,7 +207,7 @@ include 'include/dataTablesCSS.php';
                                                                 <input name="file[]" type="file" id="file" class="form-control" /><br />
                                                             </div>
                                                             <div class="form-group">
-                                                                <input type="button" id="add_more" class="upload btn btn-sm btn-primary" value="More Files" />
+                                                                <input type="button" id="add_more1" class="upload btn btn-sm btn-primary" value="More Files" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -333,6 +333,16 @@ include 'include/dataTablesCSS.php';
     var abc = 0;
     $(document).ready(function() {
         $('#add_more').click(function() {
+            $(this).before($("<div/>", {
+                id: 'filediv'
+            }).fadeIn('slow').append($("<input/>", {
+                name: 'file[]',
+                type: 'file',
+                id: 'file',
+                class: 'form-control'
+            }), $("<br/>")));
+        });
+        $('#add_more1').click(function() {
             $(this).before($("<div/>", {
                 id: 'filediv'
             }).fadeIn('slow').append($("<input/>", {
