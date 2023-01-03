@@ -290,7 +290,7 @@ include 'include/dataTablesCSS.php';
                 document.getElementById("ShowSelectSN").innerHTML = this.responseText;
             }
         }
-        xmlhttp.open("GET", "function/function_get.php/get_sn_one?function=SNone&sn_one=" + sn_one, true);
+        xmlhttp.open("GET", "function/function_get_server.php/get_sn_one?function=SNone&sn_one=" + sn_one, true);
         xmlhttp.send();
     }
 
@@ -306,7 +306,7 @@ include 'include/dataTablesCSS.php';
                 document.getElementById("ShowSelectHN").innerHTML = this.responseText;
             }
         }
-        xmlhttp.open("GET", "function/function_get.php/get_sn_two?function=SNtwo&sn_two=" + sn_two, true);
+        xmlhttp.open("GET", "function/function_get_server.php/get_sn_two?function=SNtwo&sn_two=" + sn_two, true);
         xmlhttp.send();
     }
 

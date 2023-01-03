@@ -22,7 +22,7 @@ $row        = mysqli_fetch_array($data);
                         <div class="page-header">
                             <div class="c-page">
                                 <div class="bg-page">
-                                    <i class="fas fa-laptop icon-page"></i>
+                                    <i class="fas fa-phone icon-page"></i>
                                 </div>
                                 <div style="margin-left: 10px;">
                                     <div>
@@ -376,19 +376,19 @@ $row        = mysqli_fetch_array($data);
     // Product Name
     $(function() {
         $("#IdProductName").autocomplete({
-            source: 'function/autocomplete/data.php?function=AutoProductName'
+            source: 'function/autocomplete/data_pc.php?function=AutoProductName'
         });
     });
     // Brand
     $(function() {
         $("#IdBrand").autocomplete({
-            source: 'function/autocomplete/data.php?function=AutoBrand'
+            source: 'function/autocomplete/data_pc.php?function=AutoBrand'
         });
     });
     // Username
     $(function() {
         $("#IdUsername").autocomplete({
-            source: 'function/autocomplete/data.php?function=AutoUsername'
+            source: 'function/autocomplete/data_pc.php?function=AutoUsername'
         });
     });
     // Select Find
