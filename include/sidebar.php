@@ -583,7 +583,7 @@ $Rrole   = mysqli_fetch_array($role);
                                                 $uriSegments[2] == 'scanner_permanent.php' ||
                                                 $uriSegments[2] == 'scanner_bd.php'
                                                 ? 'active' : '' ?>" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-scanner" aria-controls="submenu-10">
-                            <i class="fas fa-broadcast-tower" id="sidebar-font"></i>
+                            <i class="fab fa-stripe-s" id="sidebar-font"></i>
                             <span>RF Scanner</span>
                         </a>
                         <div id="submenu-scanner" class="collapse submenu <?=
