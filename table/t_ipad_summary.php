@@ -53,13 +53,13 @@
                 $_where = where_add($_where, ' lap.location_branch=' . "'$FindBranchLoc'" . '');
             }
             $dataTable = $db->query("SELECT *,lap.id,emp.id AS idEmp,lap.username AS userLap,emp.username AS userEmp,lap.cost_center AS CC
-            FROM tb_laptop_master AS lap
+            FROM tb_ipad_master AS lap
             LEFT OUTER JOIN tb_employee AS emp ON lap.username=emp.username
             $_where
             ORDER BY lap.id DESC", 0);
         } else {
             $dataTable = $db->query("SELECT *,lap.id,emp.id AS idEmp,lap.username AS userLap,emp.username AS userEmp,lap.cost_center AS CC
-            FROM tb_laptop_master AS lap
+            FROM tb_ipad_master AS lap
             LEFT OUTER JOIN tb_employee AS emp ON lap.username=emp.username
             ORDER BY lap.id DESC", 0);
         }
@@ -74,7 +74,7 @@
                     <td>
                         <div style="display: flex;justify-content: center;align-items: center;">
                             <div>
-                                <a href="laptop_summary_history.php?SN=<?= $row['serial_number']; ?>" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="right" data-content="Detail Device History: <?= $row['serial_number']; ?>">
+                                <a href="ipad_summary_history.php?SN=<?= $row['serial_number']; ?>" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="right" data-content="Detail Device History: <?= $row['serial_number']; ?>">
                                     <div class="table-icon-Assets-IT-Temp">
                                         <i class="fas fa-clock"></i>
                                     </div>
@@ -253,7 +253,7 @@
                     </td>
                     <td>
                         <div style="display: flex;justify-content: center;align-items: center;">
-                            <a href="laptop_summary_edit.php?ID=<?= $row['id']; ?>" class="btn btn-sm btn-behind-green" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="left" data-content="Edit Device: <?= $row['serial_number']; ?>" style="margin-left: 5px;">
+                            <a href="ipad_summary_edit.php?ID=<?= $row['id']; ?>" class="btn btn-sm btn-behind-green" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="left" data-content="Edit Device: <?= $row['serial_number']; ?>" style="margin-left: 5px;">
                                 <i class="fas fa-edit"></i> Edit
                             </a>
                             <a href="#Delete<?= $row['id']; ?>" class="btn btn-sm btn-behind-green" data-toggle="modal" title="Delete Device: <?= $row['serial_number']; ?>" style="margin-left: 5px;">
@@ -268,7 +268,7 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title">[Asset Data] Laptop</h4>
+                                <h4 class="modal-title">[Asset Data] Ipad</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             </div>
                             <form action="" method="POST">
@@ -278,7 +278,7 @@
                                             <div class="col-sm-3">
                                                 <div class="doc-asset">
                                                     <div style="display: grid;justify-content: center;">
-                                                        <i class="fas fa-laptop"></i>
+                                                        <i class="fas fa-tablet-alt"></i>
                                                     </div>
                                                     <div style="margin-top: -110px;display: flex;justify-content: center;margin-bottom: 0px;">
                                                         <font style="font-size: 10px;text-align: center;text-transform:uppercase"><?= $row['brand']; ?></font>
@@ -293,7 +293,7 @@
                                                     <div class="col-sm-3">
                                                         <div style="display: flex;justify-content:flex-start;align-items: center;margin-top: 12px;">
                                                             <div class="table-icon" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Serial Number & Device Release Year">
-                                                                <i class="fas fa-laptop"></i>
+                                                                <i class="fas fa-tablet-alt"></i>
                                                             </div>
                                                             <div style="margin-left: 5px;">
                                                                 <div style="font-size: 15px;font-weight: 500;">
@@ -509,7 +509,7 @@
                                                                     }
                                                                 ?>
                                                                     <div class="carousel-item <?= $s ?>">
-                                                                        <img class="d-block w-100" src="assets/images/handover/laptop/<?= $dataP ?>" alt="<?= $dataP ?>">
+                                                                        <img class="d-block w-100" src="assets/images/handover/ipad/<?= $dataP ?>" alt="<?= $dataP ?>">
                                                                     </div>
                                                                 <?php $i++;
                                                                 } ?>

@@ -6,10 +6,10 @@ include 'include/alert.php';
 include 'include/dataTablesCSS.php';
 
 $GET        =  $_GET['SN'];
-$dataMaster = $db->query("SELECT * FROM tb_laptop_master WHERE serial_number='$GET'");
+$dataMaster = $db->query("SELECT * FROM tb_ipad_master WHERE serial_number='$GET'");
 $resultdM   = mysqli_fetch_array($dataMaster);
 ?>
-<title>History Laptop Summary [<?= $resultdM['serial_number']; ?>] - <?= $Rapps['app_name'] ?> | General Management</title>
+<title>History Ipad Summary [<?= $resultdM['serial_number']; ?>] - <?= $Rapps['app_name'] ?> | General Management</title>
 <link href="assets/plugins/chosen/chosen.css" rel="stylesheet" type="text/css" />
 <div class="dashboard-main-wrapper">
     <?php include "include/header.php"; ?>
@@ -24,14 +24,14 @@ $resultdM   = mysqli_fetch_array($dataMaster);
                         <div class="page-header">
                             <div class="c-page">
                                 <div class="bg-page">
-                                    <i class="fas fa-laptop icon-page"></i>
+                                    <i class="fas fa-tablet-alt icon-page"></i>
                                 </div>
                                 <div style="margin-left: 10px;">
                                     <div>
-                                        <h2 class="pageheader-title" style="color: #003369;">History Laptop: <?= $resultdM['serial_number']; ?> </h2>
+                                        <h2 class="pageheader-title" style="color: #003369;">History Ipad: <?= $resultdM['serial_number']; ?> </h2>
                                     </div>
                                     <div style="margin-top: -10px;">
-                                        <font>LAPTOP</font>
+                                        <font>IPAD</font>
                                     </div>
                                 </div>
                             </div>
@@ -40,7 +40,7 @@ $resultdM   = mysqli_fetch_array($dataMaster);
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
-                                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Laptop Summary</a></li>
+                                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Ipad Summary</a></li>
                                         <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">History</a></li>
                                     </ol>
                                 </nav>
@@ -84,7 +84,7 @@ $resultdM   = mysqli_fetch_array($dataMaster);
                                                     <div class="col-sm-6">
                                                         <div style="display: flex;justify-content:flex-start;align-items: center;">
                                                             <div class="table-icon">
-                                                                <i class="fas fa-laptop"></i>
+                                                                <i class="fas fa-tablet-alt"></i>
                                                             </div>
                                                             <div style="margin-left: 5px;">
                                                                 <div style="font-size: 15px;font-weight: 500;">
@@ -148,7 +148,7 @@ $resultdM   = mysqli_fetch_array($dataMaster);
                                         </div>
                                         <!-- End Data Master -->
                                         <?php
-                                        $dataTable = $db->query("SELECT * FROM tb_laptop_history WHERE serial_number='$GET' ORDER BY id DESC", 0);
+                                        $dataTable = $db->query("SELECT * FROM tb_ipad_history WHERE serial_number='$GET' ORDER BY id DESC", 0);
                                         if (mysqli_num_rows($dataTable) > 0) {
                                             $no = 0;
                                             while ($row = mysqli_fetch_array($dataTable)) {
@@ -159,7 +159,7 @@ $resultdM   = mysqli_fetch_array($dataMaster);
                                                         <?php if ($row['status_history'] == 'Change Username') { ?>
                                                             <img src="assets/vendor/timeline/img/users.png" alt="Picture">
                                                         <?php } else if ($row['status_history'] == 'Change Hostname') { ?>
-                                                            <img src="assets/vendor/timeline/img/laptop.png" alt="Picture">
+                                                            <img src="assets/vendor/timeline/img/tablet.png" alt="Picture">
                                                         <?php } ?>
                                                     </div>
                                                     <div class="cd-timeline__content js-cd-content">
@@ -171,7 +171,7 @@ $resultdM   = mysqli_fetch_array($dataMaster);
                                                             <div class="col-sm-6">
                                                                 <div style="display: flex;justify-content:flex-start;align-items: center;">
                                                                     <div class="table-icon">
-                                                                        <i class="fas fa-laptop"></i>
+                                                                        <i class="fas fa-tablet-alt"></i>
                                                                     </div>
                                                                     <div style="margin-left: 5px;">
                                                                         <div style="font-size: 15px;font-weight: 500;">
