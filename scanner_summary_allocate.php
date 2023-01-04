@@ -20,7 +20,7 @@ include 'include/dataTablesCSS.php';
                         <div class="page-header">
                             <div class="c-page">
                                 <div class="bg-page">
-                                    <i class="fas fa-stripe-s icon-page"></i>
+                                    <i class="fab fa-stripe-s icon-page"></i>
                                 </div>
                                 <div style="margin-left: 10px;">
                                     <div>
@@ -159,7 +159,7 @@ include 'include/dataTablesCSS.php';
                                     <div class="row" style="display: flex;justify-content: flex-start;align-items: end;margin-top: 5px;">
                                         <div>
                                             <div style="font-size: 15px;margin-bottom: 10px;margin-top: -25px;background: #003369;border-radius: 10px;margin-left: 15px;color: #fff;padding: 10px;">
-                                                <i class="fas fa-stripe-s"></i> RF SCANNER
+                                                <i class="fab fa-stripe-s"></i> RF SCANNER
                                             </div>
                                         </div>
                                         <div class="col-md-3">
@@ -223,7 +223,7 @@ include 'include/dataTablesCSS.php';
                                                 </div>
                                                 <div class="col-sm-12" style="display: flex;justify-content: flex-end;">
                                                     <a href="javascript:;" onclick="window.open('scanner_summary.php', '_self', ''); window.close();" class="btn btn-light" data-dismiss="modal" style="margin-right: 5px;"><i class="fas fa-times-circle"></i> Close</a>
-                                                    <button type="submit" name="newhostname_" class="btn btn-primary"><i class="fas fa-stripe-s"></i> Update</button>
+                                                    <button type="submit" name="newhostname_" class="btn btn-primary"><i class="fab fa-stripe-s"></i> Update</button>
                                                 </div>
                                             </div>
                                         </fieldset>

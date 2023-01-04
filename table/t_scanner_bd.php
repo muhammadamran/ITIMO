@@ -223,7 +223,7 @@
                                             <div class="col-sm-3">
                                                 <div class="doc-asset">
                                                     <div style="display: grid;justify-content: center;">
-                                                        <i class="fas fa-stripe-s"></i>
+                                                        <i class="fab fa-stripe-s"></i>
                                                     </div>
                                                     <div style="margin-top: -110px;display: flex;justify-content: center;margin-bottom: 0px;">
                                                         <font style="font-size: 10px;text-align: center;text-transform:uppercase"><?= $row['brand']; ?></font>
@@ -238,7 +238,7 @@
                                                     <div class="col-sm-3">
                                                         <div style="display: flex;justify-content:flex-start;align-items: center;margin-top: 12px;">
                                                             <div class="table-icon" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Serial Number & Device Release Year">
-                                                                <i class="fas fa-stripe-s"></i>
+                                                                <i class="fab fa-stripe-s"></i>
                                                             </div>
                                                             <div style="margin-left: 5px;">
                                                                 <div style="font-size: 15px;font-weight: 500;">

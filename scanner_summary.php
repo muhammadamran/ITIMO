@@ -444,7 +444,7 @@ if (isset($_POST["find_filter"])) {
                         <div class="page-header">
                             <div class="c-page">
                                 <div class="bg-page">
-                                    <i class="fas fa-stripe-s icon-page"></i>
+                                    <i class="fab fa-stripe-s icon-page"></i>
                                 </div>
                                 <div style="margin-left: 10px;">
                                     <div>
@@ -655,7 +655,7 @@ if (isset($_POST["find_filter"])) {
                                         <a href="scanner_summary_allocate.php" class="btn btn-sm btn-primary" title="Allocate Device">
                                             <i class="fas fa-user-plus" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Change Username"></i>
                                             &nbsp; OR &nbsp;
-                                            <i class="fas fa-stripe-s" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Change Hostname"></i>
+                                            <i class="fab fa-stripe-s" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Change Hostname"></i>
                                         </a>
                                         <!-- Download Template -->
                                         <a href="files/template/scanner/template_scanner_master.xls" target="_blank" class="btn btn-sm btn-primary" title="Download Template"><i class="fas fa-file-download"></i>
