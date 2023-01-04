@@ -455,20 +455,20 @@ $Rrole   = mysqli_fetch_array($role);
                     <!-- HEANDPHONE 8 -->
                     <li class="nav-item">
                         <a class="nav-link <?=
-                                            $uriSegments[2] == 'handphones_summary.php' ||
-                                                $uriSegments[2] == 'handphones_summary_add.php' ||
-                                                $uriSegments[2] == 'handphones_summary_edit.php' ||
-                                                $uriSegments[2] == 'handphones_summary_allocate.php' ||
-                                                $uriSegments[2] == 'handphones_summary_asset.php' ||
-                                                $uriSegments[2] == 'handphones_summary_history.php' ||
-                                                $uriSegments[2] == 'handphones_available.php' ||
-                                                $uriSegments[2] == 'handphones_permanent.php' ||
-                                                $uriSegments[2] == 'handphones_bd.php'
-                                                ? 'active' : '' ?>" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-handphones" aria-controls="submenu-8">
+                                            $uriSegments[2] == 'headphones_summary.php' ||
+                                                $uriSegments[2] == 'headphones_summary_add.php' ||
+                                                $uriSegments[2] == 'headphones_summary_edit.php' ||
+                                                $uriSegments[2] == 'headphones_summary_allocate.php' ||
+                                                $uriSegments[2] == 'headphones_summary_asset.php' ||
+                                                $uriSegments[2] == 'headphones_summary_history.php' ||
+                                                $uriSegments[2] == 'headphones_available.php' ||
+                                                $uriSegments[2] == 'headphones_permanent.php' ||
+                                                $uriSegments[2] == 'headphones_bd.php'
+                                                ? 'active' : '' ?>" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-headphones" aria-controls="submenu-8">
                             <i class="fas fa-headphones-alt" id="sidebar-font"></i>
-                            <span>Handphones</span>
+                            <span>Headphones</span>
                         </a>
-                        <div id="submenu-handphones" class="collapse submenu <?=
+                        <div id="submenu-headphones" class="collapse submenu <?=
                                                                                 $uriSegments[2] == 'headphones_summary.php' ||
                                                                                     $uriSegments[2] == 'headphones_summary_add.php' ||
                                                                                     $uriSegments[2] == 'headphones_summary_edit.php' ||
