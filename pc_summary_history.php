@@ -24,7 +24,7 @@ $resultdM   = mysqli_fetch_array($dataMaster);
                         <div class="page-header">
                             <div class="c-page">
                                 <div class="bg-page">
-                                    <i class="fas fa-phone icon-page"></i>
+                                    <i class="fas fa-mobile icon-page"></i>
                                 </div>
                                 <div style="margin-left: 10px;">
                                     <div>
@@ -84,7 +84,7 @@ $resultdM   = mysqli_fetch_array($dataMaster);
                                                     <div class="col-sm-6">
                                                         <div style="display: flex;justify-content:flex-start;align-items: center;">
                                                             <div class="table-icon">
-                                                                <i class="fas fa-phone"></i>
+                                                                <i class="fas fa-mobile"></i>
                                                             </div>
                                                             <div style="margin-left: 5px;">
                                                                 <div style="font-size: 15px;font-weight: 500;">
@@ -171,7 +171,7 @@ $resultdM   = mysqli_fetch_array($dataMaster);
                                                             <div class="col-sm-6">
                                                                 <div style="display: flex;justify-content:flex-start;align-items: center;">
                                                                     <div class="table-icon">
-                                                                        <i class="fas fa-phone"></i>
+                                                                        <i class="fas fa-mobile"></i>
                                                                     </div>
                                                                     <div style="margin-left: 5px;">
                                                                         <div style="font-size: 15px;font-weight: 500;">

@@ -22,7 +22,7 @@ $row        = mysqli_fetch_array($data);
                         <div class="page-header">
                             <div class="c-page">
                                 <div class="bg-page">
-                                    <i class="fas fa-phone icon-page"></i>
+                                    <i class="fas fa-mobile icon-page"></i>
                                 </div>
                                 <div style="margin-left: 10px;">
                                     <div>
