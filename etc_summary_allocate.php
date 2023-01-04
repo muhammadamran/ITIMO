@@ -5,7 +5,7 @@ include 'include/head.php';
 include 'include/alert.php';
 include 'include/dataTablesCSS.php';
 ?>
-<title>Allocate Laptop Summary - <?= $Rapps['app_name'] ?> | General Management</title>
+<title>Allocate ETC Summary - <?= $Rapps['app_name'] ?> | General Management</title>
 <link href="assets/plugins/chosen/chosen.css" rel="stylesheet" type="text/css" />
 <div class="dashboard-main-wrapper">
     <?php include "include/header.php"; ?>
@@ -20,14 +20,14 @@ include 'include/dataTablesCSS.php';
                         <div class="page-header">
                             <div class="c-page">
                                 <div class="bg-page">
-                                    <i class="fas fa-laptop icon-page"></i>
+                                    <i class="fas fa-list icon-page"></i>
                                 </div>
                                 <div style="margin-left: 10px;">
                                     <div>
-                                        <h2 class="pageheader-title" style="color: #003369;">Allocate Laptop Summary </h2>
+                                        <h2 class="pageheader-title" style="color: #003369;">Allocate ETC Summary </h2>
                                     </div>
                                     <div style="margin-top: -10px;">
-                                        <font>LAPTOP</font>
+                                        <font>ETC</font>
                                     </div>
                                 </div>
                             </div>
@@ -36,7 +36,7 @@ include 'include/dataTablesCSS.php';
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
-                                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Laptop Summary</a></li>
+                                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">ETC Summary</a></li>
                                         <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Allocate</a></li>
                                     </ol>
                                 </nav>
@@ -51,7 +51,7 @@ include 'include/dataTablesCSS.php';
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
                             <div class="card-body">
-                                <a href="laptop_summary.php" class="btn btn-primary"><i class="fas fa-caret-square-left"></i> Back</a>
+                                <a href="etc_summary.php" class="btn btn-primary"><i class="fas fa-caret-square-left"></i> Back</a>
                             </div>
                         </div>
                     </div>
@@ -63,11 +63,11 @@ include 'include/dataTablesCSS.php';
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
                             <h5 class="card-header">
-                                Allocate Laptop by
+                                Allocate ETC by
                                 <select id="IdSelectBy" style="border-color: transparent;background: #003369;color: #fff;border-radius: 10px;font-size: 12px;">
                                     <option value="">Choose By</option>
                                     <option value="VUser">User</option>
-                                    <option value="VLaptop">Laptop</option>
+                                    <option value="VETC">ETC</option>
                                 </select>
                             </h5>
                             <div class="card-body">
@@ -83,7 +83,7 @@ include 'include/dataTablesCSS.php';
                                                 <select name="SerialNumberOne" id="IdSerialNumberOne" onchange="ShowSNOne(this.value)">
                                                     <option value="">Choose Serial Number</option>
                                                     <?php
-                                                    $dataSNOne = $db->query("SELECT * FROM tb_laptop_master ORDER BY id ASC");
+                                                    $dataSNOne = $db->query("SELECT * FROM tb_etc_master ORDER BY id ASC");
                                                     foreach ($dataSNOne as $optionSNOne) {
                                                     ?>
                                                         <option data-tokens="<?= $optionSNOne['serial_number'] ?>" value="<?= $optionSNOne['serial_number'] ?>"><?= $optionSNOne['serial_number'] ?></option>
@@ -97,7 +97,7 @@ include 'include/dataTablesCSS.php';
                                             <div class="page-divider"></div>
                                         </div>
                                     </div>
-                                    <form action="laptop_summary.php" method="POST" enctype="multipart/form-data">
+                                    <form action="etc_summary.php" method="POST" enctype="multipart/form-data">
                                         <fieldset>
                                             <div class="row">
                                                 <div class="col-sm-4">
@@ -148,18 +148,18 @@ include 'include/dataTablesCSS.php';
                                                     <hr />
                                                 </div>
                                                 <div class="col-sm-12" style="display: flex;justify-content: flex-end;">
-                                                    <a href="javascript:;" onclick="window.open('laptop_summary.php', '_self', ''); window.close();" class="btn btn-light" data-dismiss="modal" style="margin-right: 5px;"><i class="fas fa-times-circle"></i> Close</a>
+                                                    <a href="javascript:;" onclick="window.open('etc_summary.php', '_self', ''); window.close();" class="btn btn-light" data-dismiss="modal" style="margin-right: 5px;"><i class="fas fa-times-circle"></i> Close</a>
                                                     <button type="submit" name="newusername_" class="btn btn-primary"><i class="fas fa-user-plus"></i> Update</button>
                                                 </div>
                                             </div>
                                         </fieldset>
                                     </form>
                                 </div>
-                                <div id="FormLaptop" style="display:none">
+                                <div id="FormETC" style="display:none">
                                     <div class="row" style="display: flex;justify-content: flex-start;align-items: end;margin-top: 5px;">
                                         <div>
                                             <div style="font-size: 15px;margin-bottom: 10px;margin-top: -25px;background: #003369;border-radius: 10px;margin-left: 15px;color: #fff;padding: 10px;">
-                                                <i class="fas fa-laptop"></i> LAPTOP
+                                                <i class="fas fa-list"></i> ETC
                                             </div>
                                         </div>
                                         <div class="col-md-3">
@@ -167,7 +167,7 @@ include 'include/dataTablesCSS.php';
                                                 <select name="SerialNumberTwo" id="IdSerialNumberTwo" onchange="ShowSNTwo(this.value)">
                                                     <option value="">Choose Serial Number</option>
                                                     <?php
-                                                    $dataSNTwo = $db->query("SELECT * FROM tb_laptop_master ORDER BY id ASC");
+                                                    $dataSNTwo = $db->query("SELECT * FROM tb_etc_master ORDER BY id ASC");
                                                     foreach ($dataSNTwo as $optionSNTwo) {
                                                     ?>
                                                         <option data-tokens="<?= $optionSNTwo['serial_number'] ?>" value="<?= $optionSNTwo['serial_number'] ?>"><?= $optionSNTwo['serial_number'] ?></option>
@@ -181,7 +181,7 @@ include 'include/dataTablesCSS.php';
                                             <div class="page-divider"></div>
                                         </div>
                                     </div>
-                                    <form action="laptop_summary.php" method="POST" enctype="multipart/form-data">
+                                    <form action="etc_summary.php" method="POST" enctype="multipart/form-data">
                                         <fieldset>
                                             <div class="row">
                                                 <div class="col-sm-4">
@@ -222,8 +222,8 @@ include 'include/dataTablesCSS.php';
                                                     <hr />
                                                 </div>
                                                 <div class="col-sm-12" style="display: flex;justify-content: flex-end;">
-                                                    <a href="javascript:;" onclick="window.open('laptop_summary.php', '_self', ''); window.close();" class="btn btn-light" data-dismiss="modal" style="margin-right: 5px;"><i class="fas fa-times-circle"></i> Close</a>
-                                                    <button type="submit" name="newhostname_" class="btn btn-primary"><i class="fas fa-laptop"></i> Update</button>
+                                                    <a href="javascript:;" onclick="window.open('etc_summary.php', '_self', ''); window.close();" class="btn btn-light" data-dismiss="modal" style="margin-right: 5px;"><i class="fas fa-times-circle"></i> Close</a>
+                                                    <button type="submit" name="newhostname_" class="btn btn-primary"><i class="fas fa-list"></i> Update</button>
                                                 </div>
                                             </div>
                                         </fieldset>
@@ -267,13 +267,13 @@ include 'include/dataTablesCSS.php';
         $("#IdSelectBy").change(function() {
             if ($(this).val() == "VUser") {
                 $("#FormUser").show();
-                $("#FormLaptop").hide();
-            } else if ($(this).val() == "VLaptop") {
+                $("#FormETC").hide();
+            } else if ($(this).val() == "VETC") {
                 $("#FormUser").hide();
-                $("#FormLaptop").show();
+                $("#FormETC").show();
             } else {
                 $("#FormUser").hide();
-                $("#FormLaptop").hide();
+                $("#FormETC").hide();
             }
         });
     });
