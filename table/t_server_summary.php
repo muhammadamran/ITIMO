@@ -280,7 +280,7 @@
                                                     <div style="display: grid;justify-content: center;">
                                                         <i class="fas fa-server"></i>
                                                     </div>
-                                                    <div style="margin-top: -110px;display: flex;justify-content: center;margin-bottom: 0px;">
+                                                    <div style="margin-top: -102px;display: flex;justify-content: center;margin-bottom: 0px;">
                                                         <font style="font-size: 10px;text-align: center;text-transform:uppercase"><?= $row['brand']; ?></font>
                                                     </div>
                                                     <div style="display: flex;justify-content: center;margin-top: 5px;">
