@@ -18,7 +18,7 @@ if (isset($_POST["import_"])) {
 
         $dir = "files/import/ipad/";
         $timeUpload = date('Y-m-d-h-m-i');
-        $file_name = "ipad_" . $timeUpload . "_" . $_FILES["ImportXLS"]["name"];
+        $file_name = "Ipad_" . $timeUpload . "_" . $_FILES["ImportXLS"]["name"];
         $size = $_FILES["ImportXLS"]["size"];
         $tmp_file_name = $_FILES["ImportXLS"]["tmp_name"];
         $filename = $_FILES['ImportXLS']['name'];

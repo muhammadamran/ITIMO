@@ -527,17 +527,17 @@ $Rrole   = mysqli_fetch_array($role);
                             <i class="fas fa-network-wired" id="sidebar-font"></i>
                             <span>Switch/Router Etc</span>
                         </a>
-                        <div id="submenu-wifi" class="collapse submenu <?=
-                                                                        $uriSegments[2] == 'switch_summary.php' ||
-                                                                            $uriSegments[2] == 'switch_summary_add.php' ||
-                                                                            $uriSegments[2] == 'switch_summary_edit.php' ||
-                                                                            $uriSegments[2] == 'switch_summary_allocate.php' ||
-                                                                            $uriSegments[2] == 'switch_summary_asset.php' ||
-                                                                            $uriSegments[2] == 'switch_summary_history.php' ||
-                                                                            $uriSegments[2] == 'switch_available.php' ||
-                                                                            $uriSegments[2] == 'switch_permanent.php' ||
-                                                                            $uriSegments[2] == 'switch_bd.php'
-                                                                            ? 'show' : '' ?>">
+                        <div id="submenu-switch" class="collapse submenu <?=
+                                                                            $uriSegments[2] == 'switch_summary.php' ||
+                                                                                $uriSegments[2] == 'switch_summary_add.php' ||
+                                                                                $uriSegments[2] == 'switch_summary_edit.php' ||
+                                                                                $uriSegments[2] == 'switch_summary_allocate.php' ||
+                                                                                $uriSegments[2] == 'switch_summary_asset.php' ||
+                                                                                $uriSegments[2] == 'switch_summary_history.php' ||
+                                                                                $uriSegments[2] == 'switch_available.php' ||
+                                                                                $uriSegments[2] == 'switch_permanent.php' ||
+                                                                                $uriSegments[2] == 'switch_bd.php'
+                                                                                ? 'show' : '' ?>">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
                                     <a class="nav-link <?=

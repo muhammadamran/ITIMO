@@ -4,10 +4,10 @@ include 'include/restrict.php';
 include 'include/head.php';
 include 'include/alert.php';
 include 'include/dataTablesCSS.php';
-$data       = $db->query("SELECT * FROM tb_laptop_master WHERE id='" . $_GET['ID'] . "'");
+$data       = $db->query("SELECT * FROM tb_switch_master WHERE id='" . $_GET['ID'] . "'");
 $row        = mysqli_fetch_array($data);
 ?>
-<title>Edit Laptop Summary - <?= $Rapps['app_name'] ?> | General Management</title>
+<title>Edit Switch Summary - <?= $Rapps['app_name'] ?> | General Management</title>
 <link href="assets/plugins/chosen/chosen.css" rel="stylesheet" type="text/css" />
 <div class="dashboard-main-wrapper">
     <?php include "include/header.php"; ?>
@@ -22,14 +22,14 @@ $row        = mysqli_fetch_array($data);
                         <div class="page-header">
                             <div class="c-page">
                                 <div class="bg-page">
-                                    <i class="fas fa-laptop icon-page"></i>
+                                    <i class="fas fa-network-wired icon-page"></i>
                                 </div>
                                 <div style="margin-left: 10px;">
                                     <div>
-                                        <h2 class="pageheader-title" style="color: #003369;">Edit Laptop Summary </h2>
+                                        <h2 class="pageheader-title" style="color: #003369;">Edit Switch Summary </h2>
                                     </div>
                                     <div style="margin-top: -10px;">
-                                        <font>LAPTOP</font>
+                                        <font>SWITCH</font>
                                     </div>
                                 </div>
                             </div>
@@ -38,7 +38,7 @@ $row        = mysqli_fetch_array($data);
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
-                                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Laptop Summary</a></li>
+                                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Switch Summary</a></li>
                                         <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Edit</a></li>
                                     </ol>
                                 </nav>
@@ -53,7 +53,7 @@ $row        = mysqli_fetch_array($data);
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
                             <div class="card-body">
-                                <a href="laptop_summary.php" class="btn btn-primary"><i class="fas fa-caret-square-left"></i> Back</a>
+                                <a href="switch_summary.php" class="btn btn-primary"><i class="fas fa-caret-square-left"></i> Back</a>
                             </div>
                         </div>
                     </div>
@@ -64,9 +64,9 @@ $row        = mysqli_fetch_array($data);
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
-                            <h5 class="card-header"><i class="fas fa-plus-circle"></i> Edit Laptop</h5>
+                            <h5 class="card-header"><i class="fas fa-plus-circle"></i> Edit Switch</h5>
                             <div class="card-body">
-                                <form action="laptop_summary.php" method="POST" enctype="multipart/form-data">
+                                <form action="switch_summary.php" method="POST" enctype="multipart/form-data">
                                     <fieldset>
                                         <div class="row">
                                             <div class="col-sm-8">
@@ -348,7 +348,7 @@ $row        = mysqli_fetch_array($data);
                                                 <hr />
                                             </div>
                                             <div class="col-md-12" style="display: flex;justify-content: flex-end;align-items: center;">
-                                                <a href="javascript:;" onclick="window.open('laptop_summary.php', '_self', ''); window.close();" class="btn btn-light" data-dismiss="modal" style="margin-right: 5px;"><i class="fas fa-times-circle"></i> Close</a>
+                                                <a href="javascript:;" onclick="window.open('switch_summary.php', '_self', ''); window.close();" class="btn btn-light" data-dismiss="modal" style="margin-right: 5px;"><i class="fas fa-times-circle"></i> Close</a>
                                                 <button type="submit" name="edit_" class="btn btn-behind-green"><i class="fas fa-edit"></i> Edit</button>
                                             </div>
                                         </div>
