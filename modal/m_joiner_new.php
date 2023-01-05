@@ -21,25 +21,25 @@
                                             <input type="text" class="form-control" name="FullName" id="IdFullName" placeholder="Full Name ..." required />
                                         </div>
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="IdKNCode">KN Code <font style="color: red;">*</font></label>
                                             <input type="text" class="form-control" name="KNCode" id="IdKNCode" placeholder="KN Code ..." required />
                                         </div>
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="IdJoinDate">Join Date <font style="color: red;">*</font></label>
                                             <input type="date" class="form-control" name="JoinDate" id="IdJoinDate" placeholder="Join Date ..." required />
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="IdTitleDesc">Title Description <font style="color: red;">*</font></label>
                                             <input type="text" class="form-control" name="TitleDesc" id="IdTitleDesc" placeholder="Title Description ..." required />
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="IdDirectReportto">Direct Report to <font style="color: red;">*</font></label>
                                             <input type="text" class="form-control" name="DirectReportto" id="IdDirectReportto" placeholder="Direct Report to ..." required />
