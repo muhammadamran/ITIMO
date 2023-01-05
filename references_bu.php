@@ -76,7 +76,6 @@ if (isset($_POST["delete_bu"])) {
     }
 }
 ?>
-<link href="assets/plugins/chosen/chosen.css" rel="stylesheet" type="text/css" />
 <div class="dashboard-main-wrapper">
     <?php include "include/header.php"; ?>
     <?php include "include/sidebar.php"; ?>

@@ -5,9 +5,10 @@ include 'include/head.php';
 include 'include/alert.php';
 include 'include/dataTablesCSS.php';
 ?>
-<title>Joiner - <?= $Rapps['app_name'] ?> | General Management</title>
+<title>Form Hiring - <?= $Rapps['app_name'] ?> | General Management</title>
 <?php
 ?>
+<link href="assets/plugins/chosen/chosen.css" rel="stylesheet" type="text/css" />
 <div class="dashboard-main-wrapper">
     <?php include "include/header.php"; ?>
     <?php include "include/sidebar.php"; ?>
@@ -25,7 +26,7 @@ include 'include/dataTablesCSS.php';
                                 </div>
                                 <div style="margin-left: 10px;">
                                     <div>
-                                        <h2 class="pageheader-title" style="color: #003369;">Joiner </h2>
+                                        <h2 class="pageheader-title" style="color: #003369;">Form Hiring </h2>
                                     </div>
                                     <div style="margin-top: -10px;">
                                         <font>HRGA</font>
@@ -38,6 +39,7 @@ include 'include/dataTablesCSS.php';
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
                                         <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Joiner</a></li>
+                                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Form Hiring</a></li>
                                     </ol>
                                 </nav>
                             </div>
@@ -69,3 +71,12 @@ include 'include/dataTablesCSS.php';
 </div>
 <?php include "include/footer.php"; ?>
 <?php include "include/dataTablesJS.php"; ?>
+<script type="text/javascript" src="assets/plugins/chosen/chosen.jquery.js"></script>
+<script type="text/javascript">
+    $("#IdBranch").chosen({
+        width: "100%"
+    });
+    $("#IdHandoverLocation").chosen({
+        width: "100%"
+    });
+</script>

@@ -704,7 +704,7 @@ $Rrole   = mysqli_fetch_array($role);
                             <ul class="nav flex-column">
                                 <li class="nav-item">
                                     <a class="nav-link <?= $uriSegments[2] == 'onboard_joiner_new.php' ? 'active' : '' ?> " href="onboard_joiner_new.php">
-                                        <span>New</span>
+                                        <span>Form Hiring</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
