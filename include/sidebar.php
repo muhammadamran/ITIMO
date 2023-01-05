@@ -799,11 +799,6 @@ $Rrole   = mysqli_fetch_array($role);
                         <div id="submenu-employee" class="collapse submenu <?= $uriSegments[2] == 'em_summary.php' || $uriSegments[2] == 'em_general_manager.php' || $uriSegments[2] == 'em_manager.php' || $uriSegments[2] == 'em_supervisor.php' || $uriSegments[2] == 'em_staff.php' ? 'show' : '' ?>">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
-                                    <a class="nav-link <?= $uriSegments[2] == 'em_summary.php' ? 'active' : '' ?>" href="em_summary.php">
-                                        <span>Summary</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
                                     <a class="nav-link <?= $uriSegments[2] == 'em_general_manager.php' ? 'active' : '' ?>" href="em_general_manager.php">
                                         <span>General Manager</span>
                                     </a>
@@ -825,7 +820,7 @@ $Rrole   = mysqli_fetch_array($role);
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link <?= $uriSegments[2] == 'em_staff.php' ? 'active' : '' ?>" href="em_staff.php">
-                                        <span>Staff</span>
+                                        <span>Executive/Staff</span>
                                     </a>
                                 </li>
                             </ul>

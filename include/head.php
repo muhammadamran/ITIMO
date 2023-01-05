@@ -30,6 +30,7 @@
     <script src="assets/sweet/sweetalert2.min.js"></script>
     <!-- behind css -->
     <link rel="stylesheet" href="assets/libs/css/behind.css">
+    <!-- <link rel="stylesheet" href="assets/libs/css/main.css"> -->
     <!-- Loading -->
     <script src="http://code.jquery.com/jquery-2.2.1.min.js"></script>
     <!-- Font Poppins -->

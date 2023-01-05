@@ -110,7 +110,7 @@ if (isset($_POST["reset_password"])) {
                                         <h2 class="pageheader-title" style="color: #003369;">Dashboard </h2>
                                     </div>
                                     <div style="margin-top: -10px;">
-                                        <font>ADMINISTRATION</font>
+                                        <font>DASHBOARD</font>
                                     </div>
                                 </div>
                             </div>

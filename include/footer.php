@@ -2,6 +2,7 @@
 <script src="assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
 <script src="assets/vendor/slimscroll/jquery.slimscroll.js"></script>
 <script src="assets/libs/js/main-js.js"></script>
+<!-- <script src="assets/libs/js/choise.js"></script> -->
 <!-- Autocomple -->
 <link rel="stylesheet" href="libraries/autocomplete/autocomplete.css">
 <script src="libraries/autocomplete/jquery-1.10.2.js"></script>
