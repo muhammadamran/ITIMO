@@ -792,11 +792,11 @@ $Rrole   = mysqli_fetch_array($role);
                     <!-- END LEAVER -->
                     <!-- EMPLOYEE -->
                     <li class="nav-item">
-                        <a class="nav-link <?= $uriSegments[2] == 'em_summary.php' || $uriSegments[2] == 'em_general_manager.php' || $uriSegments[2] == 'em_manager.php' || $uriSegments[2] == 'em_supervisor.php' || $uriSegments[2] == 'em_staff.php' ? 'active' : '' ?>" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-employee" aria-controls="submenu-14">
+                        <a class="nav-link <?= $uriSegments[2] == 'em_summary.php' || $uriSegments[2] == 'em_general_manager.php' || $uriSegments[2] == 'em_manager.php' || $uriSegments[2] == 'em_supervisor.php' || $uriSegments[2] == 'em_executive_staff.php' ? 'active' : '' ?>" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-employee" aria-controls="submenu-14">
                             <i class="fas fa-id-card-alt" id="sidebar-font"></i>
                             <span>Employee</span>
                         </a>
-                        <div id="submenu-employee" class="collapse submenu <?= $uriSegments[2] == 'em_summary.php' || $uriSegments[2] == 'em_general_manager.php' || $uriSegments[2] == 'em_manager.php' || $uriSegments[2] == 'em_supervisor.php' || $uriSegments[2] == 'em_staff.php' ? 'show' : '' ?>">
+                        <div id="submenu-employee" class="collapse submenu <?= $uriSegments[2] == 'em_summary.php' || $uriSegments[2] == 'em_general_manager.php' || $uriSegments[2] == 'em_manager.php' || $uriSegments[2] == 'em_supervisor.php' || $uriSegments[2] == 'em_executive_staff.php' ? 'show' : '' ?>">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
                                     <a class="nav-link <?= $uriSegments[2] == 'em_general_manager.php' ? 'active' : '' ?>" href="em_general_manager.php">
@@ -819,7 +819,7 @@ $Rrole   = mysqli_fetch_array($role);
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link <?= $uriSegments[2] == 'em_staff.php' ? 'active' : '' ?>" href="em_staff.php">
+                                    <a class="nav-link <?= $uriSegments[2] == 'em_executive_staff.php' ? 'active' : '' ?>" href="em_executive_staff.php">
                                         <span>Executive/Staff</span>
                                     </a>
                                 </li>
