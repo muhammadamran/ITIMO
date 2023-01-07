@@ -136,15 +136,6 @@
                 <!-- End Delete -->
             <?php } ?>
         <?php } else { ?>
-            <tr>
-                <td colspan="7">
-                    <center>
-                        <div style="display: grid;">
-                            <i class="far fa-times-circle no-data"></i> Data not found
-                        </div>
-                    </center>
-                </td>
-            </tr>
         <?php } ?>
     </tbody>
 </table>
