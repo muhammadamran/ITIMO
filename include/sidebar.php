@@ -17,7 +17,16 @@ $Rrole   = mysqli_fetch_array($role);
                     <!-- NAV MAIN MENU -->
                     <li class="nav-divider">
                         Navigation | Main Menu
+                        <hr>
                     </li>
+                    <!-- Overview -->
+                    <li class="nav-item">
+                        <a class="nav-link <?= $uriSegments[2] == 'overview.php' ? 'active' : '' ?>" href="overview.php">
+                            <i class="fas fa-th-large" id="sidebar-font"></i>
+                            <span>Overview</span>
+                        </a>
+                    </li>
+                    <!-- End Overview -->
                     <!-- DASHBOARD -->
                     <li class="nav-item">
                         <a class="nav-link <?= $uriSegments[2] == 'index.php' ? 'active' : '' ?>" href="index.php">
@@ -37,7 +46,9 @@ $Rrole   = mysqli_fetch_array($role);
                     <!-- END NAV MAIN MENU -->
                     <!-- NAV IT -->
                     <li class="nav-divider">
+                        <hr>
                         Navigation | IT
+                        <hr>
                     </li>
                     <!-- LAPTOP 1 -->
                     <li class="nav-item">
@@ -693,6 +704,7 @@ $Rrole   = mysqli_fetch_array($role);
                     <li class="nav-divider">
                         <hr>
                         Navigation | HRGA
+                        <hr>
                     </li>
                     <!-- JOINER -->
                     <li class="nav-item">
@@ -831,6 +843,7 @@ $Rrole   = mysqli_fetch_array($role);
                     <li class="nav-divider">
                         <hr>
                         Navigation | Administration
+                        <hr>
                     </li>
                     <!-- REFERENCES -->
                     <li class="nav-item">
@@ -916,6 +929,5 @@ $Rrole   = mysqli_fetch_array($role);
                 </ul>
             </div>
         </nav>
-
     </div>
 </div>

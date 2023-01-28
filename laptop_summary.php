@@ -395,6 +395,7 @@ $FindUsername     = '';
 $FindUS           = '';
 $FindOS           = '';
 $FindBranchLoc    = '';
+$FindLimitData    = '10';
 if (isset($_POST["find_filter"])) {
     if ($_POST["FindSerialNumber"] != '') {
         $FindSerialNumber = $_POST['FindSerialNumber'];
@@ -426,6 +427,10 @@ if (isset($_POST["find_filter"])) {
 
     if ($_POST["FindBranchLoc"] != '') {
         $FindBranchLoc = $_POST['FindBranchLoc'];
+    }
+
+    if ($_POST["FindLimitData"] != '') {
+        $FindLimitData = $_POST['FindLimitData'];
     }
 }
 ?>
@@ -532,6 +537,13 @@ if (isset($_POST["find_filter"])) {
                                                 <div class="form-group">
                                                     <label for="IdFindBranchLoc">Branch Location</label>
                                                     <input type="text" class="form-control" name="FindBranchLoc" id="IdFindBranchLoc" value="<?= $FindBranchLoc; ?>" placeholder="Branch Location ..." />
+                                                </div>
+                                            </div>
+                                            <!-- Limit Data -->
+                                            <div class="col-md-3" id="FormLimitData">
+                                                <div class="form-group">
+                                                    <label for="IdFindLimitData">Limit Data</label>
+                                                    <input type="number" class="form-control" name="FindLimitData" id="IdFindLimitData" value="<?= $FindLimitData; ?>" placeholder="Limit Data ..." required />
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
@@ -678,37 +690,6 @@ if (isset($_POST["find_filter"])) {
                                     <a href="#modal-Import-XLS" class="btn btn-sm btn-primary" data-toggle="modal" title="Import XLS"><i class="fas fa-file-upload"></i>
                                         <font class="f-action"> Import XLS</font>
                                     </a>
-                                    <div class="modal fade" id="modal-Import-XLS">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <form action="" method="POST" enctype="multipart/form-data">
-                                                    <div class="modal-header">
-                                                        <h4 class="modal-title">[File Data] Import XLS</h4>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <fieldset>
-                                                            <div class="row">
-                                                                <div class="col-md-12">
-                                                                    <div class="form-group">
-                                                                        <label for="IdImportXLS">Import XLS <font style="color: red;">*</font></label>
-                                                                        <input type="file" class="form-control" name="ImportXLS" id="IdImportXLS" placeholder="Import XLS ..." required />
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-12">
-                                                                    <font style="color: red;">*</font> <i>Required.</i>
-                                                                </div>
-                                                            </div>
-                                                        </fieldset>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <a href="javascript:;" class="btn btn-light" data-dismiss="modal"><i class="fas fa-times-circle"></i> Close</a>
-                                                        <button type="submit" name="import_" class="btn btn-primary"><i class="fas fa-file-upload"></i> Import</button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
                                     <!-- End Add Import XLS -->
                                 </div>
                             </div>
@@ -740,7 +721,11 @@ if (isset($_POST["find_filter"])) {
                                     </ul>
                                     </p>
                                     <hr>
-                                    <p class="mb-0">Total Details Status Devices: <b><?= $resultTotalData['t_AVAILABLE'] + $resultTotalData['t_BROKEN'] + $resultTotalData['t_DISPOSED'] + $resultTotalData['t_PERMANENT'] + $resultTotalData['t_TEMP'] + $resultTotalData['t_NULL']; ?> </b>.</p>
+                                    <p class="mb-0">Total Details Status Devices:
+                                        <b><?= $resultTotalData['t_AVAILABLE'] + $resultTotalData['t_BROKEN'] + $resultTotalData['t_DISPOSED'] + $resultTotalData['t_PERMANENT'] + $resultTotalData['t_TEMP'] + $resultTotalData['t_NULL']; ?> </b>
+                                        .
+                                        <a href="laptop_excel.php?Total=<?= $resultTotalData['t_AVAILABLE'] + $resultTotalData['t_BROKEN'] + $resultTotalData['t_DISPOSED'] + $resultTotalData['t_PERMANENT'] + $resultTotalData['t_TEMP'] + $resultTotalData['t_NULL']; ?>&User=<?= $_SESSION['username']; ?>" class="btn btn-c btn-behind-green" target="_blank">Download Excel</a>
+                                    </p>
                                 </div>
                             </div>
                             <div class="card-body">

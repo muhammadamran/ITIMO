@@ -77,6 +77,11 @@ tbody {
     border-color: #1c9271;
 }
 
+.btn-c {
+    padding: 0px 5px;
+    font-size: 10px;
+}
+
 .btn-behind-gray {
     color: #fff;
     background-color: #607d8b;
@@ -307,4 +312,8 @@ tbody {
 .btn-join {
     padding: 25px 12px;
     font-size: 14px;
+}
+
+li.nav-item {
+    margin: 1.5px;
 }

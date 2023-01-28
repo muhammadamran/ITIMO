@@ -56,12 +56,12 @@
             FROM tb_laptop_master AS lap
             LEFT OUTER JOIN tb_employee AS emp ON lap.username=emp.username
             $_where
-            ORDER BY lap.id DESC", 0);
+            ORDER BY lap.id LIMIT $FindLimitData", 0);
         } else {
             $dataTable = $db->query("SELECT *,lap.id,emp.id AS idEmp,lap.username AS userLap,emp.username AS userEmp,lap.cost_center AS CC
             FROM tb_laptop_master AS lap
             LEFT OUTER JOIN tb_employee AS emp ON lap.username=emp.username
-            ORDER BY lap.id DESC", 0);
+            ORDER BY lap.id DESC LIMIT 10", 0);
         }
         if (mysqli_num_rows($dataTable) > 0) {
             $no = 0;

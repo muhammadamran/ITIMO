@@ -126,16 +126,70 @@ if (isset($_POST["reset_password"])) {
                     </div>
                 </div>
                 <!-- End Page Title -->
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="card">
+                            <h5 class="card-header"><i class="fas fa-list"></i> All Devices Dashboard</h5>
+                            <div class="card-body">
+                                <div class="row">
+                                    <!-- Laptop -->
+                                    <div class="col-sm-3">
+                                        <div id="Dash_Laptop"></div>
+                                    </div>
+                                    <!-- Server -->
+                                    <div class="col-sm-3">
+                                        <div id="Dash_Server"></div>
+                                    </div>
+                                    <!-- PC -->
+                                    <div class="col-sm-3">
+                                        <div id="Dash_PC"></div>
+                                    </div>
+                                    <!-- Monitor/LCD -->
+                                    <div class="col-sm-3">
+                                        <div id="Dash_ML"></div>
+                                    </div>
+                                    <!-- TV -->
+                                    <div class="col-sm-3">
+                                        <div id="Dash_TV"></div>
+                                    </div>
+                                    <!-- Phone -->
+                                    <div class="col-sm-3">
+                                        <div id="Dash_Phone"></div>
+                                    </div>
+                                    <!-- Ipad -->
+                                    <div class="col-sm-3">
+                                        <div id="Dash_Ipad"></div>
+                                    </div>
+                                    <!-- Headphones -->
+                                    <div class="col-sm-3">
+                                        <div id="Dash_Headphones"></div>
+                                    </div>
+                                    <!-- Switch -->
+                                    <div class="col-sm-3">
+                                        <div id="Dash_Switch"></div>
+                                    </div>
+                                    <!-- RF -->
+                                    <div class="col-sm-3">
+                                        <div id="Dash_RF"></div>
+                                    </div>
+                                    <!-- ETC -->
+                                    <div class="col-sm-3">
+                                        <div id="Dash_ETC"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- First Row -->
                 <div class="row">
                     <div class="col-xl-8">
                         <div class="card">
                             <h5 class="card-header"><i class="fas fa-list"></i> Data Dashboard 1</h5>
-                            <!--  -->
-                            <hr />
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <!--  -->
+                                    <div id="dashboard_1"></div>
                                 </div>
                             </div>
                         </div>
@@ -143,11 +197,9 @@ if (isset($_POST["reset_password"])) {
                     <div class="col-xl-4">
                         <div class="card">
                             <h5 class="card-header"><i class="fas fa-list"></i> Data Dashboard 2</h5>
-                            <!--  -->
-                            <hr />
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <!--  -->
+                                    <div id="dashboard_2"></div>
                                 </div>
                             </div>
                         </div>
@@ -155,11 +207,9 @@ if (isset($_POST["reset_password"])) {
                     <div class="col-xl-6">
                         <div class="card">
                             <h5 class="card-header"><i class="fas fa-list"></i> Data Dashboard 3</h5>
-                            <!--  -->
-                            <hr />
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <!--  -->
+                                    <div id="dashboard_3"></div>
                                 </div>
                             </div>
                         </div>
@@ -167,11 +217,9 @@ if (isset($_POST["reset_password"])) {
                     <div class="col-xl-6">
                         <div class="card">
                             <h5 class="card-header"><i class="fas fa-list"></i> Data Dashboard 4</h5>
-                            <!--  -->
-                            <hr />
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <!--  -->
+                                    <div id="dashboard_4"></div>
                                 </div>
                             </div>
                         </div>
@@ -186,6 +234,1009 @@ if (isset($_POST["reset_password"])) {
 </div>
 <?php include "include/footer.php"; ?>
 <?php include "include/dataTablesJS.php"; ?>
+<script src="assets/highcharts/highcharts.js"></script>
+<script src="assets/highcharts/modules/exporting.js"></script>
+<script src="assets/highcharts/modules/export-data.js"></script>
+<script src="assets/highcharts/modules/accessibility.js"></script>
+<script type="text/javascript">
+    var pieColors = (function() {
+        var colors = [],
+            base = Highcharts.getOptions().colors[0],
+            i;
+
+        for (i = 0; i < 10; i += 1) {
+            colors.push(Highcharts.color(base).brighten((i - 3) / 7).get());
+        }
+        return colors;
+    }());
+    // Laptop
+    Highcharts.chart('Dash_Laptop', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Monitoring Laptop Status'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        accessibility: {
+            point: {
+                valueSuffix: '%'
+            }
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                colors: pieColors,
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b><br>{point.percentage:.1f} %',
+                    distance: -50,
+                    filter: {
+                        property: 'percentage',
+                        operator: '>',
+                        value: 4
+                    }
+                }
+            }
+        },
+        series: [{
+            name: 'Share',
+            data: [{
+                    name: 'Chrome',
+                    y: 61.41
+                },
+                {
+                    name: 'Internet Explorer',
+                    y: 11.84
+                },
+                {
+                    name: 'Firefox',
+                    y: 10.85
+                },
+                {
+                    name: 'Edge',
+                    y: 4.67
+                },
+                {
+                    name: 'Safari',
+                    y: 4.18
+                },
+                {
+                    name: 'Other',
+                    y: 7.05
+                }
+            ]
+        }]
+    });
+    // Server
+    Highcharts.chart('Dash_Server', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Monitoring Server Status'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        accessibility: {
+            point: {
+                valueSuffix: '%'
+            }
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                colors: pieColors,
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b><br>{point.percentage:.1f} %',
+                    distance: -50,
+                    filter: {
+                        property: 'percentage',
+                        operator: '>',
+                        value: 4
+                    }
+                }
+            }
+        },
+        series: [{
+            name: 'Share',
+            data: [{
+                    name: 'Chrome',
+                    y: 61.41
+                },
+                {
+                    name: 'Internet Explorer',
+                    y: 11.84
+                },
+                {
+                    name: 'Firefox',
+                    y: 10.85
+                },
+                {
+                    name: 'Edge',
+                    y: 4.67
+                },
+                {
+                    name: 'Safari',
+                    y: 4.18
+                },
+                {
+                    name: 'Other',
+                    y: 7.05
+                }
+            ]
+        }]
+    });
+    // PC
+    Highcharts.chart('Dash_PC', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Monitoring PC Status'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        accessibility: {
+            point: {
+                valueSuffix: '%'
+            }
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                colors: pieColors,
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b><br>{point.percentage:.1f} %',
+                    distance: -50,
+                    filter: {
+                        property: 'percentage',
+                        operator: '>',
+                        value: 4
+                    }
+                }
+            }
+        },
+        series: [{
+            name: 'Share',
+            data: [{
+                    name: 'Chrome',
+                    y: 61.41
+                },
+                {
+                    name: 'Internet Explorer',
+                    y: 11.84
+                },
+                {
+                    name: 'Firefox',
+                    y: 10.85
+                },
+                {
+                    name: 'Edge',
+                    y: 4.67
+                },
+                {
+                    name: 'Safari',
+                    y: 4.18
+                },
+                {
+                    name: 'Other',
+                    y: 7.05
+                }
+            ]
+        }]
+    });
+    // ML
+    Highcharts.chart('Dash_ML', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Monitoring Monitor/LCD Status'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        accessibility: {
+            point: {
+                valueSuffix: '%'
+            }
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                colors: pieColors,
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b><br>{point.percentage:.1f} %',
+                    distance: -50,
+                    filter: {
+                        property: 'percentage',
+                        operator: '>',
+                        value: 4
+                    }
+                }
+            }
+        },
+        series: [{
+            name: 'Share',
+            data: [{
+                    name: 'Chrome',
+                    y: 61.41
+                },
+                {
+                    name: 'Internet Explorer',
+                    y: 11.84
+                },
+                {
+                    name: 'Firefox',
+                    y: 10.85
+                },
+                {
+                    name: 'Edge',
+                    y: 4.67
+                },
+                {
+                    name: 'Safari',
+                    y: 4.18
+                },
+                {
+                    name: 'Other',
+                    y: 7.05
+                }
+            ]
+        }]
+    });
+    // TV
+    Highcharts.chart('Dash_TV', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Monitoring TV Status'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        accessibility: {
+            point: {
+                valueSuffix: '%'
+            }
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                colors: pieColors,
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b><br>{point.percentage:.1f} %',
+                    distance: -50,
+                    filter: {
+                        property: 'percentage',
+                        operator: '>',
+                        value: 4
+                    }
+                }
+            }
+        },
+        series: [{
+            name: 'Share',
+            data: [{
+                    name: 'Chrome',
+                    y: 61.41
+                },
+                {
+                    name: 'Internet Explorer',
+                    y: 11.84
+                },
+                {
+                    name: 'Firefox',
+                    y: 10.85
+                },
+                {
+                    name: 'Edge',
+                    y: 4.67
+                },
+                {
+                    name: 'Safari',
+                    y: 4.18
+                },
+                {
+                    name: 'Other',
+                    y: 7.05
+                }
+            ]
+        }]
+    });
+    // Phone
+    Highcharts.chart('Dash_Phone', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Monitoring Phone Status'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        accessibility: {
+            point: {
+                valueSuffix: '%'
+            }
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                colors: pieColors,
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b><br>{point.percentage:.1f} %',
+                    distance: -50,
+                    filter: {
+                        property: 'percentage',
+                        operator: '>',
+                        value: 4
+                    }
+                }
+            }
+        },
+        series: [{
+            name: 'Share',
+            data: [{
+                    name: 'Chrome',
+                    y: 61.41
+                },
+                {
+                    name: 'Internet Explorer',
+                    y: 11.84
+                },
+                {
+                    name: 'Firefox',
+                    y: 10.85
+                },
+                {
+                    name: 'Edge',
+                    y: 4.67
+                },
+                {
+                    name: 'Safari',
+                    y: 4.18
+                },
+                {
+                    name: 'Other',
+                    y: 7.05
+                }
+            ]
+        }]
+    });
+    // Ipad
+    Highcharts.chart('Dash_Ipad', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Monitoring Ipad Status'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        accessibility: {
+            point: {
+                valueSuffix: '%'
+            }
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                colors: pieColors,
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b><br>{point.percentage:.1f} %',
+                    distance: -50,
+                    filter: {
+                        property: 'percentage',
+                        operator: '>',
+                        value: 4
+                    }
+                }
+            }
+        },
+        series: [{
+            name: 'Share',
+            data: [{
+                    name: 'Chrome',
+                    y: 61.41
+                },
+                {
+                    name: 'Internet Explorer',
+                    y: 11.84
+                },
+                {
+                    name: 'Firefox',
+                    y: 10.85
+                },
+                {
+                    name: 'Edge',
+                    y: 4.67
+                },
+                {
+                    name: 'Safari',
+                    y: 4.18
+                },
+                {
+                    name: 'Other',
+                    y: 7.05
+                }
+            ]
+        }]
+    });
+    // Headphones
+    Highcharts.chart('Dash_Headphones', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Monitoring Headphones Status'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        accessibility: {
+            point: {
+                valueSuffix: '%'
+            }
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                colors: pieColors,
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b><br>{point.percentage:.1f} %',
+                    distance: -50,
+                    filter: {
+                        property: 'percentage',
+                        operator: '>',
+                        value: 4
+                    }
+                }
+            }
+        },
+        series: [{
+            name: 'Share',
+            data: [{
+                    name: 'Chrome',
+                    y: 61.41
+                },
+                {
+                    name: 'Internet Explorer',
+                    y: 11.84
+                },
+                {
+                    name: 'Firefox',
+                    y: 10.85
+                },
+                {
+                    name: 'Edge',
+                    y: 4.67
+                },
+                {
+                    name: 'Safari',
+                    y: 4.18
+                },
+                {
+                    name: 'Other',
+                    y: 7.05
+                }
+            ]
+        }]
+    });
+    // Switch
+    Highcharts.chart('Dash_Switch', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Monitoring Switch/Router Status'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        accessibility: {
+            point: {
+                valueSuffix: '%'
+            }
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                colors: pieColors,
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b><br>{point.percentage:.1f} %',
+                    distance: -50,
+                    filter: {
+                        property: 'percentage',
+                        operator: '>',
+                        value: 4
+                    }
+                }
+            }
+        },
+        series: [{
+            name: 'Share',
+            data: [{
+                    name: 'Chrome',
+                    y: 61.41
+                },
+                {
+                    name: 'Internet Explorer',
+                    y: 11.84
+                },
+                {
+                    name: 'Firefox',
+                    y: 10.85
+                },
+                {
+                    name: 'Edge',
+                    y: 4.67
+                },
+                {
+                    name: 'Safari',
+                    y: 4.18
+                },
+                {
+                    name: 'Other',
+                    y: 7.05
+                }
+            ]
+        }]
+    });
+    // RF
+    Highcharts.chart('Dash_RF', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Monitoring RF Scanner Status'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        accessibility: {
+            point: {
+                valueSuffix: '%'
+            }
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                colors: pieColors,
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b><br>{point.percentage:.1f} %',
+                    distance: -50,
+                    filter: {
+                        property: 'percentage',
+                        operator: '>',
+                        value: 4
+                    }
+                }
+            }
+        },
+        series: [{
+            name: 'Share',
+            data: [{
+                    name: 'Chrome',
+                    y: 61.41
+                },
+                {
+                    name: 'Internet Explorer',
+                    y: 11.84
+                },
+                {
+                    name: 'Firefox',
+                    y: 10.85
+                },
+                {
+                    name: 'Edge',
+                    y: 4.67
+                },
+                {
+                    name: 'Safari',
+                    y: 4.18
+                },
+                {
+                    name: 'Other',
+                    y: 7.05
+                }
+            ]
+        }]
+    });
+    // ETC
+    Highcharts.chart('Dash_ETC', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'ETC'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        accessibility: {
+            point: {
+                valueSuffix: '%'
+            }
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                colors: pieColors,
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b><br>{point.percentage:.1f} %',
+                    distance: -50,
+                    filter: {
+                        property: 'percentage',
+                        operator: '>',
+                        value: 4
+                    }
+                }
+            }
+        },
+        series: [{
+            name: 'Share',
+            data: [{
+                    name: 'Chrome',
+                    y: 61.41
+                },
+                {
+                    name: 'Internet Explorer',
+                    y: 11.84
+                },
+                {
+                    name: 'Firefox',
+                    y: 10.85
+                },
+                {
+                    name: 'Edge',
+                    y: 4.67
+                },
+                {
+                    name: 'Safari',
+                    y: 4.18
+                },
+                {
+                    name: 'Other',
+                    y: 7.05
+                }
+            ]
+        }]
+    });
+
+    // Dashboard 1
+    Highcharts.chart('dashboard_1', {
+
+        title: {
+            text: 'Solar Employment Growth by Sector, 2010-2016'
+        },
+
+        subtitle: {
+            text: 'Source: thesolarfoundation.com'
+        },
+
+        yAxis: {
+            title: {
+                text: 'Number of Employees'
+            }
+        },
+
+        xAxis: {
+            accessibility: {
+                rangeDescription: 'Range: 2010 to 2017'
+            }
+        },
+
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle'
+        },
+
+        plotOptions: {
+            series: {
+                label: {
+                    connectorAllowed: false
+                },
+                pointStart: 2010
+            }
+        },
+
+        series: [{
+            name: 'Installation',
+            data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175]
+        }, {
+            name: 'Manufacturing',
+            data: [24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434]
+        }, {
+            name: 'Sales & Distribution',
+            data: [11744, 17722, 16005, 19771, 20185, 24377, 32147, 39387]
+        }, {
+            name: 'Project Development',
+            data: [null, null, 7988, 12169, 15112, 22452, 34400, 34227]
+        }, {
+            name: 'Other',
+            data: [12908, 5948, 8105, 11248, 8989, 11816, 18274, 18111]
+        }],
+
+        responsive: {
+            rules: [{
+                condition: {
+                    maxWidth: 500
+                },
+                chartOptions: {
+                    legend: {
+                        layout: 'horizontal',
+                        align: 'center',
+                        verticalAlign: 'bottom'
+                    }
+                }
+            }]
+        }
+
+    });
+
+    // Dashboard 2
+    Highcharts.chart('dashboard_2', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Browser market shares at a specific website, 2014'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        accessibility: {
+            point: {
+                valueSuffix: '%'
+            }
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                colors: pieColors,
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b><br>{point.percentage:.1f} %',
+                    distance: -50,
+                    filter: {
+                        property: 'percentage',
+                        operator: '>',
+                        value: 4
+                    }
+                }
+            }
+        },
+        series: [{
+            name: 'Share',
+            data: [{
+                    name: 'Chrome',
+                    y: 61.41
+                },
+                {
+                    name: 'Internet Explorer',
+                    y: 11.84
+                },
+                {
+                    name: 'Firefox',
+                    y: 10.85
+                },
+                {
+                    name: 'Edge',
+                    y: 4.67
+                },
+                {
+                    name: 'Safari',
+                    y: 4.18
+                },
+                {
+                    name: 'Other',
+                    y: 7.05
+                }
+            ]
+        }]
+    });
+
+    // Dashboard 3
+    Highcharts.chart('dashboard_3', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Monthly Average Rainfall'
+        },
+        subtitle: {
+            text: 'Source: WorldClimate.com'
+        },
+        xAxis: {
+            categories: [
+                'Jan',
+                'Feb',
+                'Mar',
+                'Apr',
+                'May',
+                'Jun',
+                'Jul',
+                'Aug',
+                'Sep',
+                'Oct',
+                'Nov',
+                'Dec'
+            ],
+            crosshair: true
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Rainfall (mm)'
+            }
+        },
+        tooltip: {
+            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+            footerFormat: '</table>',
+            shared: true,
+            useHTML: true
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [{
+            name: 'Tokyo',
+            data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
+
+        }, {
+            name: 'New York',
+            data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5, 106.6, 92.3]
+
+        }, {
+            name: 'London',
+            data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6, 52.4, 65.2, 59.3, 51.2]
+
+        }, {
+            name: 'Berlin',
+            data: [42.4, 33.2, 34.5, 39.7, 52.6, 75.5, 57.4, 60.4, 47.6, 39.1, 46.8, 51.1]
+
+        }]
+    });
+
+    // Dashboard 4
+    Highcharts.chart('dashboard_4', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Monthly Average Rainfall'
+        },
+        subtitle: {
+            text: 'Source: WorldClimate.com'
+        },
+        xAxis: {
+            categories: [
+                'Jan',
+                'Feb',
+                'Mar',
+                'Apr',
+                'May',
+                'Jun',
+                'Jul',
+                'Aug',
+                'Sep',
+                'Oct',
+                'Nov',
+                'Dec'
+            ],
+            crosshair: true
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Rainfall (mm)'
+            }
+        },
+        tooltip: {
+            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+            footerFormat: '</table>',
+            shared: true,
+            useHTML: true
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [{
+            name: 'Tokyo',
+            data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
+
+        }, {
+            name: 'New York',
+            data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5, 106.6, 92.3]
+
+        }, {
+            name: 'London',
+            data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6, 52.4, 65.2, 59.3, 51.2]
+
+        }, {
+            name: 'Berlin',
+            data: [42.4, 33.2, 34.5, 39.7, 52.6, 75.5, 57.4, 60.4, 47.6, 39.1, 46.8, 51.1]
+
+        }]
+    });
+</script>
 <script type="text/javascript">
     // SIGN IN SUCCESS
     if (window?.location?.href?.indexOf('SignInsuccess') > -1) {
